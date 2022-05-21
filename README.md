@@ -8,13 +8,13 @@
 <br>
 
 <p align="center">
-    <a href="https://github.com/jarne/colly/blob/master/package.json">
+    <a href="https://github.com/jarne/colly/blob/main/package.json">
         <img src="https://img.shields.io/github/package-json/v/jarne/colly.svg" alt="Package version">
     </a>
     <a href="https://circleci.com/gh/jarne/colly">
         <img src="https://circleci.com/gh/jarne/colly.svg?style=svg&circle-token=123" alt="Build status">
     </a>
-    <a href="https://github.com/jarne/colly/blob/master/LICENSE">
+    <a href="https://github.com/jarne/colly/blob/main/LICENSE">
         <img src="https://img.shields.io/github/license/jarne/colly.svg" alt="License">
     </a>
 </p>
@@ -44,9 +44,9 @@ Colly is a web-based URL/website collection app, where you can add links to your
 
 The following environment variables need to be set:
 
-| Env variable     | Description                              |
-| ---------------- | ---------------------------------------- |
-| `...`     | ...                 |
+| Env variable | Description |
+| ------------ | ----------- |
+| `...`        | ...         |
 
 ## 🙋‍ Contribution
 
@@ -56,4 +56,4 @@ Thanks for your interest 🎉👍!
 
 ## 👨‍⚖️ License
 
-[MIT](https://github.com/jarne/colly/blob/master/LICENSE)
+[MIT](https://github.com/jarne/colly/blob/main/LICENSE)
