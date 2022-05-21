@@ -27,7 +27,7 @@
         "start": "node app.js",
         "dev": "./node_modules/.bin/nodemon app.js",
         "test": "./node_modules/.bin/mocha --recursive --parallel",
-        "format": "./node_modules/.bin/prettier --write \"**/*.{js,json}\""
+        "format": "./node_modules/.bin/prettier --write \"**/*.{js,json,md}\""
     },
     "dependencies": {
         "bcrypt": "^5.0",
