@@ -7,4 +7,5 @@
 
 # Test results
 /test-results
+/lint-results
 /coverage

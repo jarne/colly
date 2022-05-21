@@ -35,9 +35,32 @@ jobs:
             # Save coverage report
             - store_artifacts:
                   path: coverage
+    eslint:
+        docker:
+            - image: cimg/node:16.15
+        steps:
+            # Checkout branch
+            - checkout
+
+            # Install Yarn dependencies
+            - restore_cache:
+                  key: yarn-{{ checksum "yarn.lock" }}
+            - run: yarn install
+            - save_cache:
+                  key: yarn-{{ checksum "yarn.lock" }}
+                  paths:
+                      - node_modules
+
+            # Run ESLint
+            - run: yarn lint-ci
+
+            # Save lint results
+            - store_test_results:
+                  path: lint-results
 
 workflows:
     version: 2
     tests:
         jobs:
             - mocha
+            - eslint

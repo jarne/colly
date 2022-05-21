@@ -29,6 +29,8 @@
         "test": "./node_modules/.bin/mocha --recursive --parallel",
         "test-ci": "./node_modules/.bin/mocha --recursive --exit --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results/mocha/junit.xml",
         "test-coverage": "./node_modules/.bin/c8 --all --reporter html yarn test",
+        "lint": "./node_modules/.bin/eslint .",
+        "lint-ci": "./node_modules/.bin/eslint --format junit --output-file ./lint-results/eslint/junit.xml .",
         "format": "./node_modules/.bin/prettier --write \"**/*.{js,json,yml,md}\""
     },
     "dependencies": {
@@ -46,6 +48,7 @@
     "devDependencies": {
         "c8": "^7.11",
         "chai": "^4.3",
+        "eslint": "^8.16",
         "mocha": "^10.0",
         "mocha-junit-reporter": "^2.0",
         "nodemon": "^2.0",
