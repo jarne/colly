@@ -6,3 +6,7 @@
 
 # Uploaded content
 /content
+
+# Test results
+/test-results
+/coverage

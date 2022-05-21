@@ -1,3 +1,10 @@
 # Dependencies
 /yarn.lock
 /node_modules
+
+# Uploaded content
+/content
+
+# Test results
+/test-results
+/coverage

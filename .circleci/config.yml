@@ -1,0 +1,43 @@
+version: 2
+
+jobs:
+    mocha:
+        docker:
+            - image: cimg/node:16.15
+              environment:
+                  MONGO_HOST: 127.0.0.1
+                  MONGO_DB: colly-test-01
+                  JWT_SECRET: z8nJmLv0H9wivwBT
+            - image: mongo:4.4
+        steps:
+            # Checkout branch
+            - checkout
+
+            # Install Yarn dependencies
+            - restore_cache:
+                  key: yarn-{{ checksum "yarn.lock" }}
+            - run: yarn install
+            - save_cache:
+                  key: yarn-{{ checksum "yarn.lock" }}
+                  paths:
+                      - node_modules
+
+            # Run tests with Mocha
+            - run: yarn test-ci
+
+            # Collect test coverage with c8
+            - run: yarn test-coverage
+
+            # Save test results
+            - store_test_results:
+                  path: test-results
+
+            # Save coverage report
+            - store_artifacts:
+                  path: coverage
+
+workflows:
+    version: 2
+    tests:
+        jobs:
+            - mocha
