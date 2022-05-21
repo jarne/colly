@@ -1,0 +1,8 @@
+# Dependencies
+/node_modules
+
+# Environment file
+/.env
+
+# Uploaded content
+/content
