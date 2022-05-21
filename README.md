@@ -44,9 +44,17 @@ Colly is a web-based URL/website collection app, where you can add links to your
 
 The following environment variables need to be set:
 
-| Env variable | Description |
-| ------------ | ----------- |
-| `...`        | ...         |
+| Env variable               | Default Value    | Description                                                 |
+| -------------------------- | ---------------- | ----------------------------------------------------------- |
+| `MONGO_HOST`               |                  | Hostname of MongoDB                                         |
+| `MONGO_PORT`               | 27017            | Port of MongoDB                                             |
+| `MONGO_DB`                 |                  | MongoDB database name                                       |
+| `JWT_SECRET`               |                  | Random secret for JWT                                       |
+| `EXPIRES_IN_SEC`           | 86400            | Expiration of JWT (in seconds)                              |
+| `PREVIEW_SCREENSHOTS_PATH` | content/previews | Path of the preview screenshots storage                     |
+| `PREVIEW_WIDTH`            | 640              | Width of preview screenshots                                |
+| `PREVIEW_HEIGHT`           | 400              | Height of preview screenshots                               |
+| `PREVIEW_TIMEOUT`          | 3                | Timeout when loading website to create preview (in seconds) |
 
 ## 🙋‍ Contribution
 
