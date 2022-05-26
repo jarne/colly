@@ -17,7 +17,7 @@ describe("user router", () => {
     let token
 
     before(function (done) {
-        this.timeout(5000)
+        this.timeout(15000)
 
         mongoose.connection.on("connected", async () => {
             await createUser("testadmin", "testPW123", true)
