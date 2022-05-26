@@ -9,7 +9,9 @@ import { connectDbAsync } from "./../../app/init.js"
 import {
     createItem,
     deleteItem,
+    getItem,
     listItems,
+    hasPermission,
 } from "./../../app/controller/item.js"
 import { createUser } from "./../../app/controller/user.js"
 
@@ -23,7 +25,7 @@ describe("item controller", () => {
         await connectDbAsync()
 
         const createdUser = await createUser("itemtester", "testPW123")
-        userId = createdUser._id
+        userId = createdUser.id
     })
 
     describe("#createItem", () => {
@@ -67,6 +69,31 @@ describe("item controller", () => {
         })
     })
 
+    describe("#getItem", () => {
+        it("should get the new item", async () => {
+            const item = await createItem(
+                "https://www.example.com",
+                "example page",
+                "is an example",
+                userId
+            )
+
+            const gotItem = await getItem(item.id)
+
+            expect(gotItem.id).to.be.not.null
+            expect(gotItem.url).to.equal("https://www.example.com")
+            expect(gotItem.name).to.equal("example page")
+        })
+
+        it("should return null for non-existing item", async () => {
+            const wrongItemId = "927546ad1438adb20df54d45"
+
+            const gotItem = await getItem(wrongItemId)
+
+            expect(gotItem).to.be.null
+        })
+    })
+
     describe("#listItems", () => {
         it("should return empty item list", async () => {
             const items = await listItems()
@@ -89,6 +116,36 @@ describe("item controller", () => {
                     (itemObj) => itemObj.url === "https://www.example.com"
                 )
             ).to.be.true
+        })
+    })
+
+    describe("#hasPermission", () => {
+        it("should have the permission for the item", async () => {
+            const item = await createItem(
+                "https://www.example.com",
+                "example page",
+                "is an example",
+                userId
+            )
+
+            const hasPerm = await hasPermission(item.id, userId)
+
+            expect(hasPerm).to.be.true
+        })
+
+        it("should not have the permission for the item", async () => {
+            const item = await createItem(
+                "https://www.example.com",
+                "example page",
+                "is an example",
+                userId
+            )
+
+            const wrongUserId = "927546ad1438adb20df54d45"
+
+            const hasPerm = await hasPermission(item.id, wrongUserId)
+
+            expect(hasPerm).to.be.false
         })
     })
 

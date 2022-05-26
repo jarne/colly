@@ -26,7 +26,7 @@ router.post("/", async (req, res) => {
     }
 
     return res.json({
-        tagId: tag._id,
+        tagId: tag.id,
     })
 })
 

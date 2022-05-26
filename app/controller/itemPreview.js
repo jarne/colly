@@ -24,7 +24,7 @@ export const triggerPreviewGeneration = async (itemId) => {
     }
 
     const url = item.url
-    const previewPath = getPreviewPath(item._id)
+    const previewPath = getPreviewPath(item.id)
 
     const captureOpts = {
         width: Number.parseInt(process.env.PREVIEW_WIDTH) || 640,

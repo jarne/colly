@@ -19,7 +19,7 @@ describe("tag controller", () => {
         await connectDbAsync()
 
         const createdUser = await createUser("tagtester", "testPW123")
-        userId = createdUser._id
+        userId = createdUser.id
     })
 
     describe("#createTag", () => {

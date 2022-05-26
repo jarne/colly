@@ -36,7 +36,7 @@ router.post("/", async (req, res) => {
     }
 
     return res.json({
-        itemId: item._id,
+        itemId: item.id,
     })
 })
 

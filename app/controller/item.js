@@ -28,7 +28,7 @@ export const createItem = async (url, name, description, ownerId) => {
     try {
         const savedItem = await item.save()
 
-        triggerPreviewGeneration(savedItem._id)
+        triggerPreviewGeneration(savedItem.id)
 
         return savedItem
     } catch (e) {
