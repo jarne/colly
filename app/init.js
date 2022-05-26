@@ -11,7 +11,7 @@ import "./utils/passportStrategies.js"
  * Establish connection to database
  */
 export const connectDb = () => {
-    ;(async () => {
+    (async () => {
         await connect()
     })()
 }

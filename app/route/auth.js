@@ -12,7 +12,7 @@ const router = express.Router()
  * Login as a user
  */
 router.post("/login", (req, res) => {
-    passport.authenticate("local", { session: false }, (err, user, info) => {
+    passport.authenticate("local", { session: false }, (err, user) => {
         if (err) {
             return res.status(400).json({
                 error: true,
