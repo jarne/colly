@@ -16,7 +16,9 @@ chai.use(chaiHttp)
 describe("user router", () => {
     let token
 
-    before((done) => {
+    before(function (done) {
+        this.timeout(5000)
+
         mongoose.connection.on("connected", async () => {
             await createUser("testadmin", "testPW123", true)
 
