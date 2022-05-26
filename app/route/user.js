@@ -1,5 +1,5 @@
 /**
- * Colly | tag routes
+ * Colly | user routes
  */
 
 import express from "express"

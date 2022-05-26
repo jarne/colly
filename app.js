@@ -26,3 +26,7 @@ app = registerRoutes(app)
 app.listen(process.env.PORT || 3000)
 
 console.log("🚀 App is running!")
+
+/* Export for tests */
+
+export default app

@@ -11,7 +11,8 @@ import "./utils/passportStrategies.js"
  * Establish connection to database
  */
 export const connectDb = () => {
-    ;(async () => {
+    // prettier-ignore
+    (async () => {
         await connect()
     })()
 }
