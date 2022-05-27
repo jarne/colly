@@ -6,7 +6,7 @@ import chai, { expect } from "chai"
 import chaiHttp from "chai-http"
 import mongoose from "mongoose"
 
-import app from "./../../app.js"
+import app from "./../../appInit.js"
 import { createUser } from "./../../app/controller/user.js"
 
 const User = mongoose.model("User")
@@ -18,14 +18,14 @@ describe("user router", () => {
 
     before(function (done) {
         const prepare = async () => {
-            await createUser("testadmin", "testPW123", true)
+            await createUser("routetestadmin", "testPW123", true)
 
             const res = await chai
                 .request(app)
                 .post("/api/auth/login")
                 .set("Content-Type", "application/json")
                 .send({
-                    username: "testadmin",
+                    username: "routetestadmin",
                     password: "testPW123",
                 })
 
@@ -52,7 +52,7 @@ describe("user router", () => {
                 .set("Content-Type", "application/json")
                 .set("Authorization", `Bearer ${token}`)
                 .send({
-                    username: "testuser",
+                    username: "routetestuser",
                     password: "testPW123",
                 })
 
@@ -64,7 +64,7 @@ describe("user router", () => {
 
     describe("delete /api/user/:userId", () => {
         it("should delete the created user", async () => {
-            const user = await createUser("testuser", "testPW123")
+            const user = await createUser("routetestuser", "testPW123")
 
             const res = await chai
                 .request(app)
@@ -94,13 +94,13 @@ describe("user router", () => {
 
     afterEach(async () => {
         await User.findOneAndDelete({
-            username: "testuser",
+            username: "routetestuser",
         })
     })
 
     after(async () => {
         await User.findOneAndDelete({
-            username: "testadmin",
+            username: "routetestadmin",
         })
     })
 })
