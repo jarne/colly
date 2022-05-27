@@ -17,9 +17,7 @@ describe("user router", () => {
     let token
 
     before(function (done) {
-        this.timeout(15000)
-
-        mongoose.connection.on("connected", async () => {
+        const prepare = async () => {
             await createUser("testadmin", "testPW123", true)
 
             const res = await chai
@@ -34,7 +32,16 @@ describe("user router", () => {
             token = res.body.token
 
             done()
-        })
+        }
+
+        if (mongoose.connection.readyState === 1) {
+            // prettier-ignore
+            (async () => {
+                await prepare()
+            })()
+        }
+
+        mongoose.connection.on("connected", prepare)
     })
 
     describe("post /api/user", () => {
