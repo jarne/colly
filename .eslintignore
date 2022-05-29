@@ -1,0 +1,14 @@
+# Dependencies
+/yarn.lock
+/node_modules
+
+# Client code
+/client
+
+# Uploaded content
+/content
+
+# Test results
+/test-results
+/lint-results
+/coverage
