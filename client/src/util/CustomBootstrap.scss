@@ -4,10 +4,12 @@
 
 @import "./../../node_modules/bootstrap/scss/functions";
 
-$layst-pink: #f01a7e;
+$theme-orange: #f09235;
+$theme-pink: #e63493;
 
 $theme-colors: (
-    "layst-pink": $layst-pink,
+    "theme-orange": $theme-orange,
+    "theme-pink": $theme-pink,
 );
 
 @import "./../../node_modules/bootstrap/scss/variables";
@@ -20,6 +22,22 @@ $theme-colors: (
 @import "./../../node_modules/bootstrap/scss/containers";
 @import "./../../node_modules/bootstrap/scss/grid";
 @import "./../../node_modules/bootstrap/scss/forms";
+
+.custom-form-control {
+    padding: 7.5px 10.5px;
+
+    border: none;
+    border-radius: 0;
+
+    border-bottom: $input-border-width solid $input-border-color;
+}
+
+.custom-form-control-lg {
+    @extend .custom-form-control;
+
+    padding: 13.5px 15.5px;
+}
+
 @import "./../../node_modules/bootstrap/scss/buttons";
 @import "./../../node_modules/bootstrap/scss/nav";
 @import "./../../node_modules/bootstrap/scss/list-group";

@@ -1,0 +1,37 @@
+/**
+ * Colly | login page styles
+ */
+
+.login-background-img {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    z-index: -1;
+}
+
+.login-overlay {
+    width: 500px;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+
+    background-color: white;
+}
+
+.login-content {
+    width: 100%;
+
+    padding: 0 50px;
+
+    text-align: center;
+}
+
+.login-logo {
+    width: 192px;
+    height: 192px;
+}
