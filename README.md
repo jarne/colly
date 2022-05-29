@@ -32,7 +32,7 @@ Colly is a web-based URL/website collection app, where you can add links to your
 
 ### Screenshots
 
-<img src=".github/.media/screenshot.png" alt="Screenshot of Colly web app">
+<img src=".github/.media/screenshot-login.png" alt="Screenshot of Colly login page">
 
 ## 🖥 Usage
 
