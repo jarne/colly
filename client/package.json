@@ -1,0 +1,55 @@
+{
+    "name": "colly-client",
+    "version": "0.0.1",
+    "description": "Open Source Web-based Website URL Collection app",
+    "keywords": [
+        "web",
+        "website",
+        "collect",
+        "url",
+        "manage"
+    ],
+    "homepage": "https://github.com/jarne/colly",
+    "bugs": {
+        "url": "https://github.com/jarne/colly/issues"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Jarne",
+        "url": "https://github.com/jarne"
+    },
+    "main": "app.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jarne/colly.git"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "lint": "./node_modules/.bin/eslint ."
+    },
+    "dependencies": {
+        "bootstrap": "^5.1",
+        "react": "^18.1",
+        "react-dom": "^18.1",
+        "react-scripts": "^5.0",
+        "sass": "^1.52"
+    },
+    "devDependencies": {
+        "eslint": "^8.16"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
+}

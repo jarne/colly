@@ -1,6 +1,9 @@
 # Dependencies
 /node_modules
 
+# Client dependencies
+/client/node_modules
+
 # Environment file
 /.env
 

@@ -2,6 +2,10 @@
 /yarn.lock
 /node_modules
 
+# Client dependencies
+/client/yarn.lock
+/client/node_modules
+
 # Uploaded content
 /content
 

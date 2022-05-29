@@ -1,5 +1,5 @@
 <p align="center">
-    <img src=".github/.media/logo.png" width="120" height="120" alt="Colly app logo">
+    <img src=".github/.media/colly-logo.png" width="120" height="120" alt="Colly app logo">
 </p>
 
 <h1 align="center">Colly</h1>

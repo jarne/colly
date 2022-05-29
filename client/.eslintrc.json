@@ -1,0 +1,11 @@
+{
+    "root": true,
+    "extends": ["react-app"],
+    "env": {
+        "browser": true
+    },
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    }
+}

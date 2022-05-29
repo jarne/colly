@@ -31,7 +31,7 @@
         "test-coverage": "./node_modules/.bin/c8 --all --reporter html yarn test",
         "lint": "./node_modules/.bin/eslint .",
         "lint-ci": "./node_modules/.bin/eslint --format junit --output-file ./lint-results/eslint/junit.xml .",
-        "format": "./node_modules/.bin/prettier --write \"**/*.{js,json,yml,md}\""
+        "format": "./node_modules/.bin/prettier --write \"**/*.{js,json,html,css,scss,yml,md}\""
     },
     "dependencies": {
         "bcrypt": "^5.0",
