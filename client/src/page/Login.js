@@ -2,12 +2,62 @@
  * Colly | login page
  */
 
+import { useState } from "react"
+import { toast } from "react-toastify"
+
+import InternalAPI from "./../util/InternalAPI"
+import { useAccessToken } from "./../component/AccessTokenProvider"
+
 import loginBackgroundImg from "./../asset/login-background.jpg"
 import collyLogoImg from "./../asset/colly-logo.png"
 
 import "./Login.css"
 
 function Login() {
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+
+    const [, setAccessToken, , setDisplayName] = useAccessToken()
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        let res
+        try {
+            const resp = await fetch(InternalAPI.API_ENDPOINT + "/auth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password,
+                }),
+            })
+            res = await resp.json()
+        } catch (e) {
+            toast.error("Error while communicating with the login server!")
+        }
+
+        if (res.error) {
+            switch (res.error_code) {
+                case "invalid_credentials":
+                    toast.error("Wrong username or password!")
+                    break
+                default:
+                    toast.error("Unknown error!")
+                    break
+            }
+
+            return
+        }
+
+        setAccessToken(res.token)
+        setDisplayName(res.user.username)
+
+        // TODO: redirect to home page
+    }
+
     return (
         <>
             <img
@@ -25,26 +75,36 @@ function Login() {
                         loading="lazy"
                     />
                     <h1>Colly</h1>
-                    <form className="mt-4">
+                    <form onSubmit={handleSubmit} className="mt-4">
                         <div className="mb-3">
-                            <label for="loginUsername" className="form-label">
+                            <label
+                                htmlFor="loginUsername"
+                                className="form-label"
+                            >
                                 Username
                             </label>
                             <input
                                 type="text"
                                 className="form-control custom-form-control-lg"
                                 id="loginUsername"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
                                 placeholder="Username"
                             />
                         </div>
                         <div className="mb-3">
-                            <label for="loginPassword" className="form-label">
+                            <label
+                                htmlFor="loginPassword"
+                                className="form-label"
+                            >
                                 Password
                             </label>
                             <input
                                 type="password"
                                 className="form-control custom-form-control-lg"
                                 id="loginPassword"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                                 placeholder="Password"
                             />
                         </div>
