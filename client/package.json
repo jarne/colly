@@ -31,16 +31,16 @@
         "lint": "./node_modules/.bin/eslint ."
     },
     "dependencies": {
-        "bootstrap": "^5.1",
-        "react": "^18.1",
-        "react-dom": "^18.1",
+        "bootstrap": "^5.2",
+        "react": "^18.2",
+        "react-dom": "^18.2",
         "react-router-dom": "^6.3",
         "react-scripts": "^5.0",
         "react-toastify": "^9.0",
-        "sass": "^1.52"
+        "sass": "^1.54"
     },
     "devDependencies": {
-        "eslint": "^8.16"
+        "eslint": "^8.20"
     },
     "browserslist": {
         "production": [
