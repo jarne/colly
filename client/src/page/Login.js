@@ -3,6 +3,7 @@
  */
 
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 
 import InternalAPI from "./../util/InternalAPI"
@@ -17,6 +18,7 @@ function Login() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
+    const navigate = useNavigate()
     const [, setAccessToken, , setDisplayName] = useAccessToken()
 
     const handleSubmit = async (e) => {
@@ -55,7 +57,7 @@ function Login() {
         setAccessToken(res.token)
         setDisplayName(res.user.username)
 
-        // TODO: redirect to home page
+        navigate("/dashboard")
     }
 
     return (
