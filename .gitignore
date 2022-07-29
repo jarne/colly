@@ -6,6 +6,7 @@
 
 # Environment file
 /.env
+/client/.env
 
 # Uploaded content
 /content

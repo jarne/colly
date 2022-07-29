@@ -4,6 +4,7 @@
 
 import { toast } from "react-toastify"
 
+import TagsSidebar from "./../component/TagsSidebar"
 import ItemCard from "./../component/ItemCard"
 
 import InternalAPI from "./../util/InternalAPI"
@@ -58,16 +59,7 @@ function Dashboard() {
                 </div>
             </nav>
             <main className="dashboard-main">
-                <div className="tags-sidebar d-flex flex-column bg-theme-light p-3">
-                    <div className="tags-sidebar-tag">
-                        <div className="tags-sidebar-col-circle bg-theme-orange"></div>
-                        Tag 1
-                    </div>
-                    <div className="tags-sidebar-tag">
-                        <div className="tags-sidebar-col-circle bg-theme-pink"></div>
-                        Tag 2
-                    </div>
-                </div>
+                <TagsSidebar />
                 <div className="row w-100 m-3">
                     <div className="col-4">
                         <ItemCard />
