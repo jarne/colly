@@ -59,26 +59,14 @@ function Dashboard() {
             </nav>
             <main className="dashboard-main">
                 <div className="tags-sidebar d-flex flex-column bg-theme-light p-3">
-                    <h4>
-                        <span className="badge bg-theme-orange w-100 mt-2 mb-2">
-                            Tag 1
-                        </span>
-                    </h4>
-                    <h4>
-                        <span className="badge bg-theme-pink w-100 mt-2 mb-2">
-                            Tag 2
-                        </span>
-                    </h4>
-                    <h4>
-                        <span className="badge bg-theme-orange w-100 mt-2 mb-2">
-                            Tag 1
-                        </span>
-                    </h4>
-                    <h4>
-                        <span className="badge bg-theme-pink w-100 mt-2 mb-2">
-                            Tag 2
-                        </span>
-                    </h4>
+                    <div className="tags-sidebar-tag">
+                        <div className="tags-sidebar-col-circle bg-theme-orange"></div>
+                        Tag 1
+                    </div>
+                    <div className="tags-sidebar-tag">
+                        <div className="tags-sidebar-col-circle bg-theme-pink"></div>
+                        Tag 2
+                    </div>
                 </div>
                 <div className="row w-100 m-3">
                     <div className="col-4">
