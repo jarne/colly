@@ -5,8 +5,6 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
 
-import "./util/CustomBootstrap.scss"
-
 import App from "./component/App"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))

@@ -1,0 +1,24 @@
+/**
+ * Colly | item card styles
+ */
+
+.card {
+    border: none !important;
+    border-radius: 12px !important;
+
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.15);
+}
+
+.card-img-top {
+    height: 150px;
+    width: auto;
+
+    object-fit: cover;
+
+    border-top-right-radius: 12px !important;
+    border-top-left-radius: 12px !important;
+}
+
+.card-tags {
+    margin-bottom: 6px;
+}

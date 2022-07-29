@@ -9,6 +9,9 @@ import { AccessTokenProvider } from "./AccessTokenProvider"
 import Login from "./../page/Login"
 import Dashboard from "./../page/Dashboard"
 
+import "./../util/CustomBootstrap.scss"
+import "./../../node_modules/bootstrap/dist/js/bootstrap.bundle"
+
 import "./../../node_modules/react-toastify/dist/ReactToastify.min.css"
 
 function App() {
