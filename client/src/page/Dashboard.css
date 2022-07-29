@@ -1,3 +1,11 @@
 /**
  * Colly | dashboard styles
  */
+
+.dashboard-main {
+    display: flex;
+}
+
+.tags-sidebar {
+    width: 265px;
+}

@@ -18,7 +18,7 @@ function Dashboard() {
 
     return (
         <>
-            <nav className="navbar bg-theme-light mb-3">
+            <nav className="navbar bg-theme-light">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">
                         <img
@@ -57,17 +57,41 @@ function Dashboard() {
                     </ul>
                 </div>
             </nav>
-            <div className="container-fluid row">
-                <div className="col-4">
-                    <ItemCard />
+            <main className="dashboard-main">
+                <div className="tags-sidebar d-flex flex-column bg-theme-light p-3">
+                    <h4>
+                        <span className="badge bg-theme-orange w-100 mt-2 mb-2">
+                            Tag 1
+                        </span>
+                    </h4>
+                    <h4>
+                        <span className="badge bg-theme-pink w-100 mt-2 mb-2">
+                            Tag 2
+                        </span>
+                    </h4>
+                    <h4>
+                        <span className="badge bg-theme-orange w-100 mt-2 mb-2">
+                            Tag 1
+                        </span>
+                    </h4>
+                    <h4>
+                        <span className="badge bg-theme-pink w-100 mt-2 mb-2">
+                            Tag 2
+                        </span>
+                    </h4>
                 </div>
-                <div className="col-4">
-                    <ItemCard />
+                <div className="row w-100 m-3">
+                    <div className="col-4">
+                        <ItemCard />
+                    </div>
+                    <div className="col-4">
+                        <ItemCard />
+                    </div>
+                    <div className="col-4">
+                        <ItemCard />
+                    </div>
                 </div>
-                <div className="col-4">
-                    <ItemCard />
-                </div>
-            </div>
+            </main>
         </>
     )
 }
