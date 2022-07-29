@@ -42,7 +42,7 @@ function Login() {
         if (res.error) {
             switch (res.error_code) {
                 case "invalid_credentials":
-                    toast.error("Wrong username or password!")
+                    toast.error("Invalid username or password!")
                     break
                 default:
                     toast.error("Unknown error!")
