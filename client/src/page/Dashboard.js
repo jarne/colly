@@ -47,7 +47,7 @@ function Dashboard() {
 
     return (
         <>
-            <nav className="navbar bg-theme-light">
+            <nav className="navbar sticky-top bg-theme-light">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">
                         <img

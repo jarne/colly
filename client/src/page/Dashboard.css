@@ -9,6 +9,9 @@
 .tags-sidebar {
     width: 265px;
     height: calc(100vh - 56px);
+
+    position: sticky;
+    top: 56px;
 }
 
 .tags-sidebar-tag {
