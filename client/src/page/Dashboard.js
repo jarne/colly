@@ -3,6 +3,7 @@
  */
 
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 
 import TagsSidebar from "./../component/TagsSidebar"
@@ -16,7 +17,9 @@ import collyLogoImg from "./../asset/colly-logo.png"
 import "./Dashboard.css"
 
 function Dashboard() {
-    const [accessToken, , displayName] = useAccessToken()
+    const navigate = useNavigate()
+    const [accessToken, setAccessToken, displayName, setDisplayName] =
+        useAccessToken()
 
     const [items, setItems] = useState([])
 
@@ -39,6 +42,15 @@ function Dashboard() {
         }
 
         setItems(res.items)
+    }
+
+    const handleLogoutClick = (e) => {
+        e.preventDefault()
+
+        setAccessToken(null)
+        setDisplayName("...")
+
+        navigate("/login")
     }
 
     useEffect(() => {
@@ -77,7 +89,11 @@ function Dashboard() {
                                     </a>
                                 </li>
                                 <li>
-                                    <a className="dropdown-item" href="#">
+                                    <a
+                                        className="dropdown-item"
+                                        href="#"
+                                        onClick={handleLogoutClick}
+                                    >
                                         Logout
                                     </a>
                                 </li>
