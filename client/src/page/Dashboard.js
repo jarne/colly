@@ -2,6 +2,7 @@
  * Colly | dashboard page
  */
 
+import { useState, useEffect } from "react"
 import { toast } from "react-toastify"
 
 import TagsSidebar from "./../component/TagsSidebar"
@@ -16,6 +17,33 @@ import "./Dashboard.css"
 
 function Dashboard() {
     const [accessToken, , displayName] = useAccessToken()
+
+    const [items, setItems] = useState([])
+
+    const loadItems = async () => {
+        let res
+        try {
+            const resp = await fetch(InternalAPI.API_ENDPOINT + "/item", {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            })
+            res = await resp.json()
+        } catch (e) {
+            return false
+        }
+
+        if (res.error) {
+            return false
+        }
+
+        setItems(res.items)
+    }
+
+    useEffect(() => {
+        loadItems()
+    }, [])
 
     return (
         <>
@@ -61,15 +89,19 @@ function Dashboard() {
             <main className="dashboard-main">
                 <TagsSidebar />
                 <div className="row w-100 m-3">
-                    <div className="col-4">
-                        <ItemCard />
-                    </div>
-                    <div className="col-4">
-                        <ItemCard />
-                    </div>
-                    <div className="col-4">
-                        <ItemCard />
-                    </div>
+                    {items.map((item) => {
+                        return (
+                            <div className="col-4">
+                                <ItemCard
+                                    id={item._id}
+                                    title={item.name}
+                                    description={item.description}
+                                    url={item.url}
+                                    tags={item.tags}
+                                />
+                            </div>
+                        )
+                    })}
                 </div>
             </main>
         </>

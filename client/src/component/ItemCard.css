@@ -19,6 +19,14 @@
     border-top-left-radius: 12px !important;
 }
 
+.card-url {
+    color: #6a6a6a;
+}
+
+.card-description {
+    font-size: 0.935rem;
+}
+
 .card-tags {
     margin-bottom: 6px;
 }
