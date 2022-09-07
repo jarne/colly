@@ -16,15 +16,23 @@ const Item = mongoose.model("Item")
  * @param {string} name Name of the item
  * @param {string} description Item description
  * @param {string} ownerId Owner user ID
+ * @param {Array} tags Assigned tags (ID's)
  *
  * @returns Item object
  */
-export const createItem = async (url, name, description, ownerId) => {
+export const createItem = async (
+    url,
+    name,
+    description,
+    ownerId,
+    tags = []
+) => {
     const item = new Item()
     item.url = url
     item.name = name
     item.description = description
     item.owner = ownerId
+    item.tags = tags
 
     try {
         const savedItem = await item.save()
@@ -45,10 +53,18 @@ export const createItem = async (url, name, description, ownerId) => {
  * @param {string} name Name of the item
  * @param {string} description Item description
  * @param {string} ownerId Owner user ID
+ * @param {Array} tags Assigned tags (ID's)
  *
  * @returns Item object
  */
-export const updateItem = async (id, url, name, description, ownerId) => {
+export const updateItem = async (
+    id,
+    url,
+    name,
+    description,
+    ownerId,
+    tags = []
+) => {
     let item
     try {
         item = await Item.findById(id)
@@ -64,6 +80,7 @@ export const updateItem = async (id, url, name, description, ownerId) => {
     item.name = name
     item.description = description
     item.owner = ownerId
+    item.tags = tags
 
     try {
         const savedItem = await item.save()

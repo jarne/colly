@@ -15,18 +15,27 @@ import {
     hasPermission,
 } from "./../../app/controller/item.js"
 import { createUser } from "./../../app/controller/user.js"
+import { createTag } from "./../../app/controller/tag.js"
 
 const Item = mongoose.model("Item")
 const User = mongoose.model("User")
 
 describe("item controller", () => {
     let userId
+    let tagId
 
     before(async () => {
         await connectDbAsync()
 
         const createdUser = await createUser("itemtester", "testPW123")
         userId = createdUser.id
+        const createdTag = await createTag(
+            "testtag",
+            "000000",
+            "ffffff",
+            userId
+        )
+        tagId = createdTag.id
     })
 
     describe("#createItem", () => {
@@ -35,7 +44,8 @@ describe("item controller", () => {
                 "https://www.example.com",
                 "example page",
                 "is an example",
-                userId
+                userId,
+                [tagId]
             )
 
             expect(item.id).to.be.not.null
@@ -74,11 +84,13 @@ describe("item controller", () => {
                 "https://www.test.com",
                 "other page",
                 "is an example",
-                userId
+                userId,
+                [tagId]
             )
 
             expect(updatedItem.url).to.equal("https://www.test.com")
             expect(updatedItem.name).to.equal("other page")
+            expect(updatedItem.tags).to.contain(tagId)
         })
 
         it("throws error for non-existing item", async () => {

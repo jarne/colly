@@ -30,7 +30,8 @@ router.post("/", async (req, res) => {
             req.body.url,
             req.body.name,
             req.body.description,
-            req.user.id
+            req.user.id,
+            req.body.tags
         )
     } catch (e) {
         return handleError(e, res)
@@ -54,7 +55,8 @@ router.patch("/:itemId", async (req, res) => {
             req.body.url,
             req.body.name,
             req.body.description,
-            req.user.id
+            req.user.id,
+            req.body.tags
         )
     } catch (e) {
         return handleError(e, res)
