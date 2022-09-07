@@ -19,6 +19,7 @@ import { createTag } from "./../../app/controller/tag.js"
 
 const Item = mongoose.model("Item")
 const User = mongoose.model("User")
+const Tag = mongoose.model("Tag")
 
 describe("item controller", () => {
     let userId
@@ -30,7 +31,7 @@ describe("item controller", () => {
         const createdUser = await createUser("itemtester", "testPW123")
         userId = createdUser.id
         const createdTag = await createTag(
-            "testtag",
+            "itemtesttag",
             "000000",
             "ffffff",
             userId
@@ -211,5 +212,6 @@ describe("item controller", () => {
 
     after(async () => {
         await User.findByIdAndDelete(userId)
+        await Tag.findByIdAndDelete(tagId)
     })
 })
