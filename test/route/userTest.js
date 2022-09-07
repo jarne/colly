@@ -7,7 +7,7 @@ import chaiHttp from "chai-http"
 import mongoose from "mongoose"
 
 import app from "./../../appInit.js"
-import { createUser } from "./../../app/controller/user.js"
+import { createUser, getUser } from "./../../app/controller/user.js"
 
 const User = mongoose.model("User")
 
@@ -58,7 +58,33 @@ describe("user router", () => {
 
             expect(res).to.have.status(200)
             expect(res.body.userId).to.be.not.null
-            expect(res.body.userId).to.have.lengthOf(24)
+
+            const newUser = await getUser(res.body.userId)
+
+            expect(newUser.username).to.equal("routetestuser")
+        })
+    })
+
+    describe("patch /api/user/:userId", () => {
+        it("should update the user", async () => {
+            const user = await createUser("routetestuser", "testPW123")
+
+            const res = await chai
+                .request(app)
+                .patch(`/api/user/${user.id}`)
+                .set("Content-Type", "application/json")
+                .set("Authorization", `Bearer ${token}`)
+                .send({
+                    username: "newtestuser",
+                    isAdmin: true,
+                })
+
+            expect(res).to.have.status(200)
+
+            const updatedUser = await getUser(res.body.userId)
+
+            expect(updatedUser.username).to.equal("newtestuser")
+            expect(updatedUser.isAdmin).to.be.true
         })
     })
 
@@ -75,6 +101,10 @@ describe("user router", () => {
 
             expect(res).to.have.status(200)
             expect(res.body.userId).to.eq(user.id)
+
+            const deletedUser = await getUser(user.id)
+
+            expect(deletedUser).to.be.null
         })
     })
 
@@ -94,7 +124,9 @@ describe("user router", () => {
 
     afterEach(async () => {
         await User.findOneAndDelete({
-            username: "routetestuser",
+            username: {
+                $in: ["routetestuser", "newtestuser"],
+            },
         })
     })
 

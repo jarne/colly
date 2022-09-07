@@ -85,6 +85,21 @@ export const deleteTag = async (id) => {
 }
 
 /**
+ * Get tag by ID
+ *
+ * @param {string} id Tag ID
+ *
+ * @returns Tag object
+ */
+export const getTag = async (id) => {
+    try {
+        return await Tag.findById(id)
+    } catch (e) {
+        throw e
+    }
+}
+
+/**
  * Get all tags
  *
  * @returns List of all Tag objects

@@ -79,14 +79,6 @@ describe("item controller", () => {
 
             expect(updatedItem.url).to.equal("https://www.test.com")
             expect(updatedItem.name).to.equal("other page")
-
-            await updateItem(
-                item.id,
-                "https://www.example.com",
-                "example page",
-                "is an example",
-                userId
-            )
         })
 
         it("throws error for non-existing item", async () => {
@@ -199,7 +191,9 @@ describe("item controller", () => {
 
     afterEach(async () => {
         await Item.findOneAndDelete({
-            name: "example page",
+            name: {
+                $in: ["example page", "other page"],
+            },
         })
     })
 

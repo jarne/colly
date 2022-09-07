@@ -67,8 +67,6 @@ describe("tag controller", () => {
             )
 
             expect(updatedTag.name).to.equal("othertag")
-
-            await updateTag(tag.id, "testtag", "000000", "ffffff", userId)
         })
 
         it("throws error for non-existing tag", async () => {
@@ -112,7 +110,9 @@ describe("tag controller", () => {
 
     afterEach(async () => {
         await Tag.findOneAndDelete({
-            name: "testtag",
+            name: {
+                $in: ["testtag", "othertag"],
+            },
         })
     })
 

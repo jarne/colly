@@ -55,8 +55,6 @@ describe("user controller", () => {
 
             expect(updatedUser.username).to.equal("otheruser")
             expect(updatedUser.isAdmin).to.be.true
-
-            await updateUser(user.id, "testuser")
         })
 
         it("throws error for non-existing user", async () => {
@@ -99,7 +97,9 @@ describe("user controller", () => {
 
     afterEach(async () => {
         await User.findOneAndDelete({
-            username: "testuser",
+            username: {
+                $in: ["testuser", "otheruser"],
+            },
         })
     })
 })

@@ -79,6 +79,21 @@ export const deleteUser = async (id) => {
 }
 
 /**
+ * Get user by ID
+ *
+ * @param {string} id User ID
+ *
+ * @returns User object
+ */
+export const getUser = async (id) => {
+    try {
+        return await User.findById(id)
+    } catch (e) {
+        throw e
+    }
+}
+
+/**
  * Get all users
  *
  * @returns List of all users
