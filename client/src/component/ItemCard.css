@@ -19,6 +19,10 @@
     border-top-left-radius: 12px !important;
 }
 
+.card-edit {
+    float: right;
+}
+
 .card-url {
     color: #6a6a6a;
 }

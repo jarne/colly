@@ -62,7 +62,7 @@ function ItemCard({ id, title, description, url, tags }) {
                 className="card-img-top"
             />
             <div className="card-body">
-                <h5 className="card-title">{title}</h5>
+                <h5 className="card-title">{title} <a href="#" className="card-edit text-theme-pink"><i className="bi bi-pencil-square"></i></a></h5>
                 <p className="card-text card-url">{formatUrlText(url)}</p>
                 <p className="card-text card-description">{description}</p>
                 {tags.length > 0 && (

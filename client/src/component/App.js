@@ -12,6 +12,7 @@ import Dashboard from "./../page/Dashboard"
 import "./../util/CustomBootstrap.scss"
 import "./../../node_modules/bootstrap/dist/js/bootstrap.bundle"
 
+import "./../../node_modules/bootstrap-icons/font/bootstrap-icons.css"
 import "./../../node_modules/react-toastify/dist/ReactToastify.min.css"
 
 function App() {
