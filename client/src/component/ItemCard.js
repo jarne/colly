@@ -65,10 +65,22 @@ function ItemCard({ id, title, description, url, tags }) {
                 <h5 className="card-title">{title}</h5>
                 <p className="card-text card-url">{formatUrlText(url)}</p>
                 <p className="card-text card-description">{description}</p>
-                <p className="card-tags">
-                    <span className="badge bg-theme-orange">Tag 1</span>{" "}
-                    <span className="badge bg-theme-pink">Tag 2</span>
-                </p>
+                {tags.length > 0 && (
+                    <p className="card-tags">
+                        {tags.map((tag) => {
+                            return (
+                                <span
+                                    className="badge"
+                                    style={{
+                                        background: `linear-gradient(to bottom right, #${tag.firstColor}, #${tag.secondColor})`,
+                                    }}
+                                >
+                                    {tag.name}
+                                </span>
+                            )
+                        })}
+                    </p>
+                )}
             </div>
         </div>
     )

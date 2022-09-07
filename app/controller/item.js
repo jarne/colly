@@ -128,7 +128,7 @@ export const getItem = async (id) => {
  */
 export const listItems = async () => {
     try {
-        return await Item.find()
+        return await Item.find().populate("tags")
     } catch (e) {
         throw e
     }

@@ -28,5 +28,9 @@
 }
 
 .card-tags {
-    margin-bottom: 6px;
+    margin-bottom: 2px;
+}
+
+.card-tags > .badge {
+    margin-right: 6px;
 }
