@@ -59,7 +59,7 @@ function Dashboard() {
 
     return (
         <>
-            <nav className="navbar sticky-top bg-theme-light">
+            <nav className="navbar navbar-expand-lg sticky-top bg-theme-light">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">
                         <img
@@ -72,6 +72,29 @@ function Dashboard() {
                         Colly
                     </a>
                     <ul className="navbar-nav">
+                        <li className="nav-item dropdown">
+                            <a
+                                className="nav-link dropdown-toggle"
+                                href="#"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                <i class="bi bi-plus-lg"></i> Add
+                            </a>
+                            <ul className="dropdown-menu dropdown-menu-end position-absolute">
+                                <li>
+                                    <a className="dropdown-item" href="#">
+                                        Collection item
+                                    </a>
+                                </li>
+                                <li>
+                                    <a className="dropdown-item" href="#">
+                                        Tag
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         <li className="nav-item dropdown">
                             <a
                                 className="nav-link dropdown-toggle"
