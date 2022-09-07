@@ -8,6 +8,7 @@ import mongoose from "mongoose"
 import { connectDbAsync } from "./../../app/init.js"
 import {
     createItem,
+    updateItem,
     deleteItem,
     getItem,
     listItems,
@@ -52,6 +53,53 @@ describe("item controller", () => {
                 )
             } catch (e) {
                 expect(e.name).to.equal("ValidationError")
+            }
+        })
+    })
+
+    describe("#updateItem", () => {
+        it("should update an item", async () => {
+            const item = await createItem(
+                "https://www.example.com",
+                "example page",
+                "is an example",
+                userId
+            )
+
+            expect(item.url).to.equal("https://www.example.com")
+            expect(item.name).to.equal("example page")
+
+            const updatedItem = await updateItem(
+                item.id,
+                "https://www.test.com",
+                "other page",
+                "is an example",
+                userId
+            )
+
+            expect(updatedItem.url).to.equal("https://www.test.com")
+            expect(updatedItem.name).to.equal("other page")
+
+            await updateItem(
+                item.id,
+                "https://www.example.com",
+                "example page",
+                "is an example",
+                userId
+            )
+        })
+
+        it("throws error for non-existing item", async () => {
+            try {
+                await updateItem(
+                    "6675932d4f2094eb2ec739ad",
+                    "https://www.test.com",
+                    "other page",
+                    "is an example",
+                    userId
+                )
+            } catch (e) {
+                expect(e.name).to.equal("NotFoundError")
             }
         })
     })

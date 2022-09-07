@@ -4,6 +4,8 @@
 
 import mongoose from "mongoose"
 
+import NotFoundError from "./exception/notFoundError.js"
+
 const User = mongoose.model("User")
 
 /**
@@ -20,6 +22,39 @@ export const createUser = async (username, password, isAdmin = false) => {
     user.username = username
     user.isAdmin = isAdmin
     await user.setPassword(password)
+
+    try {
+        const savedUser = await user.save()
+
+        return savedUser
+    } catch (e) {
+        throw e
+    }
+}
+
+/**
+ * Update a user
+ *
+ * @param {string} id User ID
+ * @param {string} username Username
+ * @param {boolean} isAdmin User should be admin user (default false)
+ *
+ * @returns User object
+ */
+export const updateUser = async (id, username, isAdmin = false) => {
+    let user
+    try {
+        user = await User.findById(id)
+    } catch (e) {
+        throw e
+    }
+
+    if (user === null) {
+        throw new NotFoundError()
+    }
+
+    user.username = username
+    user.isAdmin = isAdmin
 
     try {
         const savedUser = await user.save()

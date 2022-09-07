@@ -4,6 +4,7 @@
 
 import mongoose from "mongoose"
 
+import NotFoundError from "./exception/notFoundError.js"
 import { triggerPreviewGeneration } from "./itemPreview.js"
 
 const Item = mongoose.model("Item")
@@ -20,6 +21,45 @@ const Item = mongoose.model("Item")
  */
 export const createItem = async (url, name, description, ownerId) => {
     const item = new Item()
+    item.url = url
+    item.name = name
+    item.description = description
+    item.owner = ownerId
+
+    try {
+        const savedItem = await item.save()
+
+        triggerPreviewGeneration(savedItem.id)
+
+        return savedItem
+    } catch (e) {
+        throw e
+    }
+}
+
+/**
+ * Update an item
+ *
+ * @param {string} id Item ID
+ * @param {string} url Item URL
+ * @param {string} name Name of the item
+ * @param {string} description Item description
+ * @param {string} ownerId Owner user ID
+ *
+ * @returns Item object
+ */
+export const updateItem = async (id, url, name, description, ownerId) => {
+    let item
+    try {
+        item = await Item.findById(id)
+    } catch (e) {
+        throw e
+    }
+
+    if (item === null) {
+        throw new NotFoundError()
+    }
+
     item.url = url
     item.name = name
     item.description = description

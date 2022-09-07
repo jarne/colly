@@ -8,6 +8,7 @@ import mongoose from "mongoose"
 import { connectDbAsync } from "./../../app/init.js"
 import {
     createUser,
+    updateUser,
     deleteUser,
     listUsers,
 } from "./../../app/controller/user.js"
@@ -39,6 +40,30 @@ describe("user controller", () => {
                 await createUser("some Test User $!", "testPW123")
             } catch (e) {
                 expect(e.name).to.equal("ValidationError")
+            }
+        })
+    })
+
+    describe("#updateUser", () => {
+        it("should update a created user", async () => {
+            const user = await createUser("testuser", "testPW123")
+
+            expect(user.username).to.equal("testuser")
+            expect(user.isAdmin).to.be.false
+
+            const updatedUser = await updateUser(user.id, "otheruser", true)
+
+            expect(updatedUser.username).to.equal("otheruser")
+            expect(updatedUser.isAdmin).to.be.true
+
+            await updateUser(user.id, "testuser")
+        })
+
+        it("throws error for non-existing user", async () => {
+            try {
+                await updateUser("6675932d4f2094eb2ec739ad", "otheruser", true)
+            } catch (e) {
+                expect(e.name).to.equal("NotFoundError")
             }
         })
     })

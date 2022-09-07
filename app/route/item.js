@@ -6,6 +6,7 @@ import express from "express"
 
 import {
     createItem,
+    updateItem,
     deleteItem,
     listItems,
     hasPermission,
@@ -26,6 +27,30 @@ router.post("/", async (req, res) => {
     let item
     try {
         item = await createItem(
+            req.body.url,
+            req.body.name,
+            req.body.description,
+            req.user.id
+        )
+    } catch (e) {
+        return handleError(e, res)
+    }
+
+    return res.json({
+        itemId: item.id,
+    })
+})
+
+/**
+ * Update item
+ */
+router.patch("/:itemId", async (req, res) => {
+    const itemId = req.params.itemId
+
+    let item
+    try {
+        item = await updateItem(
+            itemId,
             req.body.url,
             req.body.name,
             req.body.description,

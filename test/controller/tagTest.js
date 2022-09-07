@@ -6,7 +6,12 @@ import { expect } from "chai"
 import mongoose from "mongoose"
 
 import { connectDbAsync } from "./../../app/init.js"
-import { createTag, deleteTag, listTags } from "./../../app/controller/tag.js"
+import {
+    createTag,
+    updateTag,
+    deleteTag,
+    listTags,
+} from "./../../app/controller/tag.js"
 import { createUser } from "./../../app/controller/user.js"
 
 const Tag = mongoose.model("Tag")
@@ -43,6 +48,40 @@ describe("tag controller", () => {
                 await createTag("testtag", "0x000k", "ffffff", userId)
             } catch (e) {
                 expect(e.name).to.equal("ValidationError")
+            }
+        })
+    })
+
+    describe("#updateTag", () => {
+        it("should update a tag", async () => {
+            const tag = await createTag("testtag", "000000", "ffffff", userId)
+
+            expect(tag.name).to.equal("testtag")
+
+            const updatedTag = await updateTag(
+                tag.id,
+                "othertag",
+                "000000",
+                "ffffff",
+                userId
+            )
+
+            expect(updatedTag.name).to.equal("othertag")
+
+            await updateTag(tag.id, "testtag", "000000", "ffffff", userId)
+        })
+
+        it("throws error for non-existing tag", async () => {
+            try {
+                await updateTag(
+                    "6675932d4f2094eb2ec739ad",
+                    "othertag",
+                    "000000",
+                    "ffffff",
+                    userId
+                )
+            } catch (e) {
+                expect(e.name).to.equal("NotFoundError")
             }
         })
     })

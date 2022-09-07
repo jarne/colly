@@ -4,7 +4,12 @@
 
 import express from "express"
 
-import { createTag, deleteTag, listTags } from "./../controller/tag.js"
+import {
+    createTag,
+    updateTag,
+    deleteTag,
+    listTags,
+} from "./../controller/tag.js"
 import { handleError } from "./../routes.js"
 
 const router = express.Router()
@@ -16,6 +21,30 @@ router.post("/", async (req, res) => {
     let tag
     try {
         tag = await createTag(
+            req.body.name,
+            req.body.firstColor,
+            req.body.secondColor,
+            req.user.id
+        )
+    } catch (e) {
+        return handleError(e, res)
+    }
+
+    return res.json({
+        tagId: tag.id,
+    })
+})
+
+/**
+ * Update tag
+ */
+router.patch("/:tagId", async (req, res) => {
+    const tagId = req.params.tagId
+
+    let tag
+    try {
+        tag = await updateTag(
+            tagId,
             req.body.name,
             req.body.firstColor,
             req.body.secondColor,
