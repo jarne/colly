@@ -3,7 +3,7 @@
  */
 
 class InternalAPI {
-    static API_ENDPOINT = "/api" // for dev: http://localhost:3000/api
+    static API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || "/api"
 }
 
 export default InternalAPI

@@ -24,6 +24,10 @@ function Dashboard() {
     const [items, setItems] = useState([])
 
     const loadItems = async () => {
+        if (accessToken === null) {
+            navigate("/login")
+        }
+
         let res
         try {
             const resp = await fetch(InternalAPI.API_ENDPOINT + "/item", {
