@@ -1,0 +1,24 @@
+/**
+ * Colly | tag create view styles
+ */
+
+.col-display {
+    width: 50px;
+    height: 50px;
+
+    display: inline-block;
+
+    margin: 10px;
+
+    border: 5px solid white;
+    border-radius: 50%;
+
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+}
+
+.col-picker-pop {
+    position: absolute;
+
+    border-radius: 9px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
+}

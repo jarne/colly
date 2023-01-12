@@ -8,7 +8,7 @@ import { toast } from "react-toastify"
 import InternalAPI from "./../util/InternalAPI"
 import { useAccessToken } from "./../component/AccessTokenProvider"
 
-function TagsSidebar() {
+function TagsSidebar(props) {
     const [accessToken] = useAccessToken()
 
     const [tags, setTags] = useState([])
@@ -36,13 +36,13 @@ function TagsSidebar() {
 
     useEffect(() => {
         loadTags()
-    }, [])
+    }, [props.tagsRefresh])
 
     return (
         <div className="tags-sidebar d-flex flex-column bg-theme-light p-3">
             {tags.map((tag) => {
                 return (
-                    <div className="tags-sidebar-tag">
+                    <div key={tag._id} className="tags-sidebar-tag">
                         <div
                             className="tags-sidebar-col-circle"
                             style={{

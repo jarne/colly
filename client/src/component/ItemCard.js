@@ -75,6 +75,7 @@ function ItemCard({ id, title, description, url, tags }) {
                         {tags.map((tag) => {
                             return (
                                 <span
+                                    key={tag._id}
                                     className="badge"
                                     style={{
                                         background: `linear-gradient(to bottom right, #${tag.firstColor}, #${tag.secondColor})`,

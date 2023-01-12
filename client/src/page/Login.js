@@ -39,6 +39,8 @@ function Login() {
             res = await resp.json()
         } catch (e) {
             toast.error("Error while communicating with the login server!")
+
+            return
         }
 
         if (res.error) {
