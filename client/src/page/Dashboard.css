@@ -6,30 +6,6 @@
     display: flex;
 }
 
-.tags-sidebar {
-    width: 265px;
-    height: calc(100vh - 56px);
-
-    position: sticky;
-    top: 56px;
-}
-
-.tags-sidebar-tag {
-    margin: 6px 0;
-
-    display: flex;
-    align-items: center;
-}
-
-.tags-sidebar-col-circle {
-    width: 24px;
-    height: 24px;
-
-    border-radius: 50%;
-
-    margin-right: 8px;
-}
-
 .row div {
     margin-bottom: 12px;
 }

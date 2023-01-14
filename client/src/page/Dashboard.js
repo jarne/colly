@@ -125,7 +125,7 @@ function Dashboard() {
                 </div>
             </nav>
             <main className="dashboard-main">
-                <TagsSidebar />
+                <TagsSidebar createTagModalRef={createTagModalRef} />
                 <div className="row w-100 m-3">
                     {items.map((item) => {
                         return (

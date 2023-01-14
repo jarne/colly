@@ -50,6 +50,56 @@ export const createTag = async (name, firstColor, secondColor, accessToken) => {
 }
 
 /**
+ * Update a tag
+ *
+ * @param {string} id Tag ID
+ * @param {string} name Tag name
+ * @param {string} firstColor First gradient color
+ * @param {string} secondColor Second gradient color
+ * @param {string} accessToken API access token
+ *
+ * @returns error or nothing
+ */
+export const updateTag = async (
+    id,
+    name,
+    firstColor,
+    secondColor,
+    accessToken
+) => {
+    let res
+    try {
+        const resp = await fetch(`${InternalAPI.API_ENDPOINT}/tag/${id}`, {
+            method: "PATCH",
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: name,
+                firstColor: firstColor,
+                secondColor: secondColor,
+            }),
+        })
+        res = await resp.json()
+    } catch (e) {
+        throw new Error("Error while communicating with the server!")
+    }
+
+    if (res.error) {
+        switch (res.error.code) {
+            case "validation_error":
+                const valMsgs = res.error.fields.map((field) => {
+                    return field.message
+                })
+                throw new Error(`Invalid input: ${valMsgs.join(", ")}!`)
+            default:
+                throw new Error("Unknown error!")
+        }
+    }
+}
+
+/**
  * Get all tags
  *
  * @returns List of all Tag objects

@@ -9,7 +9,7 @@ import { toast } from "react-toastify"
 
 import { useUserAuth } from "./../context/UserAuthProvider"
 import { useAppData } from "./../context/DataProvider"
-import { createTag } from "./../../logic/api/tag"
+import { createTag, updateTag } from "./../../logic/api/tag"
 
 import "./CreateTagModal.css"
 
@@ -21,9 +21,11 @@ const CreateTagModal = forwardRef((props, ref) => {
     const DEFAULT_COL_SEC = "#ffffff"
 
     const [accessToken] = useUserAuth()
-    const [, , loadTags] = useAppData()
+    const [tags, , loadTags] = useAppData()
 
     const [show, setShow] = useState(false)
+
+    const [editId, setEditId] = useState(null)
 
     const [isColFirstOpen, setColFirstOpen] = useState(DEFAULT_OPEN)
     const [isColSecOpen, setColSecOpen] = useState(DEFAULT_OPEN)
@@ -37,14 +39,29 @@ const CreateTagModal = forwardRef((props, ref) => {
         open() {
             handleShow()
         },
+        setEditId(id) {
+            setEditId(id)
+            loadEditInput(id)
+        },
     }))
 
     const resetInput = () => {
+        setEditId(null)
         setColFirstOpen(DEFAULT_OPEN)
         setColSecOpen(DEFAULT_OPEN)
         setTagName(DEFAULT_EMPTY)
         setColFirst(DEFAULT_COL_FIRST)
         setColSec(DEFAULT_COL_SEC)
+    }
+
+    const loadEditInput = (id) => {
+        for (const tag of tags) {
+            if (tag._id === id) {
+                setTagName(tag.name)
+                setColFirst(`#${tag.firstColor}`)
+                setColSec(`#${tag.secondColor}`)
+            }
+        }
     }
 
     const handleShow = () => {
@@ -73,19 +90,31 @@ const CreateTagModal = forwardRef((props, ref) => {
         e.preventDefault()
 
         try {
-            await createTag(
-                tagName,
-                colFirst.slice(1),
-                colSec.slice(1),
-                accessToken
-            )
+            editId
+                ? await updateTag(
+                      editId,
+                      tagName,
+                      colFirst.slice(1),
+                      colSec.slice(1),
+                      accessToken
+                  )
+                : await createTag(
+                      tagName,
+                      colFirst.slice(1),
+                      colSec.slice(1),
+                      accessToken
+                  )
         } catch (ex) {
             toast.error(ex.message)
 
             return
         }
 
-        toast.success(`Tag "${tagName}" has been created!`)
+        toast.success(
+            editId
+                ? "Tag has been updated!"
+                : `Tag "${tagName}" has been created!`
+        )
         handleClose()
 
         loadTags()
@@ -95,7 +124,7 @@ const CreateTagModal = forwardRef((props, ref) => {
         <Modal show={show} onHide={handleClose}>
             <div className="modal-header">
                 <h1 className="modal-title fs-5" id="createTagModalLabel">
-                    Create new tag
+                    {editId ? `Edit tag` : "Create new tag"}
                 </h1>
                 <button
                     type="button"
@@ -167,7 +196,7 @@ const CreateTagModal = forwardRef((props, ref) => {
                         Cancel
                     </button>
                     <button type="submit" className="btn btn-theme-pink">
-                        Create
+                        {editId ? "Edit" : "Create"}
                     </button>
                 </div>
             </form>
