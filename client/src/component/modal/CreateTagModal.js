@@ -7,12 +7,14 @@ import { HexColorPicker } from "react-colorful"
 import { toast } from "react-toastify"
 
 import { useUserAuth } from "./../context/UserAuthProvider"
+import { useAppData } from "./../context/DataProvider"
 import { createTag } from "./../../logic/api/tag"
 
 import "./CreateTagModal.css"
 
 function CreateTagModal(props) {
     const [accessToken] = useUserAuth()
+    const [, , loadTags] = useAppData()
 
     const [isColFirstOpen, setColFirstOpen] = useState(false)
     const [isColSecOpen, setColSecOpen] = useState(false)
@@ -55,7 +57,7 @@ function CreateTagModal(props) {
         toast.success(`Tag "${tagName}" has been created!`)
         modalCloseRef.current.click()
 
-        props.doTagsRefresh()
+        loadTags()
     }
 
     return (

@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 
 import { UserAuthProvider } from "./context/UserAuthProvider"
+import { AppDataProvider } from "./context/DataProvider"
 import Login from "./../page/Login"
 import Dashboard from "./../page/Dashboard"
 
@@ -20,12 +21,14 @@ function App() {
         <>
             <ToastContainer />
             <UserAuthProvider>
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/dashboard" element={<Dashboard />} />
-                    </Routes>
-                </BrowserRouter>
+                <AppDataProvider>
+                    <BrowserRouter>
+                        <Routes>
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/dashboard" element={<Dashboard />} />
+                        </Routes>
+                    </BrowserRouter>
+                </AppDataProvider>
             </UserAuthProvider>
         </>
     )

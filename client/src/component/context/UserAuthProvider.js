@@ -1,5 +1,5 @@
 /**
- * Colly | access token provider
+ * Colly | user auth info provider
  */
 
 import { createContext, useContext, useState } from "react"

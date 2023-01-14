@@ -12,7 +12,7 @@ import ItemCard from "./../component/ItemCard"
 import CreateTagModal from "./../component/modal/CreateTagModal"
 
 import { useUserAuth } from "./../component/context/UserAuthProvider"
-import { listItems } from "./../logic/api/item"
+import { useAppData } from "./../component/context/DataProvider"
 
 import collyLogoImg from "./../asset/colly-logo.png"
 
@@ -23,30 +23,7 @@ function Dashboard() {
     const [accessToken, setAccessToken, displayName, setDisplayName] =
         useUserAuth()
 
-    const [tagsRefresh, setTagsRefresh] = useState(0)
-
-    const [items, setItems] = useState([])
-
-    const doTagsRefresh = () => {
-        setTagsRefresh((p) => p + 1)
-    }
-
-    const loadItems = async () => {
-        if (accessToken === null) {
-            navigate("/login")
-
-            return
-        }
-
-        let items
-        try {
-            items = await listItems(accessToken)
-        } catch (e) {
-            return
-        }
-
-        setItems(items)
-    }
+    const [, , , items, , loadItems] = useAppData()
 
     const handleLogoutClick = (e) => {
         e.preventDefault()
@@ -58,6 +35,12 @@ function Dashboard() {
     }
 
     useEffect(() => {
+        if (accessToken === null) {
+            navigate("/login")
+
+            return
+        }
+
         loadItems()
     }, [])
 
@@ -135,7 +118,7 @@ function Dashboard() {
                 </div>
             </nav>
             <main className="dashboard-main">
-                <TagsSidebar tagsRefresh={tagsRefresh} />
+                <TagsSidebar />
                 <div className="row w-100 m-3">
                     {items.map((item) => {
                         return (
@@ -152,7 +135,7 @@ function Dashboard() {
                     })}
                 </div>
             </main>
-            <CreateTagModal doTagsRefresh={doTagsRefresh} />
+            <CreateTagModal />
         </>
     )
 }
