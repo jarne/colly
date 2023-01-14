@@ -12,8 +12,11 @@ const TagSchema = new Schema({
         type: String,
         unique: true,
         lowercase: true,
-        required: true,
-        match: /^[a-zA-Z0-9.-_]*$/,
+        required: [true, "tag name may not be empty"],
+        match: [
+            /^[a-zA-Z0-9.-_]*$/,
+            "invalid tag name, may only contain letters, numbers and hyphens",
+        ],
         index: true,
     },
     firstColor: {

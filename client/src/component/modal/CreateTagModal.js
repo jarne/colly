@@ -56,22 +56,26 @@ function CreateTagModal(props) {
             res = await resp.json()
         } catch (e) {
             toast.error("Error while communicating with the login server!")
-            modalCloseRef.current.click()
 
             return
         }
 
         if (res.error) {
-            switch (res.error_code) {
-                case "invalid_credentials":
-                    toast.error("Invalid username or password!") // TODO: change error codes
+            switch (res.error.code) {
+                case "validation_error":
+                    const valMsgs = res.error.fields.map((field) => {
+                        return field.message
+                    })
+                    toast.error(`Invalid input: ${valMsgs.join(", ")}!`)
+                    break
+                case "duplicate_entry":
+                    toast.warning("A tag with this name already exists!")
                     break
                 default:
                     toast.error("Unknown error!")
                     break
             }
 
-            modalCloseRef.current.click()
             return
         }
 
@@ -119,7 +123,7 @@ function CreateTagModal(props) {
                                     type="text"
                                     className="form-control"
                                     id="tagNameInput"
-                                    placeholder="coolpartiesat22"
+                                    placeholder="tag-name-123"
                                     value={tagName}
                                     onChange={handleTagNameChange}
                                 />
