@@ -7,12 +7,12 @@ import { Buffer } from "buffer"
 import { toast } from "react-toastify"
 
 import InternalAPI from "./../util/InternalAPI"
-import { useAccessToken } from "./../component/AccessTokenProvider"
+import { useUserAuth } from "./context/UserAuthProvider"
 
 import "./ItemCard.css"
 
 function ItemCard({ id, title, description, url, tags }) {
-    const [accessToken, , displayName] = useAccessToken()
+    const [accessToken, , displayName] = useUserAuth()
 
     const [previewImage, setPreviewImage] = useState("")
 

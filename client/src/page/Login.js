@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 
 import InternalAPI from "./../util/InternalAPI"
-import { useAccessToken } from "./../component/AccessTokenProvider"
+import { useUserAuth } from "./../component/context/UserAuthProvider"
 
 import loginBackgroundImg from "./../asset/login-background.jpg"
 import collyLogoImg from "./../asset/colly-logo.png"
@@ -19,7 +19,7 @@ function Login() {
     const [password, setPassword] = useState("")
 
     const navigate = useNavigate()
-    const [, setAccessToken, , setDisplayName] = useAccessToken()
+    const [, setAccessToken, , setDisplayName] = useUserAuth()
 
     const handleSubmit = async (e) => {
         e.preventDefault()

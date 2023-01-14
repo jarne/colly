@@ -6,13 +6,13 @@ import { useState, useRef } from "react"
 import { HexColorPicker } from "react-colorful"
 import { toast } from "react-toastify"
 
-import { useAccessToken } from "./../../component/AccessTokenProvider"
+import { useUserAuth } from "./../context/UserAuthProvider"
 import { createTag } from "./../../logic/api/tag"
 
 import "./CreateTagModal.css"
 
 function CreateTagModal(props) {
-    const [accessToken] = useAccessToken()
+    const [accessToken] = useUserAuth()
 
     const [isColFirstOpen, setColFirstOpen] = useState(false)
     const [isColSecOpen, setColSecOpen] = useState(false)

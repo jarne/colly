@@ -5,11 +5,11 @@
 import { useState, useEffect } from "react"
 import { toast } from "react-toastify"
 
-import { useAccessToken } from "./../component/AccessTokenProvider"
+import { useUserAuth } from "./context/UserAuthProvider"
 import { listTags } from "./../logic/api/tag"
 
 function TagsSidebar(props) {
-    const [accessToken] = useAccessToken()
+    const [accessToken] = useUserAuth()
 
     const [tags, setTags] = useState([])
 

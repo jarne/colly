@@ -11,7 +11,7 @@ import ItemCard from "./../component/ItemCard"
 
 import CreateTagModal from "./../component/modal/CreateTagModal"
 
-import { useAccessToken } from "./../component/AccessTokenProvider"
+import { useUserAuth } from "./../component/context/UserAuthProvider"
 import { listItems } from "./../logic/api/item"
 
 import collyLogoImg from "./../asset/colly-logo.png"
@@ -21,7 +21,7 @@ import "./Dashboard.css"
 function Dashboard() {
     const navigate = useNavigate()
     const [accessToken, setAccessToken, displayName, setDisplayName] =
-        useAccessToken()
+        useUserAuth()
 
     const [tagsRefresh, setTagsRefresh] = useState(0)
 

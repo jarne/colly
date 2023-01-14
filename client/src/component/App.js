@@ -5,7 +5,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 
-import { AccessTokenProvider } from "./AccessTokenProvider"
+import { UserAuthProvider } from "./context/UserAuthProvider"
 import Login from "./../page/Login"
 import Dashboard from "./../page/Dashboard"
 
@@ -19,14 +19,14 @@ function App() {
     return (
         <>
             <ToastContainer />
-            <AccessTokenProvider>
+            <UserAuthProvider>
                 <BrowserRouter>
                     <Routes>
                         <Route path="/login" element={<Login />} />
                         <Route path="/dashboard" element={<Dashboard />} />
                     </Routes>
                 </BrowserRouter>
-            </AccessTokenProvider>
+            </UserAuthProvider>
         </>
     )
 }
