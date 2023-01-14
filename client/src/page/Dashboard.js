@@ -2,7 +2,7 @@
  * Colly | dashboard page
  */
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 
@@ -20,10 +20,18 @@ import "./Dashboard.css"
 
 function Dashboard() {
     const navigate = useNavigate()
+
     const [accessToken, setAccessToken, displayName, setDisplayName] =
         useUserAuth()
-
     const [, , , items, , loadItems] = useAppData()
+
+    const createTagModalRef = useRef()
+
+    const handleCreateTag = (e) => {
+        e.preventDefault()
+
+        createTagModalRef.current.open()
+    }
 
     const handleLogoutClick = (e) => {
         e.preventDefault()
@@ -79,8 +87,7 @@ function Dashboard() {
                                     <a
                                         className="dropdown-item"
                                         href="#"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#createTagModal"
+                                        onClick={handleCreateTag}
                                     >
                                         Tag
                                     </a>
@@ -135,7 +142,7 @@ function Dashboard() {
                     })}
                 </div>
             </main>
-            <CreateTagModal />
+            <CreateTagModal ref={createTagModalRef} />
         </>
     )
 }

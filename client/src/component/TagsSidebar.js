@@ -6,7 +6,7 @@ import { useEffect } from "react"
 
 import { useAppData } from "./context/DataProvider"
 
-function TagsSidebar(props) {
+function TagsSidebar() {
     const [tags, , loadTags] = useAppData()
 
     useEffect(() => {

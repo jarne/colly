@@ -2,7 +2,8 @@
  * Colly | tag create view component
  */
 
-import { useState, useRef } from "react"
+import { useState, useImperativeHandle, forwardRef } from "react"
+import Modal from "react-bootstrap/Modal"
 import { HexColorPicker } from "react-colorful"
 import { toast } from "react-toastify"
 
@@ -12,19 +13,49 @@ import { createTag } from "./../../logic/api/tag"
 
 import "./CreateTagModal.css"
 
-function CreateTagModal(props) {
+const CreateTagModal = forwardRef((props, ref) => {
+    const DEFAULT_EMPTY = ""
+    const DEFAULT_OPEN = false
+
+    const DEFAULT_COL_FIRST = "#000000"
+    const DEFAULT_COL_SEC = "#ffffff"
+
     const [accessToken] = useUserAuth()
     const [, , loadTags] = useAppData()
 
-    const [isColFirstOpen, setColFirstOpen] = useState(false)
-    const [isColSecOpen, setColSecOpen] = useState(false)
+    const [show, setShow] = useState(false)
 
-    const modalCloseRef = useRef()
+    const [isColFirstOpen, setColFirstOpen] = useState(DEFAULT_OPEN)
+    const [isColSecOpen, setColSecOpen] = useState(DEFAULT_OPEN)
 
-    const [tagName, setTagName] = useState("")
+    const [tagName, setTagName] = useState(DEFAULT_EMPTY)
 
-    const [colFirst, setColFirst] = useState("#000000")
-    const [colSec, setColSec] = useState("#ffffff")
+    const [colFirst, setColFirst] = useState(DEFAULT_COL_FIRST)
+    const [colSec, setColSec] = useState(DEFAULT_COL_SEC)
+
+    useImperativeHandle(ref, () => ({
+        open() {
+            handleShow()
+        },
+    }))
+
+    const resetInput = () => {
+        setColFirstOpen(DEFAULT_OPEN)
+        setColSecOpen(DEFAULT_OPEN)
+        setTagName(DEFAULT_EMPTY)
+        setColFirst(DEFAULT_COL_FIRST)
+        setColSec(DEFAULT_COL_SEC)
+    }
+
+    const handleShow = () => {
+        setShow(true)
+    }
+
+    const handleClose = () => {
+        setShow(false)
+
+        resetInput()
+    }
 
     const toggleColFirstOpen = () => {
         setColFirstOpen(!isColFirstOpen)
@@ -55,115 +86,93 @@ function CreateTagModal(props) {
         }
 
         toast.success(`Tag "${tagName}" has been created!`)
-        modalCloseRef.current.click()
+        handleClose()
 
         loadTags()
     }
 
     return (
-        <div
-            className="modal fade"
-            id="createTagModal"
-            tabIndex={-1}
-            aria-labelledby="createTagModalLabel"
-            aria-hidden="true"
-        >
-            <div className="modal-dialog">
-                <div className="modal-content">
-                    <div className="modal-header">
-                        <h1
-                            className="modal-title fs-5"
-                            id="createTagModalLabel"
-                        >
-                            Create new tag
-                        </h1>
-                        <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
-                            ref={modalCloseRef}
-                        ></button>
+        <Modal show={show} onHide={handleClose}>
+            <div className="modal-header">
+                <h1 className="modal-title fs-5" id="createTagModalLabel">
+                    Create new tag
+                </h1>
+                <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                    onClick={handleClose}
+                ></button>
+            </div>
+            <form onSubmit={handleSubmit}>
+                <div className="modal-body">
+                    <div className="mb-3">
+                        <label htmlFor="tagNameInput" className="form-label">
+                            Tag name
+                        </label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="tagNameInput"
+                            placeholder="tag-name-123"
+                            value={tagName}
+                            onChange={handleTagNameChange}
+                        />
                     </div>
-                    <form onSubmit={handleSubmit}>
-                        <div className="modal-body">
-                            <div className="mb-3">
-                                <label
-                                    htmlFor="tagNameInput"
-                                    className="form-label"
-                                >
-                                    Tag name
-                                </label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="tagNameInput"
-                                    placeholder="tag-name-123"
-                                    value={tagName}
-                                    onChange={handleTagNameChange}
+                    <div className="mb-3">
+                        <label htmlFor="tagNameInput" className="form-label">
+                            Color
+                        </label>
+                        <div>
+                            <div
+                                className="col-display"
+                                style={{
+                                    backgroundColor: colFirst,
+                                }}
+                                onClick={toggleColFirstOpen}
+                            ></div>
+                            <div
+                                className="col-display"
+                                style={{
+                                    backgroundColor: colSec,
+                                }}
+                                onClick={toggleColSecOpen}
+                            ></div>
+                        </div>
+                        {isColFirstOpen && (
+                            <div className="col-picker-pop">
+                                <HexColorPicker
+                                    color={colFirst}
+                                    onChange={setColFirst}
                                 />
                             </div>
-                            <div className="mb-3">
-                                <label
-                                    htmlFor="tagNameInput"
-                                    className="form-label"
-                                >
-                                    Color
-                                </label>
-                                <div>
-                                    <div
-                                        className="col-display"
-                                        style={{
-                                            backgroundColor: colFirst,
-                                        }}
-                                        onClick={toggleColFirstOpen}
-                                    ></div>
-                                    <div
-                                        className="col-display"
-                                        style={{
-                                            backgroundColor: colSec,
-                                        }}
-                                        onClick={toggleColSecOpen}
-                                    ></div>
-                                </div>
-                                {isColFirstOpen && (
-                                    <div className="col-picker-pop">
-                                        <HexColorPicker
-                                            color={colFirst}
-                                            onChange={setColFirst}
-                                        />
-                                    </div>
-                                )}
-                                {isColSecOpen && (
-                                    <div className="col-picker-pop">
-                                        <HexColorPicker
-                                            color={colSec}
-                                            onChange={setColSec}
-                                        />
-                                    </div>
-                                )}
+                        )}
+                        {isColSecOpen && (
+                            <div className="col-picker-pop">
+                                <HexColorPicker
+                                    color={colSec}
+                                    onChange={setColSec}
+                                />
                             </div>
-                        </div>
-                        <div className="modal-footer">
-                            <button
-                                type="button"
-                                className="btn btn-theme-light"
-                                data-bs-dismiss="modal"
-                            >
-                                Cancel
-                            </button>
-                            <button
-                                type="submit"
-                                className="btn btn-theme-pink"
-                            >
-                                Create
-                            </button>
-                        </div>
-                    </form>
+                        )}
+                    </div>
                 </div>
-            </div>
-        </div>
+                <div className="modal-footer">
+                    <button
+                        type="button"
+                        className="btn btn-theme-light"
+                        onClick={handleClose}
+                    >
+                        Cancel
+                    </button>
+                    <button type="submit" className="btn btn-theme-pink">
+                        Create
+                    </button>
+                </div>
+            </form>
+        </Modal>
     )
-}
+})
 
 export default CreateTagModal
