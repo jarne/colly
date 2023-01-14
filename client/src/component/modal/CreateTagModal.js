@@ -6,8 +6,8 @@ import { useState, useRef } from "react"
 import { HexColorPicker } from "react-colorful"
 import { toast } from "react-toastify"
 
-import InternalAPI from "./../../util/InternalAPI"
 import { useAccessToken } from "./../../component/AccessTokenProvider"
+import { createTag } from "./../../logic/api/tag"
 
 import "./CreateTagModal.css"
 
@@ -39,42 +39,15 @@ function CreateTagModal(props) {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        let res
         try {
-            const resp = await fetch(InternalAPI.API_ENDPOINT + "/tag", {
-                method: "POST",
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    name: tagName,
-                    firstColor: colFirst.slice(1),
-                    secondColor: colSec.slice(1),
-                }),
-            })
-            res = await resp.json()
-        } catch (e) {
-            toast.error("Error while communicating with the login server!")
-
-            return
-        }
-
-        if (res.error) {
-            switch (res.error.code) {
-                case "validation_error":
-                    const valMsgs = res.error.fields.map((field) => {
-                        return field.message
-                    })
-                    toast.error(`Invalid input: ${valMsgs.join(", ")}!`)
-                    break
-                case "duplicate_entry":
-                    toast.warning("A tag with this name already exists!")
-                    break
-                default:
-                    toast.error("Unknown error!")
-                    break
-            }
+            await createTag(
+                tagName,
+                colFirst.slice(1),
+                colSec.slice(1),
+                accessToken
+            )
+        } catch (ex) {
+            toast.error(ex.message)
 
             return
         }

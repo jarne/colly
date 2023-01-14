@@ -11,8 +11,8 @@ import ItemCard from "./../component/ItemCard"
 
 import CreateTagModal from "./../component/modal/CreateTagModal"
 
-import InternalAPI from "./../util/InternalAPI"
 import { useAccessToken } from "./../component/AccessTokenProvider"
+import { listItems } from "./../logic/api/item"
 
 import collyLogoImg from "./../asset/colly-logo.png"
 
@@ -34,26 +34,18 @@ function Dashboard() {
     const loadItems = async () => {
         if (accessToken === null) {
             navigate("/login")
+
+            return
         }
 
-        let res
+        let items
         try {
-            const resp = await fetch(InternalAPI.API_ENDPOINT + "/item", {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            })
-            res = await resp.json()
+            items = await listItems(accessToken)
         } catch (e) {
-            return false
+            return
         }
 
-        if (res.error) {
-            return false
-        }
-
-        setItems(res.items)
+        setItems(items)
     }
 
     const handleLogoutClick = (e) => {

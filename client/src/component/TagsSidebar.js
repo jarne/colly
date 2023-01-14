@@ -5,8 +5,8 @@
 import { useState, useEffect } from "react"
 import { toast } from "react-toastify"
 
-import InternalAPI from "./../util/InternalAPI"
 import { useAccessToken } from "./../component/AccessTokenProvider"
+import { listTags } from "./../logic/api/tag"
 
 function TagsSidebar(props) {
     const [accessToken] = useAccessToken()
@@ -14,24 +14,14 @@ function TagsSidebar(props) {
     const [tags, setTags] = useState([])
 
     const loadTags = async () => {
-        let res
+        let tags
         try {
-            const resp = await fetch(InternalAPI.API_ENDPOINT + "/tag", {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            })
-            res = await resp.json()
+            tags = await listTags(accessToken)
         } catch (e) {
-            return false
+            return
         }
 
-        if (res.error) {
-            return false
-        }
-
-        setTags(res.tags)
+        setTags(tags)
     }
 
     useEffect(() => {
