@@ -25,21 +25,21 @@
     },
     "scripts": {
         "start": "node app.js",
-        "dev": "./node_modules/.bin/nodemon app.js",
-        "test": "./node_modules/.bin/mocha --recursive --parallel",
-        "test-ci": "./node_modules/.bin/mocha --recursive --exit --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results/mocha/junit.xml",
-        "test-coverage": "./node_modules/.bin/c8 --all --reporter html yarn test",
-        "lint": "./node_modules/.bin/eslint .",
-        "lint-ci": "./node_modules/.bin/eslint --format junit --output-file ./lint-results/eslint/junit.xml .",
-        "format": "./node_modules/.bin/prettier --write \"**/*.{js,json,html,css,scss,yml,md}\""
+        "dev": "nodemon app.js",
+        "test": "mocha --recursive --parallel",
+        "test-ci": "mocha --recursive --exit --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results/mocha/junit.xml",
+        "test-coverage": "c8 --all --reporter html yarn test",
+        "lint": "eslint .",
+        "lint-ci": "eslint --format junit --output-file ./lint-results/eslint/junit.xml .",
+        "format": "prettier --write \"**/*.{js,json,html,css,scss,yml,md}\""
     },
     "dependencies": {
-        "bcrypt": "^5.0",
-        "capture-website": "^2.4",
+        "bcrypt": "^5.1",
+        "capture-website": "^3.2",
         "dotenv": "^16.0",
         "express": "^4.18",
-        "jsonwebtoken": "^8.5",
-        "mongoose": "^6.4",
+        "jsonwebtoken": "^9.0",
+        "mongoose": "^6.9",
         "passport": "^0.6",
         "passport-jwt": "^4.0",
         "passport-local": "^1.0",
@@ -50,12 +50,12 @@
         "chai": "^4.3",
         "chai-http": "^4.3",
         "cors": "^2.8",
-        "eslint": "^8.20",
-        "mocha": "^10.0",
-        "mocha-junit-reporter": "^2.0",
+        "eslint": "^8.33",
+        "mocha": "^10.2",
+        "mocha-junit-reporter": "^2.2",
         "morgan": "^1.10",
         "nodemon": "^2.0",
-        "prettier": "^2.7"
+        "prettier": "^2.8"
     },
     "type": "module"
 }
