@@ -5,6 +5,7 @@
 import { useState, useImperativeHandle, forwardRef } from "react"
 import Modal from "react-bootstrap/Modal"
 import { HexColorPicker } from "react-colorful"
+import { useClickAway } from "@uidotdev/usehooks"
 import { toast } from "react-toastify"
 
 import { useUserAuth } from "./../context/UserAuthProvider"
@@ -34,6 +35,13 @@ const CreateTagModal = forwardRef((props, ref) => {
 
     const [colFirst, setColFirst] = useState(DEFAULT_COL_FIRST)
     const [colSec, setColSec] = useState(DEFAULT_COL_SEC)
+
+    const refFirst = useClickAway(() => {
+        setColFirstOpen(false)
+    })
+    const refSec = useClickAway(() => {
+        setColSecOpen(false)
+    })
 
     useImperativeHandle(ref, () => ({
         open() {
@@ -170,7 +178,7 @@ const CreateTagModal = forwardRef((props, ref) => {
                             ></div>
                         </div>
                         {isColFirstOpen && (
-                            <div className="col-picker-pop">
+                            <div ref={refFirst} className="col-picker-pop">
                                 <HexColorPicker
                                     color={colFirst}
                                     onChange={setColFirst}
@@ -178,7 +186,7 @@ const CreateTagModal = forwardRef((props, ref) => {
                             </div>
                         )}
                         {isColSecOpen && (
-                            <div className="col-picker-pop">
+                            <div ref={refSec} className="col-picker-pop">
                                 <HexColorPicker
                                     color={colSec}
                                     onChange={setColSec}
