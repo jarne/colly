@@ -22,8 +22,8 @@ describe("auth router", () => {
         }
 
         if (mongoose.connection.readyState === 1) {
-            // prettier-ignore
-            (async () => {
+            // eslint-disable-next-line no-extra-semi
+            ;(async () => {
                 await prepare()
             })()
         }
