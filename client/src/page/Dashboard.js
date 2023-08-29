@@ -6,8 +6,8 @@ import { useState, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 
-import TagsSidebar from "./../component/TagsSidebar"
-import ItemCard from "./../component/ItemCard"
+import TagsSidebar from "./../component/tag/TagsSidebar"
+import ItemCard from "./../component/item/ItemCard"
 
 import CreateTagModal from "./../component/modal/CreateTagModal"
 import CreateItemModal from "./../component/modal/CreateItemModal"

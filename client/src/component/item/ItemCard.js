@@ -6,8 +6,8 @@ import { useState, useEffect } from "react"
 import { Buffer } from "buffer"
 import { toast } from "react-toastify"
 
-import InternalAPI from "./../util/InternalAPI"
-import { useUserAuth } from "./context/UserAuthProvider"
+import InternalAPI from "./../../util/InternalAPI"
+import { useUserAuth } from "./../context/UserAuthProvider"
 
 import "./ItemCard.css"
 

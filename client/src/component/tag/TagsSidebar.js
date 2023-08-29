@@ -4,7 +4,7 @@
 
 import { useEffect, useState } from "react"
 
-import { useAppData } from "./context/DataProvider"
+import { useAppData } from "./../context/DataProvider"
 
 import "./TagsSidebar.css"
 
