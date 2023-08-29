@@ -6,11 +6,13 @@ import { useState, useImperativeHandle, forwardRef } from "react"
 import Modal from "react-bootstrap/Modal"
 import { toast } from "react-toastify"
 
+import TagBadge from "./../tag/TagBadge"
+
 import { useUserAuth } from "./../context/UserAuthProvider"
 import { useAppData } from "./../context/DataProvider"
 import { createItem, updateItem } from "./../../logic/api/item"
 
-import "./CreateItemModal.scss"
+import "./CreateItemModal.css"
 
 const CreateItemModal = forwardRef((props, ref) => {
     const [accessToken] = useUserAuth()
@@ -175,7 +177,15 @@ const CreateItemModal = forwardRef((props, ref) => {
                         >
                             Associated tags
                         </label>
-                        <div id="itemTagsAssociation"></div>
+                        <div id="itemTagsAssociation">
+                            {itemTags.map((assocTag) => (
+                                <TagBadge
+                                    name={assocTag.name}
+                                    firstColor={assocTag.firstColor}
+                                    secondColor={assocTag.secondColor}
+                                />
+                            ))}
+                        </div>
                     </div>
                 </div>
                 <div className="modal-footer">

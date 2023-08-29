@@ -6,6 +6,8 @@ import { useState, useEffect } from "react"
 import { Buffer } from "buffer"
 import { toast } from "react-toastify"
 
+import TagBadge from "./../tag/TagBadge"
+
 import InternalAPI from "./../../util/InternalAPI"
 import { useUserAuth } from "./../context/UserAuthProvider"
 
@@ -85,19 +87,13 @@ function ItemCard({ id, title, description, url, tags, createItemModalRef }) {
                 <p className="card-text card-description">{description}</p>
                 {tags.length > 0 && (
                     <p className="card-tags">
-                        {tags.map((tag) => {
-                            return (
-                                <span
-                                    key={tag._id}
-                                    className="badge"
-                                    style={{
-                                        background: `linear-gradient(to bottom right, #${tag.firstColor}, #${tag.secondColor})`,
-                                    }}
-                                >
-                                    {tag.name}
-                                </span>
-                            )
-                        })}
+                        {tags.map((tag) => (
+                            <TagBadge
+                                name={tag.name}
+                                firstColor={tag.firstColor}
+                                secondColor={tag.secondColor}
+                            />
+                        ))}
                     </p>
                 )}
             </div>
