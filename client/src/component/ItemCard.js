@@ -11,7 +11,7 @@ import { useUserAuth } from "./context/UserAuthProvider"
 
 import "./ItemCard.css"
 
-function ItemCard({ id, title, description, url, tags }) {
+function ItemCard({ id, title, description, url, tags, createItemModalRef }) {
     const [accessToken, , displayName] = useUserAuth()
 
     const [previewImage, setPreviewImage] = useState("")
@@ -54,6 +54,13 @@ function ItemCard({ id, title, description, url, tags }) {
         loadPreviewImage()
     }, [])
 
+    const handleItemEditClick = (e, itemId) => {
+        e.preventDefault()
+
+        createItemModalRef.current.setEditId(itemId)
+        createItemModalRef.current.open()
+    }
+
     return (
         <div className="card">
             <img
@@ -64,7 +71,13 @@ function ItemCard({ id, title, description, url, tags }) {
             <div className="card-body">
                 <h5 className="card-title">
                     {title}{" "}
-                    <a href="#" className="card-edit text-theme-pink">
+                    <a
+                        href="#"
+                        onClick={(e) => {
+                            handleItemEditClick(e, id)
+                        }}
+                        className="card-edit text-theme-pink"
+                    >
                         <i className="bi bi-pencil-square"></i>
                     </a>
                 </h5>

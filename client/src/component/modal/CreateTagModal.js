@@ -158,7 +158,10 @@ const CreateTagModal = forwardRef((props, ref) => {
                         />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="tagColorsSection" className="form-label">
+                        <label
+                            htmlFor="tagColorsSection"
+                            className="form-label"
+                        >
                             Color
                         </label>
                         <div id="tagColorsSection">

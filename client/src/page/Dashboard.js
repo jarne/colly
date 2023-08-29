@@ -10,6 +10,7 @@ import TagsSidebar from "./../component/TagsSidebar"
 import ItemCard from "./../component/ItemCard"
 
 import CreateTagModal from "./../component/modal/CreateTagModal"
+import CreateItemModal from "./../component/modal/CreateItemModal"
 
 import { useUserAuth } from "./../component/context/UserAuthProvider"
 import { useAppData } from "./../component/context/DataProvider"
@@ -26,11 +27,17 @@ function Dashboard() {
     const [, , , items, , loadItems] = useAppData()
 
     const createTagModalRef = useRef()
+    const createItemModalRef = useRef()
 
     const handleCreateTag = (e) => {
         e.preventDefault()
 
         createTagModalRef.current.open()
+    }
+    const handleCreateItem = (e) => {
+        e.preventDefault()
+
+        createItemModalRef.current.open()
     }
 
     const handleLogoutClick = (e) => {
@@ -79,7 +86,11 @@ function Dashboard() {
                             </a>
                             <ul className="dropdown-menu dropdown-menu-end position-absolute">
                                 <li>
-                                    <a className="dropdown-item" href="#">
+                                    <a
+                                        className="dropdown-item"
+                                        href="#"
+                                        onClick={handleCreateItem}
+                                    >
                                         Collection item
                                     </a>
                                 </li>
@@ -136,6 +147,7 @@ function Dashboard() {
                                     description={item.description}
                                     url={item.url}
                                     tags={item.tags}
+                                    createItemModalRef={createItemModalRef}
                                 />
                             </div>
                         )
@@ -143,6 +155,7 @@ function Dashboard() {
                 </div>
             </main>
             <CreateTagModal ref={createTagModalRef} />
+            <CreateItemModal ref={createItemModalRef} />
         </>
     )
 }
