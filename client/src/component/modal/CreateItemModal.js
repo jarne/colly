@@ -6,7 +6,7 @@ import { useState, useImperativeHandle, forwardRef } from "react"
 import Modal from "react-bootstrap/Modal"
 import { toast } from "react-toastify"
 
-import TagBadge from "./../tag/TagBadge"
+import TagList from "./../tag/TagList"
 
 import { useUserAuth } from "./../context/UserAuthProvider"
 import { useAppData } from "./../context/DataProvider"
@@ -15,6 +15,8 @@ import { createItem, updateItem } from "./../../logic/api/item"
 import "./CreateItemModal.css"
 
 const CreateItemModal = forwardRef((props, ref) => {
+    const MAX_FILTERED_TAGS = 10
+
     const [accessToken] = useUserAuth()
     const [tags, , , items, , loadItems] = useAppData()
 
@@ -26,6 +28,9 @@ const CreateItemModal = forwardRef((props, ref) => {
     const [itemName, setItemName] = useState("")
     const [itemDescription, setItemDescription] = useState("")
     const [itemTags, setItemTags] = useState([])
+
+    const [tagSearchStr, setTagSearchStr] = useState("")
+    const [filteredTags, setFilteredTags] = useState([])
 
     useImperativeHandle(ref, () => ({
         open() {
@@ -43,6 +48,8 @@ const CreateItemModal = forwardRef((props, ref) => {
         setItemName("")
         setItemDescription("")
         setItemTags([])
+        setTagSearchStr("")
+        setFilteredTags([])
     }
 
     const loadEditInput = (id) => {
@@ -74,6 +81,16 @@ const CreateItemModal = forwardRef((props, ref) => {
     }
     const handleItemDescriptionChange = (e) => {
         setItemDescription(e.target.value)
+    }
+    const handleTagSearchStrChange = (e) => {
+        const val = e.target.value
+
+        setTagSearchStr(val)
+        setFilteredTags(
+            tags
+                .filter((tag) => tag.name.includes(val))
+                .slice(0, MAX_FILTERED_TAGS)
+        )
     }
 
     const handleSubmit = async (e) => {
@@ -172,19 +189,26 @@ const CreateItemModal = forwardRef((props, ref) => {
                     </div>
                     <div className="mb-3">
                         <label
-                            htmlFor="itemTagsAssociation"
+                            htmlFor="itemTagSearchInput"
                             className="form-label"
                         >
                             Associated tags
                         </label>
-                        <div id="itemTagsAssociation">
-                            {itemTags.map((assocTag) => (
-                                <TagBadge
-                                    name={assocTag.name}
-                                    firstColor={assocTag.firstColor}
-                                    secondColor={assocTag.secondColor}
-                                />
-                            ))}
+                        <div className="tag-association-space">
+                            <TagList tags={itemTags} />
+                        </div>
+                        <div className="tag-association-space">
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="itemTagSearchInput"
+                                placeholder="Search for tags"
+                                value={tagSearchStr}
+                                onChange={handleTagSearchStrChange}
+                            />
+                        </div>
+                        <div className="tag-association-space">
+                            <TagList tags={filteredTags} />
                         </div>
                     </div>
                 </div>

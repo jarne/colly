@@ -6,7 +6,7 @@ import { useState, useEffect } from "react"
 import { Buffer } from "buffer"
 import { toast } from "react-toastify"
 
-import TagBadge from "./../tag/TagBadge"
+import TagList from "./../tag/TagList"
 
 import InternalAPI from "./../../util/InternalAPI"
 import { useUserAuth } from "./../context/UserAuthProvider"
@@ -87,13 +87,7 @@ function ItemCard({ id, title, description, url, tags, createItemModalRef }) {
                 <p className="card-text card-description">{description}</p>
                 {tags.length > 0 && (
                     <p className="card-tags">
-                        {tags.map((tag) => (
-                            <TagBadge
-                                name={tag.name}
-                                firstColor={tag.firstColor}
-                                secondColor={tag.secondColor}
-                            />
-                        ))}
+                        <TagList tags={tags} />
                     </p>
                 )}
             </div>
