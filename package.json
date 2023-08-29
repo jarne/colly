@@ -36,26 +36,26 @@
     "dependencies": {
         "bcrypt": "^5.1",
         "capture-website": "^3.2",
-        "dotenv": "^16.0",
+        "dotenv": "^16.3",
         "express": "^4.18",
         "jsonwebtoken": "^9.0",
-        "mongoose": "^6.9",
+        "mongoose": "^7.4",
         "passport": "^0.6",
         "passport-jwt": "^4.0",
         "passport-local": "^1.0",
-        "validator": "^13.7"
+        "validator": "^13.11"
     },
     "devDependencies": {
-        "c8": "^7.12",
+        "c8": "^8.0",
         "chai": "^4.3",
-        "chai-http": "^4.3",
+        "chai-http": "^4.4",
         "cors": "^2.8",
-        "eslint": "^8.33",
+        "eslint": "^8.48",
         "mocha": "^10.2",
         "mocha-junit-reporter": "^2.2",
         "morgan": "^1.10",
-        "nodemon": "^2.0",
-        "prettier": "^2.8"
+        "nodemon": "^3.0",
+        "prettier": "^3.0"
     },
     "type": "module"
 }
