@@ -4,16 +4,26 @@
 
 import "./TagBadge.css"
 
-function TagBadge({ name, firstColor, secondColor, clickAction }) {
+function TagBadge({ tag, clickAction }) {
+    const handleClick = (e) => {
+        e.preventDefault()
+
+        if (clickAction === undefined) {
+            return
+        }
+
+        clickAction(tag)
+    }
+
     return (
-        <a href={clickAction ? "#" : undefined} onClick={clickAction}>
+        <a href={clickAction ? "#" : undefined} onClick={handleClick}>
             <span
                 className="badge tag-badge"
                 style={{
-                    background: `linear-gradient(to bottom right, #${firstColor}, #${secondColor})`,
+                    background: `linear-gradient(to bottom right, #${tag.firstColor}, #${tag.secondColor})`,
                 }}
             >
-                {name}
+                {tag.name}
             </span>
         </a>
     )

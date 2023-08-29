@@ -93,6 +93,13 @@ const CreateItemModal = forwardRef((props, ref) => {
         )
     }
 
+    const handleTagAdd = (tag) => {
+        setItemTags([...itemTags, tag])
+    }
+    const handleTagRemove = (tag) => {
+        setItemTags(itemTags.filter((val) => val._id !== tag._id))
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -195,7 +202,10 @@ const CreateItemModal = forwardRef((props, ref) => {
                             Associated tags
                         </label>
                         <div className="tag-association-space">
-                            <TagList tags={itemTags} />
+                            <TagList
+                                tags={itemTags}
+                                clickAction={handleTagRemove}
+                            />
                         </div>
                         <div className="tag-association-space">
                             <input
@@ -208,7 +218,10 @@ const CreateItemModal = forwardRef((props, ref) => {
                             />
                         </div>
                         <div className="tag-association-space">
-                            <TagList tags={filteredTags} />
+                            <TagList
+                                tags={filteredTags}
+                                clickAction={handleTagAdd}
+                            />
                         </div>
                     </div>
                 </div>

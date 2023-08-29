@@ -10,13 +10,7 @@ function TagList({ tags, clickAction }) {
     return (
         <div className="tags-spacing">
             {tags.map((tag) => (
-                <TagBadge
-                    key={tag._id}
-                    name={tag.name}
-                    firstColor={tag.firstColor}
-                    secondColor={tag.secondColor}
-                    clickAction={clickAction}
-                />
+                <TagBadge key={tag._id} tag={tag} clickAction={clickAction} />
             ))}
         </div>
     )
