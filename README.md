@@ -12,7 +12,7 @@
         <img src="https://img.shields.io/github/package-json/v/jarne/colly.svg" alt="Package version">
     </a>
     <a href="https://circleci.com/gh/jarne/colly">
-        <img src="https://circleci.com/gh/jarne/colly.svg?style=svg&circle-token=0e76027eadc4f54e64529265f8e3aa6def8ba11d" alt="Build status">
+        <img src="https://circleci.com/gh/jarne/colly.svg?style=shield" alt="Build status">
     </a>
     <a href="https://github.com/jarne/colly/blob/main/LICENSE">
         <img src="https://img.shields.io/github/license/jarne/colly.svg" alt="License">
