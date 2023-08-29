@@ -85,11 +85,7 @@ function ItemCard({ id, title, description, url, tags, createItemModalRef }) {
                 </h5>
                 <p className="card-text card-url">{formatUrlText(url)}</p>
                 <p className="card-text card-description">{description}</p>
-                {tags.length > 0 && (
-                    <div className="card-tags">
-                        <TagList tags={tags} />
-                    </div>
-                )}
+                {tags.length > 0 && <TagList tags={tags} />}
             </div>
         </div>
     )

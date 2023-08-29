@@ -30,11 +30,3 @@
 .card-description {
     font-size: 0.935rem;
 }
-
-.card-tags {
-    margin-bottom: 2px;
-}
-
-.card-tags > .badge {
-    margin-right: 6px;
-}
