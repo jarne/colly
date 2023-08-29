@@ -5,14 +5,12 @@
 import InternalAPI from "./../../util/InternalAPI"
 
 /**
- * Create a new tag
+ * Create new tag
  *
- * @param {string} name Tag name
- * @param {string} firstColor First gradient color
- * @param {string} secondColor Second gradient color
+ * @param {string} name tag name
+ * @param {string} firstColor first gradient color
+ * @param {string} secondColor second gradient color
  * @param {string} accessToken API access token
- *
- * @returns error or nothing
  */
 export const createTag = async (name, firstColor, secondColor, accessToken) => {
     let res
@@ -24,9 +22,9 @@ export const createTag = async (name, firstColor, secondColor, accessToken) => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                name: name,
-                firstColor: firstColor,
-                secondColor: secondColor,
+                name,
+                firstColor,
+                secondColor,
             }),
         })
         res = await resp.json()
@@ -50,15 +48,13 @@ export const createTag = async (name, firstColor, secondColor, accessToken) => {
 }
 
 /**
- * Update a tag
+ * Update tag
  *
- * @param {string} id Tag ID
- * @param {string} name Tag name
- * @param {string} firstColor First gradient color
- * @param {string} secondColor Second gradient color
+ * @param {string} id tag ID
+ * @param {string} name tag name
+ * @param {string} firstColor first gradient color
+ * @param {string} secondColor second gradient color
  * @param {string} accessToken API access token
- *
- * @returns error or nothing
  */
 export const updateTag = async (
     id,
@@ -76,9 +72,9 @@ export const updateTag = async (
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                name: name,
-                firstColor: firstColor,
-                secondColor: secondColor,
+                name,
+                firstColor,
+                secondColor,
             }),
         })
         res = await resp.json()
@@ -100,9 +96,39 @@ export const updateTag = async (
 }
 
 /**
+ * Delete tag
+ *
+ * @param {string} id tag ID
+ * @param {string} accessToken API access token
+ */
+export const deleteTag = async (id, accessToken) => {
+    let res
+    try {
+        const resp = await fetch(`${InternalAPI.API_ENDPOINT}/tag/${id}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+                "Content-Type": "application/json",
+            },
+        })
+        res = await resp.json()
+    } catch (e) {
+        throw new Error("Error while communicating with the server!")
+    }
+
+    if (res.error) {
+        switch (res.error.code) {
+            default:
+                throw new Error("Unknown error!")
+        }
+    }
+}
+
+/**
  * Get all tags
  *
- * @returns List of all Tag objects
+ * @param {string} accessToken API access token
+ * @returns list of all tags
  */
 export const listTags = async (accessToken) => {
     let res
