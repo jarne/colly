@@ -2,9 +2,17 @@
 /yarn.lock
 /node_modules
 
+# Yarn
+.pnp.*
+.yarn/*
+
 # Client dependencies
 /client/yarn.lock
 /client/node_modules
+
+# Yarn client
+/client/.pnp.*
+/client/.yarn/*
 
 # Uploaded content
 /content

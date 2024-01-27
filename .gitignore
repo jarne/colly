@@ -1,8 +1,26 @@
 # Dependencies
 /node_modules
 
+# Yarn
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
 # Client dependencies
 /client/node_modules
+
+# Yarn client
+/client/.pnp.*
+/client/.yarn/*
+!/client/.yarn/patches
+!/client/.yarn/plugins
+!/client/.yarn/releases
+!/client/.yarn/sdks
+!/client/.yarn/versions
 
 # Environment file
 /.env
