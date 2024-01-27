@@ -2,7 +2,7 @@
  * Colly | auth router tests
  */
 
-import chai, { expect } from "chai"
+import { expect, use as chaiUse } from "chai"
 import chaiHttp from "chai-http"
 import mongoose from "mongoose"
 
@@ -11,7 +11,7 @@ import { createUser } from "./../../app/controller/user.js"
 
 const User = mongoose.model("User")
 
-chai.use(chaiHttp)
+const chai = chaiUse(chaiHttp)
 
 describe("auth router", () => {
     before(function (done) {
