@@ -21,14 +21,11 @@
 
 ##
 
-[• Description](#-description)  
-[• Usage](#-usage)  
-[• Contribution](#-contribution)  
-[• License](#%EF%B8%8F-license)
+[Description](#-description) | [Usage](#-usage) | [Contribution](#-contribution) | [License](#%EF%B8%8F-license)
 
 ## 📙 Description
 
-Colly is a web-based URL/website collection app, where you can add links to your favourite web pages and organize them using tags.
+Colly is a web-based URL/website collection app, where you can add links to your favorite web pages and organize them using tags.
 
 ### Screenshots
 
