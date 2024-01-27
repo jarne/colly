@@ -3,7 +3,7 @@ version: 2
 jobs:
     mocha:
         docker:
-            - image: cimg/node:16.15
+            - image: cimg/node:20.11
               environment:
                   MONGO_HOST: 127.0.0.1
                   MONGO_DB: colly-test-01
@@ -37,7 +37,7 @@ jobs:
                   path: coverage
     eslint:
         docker:
-            - image: cimg/node:16.15
+            - image: cimg/node:20.11
         steps:
             # Checkout branch
             - checkout
