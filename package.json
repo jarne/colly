@@ -35,27 +35,27 @@
     },
     "dependencies": {
         "bcrypt": "^5.1",
-        "capture-website": "^3.2",
-        "dotenv": "^16.3",
+        "capture-website": "^4.0",
+        "dotenv": "^16.4",
         "express": "^4.18",
         "jsonwebtoken": "^9.0",
-        "mongoose": "^7.4",
-        "passport": "^0.6",
+        "mongoose": "^8.1",
+        "passport": "^0.7",
         "passport-jwt": "^4.0",
         "passport-local": "^1.0",
         "validator": "^13.11"
     },
     "devDependencies": {
-        "c8": "^8.0",
-        "chai": "^4.3",
+        "c8": "^9.1",
+        "chai": "^5.0",
         "chai-http": "^4.4",
         "cors": "^2.8",
-        "eslint": "^8.48",
+        "eslint": "^8.56",
         "mocha": "^10.2",
         "mocha-junit-reporter": "^2.2",
         "morgan": "^1.10",
         "nodemon": "^3.0",
-        "prettier": "^3.0"
+        "prettier": "^3.2"
     },
     "type": "module",
     "packageManager": "yarn@4.0.2"
