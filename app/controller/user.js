@@ -5,6 +5,7 @@
 import mongoose from "mongoose"
 
 import NotFoundError from "./exception/notFoundError.js"
+import logger from "./../util/logger.js"
 
 const User = mongoose.model("User")
 

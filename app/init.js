@@ -2,8 +2,9 @@
  * Colly | general init functions
  */
 
-import { connect } from "./util/databaseConnection.js"
+import "dotenv/config"
 
+import { connect } from "./util/databaseConnection.js"
 import "./util/passportStrategies.js"
 
 /**
