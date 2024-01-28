@@ -41,7 +41,7 @@ export const triggerPreviewGeneration = async (itemId) => {
     try {
         await captureWebsite.file(url, previewPath, captureOpts)
 
-        logger.info("preview_generated", {
+        logger.verbose("preview_generated", {
             id: item.id,
             url,
         })

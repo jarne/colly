@@ -27,7 +27,7 @@ export const createTag = async (name, firstColor, secondColor, ownerId) => {
 
     try {
         const savedTag = await tag.save()
-        logger.info("tag_created", { id: savedTag.id })
+        logger.verbose("tag_created", { id: savedTag.id })
 
         return savedTag
     } catch (e) {
@@ -69,7 +69,7 @@ export const updateTag = async (id, name, firstColor, secondColor, ownerId) => {
 
     try {
         const savedTag = await tag.save()
-        logger.info("tag_updated", { id: savedTag.id })
+        logger.verbose("tag_updated", { id: savedTag.id })
 
         return savedTag
     } catch (e) {
@@ -90,7 +90,7 @@ export const updateTag = async (id, name, firstColor, secondColor, ownerId) => {
 export const deleteTag = async (id) => {
     try {
         await Tag.findByIdAndDelete(id)
-        logger.info("tag_deleted", { id })
+        logger.verbose("tag_deleted", { id })
     } catch (e) {
         logger.error("tag_delete_error", {
             id,

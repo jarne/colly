@@ -25,7 +25,7 @@ export const createUser = async (username, password, isAdmin = false) => {
 
     try {
         const savedUser = await user.save()
-        logger.info("user_created", { id: savedUser.id })
+        logger.verbose("user_created", { id: savedUser.id })
 
         return savedUser
     } catch (e) {
@@ -63,7 +63,7 @@ export const updateUser = async (id, username, isAdmin = false) => {
 
     try {
         const savedUser = await user.save()
-        logger.info("user_updated", { id: savedUser.id })
+        logger.verbose("user_updated", { id: savedUser.id })
 
         return savedUser
     } catch (e) {
@@ -84,7 +84,7 @@ export const updateUser = async (id, username, isAdmin = false) => {
 export const deleteUser = async (id) => {
     try {
         await User.findByIdAndDelete(id)
-        logger.info("user_deleted", { id })
+        logger.verbose("user_deleted", { id })
     } catch (e) {
         logger.error("user_delete_error", {
             id,

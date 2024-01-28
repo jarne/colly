@@ -39,7 +39,7 @@ export const createItem = async (
         const savedItem = await item.save()
         triggerPreviewGeneration(savedItem.id)
 
-        logger.info("item_created", { id: savedItem.id })
+        logger.verbose("item_created", { id: savedItem.id })
 
         return savedItem
     } catch (e) {
@@ -92,7 +92,7 @@ export const updateItem = async (
         const savedItem = await item.save()
         triggerPreviewGeneration(savedItem.id)
 
-        logger.info("item_updated", { id: savedItem.id })
+        logger.verbose("item_updated", { id: savedItem.id })
 
         return savedItem
     } catch (e) {
@@ -114,7 +114,7 @@ export const deleteItem = async (id) => {
     try {
         await Item.findByIdAndDelete(id)
 
-        logger.info("item_deleted", { id })
+        logger.verbose("item_deleted", { id })
     } catch (e) {
         logger.error("item_delete_error", {
             id,

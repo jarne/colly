@@ -53,7 +53,7 @@ router.post("/login", (req, res) => {
                 }
             )
 
-            logger.info("auth_successful", { uid: user.id })
+            logger.verbose("auth_successful", { uid: user.id })
             return res.json({
                 user: {
                     username: user.username,
