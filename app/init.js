@@ -4,7 +4,6 @@
 
 import { connect } from "./util/databaseConnection.js"
 
-import "dotenv/config"
 import "./util/passportStrategies.js"
 
 /**

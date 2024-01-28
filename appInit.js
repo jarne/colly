@@ -5,6 +5,7 @@
 import express from "express"
 import cors from "cors"
 import morgan from "morgan"
+import "dotenv/config"
 
 import { connectDb } from "./app/init.js"
 import { registerRoutes } from "./app/routes.js"
@@ -24,7 +25,13 @@ connectDb()
 
 if (app.get("env") === "development") {
     app.use(cors())
-    app.use(morgan("combined"))
+    app.use(
+        morgan("combined", {
+            stream: {
+                write: (str) => logger.http(str),
+            },
+        })
+    )
 
     logger.info(
         "🚧 Running in development mode, allowing all CORS headers and logging requests"
