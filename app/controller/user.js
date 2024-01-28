@@ -25,9 +25,14 @@ export const createUser = async (username, password, isAdmin = false) => {
 
     try {
         const savedUser = await user.save()
+        logger.info("user_created", { id: savedUser.id })
 
         return savedUser
     } catch (e) {
+        logger.error("user_create_error", {
+            error: e.message,
+        })
+
         throw e
     }
 }
@@ -58,9 +63,15 @@ export const updateUser = async (id, username, isAdmin = false) => {
 
     try {
         const savedUser = await user.save()
+        logger.info("user_updated", { id: savedUser.id })
 
         return savedUser
     } catch (e) {
+        logger.error("user_update_error", {
+            id,
+            error: e.message,
+        })
+
         throw e
     }
 }
@@ -73,7 +84,13 @@ export const updateUser = async (id, username, isAdmin = false) => {
 export const deleteUser = async (id) => {
     try {
         await User.findByIdAndDelete(id)
+        logger.info("user_deleted", { id })
     } catch (e) {
+        logger.error("user_delete_error", {
+            id,
+            error: e.message,
+        })
+
         throw e
     }
 }
@@ -89,6 +106,11 @@ export const getUser = async (id) => {
     try {
         return await User.findById(id)
     } catch (e) {
+        logger.error("user_get_error", {
+            id,
+            error: e.message,
+        })
+
         throw e
     }
 }
@@ -102,6 +124,10 @@ export const listUsers = async () => {
     try {
         return await User.find().select("username isAdmin")
     } catch (e) {
+        logger.error("user_list_error", {
+            error: e.message,
+        })
+
         throw e
     }
 }

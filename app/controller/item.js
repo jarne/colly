@@ -6,6 +6,7 @@ import mongoose from "mongoose"
 
 import NotFoundError from "./exception/notFoundError.js"
 import { triggerPreviewGeneration } from "./itemPreview.js"
+import logger from "./../util/logger.js"
 
 const Item = mongoose.model("Item")
 
@@ -36,11 +37,16 @@ export const createItem = async (
 
     try {
         const savedItem = await item.save()
-
         triggerPreviewGeneration(savedItem.id)
+
+        logger.info("item_created", { id: savedItem.id })
 
         return savedItem
     } catch (e) {
+        logger.error("item_create_error", {
+            error: e.message,
+        })
+
         throw e
     }
 }
@@ -84,11 +90,17 @@ export const updateItem = async (
 
     try {
         const savedItem = await item.save()
-
         triggerPreviewGeneration(savedItem.id)
+
+        logger.info("item_updated", { id: savedItem.id })
 
         return savedItem
     } catch (e) {
+        logger.error("item_update_error", {
+            id,
+            error: e.message,
+        })
+
         throw e
     }
 }
@@ -101,7 +113,14 @@ export const updateItem = async (
 export const deleteItem = async (id) => {
     try {
         await Item.findByIdAndDelete(id)
+
+        logger.info("item_deleted", { id })
     } catch (e) {
+        logger.error("item_delete_error", {
+            id,
+            error: e.message,
+        })
+
         throw e
     }
 }
@@ -117,6 +136,11 @@ export const getItem = async (id) => {
     try {
         return await Item.findById(id)
     } catch (e) {
+        logger.error("item_get_error", {
+            id,
+            error: e.message,
+        })
+
         throw e
     }
 }
@@ -130,6 +154,10 @@ export const listItems = async () => {
     try {
         return await Item.find().populate("tags")
     } catch (e) {
+        logger.error("item_list_error", {
+            error: e.message,
+        })
+
         throw e
     }
 }
@@ -147,6 +175,11 @@ export const hasPermission = async (itemId, userId) => {
     try {
         item = await Item.findById(itemId)
     } catch (e) {
+        logger.error("item_get_error", {
+            id: itemId,
+            error: e.message,
+        })
+
         throw e
     }
 

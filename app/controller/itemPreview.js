@@ -7,6 +7,7 @@ import captureWebsite from "capture-website"
 import { resolve as resolvePath } from "path"
 import { access as fsAccess } from "fs/promises"
 import { constants as fsConstants } from "fs"
+import logger from "./../util/logger.js"
 
 const Item = mongoose.model("Item")
 
@@ -20,6 +21,11 @@ export const triggerPreviewGeneration = async (itemId) => {
     try {
         item = await Item.findById(itemId)
     } catch (e) {
+        logger.error("item_get_error", {
+            id: itemId,
+            error: e.message,
+        })
+
         return
     }
 
@@ -34,8 +40,17 @@ export const triggerPreviewGeneration = async (itemId) => {
 
     try {
         await captureWebsite.file(url, previewPath, captureOpts)
+
+        logger.info("preview_generated", {
+            id: item.id,
+            url,
+        })
     } catch (e) {
-        return
+        logger.error("preview_generation_error", {
+            id: item.id,
+            url,
+            error: e.message,
+        })
     }
 }
 
@@ -52,6 +67,11 @@ export const previewExists = async (previewPath) => {
 
         return true
     } catch (e) {
+        logger.warning("no_preview_found", {
+            previewPath,
+            error: e.message,
+        })
+
         return false
     }
 }
