@@ -4,6 +4,8 @@
 
 import mongoose from "mongoose"
 
+import logger from "./logger.js"
+
 import "./../model/user.js"
 import "./../model/tag.js"
 import "./../model/item.js"
@@ -16,8 +18,8 @@ export const connect = async () => {
             }/${process.env.MONGO_DB}`
         )
 
-        console.log("🗂  Database connected.")
+        logger.info("db_connected")
     } catch (e) {
-        console.log(`‼️  Database connection failed: ${e.message}!`)
+        logger.error("db_connection_failed", e.message)
     }
 }

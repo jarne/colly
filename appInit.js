@@ -8,6 +8,7 @@ import morgan from "morgan"
 
 import { connectDb } from "./app/init.js"
 import { registerRoutes } from "./app/routes.js"
+import logger from "./app/util/logger.js"
 
 /* Express initialization */
 
@@ -25,8 +26,8 @@ if (app.get("env") === "development") {
     app.use(cors())
     app.use(morgan("combined"))
 
-    console.log(
-        "🚧 Running in development mode, allowing all CORS headers and logging requests!"
+    logger.info(
+        "🚧 Running in development mode, allowing all CORS headers and logging requests"
     )
 }
 
