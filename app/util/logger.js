@@ -7,11 +7,7 @@ import LokiTransport from "winston-loki"
 
 const APP_NAME = "colly"
 
-const winstonTransports = [
-    new transports.Console({
-        format: format.cli(),
-    }),
-]
+const winstonTransports = [new transports.Console()]
 
 if (
     process.env.LOKI_HOST !== undefined &&
