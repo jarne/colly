@@ -24,7 +24,7 @@ router.post("/login", (req, res) => {
         }
 
         if (!user) {
-            logger.warning("auth_user_not_found")
+            logger.warn("auth_user_not_found")
             return res.status(401).json({
                 error: true,
                 error_code: "invalid_credentials",

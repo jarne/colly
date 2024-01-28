@@ -67,7 +67,7 @@ export const previewExists = async (previewPath) => {
 
         return true
     } catch (e) {
-        logger.warning("no_preview_found", {
+        logger.warn("no_preview_found", {
             previewPath,
             error: e.message,
         })

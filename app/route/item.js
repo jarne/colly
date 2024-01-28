@@ -146,7 +146,7 @@ router.get("/:itemId/preview", async (req, res) => {
     const scPreviewExists = await previewExists(previewPath)
 
     if (!scPreviewExists) {
-        logger.warning("preview_not_ready", {
+        logger.warn("preview_not_ready", {
             itemId,
             previewPath,
             exists: scPreviewExists,
