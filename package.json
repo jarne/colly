@@ -25,7 +25,7 @@
     },
     "scripts": {
         "start": "node app.js",
-        "dev": "nodemon app.js",
+        "dev": "nodemon -i client app.js",
         "test": "mocha --recursive --parallel",
         "test-ci": "mocha --recursive --exit --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results/mocha/junit.xml",
         "test-coverage": "c8 --all --reporter html yarn test",
