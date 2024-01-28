@@ -2,10 +2,10 @@
  * Colly | general init functions
  */
 
-import { connect } from "./utils/databaseConnection.js"
+import { connect } from "./util/databaseConnection.js"
 
 import "dotenv/config"
-import "./utils/passportStrategies.js"
+import "./util/passportStrategies.js"
 
 /**
  * Establish connection to database
