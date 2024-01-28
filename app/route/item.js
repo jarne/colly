@@ -17,6 +17,7 @@ import {
     getPreviewPath,
 } from "./../controller/itemPreview.js"
 import { handleError } from "./../routes.js"
+import logger from "./../util/logger.js"
 
 const router = express.Router()
 
@@ -110,6 +111,7 @@ router.get("/:itemId/requestPreview", async (req, res) => {
     try {
         allowed = await hasPermission(itemId, req.user.id)
     } catch (e) {
+        logger.error("permission_check_error", { itemId, userId: req.user.id })
         return handleError(e, res)
     }
 
@@ -132,6 +134,7 @@ router.get("/:itemId/preview", async (req, res) => {
     try {
         allowed = await hasPermission(itemId, req.user.id)
     } catch (e) {
+        logger.error("permission_check_error", { itemId, userId: req.user.id })
         return handleError(e, res)
     }
 
@@ -143,6 +146,11 @@ router.get("/:itemId/preview", async (req, res) => {
     const scPreviewExists = await previewExists(previewPath)
 
     if (!scPreviewExists) {
+        logger.warn("preview_not_ready", {
+            itemId,
+            previewPath,
+            exists: scPreviewExists,
+        })
         return res.status(404).send("Preview not ready, try again later.")
     }
 

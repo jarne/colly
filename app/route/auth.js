@@ -6,6 +6,8 @@ import express from "express"
 import passport from "passport"
 import jwt from "jsonwebtoken"
 
+import logger from "./../util/logger.js"
+
 const router = express.Router()
 
 /**
@@ -14,6 +16,7 @@ const router = express.Router()
 router.post("/login", (req, res) => {
     passport.authenticate("local", { session: false }, (err, user) => {
         if (err) {
+            logger.error("auth_internal_error", { error: err.message })
             return res.status(400).json({
                 error: true,
                 error_code: "internal_error",
@@ -21,6 +24,7 @@ router.post("/login", (req, res) => {
         }
 
         if (!user) {
+            logger.warn("auth_user_not_found")
             return res.status(401).json({
                 error: true,
                 error_code: "invalid_credentials",
@@ -29,6 +33,9 @@ router.post("/login", (req, res) => {
 
         req.login(user, { session: false }, async (err) => {
             if (err) {
+                logger.error("auth_internal_login_error", {
+                    error: err.message,
+                })
                 return res.status(500).json({
                     error: true,
                     error_code: "internal_error",
@@ -46,6 +53,7 @@ router.post("/login", (req, res) => {
                 }
             )
 
+            logger.verbose("auth_successful", { uid: user.id })
             return res.json({
                 user: {
                     username: user.username,

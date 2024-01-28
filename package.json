@@ -25,7 +25,7 @@
     },
     "scripts": {
         "start": "node app.js",
-        "dev": "nodemon app.js",
+        "dev": "nodemon -i client app.js",
         "test": "mocha --recursive --parallel",
         "test-ci": "mocha --recursive --exit --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results/mocha/junit.xml",
         "test-coverage": "c8 --all --reporter html yarn test",
@@ -43,7 +43,9 @@
         "passport": "^0.7",
         "passport-jwt": "^4.0",
         "passport-local": "^1.0",
-        "validator": "^13.11"
+        "validator": "^13.11",
+        "winston": "^3.11.0",
+        "winston-loki": "^6.0.8"
     },
     "devDependencies": {
         "c8": "^9.1",
