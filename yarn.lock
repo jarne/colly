@@ -1081,14 +1081,14 @@ __metadata:
   linkType: hard
 
 "capture-website@npm:^4.0":
-  version: 4.0.1
-  resolution: "capture-website@npm:4.0.1"
+  version: 4.1.0
+  resolution: "capture-website@npm:4.1.0"
   dependencies:
     "@cliqz/adblocker-puppeteer": "npm:^1.26.11"
     file-url: "npm:^4.0.0"
     puppeteer: "npm:^21.9.0"
     tough-cookie: "npm:^4.1.3"
-  checksum: 10c0/33317d80031a4ea0c393c0fef100f4f805b178f651c3475605926778b04c80e5189509f015e48648da0dd4faf2eb321a6b0a42464c6071d20d02eb1704725c31
+  checksum: 10c0/283f32a5da72ab7ffe4c6a982ca4324aacfefaed3351184db1c1343d025143e13d33b2c9df0720c5f776d9b5c5f7e710f067809c74329ed3f11bc6032745f34e
   languageName: node
   linkType: hard
 
