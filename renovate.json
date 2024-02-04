@@ -10,7 +10,7 @@
             "automerge": true
         },
         {
-            "matchPackageNames": ["node"],
+            "matchPackageNames": ["node", "cimg/node"],
             "versioning": "node"
         }
     ]
