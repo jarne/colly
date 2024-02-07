@@ -12,6 +12,8 @@ import logger from "./../../util/logger.js"
  * @param {mongoose.Model} model Mongoose database model
  */
 const crud = (model) => {
+    const modelName = model.modelName.toLowerCase()
+
     /**
      * Create operation
      * @param {object} data Object data
@@ -22,11 +24,11 @@ const crud = (model) => {
 
         try {
             const saved = await obj.save()
-            logger.verbose("tag_created", { id: saved.id })
+            logger.verbose(`${modelName}_created`, { id: saved.id })
 
             return saved
         } catch (e) {
-            logger.error("tag_create_error", {
+            logger.error(`${modelName}_create_error`, {
                 error: e.message,
             })
 
@@ -50,10 +52,10 @@ const crud = (model) => {
                 throw new NotFoundError()
             }
 
-            logger.verbose("tag_updated", { id: updated.id })
+            logger.verbose(`${modelName}_updated`, { id: updated.id })
             return updated
         } catch (e) {
-            logger.error("tag_update_error", {
+            logger.error(`${modelName}_update_error`, {
                 id,
                 error: e.message,
             })
@@ -69,9 +71,9 @@ const crud = (model) => {
     const del = async (id) => {
         try {
             await model.findByIdAndDelete(id)
-            logger.verbose("tag_deleted", { id })
+            logger.verbose(`${modelName}_deleted`, { id })
         } catch (e) {
-            logger.error("tag_delete_error", {
+            logger.error(`${modelName}_delete_error`, {
                 id,
                 error: e.message,
             })
@@ -89,7 +91,7 @@ const crud = (model) => {
         try {
             return await model.findById(id)
         } catch (e) {
-            logger.error("tag_get_error", {
+            logger.error(`${modelName}_get_error`, {
                 id,
                 error: e.message,
             })
@@ -106,7 +108,7 @@ const crud = (model) => {
         try {
             return await model.find()
         } catch (e) {
-            logger.error("tag_list_error", {
+            logger.error(`${modelName}_list_error`, {
                 error: e.message,
             })
 
