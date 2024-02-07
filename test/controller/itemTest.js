@@ -15,7 +15,7 @@ import {
     hasPermission,
 } from "./../../app/controller/item.js"
 import { createUser } from "./../../app/controller/user.js"
-import { createTag } from "./../../app/controller/tag.js"
+import tag from "./../../app/controller/tag.js"
 
 const Item = mongoose.model("Item")
 const User = mongoose.model("User")
@@ -30,12 +30,12 @@ describe("item controller", () => {
 
         const createdUser = await createUser("itemtester", "testPW123")
         userId = createdUser.id
-        const createdTag = await createTag(
-            "itemtesttag",
-            "000000",
-            "ffffff",
-            userId
-        )
+        const createdTag = await tag.create({
+            name: "itemtesttag",
+            firstColor: "000000",
+            secondColor: "ffffff",
+            owner: userId,
+        })
         tagId = createdTag.id
     })
 
