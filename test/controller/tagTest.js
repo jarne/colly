@@ -79,8 +79,6 @@ describe("tag controller", () => {
                 secondColor: "ffffff",
                 owner: userId,
             })
-            console.log(tag.id) // TODO: Debug
-            console.log(updatedTag) // TODO: Debug
 
             expect(updatedTag.name).to.equal("othertag")
         })
