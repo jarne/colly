@@ -4,15 +4,13 @@
 
 import express from "express"
 
-import {
-    createTag,
-    updateTag,
-    deleteTag,
-    listTags,
-} from "./../controller/tag.js"
+import controller from "./../controller/tag.js"
+import crudRoutes from "./../route/common/crud.js"
 import { handleError } from "./../routes.js"
 
 const router = express.Router()
+
+const { del, list } = crudRoutes(controller)
 
 /**
  * Create new tag
@@ -20,12 +18,10 @@ const router = express.Router()
 router.post("/", async (req, res) => {
     let tag
     try {
-        tag = await createTag(
-            req.body.name,
-            req.body.firstColor,
-            req.body.secondColor,
-            req.user.id
-        )
+        tag = await controller.create({
+            ...req.body,
+            owner: req.user.id,
+        })
     } catch (e) {
         return handleError(e, res)
     }
@@ -43,13 +39,10 @@ router.patch("/:tagId", async (req, res) => {
 
     let tag
     try {
-        tag = await updateTag(
-            tagId,
-            req.body.name,
-            req.body.firstColor,
-            req.body.secondColor,
-            req.user.id
-        )
+        tag = await controller.update(tagId, {
+            ...req.body,
+            owner: req.user.id,
+        })
     } catch (e) {
         return handleError(e, res)
     }
@@ -62,34 +55,11 @@ router.patch("/:tagId", async (req, res) => {
 /**
  * Delete a tag
  */
-router.delete("/:tagId", async (req, res) => {
-    const tagId = req.params.tagId
-
-    try {
-        await deleteTag(tagId)
-    } catch (e) {
-        return handleError(e, res)
-    }
-
-    return res.json({
-        tagId: tagId,
-    })
-})
+router.delete("/:tagId", del)
 
 /**
  * Get all tags
  */
-router.get("/", async (req, res) => {
-    let tags
-    try {
-        tags = await listTags()
-    } catch (e) {
-        return handleError(e, res)
-    }
-
-    return res.json({
-        tags: tags,
-    })
-})
+router.get("/", list)
 
 export default router
