@@ -6,13 +6,8 @@ import { expect } from "chai"
 import mongoose from "mongoose"
 
 import { connectDbAsync } from "./../../app/init.js"
-import {
-    createTag,
-    updateTag,
-    deleteTag,
-    listTags,
-} from "./../../app/controller/tag.js"
-import { createUser } from "./../../app/controller/user.js"
+import controller from "./../../app/controller/tag.js"
+import user from "./../../app/controller/user.js"
 
 const Tag = mongoose.model("Tag")
 const User = mongoose.model("User")
@@ -23,13 +18,21 @@ describe("tag controller", () => {
     before(async () => {
         await connectDbAsync()
 
-        const createdUser = await createUser("tagtester", "testPW123")
+        const createdUser = await user.create({
+            username: "tagtester",
+            password: "testPW123",
+        })
         userId = createdUser.id
     })
 
-    describe("#createTag", () => {
+    describe("#create", () => {
         it("should create a new tag", async () => {
-            const tag = await createTag("testtag", "000000", "ffffff", userId)
+            const tag = await controller.create({
+                name: "testtag",
+                firstColor: "000000",
+                secondColor: "ffffff",
+                owner: userId,
+            })
 
             expect(tag.id).to.be.not.null
             expect(tag.name).to.equal("testtag")
@@ -37,7 +40,12 @@ describe("tag controller", () => {
 
         it("throws error with invalid tag name", async () => {
             try {
-                await createTag("Tag ! ?", "000000", "ffffff", userId)
+                await controller.create({
+                    name: "Tag ! ?",
+                    firstColor: "000000",
+                    secondColor: "ffffff",
+                    owner: userId,
+                })
             } catch (e) {
                 expect(e.name).to.equal("ValidationError")
             }
@@ -45,64 +53,82 @@ describe("tag controller", () => {
 
         it("throws error with invalid color", async () => {
             try {
-                await createTag("testtag", "0x000k", "ffffff", userId)
+                await controller.create({
+                    name: "testtag",
+                    firstColor: "0x000k",
+                    secondColor: "ffffff",
+                    owner: userId,
+                })
             } catch (e) {
                 expect(e.name).to.equal("ValidationError")
             }
         })
     })
 
-    describe("#updateTag", () => {
+    describe("#update", () => {
         it("should update a tag", async () => {
-            const tag = await createTag("testtag", "000000", "ffffff", userId)
+            const tag = await controller.create({
+                name: "testtag",
+                firstColor: "000000",
+                secondColor: "ffffff",
+                owner: userId,
+            })
 
             expect(tag.name).to.equal("testtag")
 
-            const updatedTag = await updateTag(
-                tag.id,
-                "othertag",
-                "000000",
-                "ffffff",
-                userId
-            )
+            const updatedTag = await controller.update(tag.id, {
+                name: "othertag",
+                firstColor: "000000",
+                secondColor: "ffffff",
+                owner: userId,
+            })
 
             expect(updatedTag.name).to.equal("othertag")
         })
 
         it("throws error for non-existing tag", async () => {
             try {
-                await updateTag(
-                    "6675932d4f2094eb2ec739ad",
-                    "othertag",
-                    "000000",
-                    "ffffff",
-                    userId
-                )
+                await controller.update("6675932d4f2094eb2ec739ad", {
+                    name: "othertag",
+                    firstColor: "000000",
+                    secondColor: "ffffff",
+                    owner: userId,
+                })
             } catch (e) {
                 expect(e.name).to.equal("NotFoundError")
             }
         })
     })
 
-    describe("#deleteTag", () => {
+    describe("#del", () => {
         it("should delete the new tag", async () => {
-            const tag = await createTag("testtag", "000000", "ffffff", userId)
+            const tag = await controller.create({
+                name: "testtag",
+                firstColor: "000000",
+                secondColor: "ffffff",
+                owner: userId,
+            })
 
-            await deleteTag(tag.id)
+            await controller.del(tag.id)
         })
     })
 
-    describe("#listTags", () => {
+    describe("#list", () => {
         it("should return empty tag list", async () => {
-            const tags = await listTags()
+            const tags = await controller.list()
 
             expect(tags).to.be.an("array")
         })
 
         it("should return created tag list", async () => {
-            await createTag("testtag", "000000", "ffffff", userId)
+            await controller.create({
+                name: "testtag",
+                firstColor: "000000",
+                secondColor: "ffffff",
+                owner: userId,
+            })
 
-            const tags = await listTags()
+            const tags = await controller.list()
 
             expect(tags.some((tagObj) => tagObj.name === "testtag")).to.be.true
         })

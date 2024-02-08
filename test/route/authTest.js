@@ -7,14 +7,18 @@ import request from "supertest"
 import mongoose from "mongoose"
 
 import app from "./../../appInit.js"
-import { createUser } from "./../../app/controller/user.js"
+import user from "./../../app/controller/user.js"
 
 const User = mongoose.model("User")
 
 describe("auth router", () => {
     before(function (done) {
         const prepare = async () => {
-            await createUser("routeauthtester", "testPW123", false)
+            await user.create({
+                username: "routeauthtester",
+                password: "testPW123",
+                isAdmin: false,
+            })
 
             done()
         }

@@ -4,6 +4,7 @@
 
 import mongoose from "mongoose"
 import validator from "validator"
+import { triggerPreviewGeneration } from "./../controller/itemPreview.js"
 
 const Schema = mongoose.Schema
 
@@ -39,4 +40,11 @@ const ItemSchema = new Schema({
     },
 })
 
-mongoose.model("Item", ItemSchema)
+/**
+ * Generate preview after saving item
+ */
+ItemSchema.post("save", async (item) => {
+    await triggerPreviewGeneration(item.id)
+})
+
+export default mongoose.model("Item", ItemSchema)

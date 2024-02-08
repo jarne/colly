@@ -28,7 +28,7 @@
         "dev": "nodemon -i client app.js",
         "test": "mocha --recursive --parallel",
         "test-ci": "mocha --recursive --exit --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results/mocha/junit.xml",
-        "test-coverage": "c8 --all --reporter html yarn test",
+        "test-coverage": "c8 --all -x client -x .yarn --reporter html yarn test",
         "lint": "eslint .",
         "lint-ci": "eslint --format junit --output-file ./lint-results/eslint/junit.xml .",
         "format": "prettier --write \"**/*.{js,json,html,css,scss,yml,md}\""
@@ -52,6 +52,7 @@
         "chai": "^5.0",
         "cors": "^2.8",
         "eslint": "^8.56",
+        "eslint-plugin-jsdoc": "^48.0.6",
         "mocha": "^10.2",
         "mocha-junit-reporter": "^2.2",
         "morgan": "^1.10",

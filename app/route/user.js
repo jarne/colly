@@ -4,81 +4,31 @@
 
 import express from "express"
 
-import {
-    createUser,
-    updateUser,
-    deleteUser,
-    listUsers,
-} from "./../controller/user.js"
-import { handleError } from "./../routes.js"
+import controller from "./../controller/user.js"
+import crudRoutes from "./../route/common/crud.js"
 
 const router = express.Router()
+
+const { create, update, del, list } = crudRoutes(controller)
 
 /**
  * Create new user
  */
-router.post("/", async (req, res) => {
-    let user
-    try {
-        user = await createUser(req.body.username, req.body.password)
-    } catch (e) {
-        return handleError(e, res)
-    }
-
-    return res.json({
-        userId: user.id,
-    })
-})
+router.post("/", create)
 
 /**
  * Update user
  */
-router.patch("/:userId", async (req, res) => {
-    const userId = req.params.userId
-
-    let user
-    try {
-        user = await updateUser(userId, req.body.username, req.body.isAdmin)
-    } catch (e) {
-        return handleError(e, res)
-    }
-
-    return res.json({
-        userId: user.id,
-    })
-})
+router.patch("/:id", update)
 
 /**
  * Delete a user
  */
-router.delete("/:userId", async (req, res) => {
-    const userId = req.params.userId
-
-    try {
-        await deleteUser(userId)
-    } catch (e) {
-        return handleError(e, res)
-    }
-
-    return res.json({
-        userId: userId,
-    })
-})
+router.delete("/:id", del)
 
 /**
  * Get all users
  */
-router.get("/", async (req, res) => {
-    let users
-    try {
-        users = await listUsers()
-    } catch (e) {
-        return handleError(e, res)
-    }
-
-    return res.json({
-        users: users,
-    })
-})
+router.get("/", list)
 
 export default router

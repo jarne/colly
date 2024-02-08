@@ -6,12 +6,7 @@ import { expect } from "chai"
 import mongoose from "mongoose"
 
 import { connectDbAsync } from "./../../app/init.js"
-import {
-    createUser,
-    updateUser,
-    deleteUser,
-    listUsers,
-} from "./../../app/controller/user.js"
+import controller from "./../../app/controller/user.js"
 
 const User = mongoose.model("User")
 
@@ -20,16 +15,23 @@ describe("user controller", () => {
         await connectDbAsync()
     })
 
-    describe("#createUser", () => {
+    describe("#create", () => {
         it("should create a new user", async () => {
-            const user = await createUser("testuser", "testPW123")
+            const user = await controller.create({
+                username: "testuser",
+                password: "testPW123",
+            })
 
             expect(user.id).to.be.not.null
             expect(user.username).to.equal("testuser")
         })
 
         it("should create an admin user", async () => {
-            const user = await createUser("testuser", "testPW123", true)
+            const user = await controller.create({
+                username: "testuser",
+                password: "testPW123",
+                isAdmin: true,
+            })
 
             expect(user.id).to.be.not.null
             expect(user.isAdmin).to.be.true
@@ -37,21 +39,30 @@ describe("user controller", () => {
 
         it("throws error with invalid username", async () => {
             try {
-                await createUser("some Test User $!", "testPW123")
+                await controller.create({
+                    username: "some Test User $!",
+                    password: "testPW123",
+                })
             } catch (e) {
                 expect(e.name).to.equal("ValidationError")
             }
         })
     })
 
-    describe("#updateUser", () => {
+    describe("#update", () => {
         it("should update a created user", async () => {
-            const user = await createUser("testuser", "testPW123")
+            const user = await controller.create({
+                username: "testuser",
+                password: "testPW123",
+            })
 
             expect(user.username).to.equal("testuser")
             expect(user.isAdmin).to.be.false
 
-            const updatedUser = await updateUser(user.id, "otheruser", true)
+            const updatedUser = await controller.update(user.id, {
+                username: "otheruser",
+                isAdmin: true,
+            })
 
             expect(updatedUser.username).to.equal("otheruser")
             expect(updatedUser.isAdmin).to.be.true
@@ -59,36 +70,45 @@ describe("user controller", () => {
 
         it("throws error for non-existing user", async () => {
             try {
-                await updateUser("6675932d4f2094eb2ec739ad", "otheruser", true)
+                await controller.update("6675932d4f2094eb2ec739ad", {
+                    username: "otheruser",
+                    isAdmin: true,
+                })
             } catch (e) {
                 expect(e.name).to.equal("NotFoundError")
             }
         })
     })
 
-    describe("#deleteUser", () => {
+    describe("#del", () => {
         it("should delete the new user", async () => {
-            const user = await createUser("testuser", "testPW123")
+            const user = await controller.create({
+                username: "testuser",
+                password: "testPW123",
+            })
 
-            await deleteUser(user.id)
+            await controller.del(user.id)
         })
 
         it("should delete not existing user", async () => {
-            await deleteUser("6675932d4f2094eb2ec739ad")
+            await controller.del("6675932d4f2094eb2ec739ad")
         })
     })
 
-    describe("#listUsers", () => {
+    describe("#list", () => {
         it("should return empty user list", async () => {
-            const users = await listUsers()
+            const users = await controller.list()
 
             expect(users).to.be.an("array")
         })
 
         it("should return created user list", async () => {
-            await createUser("testuser", "testPW123")
+            await controller.create({
+                username: "testuser",
+                password: "testPW123",
+            })
 
-            const users = await listUsers()
+            const users = await controller.list()
 
             expect(users.some((usrObj) => usrObj.username === "testuser")).to.be
                 .true
