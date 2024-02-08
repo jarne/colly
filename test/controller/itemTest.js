@@ -14,7 +14,7 @@ import {
     listItems,
     hasPermission,
 } from "./../../app/controller/item.js"
-import { createUser } from "./../../app/controller/user.js"
+import user from "./../../app/controller/user.js"
 import tag from "./../../app/controller/tag.js"
 
 const Item = mongoose.model("Item")
@@ -28,7 +28,10 @@ describe("item controller", () => {
     before(async () => {
         await connectDbAsync()
 
-        const createdUser = await createUser("itemtester", "testPW123")
+        const createdUser = await user.create({
+            username: "itemtester",
+            password: "testPW123",
+        })
         userId = createdUser.id
         const createdTag = await tag.create({
             name: "itemtesttag",

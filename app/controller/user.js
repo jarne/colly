@@ -4,31 +4,30 @@
 
 import mongoose from "mongoose"
 
+import crudController from "./../controller/common/crud.js"
 import NotFoundError from "./exception/notFoundError.js"
 import logger from "./../util/logger.js"
 
 const User = mongoose.model("User")
+const crud = crudController(User)
 
 /**
- * Create a new user
- *
- * @param {string} username New username
- * @param {string} password New user's password
- * @param {boolean} isAdmin User should be admin user (default false)
- *
- * @returns User object
+ * Create user
+ * @param {object} data User data
+ * @returns Created user
  */
-export const createUser = async (username, password, isAdmin = false) => {
-    const user = new User()
-    user.username = username
-    user.isAdmin = isAdmin
-    await user.setPassword(password)
+const create = async (data) => {
+    const password = data.password
+    delete data.password
+
+    const usr = new User(data)
+    await usr.setPassword(password)
 
     try {
-        const savedUser = await user.save()
-        logger.verbose("user_created", { id: savedUser.id })
+        const saved = await usr.save()
+        logger.verbose("user_created", { id: saved.id })
 
-        return savedUser
+        return saved
     } catch (e) {
         logger.error("user_create_error", {
             error: e.message,
@@ -39,34 +38,33 @@ export const createUser = async (username, password, isAdmin = false) => {
 }
 
 /**
- * Update a user
- *
+ * Update user
  * @param {string} id User ID
- * @param {string} username Username
- * @param {boolean} isAdmin User should be admin user (default false)
- *
- * @returns User object
+ * @param {object} data User data
+ * @returns Updated user
  */
-export const updateUser = async (id, username, isAdmin = false) => {
-    let user
-    try {
-        user = await User.findById(id)
-    } catch (e) {
-        throw e
+const update = async (id, data) => {
+    let password = null
+    if (Object.hasOwn(data, "password")) {
+        password = data.password
+        delete data.password
     }
 
-    if (user === null) {
-        throw new NotFoundError()
-    }
-
-    user.username = username
-    user.isAdmin = isAdmin
-
     try {
-        const savedUser = await user.save()
-        logger.verbose("user_updated", { id: savedUser.id })
+        const updated = await User.findByIdAndUpdate(id, data, {
+            returnDocument: "after",
+        })
 
-        return savedUser
+        if (updated === null) {
+            throw new NotFoundError()
+        }
+
+        if (password !== null) {
+            await updated.setPassword(password)
+        }
+
+        logger.verbose("user_updated", { id: updated.id })
+        return updated
     } catch (e) {
         logger.error("user_update_error", {
             id,
@@ -78,50 +76,10 @@ export const updateUser = async (id, username, isAdmin = false) => {
 }
 
 /**
- * Delete user by ID
- *
- * @param {string} id User ID
+ * List users
+ * @returns All users
  */
-export const deleteUser = async (id) => {
-    try {
-        await User.findByIdAndDelete(id)
-        logger.verbose("user_deleted", { id })
-    } catch (e) {
-        logger.error("user_delete_error", {
-            id,
-            error: e.message,
-        })
-
-        throw e
-    }
-}
-
-/**
- * Get user by ID
- *
- * @param {string} id User ID
- *
- * @returns User object
- */
-export const getUser = async (id) => {
-    try {
-        return await User.findById(id)
-    } catch (e) {
-        logger.error("user_get_error", {
-            id,
-            error: e.message,
-        })
-
-        throw e
-    }
-}
-
-/**
- * Get all users
- *
- * @returns List of all users
- */
-export const listUsers = async () => {
+const list = async () => {
     try {
         return await User.find().select("username isAdmin")
     } catch (e) {
@@ -131,4 +89,12 @@ export const listUsers = async () => {
 
         throw e
     }
+}
+
+export default {
+    create,
+    update,
+    del: crud.del,
+    getById: crud.getById,
+    list,
 }

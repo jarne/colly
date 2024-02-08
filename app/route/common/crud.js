@@ -33,7 +33,18 @@ const crud = (controller) => {
      * @param {object} res Result
      */
     const update = async (req, res) => {
-        // ...
+        const id = req.params.id
+
+        let obj
+        try {
+            obj = await controller.update(id, req.body)
+        } catch (e) {
+            return handleError(e, res)
+        }
+
+        return res.json({
+            id: obj.id,
+        })
     }
 
     /**

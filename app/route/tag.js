@@ -34,8 +34,8 @@ router.post("/", async (req, res) => {
 /**
  * Update tag
  */
-router.patch("/:tagId", async (req, res) => {
-    const tagId = req.params.tagId
+router.patch("/:id", async (req, res) => {
+    const tagId = req.params.id
 
     let tag
     try {
@@ -55,7 +55,7 @@ router.patch("/:tagId", async (req, res) => {
 /**
  * Delete a tag
  */
-router.delete("/:tagId", del)
+router.delete("/:id", del)
 
 /**
  * Get all tags

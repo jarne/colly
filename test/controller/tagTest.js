@@ -7,7 +7,7 @@ import mongoose from "mongoose"
 
 import { connectDbAsync } from "./../../app/init.js"
 import controller from "./../../app/controller/tag.js"
-import { createUser } from "./../../app/controller/user.js"
+import user from "./../../app/controller/user.js"
 
 const Tag = mongoose.model("Tag")
 const User = mongoose.model("User")
@@ -18,7 +18,10 @@ describe("tag controller", () => {
     before(async () => {
         await connectDbAsync()
 
-        const createdUser = await createUser("tagtester", "testPW123")
+        const createdUser = await user.create({
+            username: "tagtester",
+            password: "testPW123",
+        })
         userId = createdUser.id
     })
 
