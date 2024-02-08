@@ -10,7 +10,7 @@ import { handleError } from "./../routes.js"
 
 const router = express.Router()
 
-const { del, list } = crudRoutes(controller)
+const { update, del, list } = crudRoutes(controller)
 
 /**
  * Create new tag
@@ -27,30 +27,14 @@ router.post("/", async (req, res) => {
     }
 
     return res.json({
-        tagId: tag.id,
+        id: tag.id,
     })
 })
 
 /**
  * Update tag
  */
-router.patch("/:id", async (req, res) => {
-    const tagId = req.params.id
-
-    let tag
-    try {
-        tag = await controller.update(tagId, {
-            ...req.body,
-            owner: req.user.id,
-        })
-    } catch (e) {
-        return handleError(e, res)
-    }
-
-    return res.json({
-        tagId: tag.id,
-    })
-})
+router.patch("/:id", update)
 
 /**
  * Delete a tag
