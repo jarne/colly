@@ -147,7 +147,7 @@ describe("item controller", () => {
         })
 
         it("should return created item list", async () => {
-            const item = await controller.create({
+            await controller.create({
                 url: "https://www.example.com",
                 name: "example page",
                 description: "is an example",
