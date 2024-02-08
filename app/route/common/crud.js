@@ -72,7 +72,16 @@ const crud = (controller) => {
      * @param {object} res Result
      */
     const getById = async (req, res) => {
-        // TODO: implement
+        const id = req.params.id
+
+        let obj
+        try {
+            obj = await controller.getById(id)
+        } catch (e) {
+            return handleError(e, res)
+        }
+
+        return res.json(obj)
     }
 
     /**
