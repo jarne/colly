@@ -4,22 +4,19 @@
 
 import express from "express"
 
-import {
-    createItem,
-    updateItem,
-    deleteItem,
-    listItems,
-    hasPermission,
-} from "./../controller/item.js"
+import controller from "./../controller/item.js"
 import {
     triggerPreviewGeneration,
     previewExists,
     getPreviewPath,
 } from "./../controller/itemPreview.js"
+import crudRoutes from "./../route/common/crud.js"
 import { handleError } from "./../routes.js"
 import logger from "./../util/logger.js"
 
 const router = express.Router()
+
+const { update, del, list } = crudRoutes(controller)
 
 /**
  * Create new item
@@ -27,79 +24,33 @@ const router = express.Router()
 router.post("/", async (req, res) => {
     let item
     try {
-        item = await createItem(
-            req.body.url,
-            req.body.name,
-            req.body.description,
-            req.user.id,
-            req.body.tags
-        )
+        item = await controller.create({
+            ...req.body,
+            owner: req.user.id,
+        })
     } catch (e) {
         return handleError(e, res)
     }
 
     return res.json({
-        itemId: item.id,
+        id: item.id,
     })
 })
 
 /**
  * Update item
  */
-router.patch("/:itemId", async (req, res) => {
-    const itemId = req.params.itemId
-
-    let item
-    try {
-        item = await updateItem(
-            itemId,
-            req.body.url,
-            req.body.name,
-            req.body.description,
-            req.user.id,
-            req.body.tags
-        )
-    } catch (e) {
-        return handleError(e, res)
-    }
-
-    return res.json({
-        itemId: item.id,
-    })
-})
+router.patch("/:id", update)
 
 /**
  * Delete an item
  */
-router.delete("/:itemId", async (req, res) => {
-    const itemId = req.params.itemId
-
-    try {
-        await deleteItem(itemId)
-    } catch (e) {
-        return handleError(e, res)
-    }
-
-    return res.json({
-        itemId: itemId,
-    })
-})
+router.delete("/:id", del)
 
 /**
  * Get all items
  */
-router.get("/", async (req, res) => {
-    let items
-    try {
-        items = await listItems()
-    } catch (e) {
-        return handleError(e, res)
-    }
-
-    return res.json({
-        items: items,
-    })
-})
+router.get("/", list)
 
 /**
  * Trigger preview image generation of an item
@@ -109,7 +60,7 @@ router.get("/:itemId/requestPreview", async (req, res) => {
 
     let allowed
     try {
-        allowed = await hasPermission(itemId, req.user.id)
+        allowed = await controller.hasPermission(itemId, req.user.id)
     } catch (e) {
         logger.error("permission_check_error", { itemId, userId: req.user.id })
         return handleError(e, res)
@@ -132,7 +83,7 @@ router.get("/:itemId/preview", async (req, res) => {
 
     let allowed
     try {
-        allowed = await hasPermission(itemId, req.user.id)
+        allowed = await controller.hasPermission(itemId, req.user.id)
     } catch (e) {
         logger.error("permission_check_error", { itemId, userId: req.user.id })
         return handleError(e, res)

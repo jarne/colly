@@ -2,14 +2,13 @@
  * Colly | item preview controller
  */
 
-import mongoose from "mongoose"
 import captureWebsite from "capture-website"
 import { resolve as resolvePath } from "path"
 import { access as fsAccess } from "fs/promises"
 import { constants as fsConstants } from "fs"
-import logger from "./../util/logger.js"
 
-const Item = mongoose.model("Item")
+import Item from "./../model/item.js"
+import logger from "./../util/logger.js"
 
 /**
  * Generate a preview screenshot for an item in background
