@@ -28,7 +28,7 @@
         "dev": "nodemon -i client app.js",
         "test": "mocha --recursive --parallel",
         "test-ci": "mocha --recursive --exit --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results/mocha/junit.xml",
-        "test-coverage": "c8 --all -x client --reporter html yarn test",
+        "test-coverage": "c8 --all -x client -x .yarn --reporter html yarn test",
         "lint": "eslint .",
         "lint-ci": "eslint --format junit --output-file ./lint-results/eslint/junit.xml .",
         "format": "prettier --write \"**/*.{js,json,html,css,scss,yml,md}\""
