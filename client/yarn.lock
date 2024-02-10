@@ -10731,8 +10731,8 @@ __metadata:
   linkType: hard
 
 "react-bootstrap@npm:^2.10":
-  version: 2.10.0
-  resolution: "react-bootstrap@npm:2.10.0"
+  version: 2.10.1
+  resolution: "react-bootstrap@npm:2.10.1"
   dependencies:
     "@babel/runtime": "npm:^7.22.5"
     "@restart/hooks": "npm:^0.4.9"
@@ -10753,7 +10753,7 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 10c0/d48c11922e7207d4c09be3f1cc45743fb2f0f7ebcbb2ad032ad422a3584d10339abafc88027ce6b2b6e0f2f033c9fcd36e2bd56f80dfc758a71bc7934db7b8a4
+  checksum: 10c0/94b6174e856c571886e6911c5155ee45a6ff93e392fdcda1bfabf5d3b744a824403abf3841a6667046a26d27c428852673b09e56d0bd34d3c0e4ec8f13753976
   languageName: node
   linkType: hard
 
