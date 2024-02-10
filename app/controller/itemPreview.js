@@ -38,7 +38,7 @@ const fetchMetadata = async (url) => {
 
     let meta
     try {
-        meta = ms({
+        meta = await ms({
             url,
             html: pageContent,
         })
