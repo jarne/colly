@@ -10,7 +10,6 @@ import mImage from "metascraper-image"
 import imageType from "image-type"
 import { PutObjectCommand } from "@aws-sdk/client-s3"
 
-// import itemController from "./../controller/item.js"
 import Item from "./../model/item.js"
 import { s3Client } from "./../util/s3Storage.js"
 import logger from "./../util/logger.js"
