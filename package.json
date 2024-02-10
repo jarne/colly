@@ -38,6 +38,7 @@
         "bcrypt": "^5.1",
         "dotenv": "^16.4",
         "express": "^4.18",
+        "image-type": "^5.2.0",
         "jsonwebtoken": "^9.0",
         "metascraper": "^5.43.4",
         "metascraper-description": "^5.43.4",

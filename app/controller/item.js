@@ -2,12 +2,10 @@
  * Colly | item controller
  */
 
-import mongoose from "mongoose"
-
+import Item from "./../model/item.js"
 import crudController from "./../controller/common/crud.js"
 import logger from "./../util/logger.js"
 
-const Item = mongoose.model("Item")
 const crud = crudController(Item)
 
 /**

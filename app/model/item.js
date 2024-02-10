@@ -4,7 +4,9 @@
 
 import mongoose from "mongoose"
 import validator from "validator"
-import { triggerPreviewGeneration } from "./../controller/itemPreview.js"
+
+import { saveImageMetadata } from "./../controller/itemPreview.js"
+import logger from "./../util/logger.js"
 
 const Schema = mongoose.Schema
 
@@ -44,7 +46,14 @@ const ItemSchema = new Schema({
  * Generate preview after saving item
  */
 ItemSchema.post("save", async (item) => {
-    await triggerPreviewGeneration(item.id)
+    try {
+        await saveImageMetadata(item.id)
+    } catch (e) {
+        logger.warn("item_image_meta_fetch_error", {
+            id: item.id,
+            error: e.message,
+        })
+    }
 })
 
 export default mongoose.model("Item", ItemSchema)

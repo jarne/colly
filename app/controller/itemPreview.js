@@ -2,20 +2,143 @@
  * Colly | item preview controller
  */
 
-import captureWebsite from "capture-website"
-import { resolve as resolvePath } from "path"
-import { access as fsAccess } from "fs/promises"
-import { constants as fsConstants } from "fs"
+import metascraper from "metascraper"
+import mTitle from "metascraper-title"
+import mDescr from "metascraper-description"
+import mLogo from "metascraper-logo"
+import mImage from "metascraper-image"
+import imageType from "image-type"
+import { PutObjectCommand } from "@aws-sdk/client-s3"
 
+// import itemController from "./../controller/item.js"
 import Item from "./../model/item.js"
+import { s3Client } from "./../util/s3Storage.js"
 import logger from "./../util/logger.js"
 
+const ms = metascraper([mTitle, mDescr, mLogo, mImage])
+
 /**
- * Generate a preview screenshot for an item in background
- *
- * @param {string} itemId Item ID
+ * Fetch metadata from URL
+ * @param {string} url URL to fetch metadata from
+ * @returns Metadata object
  */
-export const triggerPreviewGeneration = async (itemId) => {
+const fetchMetadata = async (url) => {
+    let pageContent
+    try {
+        const res = await fetch(url)
+        pageContent = await res.text()
+    } catch (e) {
+        logger.error("preview_url_fetch_error", {
+            url,
+            error: e.message,
+        })
+
+        throw e
+    }
+
+    let meta
+    try {
+        meta = ms({
+            url,
+            html: pageContent,
+        })
+    } catch (e) {
+        logger.error("preview_meta_extract_error", {
+            url,
+            error: e.message,
+        })
+
+        throw e
+    }
+
+    return meta
+}
+
+/**
+ * Persist meta data image of item, save to S3
+ * @param {string} url Image URL
+ * @param {string} itemId Associated item ID
+ * @param {string} type Image type identifier
+ * @returns S3 storage reference
+ */
+const saveMetaImage = async (url, itemId, type) => {
+    let imgBuf
+    try {
+        const res = await fetch(url)
+        imgBuf = await res.arrayBuffer()
+    } catch (e) {
+        logger.error(`preview_${type}_fetch_error`, {
+            url,
+            error: e.message,
+        })
+
+        throw e
+    }
+
+    let imgExt
+    try {
+        const imgType = await imageType(imgBuf)
+        imgExt = imgType.ext
+    } catch (e) {
+        logger.error(`preview_${type}_type_determine_error`, {
+            url,
+            error: e.message,
+        })
+
+        throw e
+    }
+
+    const s3Key = `meta/${type}/${itemId}.${imgExt}`
+
+    try {
+        s3Client.send(
+            new PutObjectCommand({
+                Bucket: process.env.S3_BUCKET,
+                Key: s3Key,
+                Body: imgBuf,
+            })
+        )
+    } catch (e) {
+        logger.error(`preview_${type}_s3_upload_error`, {
+            error: e.message,
+        })
+
+        throw e
+    }
+
+    return s3Key
+}
+
+/**
+ * Get basic metadata, such as page title and description, used for creation suggestions
+ * @param {string} url URL to fetch from
+ * @returns Basic metadata object
+ */
+export const getBasicMetadata = async (url) => {
+    let meta
+    try {
+        meta = await fetchMetadata(url)
+    } catch (e) {
+        logger.error("preview_fetch_error", {
+            url,
+            error: e.message,
+        })
+
+        throw e
+    }
+
+    return {
+        title: meta.title,
+        description: meta.description,
+    }
+}
+
+/**
+ * Fetch and store image metadata on S3 storage (logo, article image) of an item
+ * @param {string} itemId Item ID
+ * @returns S3 storage references
+ */
+export const saveImageMetadata = async (itemId) => {
     let item
     try {
         item = await Item.findById(itemId)
@@ -25,68 +148,50 @@ export const triggerPreviewGeneration = async (itemId) => {
             error: e.message,
         })
 
-        return
+        throw e
     }
 
-    const url = item.url
-    const previewPath = getPreviewPath(item.id)
-
-    const captureOpts = {
-        width: Number.parseInt(process.env.PREVIEW_WIDTH) || 640,
-        height: Number.parseInt(process.env.PREVIEW_HEIGHT) || 400,
-        timeout: Number.parseInt(process.env.PREVIEW_TIMEOUT) || 3,
-    }
-
+    let meta
     try {
-        await captureWebsite.file(url, previewPath, captureOpts)
-
-        logger.verbose("preview_generated", {
-            id: item.id,
-            url,
-        })
+        meta = await fetchMetadata(item.url)
     } catch (e) {
-        logger.error("preview_generation_error", {
-            id: item.id,
-            url,
-            error: e.message,
-        })
-    }
-}
-
-/**
- * Check if a preview screenshot exists for an item
- *
- * @param {string} previewPath Preview screenshot path
- *
- * @returns Preview screenshot exists (bool)
- */
-export const previewExists = async (previewPath) => {
-    try {
-        await fsAccess(previewPath, fsConstants.R_OK)
-
-        return true
-    } catch (e) {
-        logger.warn("no_preview_found", {
-            previewPath,
+        logger.error("preview_fetch_error", {
+            url: item.url,
             error: e.message,
         })
 
-        return false
+        throw e
     }
-}
 
-/**
- * Get the path of the preview screenshot for an item
- *
- * @param {string} itemId Item ID
- *
- * @returns Preview screenshot path
- */
-export const getPreviewPath = (itemId) => {
-    const previewFile = `${
-        process.env.PREVIEW_SCREENSHOTS_PATH || "content/previews"
-    }/${itemId}.png`
-    const previewPath = resolvePath(previewFile)
+    const logo = meta.logo
+    const image = meta.image
 
-    return previewPath
+    let logoKey
+    if (logo) {
+        try {
+            logoKey = await saveMetaImage(logo, itemId, "logo")
+        } catch (e) {
+            logger.warn("preview_logo_fetch_error", {
+                logo,
+                error: e.message,
+            })
+        }
+    }
+
+    let imageKey
+    if (image) {
+        try {
+            imageKey = await saveMetaImage(image, itemId, "image")
+        } catch (e) {
+            logger.warn("preview_image_fetch_error", {
+                image,
+                error: e.message,
+            })
+        }
+    }
+
+    return {
+        logo: logoKey,
+        image: imageKey,
+    }
 }
