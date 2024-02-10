@@ -6,6 +6,7 @@ import metascraper from "metascraper"
 import mTitle from "metascraper-title"
 import mDescr from "metascraper-description"
 import mLogo from "metascraper-logo"
+import mFavicon from "metascraper-logo-favicon"
 import mImage from "metascraper-image"
 import imageType from "image-type"
 import { PutObjectCommand } from "@aws-sdk/client-s3"
@@ -14,7 +15,7 @@ import Item from "./../model/item.js"
 import { s3Client } from "./../util/s3Storage.js"
 import logger from "./../util/logger.js"
 
-const ms = metascraper([mTitle, mDescr, mLogo, mImage])
+const ms = metascraper([mTitle(), mDescr(), mLogo(), mFavicon(), mImage()])
 
 /**
  * Fetch metadata from URL
