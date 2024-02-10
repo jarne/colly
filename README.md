@@ -41,20 +41,21 @@ Colly is a web-based URL/website collection app, where you can add links to your
 
 The following environment variables can be set:
 
-| Env variable               | Default Value      | Description                                                     |
-| -------------------------- | ------------------ | --------------------------------------------------------------- |
-| `MONGO_HOST`               |                    | Hostname of MongoDB                                             |
-| `MONGO_PORT`               | `27017`            | Port of MongoDB                                                 |
-| `MONGO_DB`                 |                    | MongoDB database name                                           |
-| `JWT_SECRET`               |                    | Random secret for JWT                                           |
-| `EXPIRES_IN_SEC`           | `86400`            | Expiration of JWT (in seconds)                                  |
-| `LOG_LEVEL`                | `info`             | Log level of the app                                            |
-| `LOKI_HOST`                |                    | Hostname for Grafana Loki to send logs to                       |
-| `LOKI_BASIC_AUTH`          |                    | Authentication credentials (basic auth format) for Grafana Loki |
-| `PREVIEW_SCREENSHOTS_PATH` | `content/previews` | Path of the preview screenshots storage                         |
-| `PREVIEW_WIDTH`            | `640`              | Width of preview screenshots                                    |
-| `PREVIEW_HEIGHT`           | `400`              | Height of preview screenshots                                   |
-| `PREVIEW_TIMEOUT`          | `3`                | Timeout when loading website to create preview (in seconds)     |
+| Env variable       | Default Value | Description                                                     |
+| ------------------ | ------------- | --------------------------------------------------------------- |
+| `MONGO_HOST`       |               | Hostname of MongoDB                                             |
+| `MONGO_PORT`       | `27017`       | Port of MongoDB                                                 |
+| `MONGO_DB`         |               | MongoDB database name                                           |
+| `JWT_SECRET`       |               | Random secret for JWT                                           |
+| `EXPIRES_IN_SEC`   | `86400`       | Expiration of JWT (in seconds)                                  |
+| `LOG_LEVEL`        | `info`        | Log level of the app                                            |
+| `LOKI_HOST`        |               | Hostname for Grafana Loki to send logs to                       |
+| `LOKI_BASIC_AUTH`  |               | Authentication credentials (basic auth format) for Grafana Loki |
+| `S3_ENDPOINT`      |               | Hostname for S3-compatible endpoint for image storage           |
+| `S3_REGION`        |               | S3 region to use                                                |
+| `S3_ACCESS_KEY`    |               | Access key ID for S3 endpoint                                   |
+| `S3_ACCESS_SECRET` |               | Secret access key for S3 endpoint                               |
+| `S3_BUCKET`        |               | Name of the S3 bucket                                           |
 
 ## 🙋‍ Contribution
 
