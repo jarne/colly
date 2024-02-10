@@ -8,10 +8,10 @@ import mDescr from "metascraper-description"
 import mLogo from "metascraper-logo"
 import mFavicon from "metascraper-logo-favicon"
 import mImage from "metascraper-image"
-import imageType from "image-type"
 import { PutObjectCommand } from "@aws-sdk/client-s3"
 
 import Item from "./../model/item.js"
+import { parseImgAttribute } from "./../util/image.js"
 import { s3Client } from "./../util/s3Storage.js"
 import logger from "./../util/logger.js"
 
@@ -56,37 +56,26 @@ const fetchMetadata = async (url) => {
 
 /**
  * Persist meta data image of item, save to S3
- * @param {string} url Image URL
+ * @param {string} attr Image source attribute value
  * @param {string} itemId Associated item ID
  * @param {string} type Image type identifier
  * @returns S3 storage reference
  */
-const saveMetaImage = async (url, itemId, type) => {
-    let imgBuf
+const saveMetaImage = async (attr, itemId, type) => {
+    let parsedImg
     try {
-        const res = await fetch(url)
-        imgBuf = await res.arrayBuffer()
+        parsedImg = await parseImgAttribute(attr)
     } catch (e) {
-        logger.error(`preview_${type}_fetch_error`, {
-            url,
+        logger.error(`preview_${type}_parse_error`, {
+            attr,
             error: e.message,
         })
 
         throw e
     }
 
-    let imgExt
-    try {
-        const imgType = await imageType(imgBuf)
-        imgExt = imgType.ext
-    } catch (e) {
-        logger.error(`preview_${type}_type_determine_error`, {
-            url,
-            error: e.message,
-        })
-
-        throw e
-    }
+    const imgBuf = parsedImg.buffer
+    const imgExt = parsedImg.fileExtension
 
     const s3Key = `meta/${type}/${itemId}.${imgExt}`
 
