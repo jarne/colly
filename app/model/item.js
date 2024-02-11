@@ -49,7 +49,7 @@ const ItemSchema = new Schema({
  */
 ItemSchema.post("save", async (item) => {
     try {
-        await saveImageMetadata(item.id)
+        saveImageMetadata(item.id)
     } catch (e) {
         logger.warn("item_image_meta_fetch_error", {
             id: item.id,

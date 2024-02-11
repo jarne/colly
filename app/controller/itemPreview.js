@@ -20,6 +20,7 @@ const TYPE_LOGO = "logo"
 const TYPE_IMAGE = "image"
 
 const STORAGE_FILE_EXT = "webp"
+const STORAGE_MIME_TYPE = "image/webp"
 
 const ms = metascraper([mTitle(), mDescr(), mLogo(), mFavicon(), mImage()])
 
@@ -63,17 +64,15 @@ const fetchMetadata = async (url) => {
 /**
  * Persist meta data image of item, save to S3
  * @param {string} attr Image source attribute value
- * @param {string} itemId Associated item ID
  * @param {string} type Image type identifier
  * @returns S3 storage reference
  */
-const saveMetaImage = async (attr, itemId, type) => {
+const saveMetaImage = async (attr, type) => {
     let imgBuf
     try {
         imgBuf = await parseImgAttribute(attr, type)
     } catch (e) {
         logger.error(`preview_${type}_parse_error`, {
-            attr,
             error: e.message,
         })
 
@@ -90,6 +89,7 @@ const saveMetaImage = async (attr, itemId, type) => {
                 Bucket: process.env.S3_BUCKET,
                 Key: s3Key,
                 Body: imgBuf,
+                ContentType: STORAGE_MIME_TYPE,
             })
         )
     } catch (e) {
@@ -163,10 +163,9 @@ export const saveImageMetadata = async (itemId) => {
     let logoId
     if (logo) {
         try {
-            logoId = await saveMetaImage(logo, itemId, TYPE_LOGO)
+            logoId = await saveMetaImage(logo, TYPE_LOGO)
         } catch (e) {
             logger.warn("preview_logo_fetch_error", {
-                logo,
                 error: e.message,
             })
         }
@@ -175,10 +174,9 @@ export const saveImageMetadata = async (itemId) => {
     let imageId
     if (image) {
         try {
-            imageId = await saveMetaImage(image, itemId, TYPE_IMAGE)
+            imageId = await saveMetaImage(image, TYPE_IMAGE)
         } catch (e) {
             logger.warn("preview_image_fetch_error", {
-                image,
                 error: e.message,
             })
         }

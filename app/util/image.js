@@ -42,10 +42,7 @@ const parseFromHttpUrl = async (url) => {
  * @returns Original image buffer
  */
 const parseFromDataUrl = async (data) => {
-    const dataParts = data.split(DATA_URL_DETECTOR)
-
-    const mimeType = dataParts[0].replace("data:", "") // TODO: check if needed
-    const encodedImg = dataParts[1]
+    const encodedImg = data.split(DATA_URL_DETECTOR).pop()
 
     return Buffer.from(encodedImg, "base64")
 }
@@ -83,10 +80,9 @@ export const parseImgAttribute = async (attr, type) => {
     let buf
     try {
         buf = await sharp(origBuffer).resize(dimensions).webp().toBuffer()
-        logger.verbose("meta_image_processed", { attr })
+        logger.verbose(`meta_${type}_processed`)
     } catch (e) {
         logger.error(`meta_${type}_processing_error`, {
-            attr,
             error: e.message,
         })
 
