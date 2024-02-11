@@ -10,7 +10,7 @@ import TagList from "./../tag/TagList"
 
 import { useUserAuth } from "./../context/UserAuthProvider"
 import { useAppData } from "./../context/DataProvider"
-import { createItem, updateItem } from "./../../logic/api/item"
+import { createItem, updateItem, generatePreview } from "./../../logic/api/item"
 
 import "./CreateItemModal.css"
 
@@ -76,6 +76,23 @@ const CreateItemModal = forwardRef((props, ref) => {
     const handleItemUrlChange = (e) => {
         setItemUrl(e.target.value)
     }
+    const handleItemUrlBlur = async (e) => {
+        let meta
+        try {
+            meta = await generatePreview(e.target.value, accessToken)
+        } catch (ex) {
+            return
+        }
+
+        if (itemName === "") {
+            setItemName(meta.title)
+        }
+
+        if (itemDescription === "") {
+            setItemDescription(meta.description)
+        }
+    }
+
     const handleItemNameChange = (e) => {
         setItemName(e.target.value)
     }
@@ -163,6 +180,7 @@ const CreateItemModal = forwardRef((props, ref) => {
                             placeholder="https://example.com/page-123"
                             value={itemUrl}
                             onChange={handleItemUrlChange}
+                            onBlur={handleItemUrlBlur}
                         />
                     </div>
                     <div className="mb-3">

@@ -142,11 +142,7 @@ function Dashboard() {
                         return (
                             <div key={item._id} className="col-4">
                                 <ItemCard
-                                    id={item._id}
-                                    title={item.name}
-                                    description={item.description}
-                                    url={item.url}
-                                    tags={item.tags}
+                                    item={item}
                                     createItemModalRef={createItemModalRef}
                                 />
                             </div>

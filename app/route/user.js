@@ -5,7 +5,7 @@
 import express from "express"
 
 import controller from "./../controller/user.js"
-import crudRoutes from "./../route/common/crud.js"
+import crudRoutes from "./common/crud.js"
 
 const router = express.Router()
 

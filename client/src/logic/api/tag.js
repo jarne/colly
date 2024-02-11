@@ -148,5 +148,5 @@ export const listTags = async (accessToken) => {
         throw new Error()
     }
 
-    return res.tags
+    return res.data
 }

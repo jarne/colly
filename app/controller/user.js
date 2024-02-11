@@ -4,7 +4,7 @@
 
 import mongoose from "mongoose"
 
-import crudController from "./../controller/common/crud.js"
+import crudController from "./common/crud.js"
 import NotFoundError from "./exception/notFoundError.js"
 import logger from "./../util/logger.js"
 
