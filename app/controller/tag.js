@@ -4,7 +4,7 @@
 
 import mongoose from "mongoose"
 
-import crudController from "./../controller/common/crud.js"
+import crudController from "./common/crud.js"
 
 const Tag = mongoose.model("Tag")
 const crud = crudController(Tag)
