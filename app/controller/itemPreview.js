@@ -81,7 +81,7 @@ const saveMetaImage = async (attr, type) => {
 
     const imgUuid = uuid()
 
-    const s3Key = `item_meta/${type}/${imgUuid}.${STORAGE_FILE_EXT}`
+    const s3Key = getS3StorageKey(type, imgUuid)
 
     try {
         s3Client.send(
@@ -101,6 +101,16 @@ const saveMetaImage = async (attr, type) => {
     }
 
     return imgUuid
+}
+
+/**
+ * Get S3 storage key for a specific image
+ * @param {string} type Image asset type
+ * @param {string} imgUuid UUID of the image
+ * @returns S3 storage key
+ */
+export const getS3StorageKey = (type, imgUuid) => {
+    return `item_meta/${type}/${imgUuid}.${STORAGE_FILE_EXT}`
 }
 
 /**

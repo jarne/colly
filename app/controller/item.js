@@ -2,11 +2,56 @@
  * Colly | item controller
  */
 
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner"
+import { GetObjectCommand } from "@aws-sdk/client-s3"
+
 import Item from "./../model/item.js"
-import crudController from "./../controller/common/crud.js"
+import crudController from "./common/crud.js"
+import { getS3StorageKey } from "./itemPreview.js"
 import logger from "./../util/logger.js"
+import { s3Client } from "./../util/s3Storage.js"
+
+const TYPE_LOGO = "logo"
+const TYPE_IMAGE = "image"
 
 const crud = crudController(Item)
+
+/**
+ * Populate additional fields for signed image asset URL's
+ * @param {object} item Item object
+ * @returns Item object (with signed URL's)
+ */
+const signImageUrls = async (item) => {
+    if (item.logo) {
+        const s3Key = getS3StorageKey(TYPE_LOGO, item.logo)
+
+        const signedUrl = await getSignedUrl(
+            s3Client,
+            new GetObjectCommand({
+                Bucket: process.env.S3_BUCKET,
+                Key: s3Key,
+            })
+        )
+
+        item.logoUrl = signedUrl
+    }
+
+    if (item.image) {
+        const s3Key = getS3StorageKey(TYPE_IMAGE, item.image)
+
+        const signedUrl = await getSignedUrl(
+            s3Client,
+            new GetObjectCommand({
+                Bucket: process.env.S3_BUCKET,
+                Key: s3Key,
+            })
+        )
+
+        item.imageUrl = signedUrl
+    }
+
+    return item
+}
 
 /**
  * List items
@@ -14,7 +59,10 @@ const crud = crudController(Item)
  */
 export const list = async () => {
     try {
-        return await Item.find().populate("tags")
+        const items = await Item.find().populate("tags").lean()
+        const withSignedUrls = await Promise.all(items.map(signImageUrls))
+
+        return withSignedUrls
     } catch (e) {
         logger.error("item_list_error", {
             error: e.message,
