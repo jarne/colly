@@ -153,5 +153,5 @@ export const listItems = async (accessToken) => {
         throw new Error()
     }
 
-    return res.items
+    return res.data
 }
