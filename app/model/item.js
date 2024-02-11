@@ -40,6 +40,8 @@ const ItemSchema = new Schema({
         ref: "User",
         required: true,
     },
+    logo: Schema.Types.UUID,
+    image: Schema.Types.UUID,
 })
 
 /**

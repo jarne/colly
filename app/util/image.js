@@ -2,10 +2,14 @@
  * Colly | image-related util functions
  */
 
-import imageType from "image-type"
+import sharp from "sharp"
 
 import UnknownImageFormatError from "./exception/unknownImageFormatError.js"
+import InvalidImageTypeError from "./exception/invalidImageTypeError.js"
 import logger from "./logger.js"
+
+const TYPE_LOGO = "logo"
+const TYPE_IMAGE = "image"
 
 const HTTP_DETECTOR = "http"
 const DATA_URL_DETECTOR = ";base64,"
@@ -13,7 +17,7 @@ const DATA_URL_DETECTOR = ";base64,"
 /**
  * Download image from HTTP URL
  * @param {string} url Image URL
- * @returns File extension and image buffer
+ * @returns Original image buffer
  */
 const parseFromHttpUrl = async (url) => {
     let imgBuf
@@ -29,79 +33,65 @@ const parseFromHttpUrl = async (url) => {
         throw e
     }
 
-    let imgExt
+    return imgBuf
+}
+
+/**
+ * Extract image from data URL string
+ * @param {string} data Image data URL
+ * @returns Original image buffer
+ */
+const parseFromDataUrl = async (data) => {
+    const dataParts = data.split(DATA_URL_DETECTOR)
+
+    const mimeType = dataParts[0].replace("data:", "") // TODO: check if needed
+    const encodedImg = dataParts[1]
+
+    return Buffer.from(encodedImg, "base64")
+}
+
+/**
+ * Read image source from URL or base64 data URL to target format
+ * @param {string} attr Image source attribute value
+ * @param {string} type Image type identifier
+ * @returns Processed image buffer
+ */
+export const parseImgAttribute = async (attr, type) => {
+    let origBuffer
+    if (attr.startsWith(HTTP_DETECTOR)) {
+        origBuffer = await parseFromHttpUrl(attr)
+    } else if (attr.includes(DATA_URL_DETECTOR)) {
+        origBuffer = await parseFromDataUrl(attr)
+    } else {
+        throw new UnknownImageFormatError("neither URL nor base64 image")
+    }
+
+    let dimensions = {
+        width: null,
+        height: null,
+    }
+    if (type === TYPE_LOGO) {
+        dimensions.width = 128
+        dimensions.height = 128
+    } else if (type === TYPE_IMAGE) {
+        dimensions.width = 512
+        dimensions.height = 256
+    } else {
+        throw new InvalidImageTypeError()
+    }
+
+    let buf
     try {
-        const imgType = await imageType(imgBuf)
-        imgExt = imgType.ext
+        buf = await sharp(origBuffer).resize(dimensions).webp().toBuffer()
+        logger.verbose("meta_image_processed", { attr })
     } catch (e) {
-        logger.error(`image_meta_type_determine_error`, {
-            url,
+        logger.error(`meta_${type}_processing_error`, {
+            attr,
             error: e.message,
         })
 
         throw e
     }
 
-    return {
-        buffer: imgBuf,
-        fileExtension: imgExt,
-    }
-}
-
-/**
- * Find file extension of image by MIME type
- * based on this list:
- * https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#image_types
- * @param {string} mime MIME type
- * @returns File extension
- */
-const fileExtByMimeType = (mime) => {
-    switch (mime) {
-        case "image/apng":
-            return "apng"
-        case "image/avif":
-            return "avif"
-        case "image/gif":
-            return "gif"
-        case "image/jpeg":
-            return "jpeg"
-        case "image/png":
-            return "png"
-        case "image/svg+xml":
-            return "svg"
-        case "image/webp":
-            return "webp"
-    }
-}
-
-/**
- * Extract image from data URL string
- * @param {string} data Image data URL
- * @returns File extension and image buffer
- */
-const parseFromDataUrl = async (data) => {
-    const dataParts = data.split(DATA_URL_DETECTOR)
-
-    const mimeType = dataParts[0].replace("data:", "")
-    const encodedImg = dataParts[1]
-
-    return {
-        buffer: Buffer.from(encodedImg, "base64"),
-        fileExtension: fileExtByMimeType(mimeType),
-    }
-}
-
-/**
- * Parse image source to fetch from URL or base64 data URL
- * @param {string} attr Image source attribute value
- * @returns File extension and image buffer
- */
-export const parseImgAttribute = async (attr) => {
-    if (attr.startsWith(HTTP_DETECTOR)) {
-        return await parseFromHttpUrl(attr)
-    } else if (attr.includes(DATA_URL_DETECTOR)) {
-        return await parseFromDataUrl(attr)
-    } else {
-        throw new UnknownImageFormatError("neither URL nor base64 image")
-    }
+    return buf
 }

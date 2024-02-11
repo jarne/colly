@@ -9,11 +9,17 @@ import mLogo from "metascraper-logo"
 import mFavicon from "metascraper-logo-favicon"
 import mImage from "metascraper-image"
 import { PutObjectCommand } from "@aws-sdk/client-s3"
+import { v4 as uuid } from "uuid"
 
 import Item from "./../model/item.js"
 import { parseImgAttribute } from "./../util/image.js"
 import { s3Client } from "./../util/s3Storage.js"
 import logger from "./../util/logger.js"
+
+const TYPE_LOGO = "logo"
+const TYPE_IMAGE = "image"
+
+const STORAGE_FILE_EXT = "webp"
 
 const ms = metascraper([mTitle(), mDescr(), mLogo(), mFavicon(), mImage()])
 
@@ -62,9 +68,9 @@ const fetchMetadata = async (url) => {
  * @returns S3 storage reference
  */
 const saveMetaImage = async (attr, itemId, type) => {
-    let parsedImg
+    let imgBuf
     try {
-        parsedImg = await parseImgAttribute(attr)
+        imgBuf = await parseImgAttribute(attr, type)
     } catch (e) {
         logger.error(`preview_${type}_parse_error`, {
             attr,
@@ -74,10 +80,9 @@ const saveMetaImage = async (attr, itemId, type) => {
         throw e
     }
 
-    const imgBuf = parsedImg.buffer
-    const imgExt = parsedImg.fileExtension
+    const imgUuid = uuid()
 
-    const s3Key = `meta/${type}/${itemId}.${imgExt}`
+    const s3Key = `item_meta/${type}/${imgUuid}.${STORAGE_FILE_EXT}`
 
     try {
         s3Client.send(
@@ -95,7 +100,7 @@ const saveMetaImage = async (attr, itemId, type) => {
         throw e
     }
 
-    return s3Key
+    return imgUuid
 }
 
 /**
@@ -155,10 +160,10 @@ export const saveImageMetadata = async (itemId) => {
     const logo = meta.logo
     const image = meta.image
 
-    let logoKey
+    let logoId
     if (logo) {
         try {
-            logoKey = await saveMetaImage(logo, itemId, "logo")
+            logoId = await saveMetaImage(logo, itemId, TYPE_LOGO)
         } catch (e) {
             logger.warn("preview_logo_fetch_error", {
                 logo,
@@ -167,10 +172,10 @@ export const saveImageMetadata = async (itemId) => {
         }
     }
 
-    let imageKey
+    let imageId
     if (image) {
         try {
-            imageKey = await saveMetaImage(image, itemId, "image")
+            imageId = await saveMetaImage(image, itemId, TYPE_IMAGE)
         } catch (e) {
             logger.warn("preview_image_fetch_error", {
                 image,
@@ -179,8 +184,24 @@ export const saveImageMetadata = async (itemId) => {
         }
     }
 
+    try {
+        await Item.findByIdAndUpdate(itemId, {
+            logo: logoId,
+            image: imageId,
+        })
+
+        logger.verbose("item_updated_meta_img", { id: itemId })
+    } catch (e) {
+        logger.error("item_meta_img_update_error", {
+            id: itemId,
+            error: e.message,
+        })
+
+        throw e
+    }
+
     return {
-        logo: logoKey,
-        image: imageKey,
+        logo: logoId,
+        image: imageId,
     }
 }
