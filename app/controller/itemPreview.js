@@ -27,7 +27,7 @@ const ms = metascraper([mTitle(), mDescr(), mLogo(), mFavicon(), mImage()])
 /**
  * Fetch metadata from URL
  * @param {string} url URL to fetch metadata from
- * @returns Metadata object
+ * @returns {object} Metadata object
  */
 const fetchMetadata = async (url) => {
     let pageContent
@@ -65,7 +65,7 @@ const fetchMetadata = async (url) => {
  * Persist meta data image of item, save to S3
  * @param {string} attr Image source attribute value
  * @param {string} type Image type identifier
- * @returns S3 storage reference
+ * @returns {string} S3 storage reference
  */
 const saveMetaImage = async (attr, type) => {
     let imgBuf
@@ -107,7 +107,7 @@ const saveMetaImage = async (attr, type) => {
  * Get S3 storage key for a specific image
  * @param {string} type Image asset type
  * @param {string} imgUuid UUID of the image
- * @returns S3 storage key
+ * @returns {string} S3 storage key
  */
 export const getS3StorageKey = (type, imgUuid) => {
     return `item_meta/${type}/${imgUuid}.${STORAGE_FILE_EXT}`
@@ -116,7 +116,7 @@ export const getS3StorageKey = (type, imgUuid) => {
 /**
  * Get basic metadata, such as page title and description, used for creation suggestions
  * @param {string} url URL to fetch from
- * @returns Basic metadata object
+ * @returns {object} Basic metadata object
  */
 export const getBasicMetadata = async (url) => {
     let meta
@@ -140,7 +140,7 @@ export const getBasicMetadata = async (url) => {
 /**
  * Fetch and store image metadata on S3 storage (logo, article image) of an item
  * @param {string} itemId Item ID
- * @returns S3 storage references
+ * @returns {object} S3 storage references
  */
 export const saveImageMetadata = async (itemId) => {
     let item

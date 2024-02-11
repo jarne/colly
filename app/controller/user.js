@@ -14,7 +14,7 @@ const crud = crudController(User)
 /**
  * Create user
  * @param {object} data User data
- * @returns Created user
+ * @returns {object} Created user
  */
 const create = async (data) => {
     const password = data.password
@@ -41,7 +41,7 @@ const create = async (data) => {
  * Update user
  * @param {string} id User ID
  * @param {object} data User data
- * @returns Updated user
+ * @returns {object} Updated user
  */
 const update = async (id, data) => {
     let password = null
@@ -77,7 +77,7 @@ const update = async (id, data) => {
 
 /**
  * List users
- * @returns All users
+ * @returns {object[]} All users
  */
 const list = async () => {
     try {

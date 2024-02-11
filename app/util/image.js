@@ -17,7 +17,7 @@ const DATA_URL_DETECTOR = ";base64,"
 /**
  * Download image from HTTP URL
  * @param {string} url Image URL
- * @returns Original image buffer
+ * @returns {ArrayBuffer} Original image buffer
  */
 const parseFromHttpUrl = async (url) => {
     let imgBuf
@@ -39,7 +39,7 @@ const parseFromHttpUrl = async (url) => {
 /**
  * Extract image from data URL string
  * @param {string} data Image data URL
- * @returns Original image buffer
+ * @returns {Buffer} Original image buffer
  */
 const parseFromDataUrl = async (data) => {
     const encodedImg = data.split(DATA_URL_DETECTOR).pop()
@@ -51,7 +51,7 @@ const parseFromDataUrl = async (data) => {
  * Read image source from URL or base64 data URL to target format
  * @param {string} attr Image source attribute value
  * @param {string} type Image type identifier
- * @returns Processed image buffer
+ * @returns {Buffer} Processed image buffer
  */
 export const parseImgAttribute = async (attr, type) => {
     let origBuffer

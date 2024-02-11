@@ -19,7 +19,7 @@ const crud = crudController(Item)
 /**
  * Populate additional fields for signed image asset URL's
  * @param {object} item Item object
- * @returns Item object (with signed URL's)
+ * @returns {object} Item object (with signed URL's)
  */
 const signImageUrls = async (item) => {
     if (item.logo) {
@@ -55,7 +55,7 @@ const signImageUrls = async (item) => {
 
 /**
  * List items
- * @returns All items
+ * @returns {object[]} All items
  */
 export const list = async () => {
     try {
@@ -74,11 +74,9 @@ export const list = async () => {
 
 /**
  * Check if user has permission to access an item
- *
  * @param {string} itemId Item ID
  * @param {string} userId User ID
- *
- * @returns access allowed (bool)
+ * @returns {boolean} access allowed
  */
 const hasPermission = async (itemId, userId) => {
     let item

@@ -11,10 +11,8 @@ import itemRoutes from "./route/item.js"
 
 /**
  * Register API routes
- *
  * @param {object} app Express app object
- *
- * @returns Express app object
+ * @returns {object} Express app object
  */
 export const registerRoutes = (app) => {
     app.use("/api/auth", authRoutes)
@@ -39,11 +37,9 @@ export const registerRoutes = (app) => {
 
 /**
  * Handle an API request error
- *
  * @param {Error} e Error object
  * @param {object} res Request result
- *
- * @returns Result object
+ * @returns {object} Result object
  */
 export const handleError = (e, res) => {
     if (e.name === "ValidationError") {

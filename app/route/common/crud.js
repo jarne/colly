@@ -7,12 +7,14 @@ import { handleError } from "./../../routes.js"
 /**
  * Common CRUD routes
  * @param {object} controller Controller for model
+ * @returns {Function} CRUD functions
  */
 const crud = (controller) => {
     /**
      * Create operation
      * @param {object} req Request
      * @param {object} res Result
+     * @returns {object} Result
      */
     const create = async (req, res) => {
         let obj
@@ -31,6 +33,7 @@ const crud = (controller) => {
      * Update operation
      * @param {object} req Request
      * @param {object} res Result
+     * @returns {object} Result
      */
     const update = async (req, res) => {
         const id = req.params.id
@@ -51,6 +54,7 @@ const crud = (controller) => {
      * Delete operation
      * @param {object} req Request
      * @param {object} res Result
+     * @returns {object} Result
      */
     const del = async (req, res) => {
         const id = req.params.id
@@ -70,6 +74,7 @@ const crud = (controller) => {
      * Get operation
      * @param {object} req Request
      * @param {object} res Result
+     * @returns {object} Result
      */
     const getById = async (req, res) => {
         const id = req.params.id
@@ -88,6 +93,7 @@ const crud = (controller) => {
      * List operation
      * @param {object} req Request
      * @param {object} res Result
+     * @returns {object} Result
      */
     const list = async (req, res) => {
         let objs

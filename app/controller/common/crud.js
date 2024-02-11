@@ -10,6 +10,7 @@ import logger from "./../../util/logger.js"
 /**
  * Common CRUD operations
  * @param {mongoose.Model} model Mongoose database model
+ * @returns {Function} CRUD functions
  */
 const crud = (model) => {
     const modelName = model.modelName.toLowerCase()
@@ -17,7 +18,7 @@ const crud = (model) => {
     /**
      * Create operation
      * @param {object} data Object data
-     * @returns Created database object
+     * @returns {object} Created database object
      */
     const create = async (data) => {
         const obj = new model(data)
@@ -40,7 +41,7 @@ const crud = (model) => {
      * Update operation
      * @param {string} id Object ID
      * @param {object} data Object data
-     * @returns Updated database object
+     * @returns {object} Updated database object
      */
     const update = async (id, data) => {
         try {
@@ -85,7 +86,7 @@ const crud = (model) => {
     /**
      * Get operation
      * @param {string} id Object ID
-     * @returns Database object
+     * @returns {object} Database object
      */
     const getById = async (id) => {
         try {
@@ -102,7 +103,7 @@ const crud = (model) => {
 
     /**
      * List operation
-     * @returns List of all database objects
+     * @returns {object[]} List of all database objects
      */
     const list = async () => {
         try {
