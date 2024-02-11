@@ -39,7 +39,7 @@ function ItemCard({ item, createItemModalRef }) {
                     <a
                         href="#"
                         onClick={(e) => {
-                            handleItemEditClick(e, item.id)
+                            handleItemEditClick(e, item._id)
                         }}
                         className="card-edit text-theme-pink"
                     >
