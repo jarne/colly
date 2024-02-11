@@ -155,3 +155,35 @@ export const listItems = async (accessToken) => {
 
     return res.data
 }
+
+/**
+ * Get metadata preview of item URL
+ *
+ * @param {string} url item URL
+ * @param {string} accessToken API access token
+ * @returns metadata preview info (page title and description)
+ */
+export const generatePreview = async (url, accessToken) => {
+    let res
+    try {
+        const resp = await fetch(InternalAPI.API_ENDPOINT + "/item/meta", {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                url,
+            }),
+        })
+        res = await resp.json()
+    } catch (e) {
+        throw new Error()
+    }
+
+    if (res.error) {
+        throw new Error()
+    }
+
+    return res.meta
+}
