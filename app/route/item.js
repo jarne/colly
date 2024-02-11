@@ -5,7 +5,8 @@
 import express from "express"
 
 import controller from "./../controller/item.js"
-import crudRoutes from "./../route/common/crud.js"
+import { getBasicMetadata } from "./../controller/itemPreview.js"
+import crudRoutes from "./common/crud.js"
 import { handleError } from "./../routes.js"
 
 const router = express.Router()
@@ -45,5 +46,23 @@ router.delete("/:id", del)
  * Get all items
  */
 router.get("/", list)
+
+/**
+ * Generate basic metadata preview for URL
+ */
+router.post("/meta", async (req, res) => {
+    const url = req.body.url
+
+    let meta
+    try {
+        meta = await getBasicMetadata(url)
+    } catch (e) {
+        return handleError(e, res)
+    }
+
+    return res.json({
+        meta,
+    })
+})
 
 export default router
