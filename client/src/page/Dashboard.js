@@ -140,7 +140,10 @@ function Dashboard() {
                 <div className="row w-100 m-3 main-cards-view">
                     {items.map((item) => {
                         return (
-                            <div key={item._id} className="col-4">
+                            <div
+                                key={item._id}
+                                className="col-4 card-container"
+                            >
                                 <ItemCard
                                     item={item}
                                     createItemModalRef={createItemModalRef}
