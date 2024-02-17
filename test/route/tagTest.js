@@ -1,5 +1,5 @@
 /**
- * Colly | user router tests
+ * Colly | tag router tests
  */
 
 import { expect } from "chai"
@@ -7,21 +7,24 @@ import request from "supertest"
 import mongoose from "mongoose"
 
 import app from "./../../appInit.js"
+import controller from "./../../app/controller/tag.js"
 import user from "./../../app/controller/user.js"
 
+const Tag = mongoose.model("Tag")
 const User = mongoose.model("User")
 
-describe("user router", () => {
+describe("tag router", () => {
+    let uid
     let token
 
     before(function (done) {
         const prepare = async () => {
             const created = await user.create({
-                username: "routetestadmin",
+                username: "tagroutetester",
                 password: "testPW123",
-                isAdmin: true,
             })
 
+            uid = created.id
             token = user.generateToken(created)
 
             done()
@@ -37,60 +40,66 @@ describe("user router", () => {
         mongoose.connection.on("connected", prepare)
     })
 
-    describe("post /api/user", () => {
-        it("should create a new user", async () => {
+    describe("post /api/tag", () => {
+        it("should create a new tag", async () => {
             const res = await request(app)
-                .post("/api/user")
+                .post("/api/tag")
                 .set("Content-Type", "application/json")
                 .set("Authorization", `Bearer ${token}`)
                 .send({
-                    username: "routetestuser",
-                    password: "testPW123",
+                    name: "routetesttag",
+                    firstColor: "000000",
+                    secondColor: "ffffff",
                 })
 
             expect(res.status).to.eq(200)
             expect(res.body.id).to.be.not.null
 
-            const newUser = await user.getById(res.body.id)
+            const newTag = await controller.getById(res.body.id)
 
-            expect(newUser.username).to.equal("routetestuser")
+            expect(newTag.name).to.equal("routetesttag")
         })
     })
 
-    describe("patch /api/user/:id", () => {
-        it("should update the user", async () => {
-            const created = await user.create({
-                username: "routetestuser",
-                password: "testPW123",
+    describe("patch /api/tag/:id", () => {
+        it("should update the tag", async () => {
+            const created = await controller.create({
+                name: "routetesttag",
+                firstColor: "000000",
+                secondColor: "ffffff",
+                owner: uid,
             })
 
             const res = await request(app)
-                .patch(`/api/user/${created.id}`)
+                .patch(`/api/tag/${created.id}`)
                 .set("Content-Type", "application/json")
                 .set("Authorization", `Bearer ${token}`)
                 .send({
-                    username: "newtestuser",
-                    isAdmin: true,
+                    name: "routeothertag",
+                    firstColor: "b5b5b5",
                 })
 
             expect(res.status).to.eq(200)
 
-            const updatedUser = await user.getById(res.body.id)
+            const updatedTag = await controller.getById(res.body.id)
 
-            expect(updatedUser.username).to.equal("newtestuser")
-            expect(updatedUser.isAdmin).to.be.true
+            expect(updatedTag.name).to.equal("routeothertag")
+            expect(updatedTag.firstColor).to.equal("b5b5b5")
+            expect(updatedTag.secondColor).to.equal("ffffff")
         })
     })
 
-    describe("delete /api/user/:id", () => {
-        it("should delete the created user", async () => {
-            const created = await user.create({
-                username: "routetestuser",
-                password: "testPW123",
+    describe("delete /api/tag/:id", () => {
+        it("should delete the created tag", async () => {
+            const created = await controller.create({
+                name: "routetesttag",
+                firstColor: "000000",
+                secondColor: "ffffff",
+                owner: uid,
             })
 
             const res = await request(app)
-                .delete(`/api/user/${created.id}`)
+                .delete(`/api/tag/${created.id}`)
                 .set("Content-Type", "application/json")
                 .set("Authorization", `Bearer ${token}`)
                 .send()
@@ -98,16 +107,16 @@ describe("user router", () => {
             expect(res.status).to.eq(200)
             expect(res.body.id).to.eq(created.id)
 
-            const deletedUser = await user.getById(created.id)
+            const deletedTag = await controller.getById(created.id)
 
-            expect(deletedUser).to.be.null
+            expect(deletedTag).to.be.null
         })
     })
 
-    describe("get /api/user", () => {
-        it("should list all users", async () => {
+    describe("get /api/tag", () => {
+        it("should list all tags", async () => {
             const res = await request(app)
-                .get("/api/user")
+                .get("/api/tag")
                 .set("Content-Type", "application/json")
                 .set("Authorization", `Bearer ${token}`)
                 .send()
@@ -118,16 +127,14 @@ describe("user router", () => {
     })
 
     afterEach(async () => {
-        await User.findOneAndDelete({
-            username: {
-                $in: ["routetestuser", "newtestuser"],
+        await Tag.findOneAndDelete({
+            name: {
+                $in: ["routetesttag", "routeothertag"],
             },
         })
     })
 
     after(async () => {
-        await User.findOneAndDelete({
-            username: "routetestadmin",
-        })
+        await User.findByIdAndDelete(uid)
     })
 })
