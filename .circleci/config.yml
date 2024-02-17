@@ -37,10 +37,10 @@ jobs:
                       - node_modules
 
             # Run tests with Mocha
-            - run: yarn test-ci
+            - run: yarn test:ci
 
             # Collect test coverage with c8
-            - run: yarn test-coverage
+            - run: yarn test:coverage
 
             # Save test results
             - store_test_results:
@@ -66,7 +66,7 @@ jobs:
                       - node_modules
 
             # Run ESLint
-            - run: yarn lint-ci
+            - run: yarn lint:ci
 
             # Save lint results
             - store_test_results:
