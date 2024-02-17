@@ -12,6 +12,11 @@
         {
             "matchPackageNames": ["node", "cimg/node"],
             "versioning": "node"
+        },
+        {
+            "matchPackagePatterns": "^metascraper",
+            "groupName": "metascraper monorepo",
+            "matchUpdateTypes": ["digest", "patch", "minor", "major"]
         }
     ]
 }
