@@ -51,6 +51,29 @@ describe("item controller", () => {
             expect(item.name).to.equal("test-ctrl-item-Cooking 101")
         })
 
+        it("should create a new item with image metadata", async () => {
+            const created = await controller.create({
+                url: "http://127.0.0.1:3388/stellarvoyage/index.html",
+                name: "test-ctrl-item-StellarVoyage",
+                description:
+                    "Embark on a cosmic journey with StellarVoyage - your portal to the wonders of space exploration.",
+                owner: userId,
+                tags: [tagId],
+            })
+
+            expect(created.id).to.be.not.null
+            expect(created.name).to.equal("test-ctrl-item-StellarVoyage")
+
+            await new Promise((resolve) => setTimeout(resolve, 3000))
+
+            const item = await controller.getById(created.id)
+
+            expect(item.image).to.be.not.null
+            expect(item.logo).to.be.not.null
+            expect(item.logoUrl).to.be.not.null
+            expect(item.imageUrl).to.be.not.null
+        }).timeout(5000)
+
         it("throws error with invalid url", async () => {
             try {
                 await controller.create({

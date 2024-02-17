@@ -22,6 +22,10 @@ const crud = crudController(Item)
  * @returns {object} Item object (with signed URL's)
  */
 const signImageUrls = async (item) => {
+    if (item === null) {
+        return null
+    }
+
     if (item.logo) {
         const s3Key = getS3StorageKey(TYPE_LOGO, item.logo)
 
@@ -51,6 +55,27 @@ const signImageUrls = async (item) => {
     }
 
     return item
+}
+
+/**
+ * Get item
+ * @param {string} id Item ID
+ * @returns {object} Item
+ */
+const getById = async (id) => {
+    try {
+        const item = await Item.findById(id)
+        const withSignedUrls = await signImageUrls(item)
+
+        return withSignedUrls
+    } catch (e) {
+        logger.error("item_get_error", {
+            id,
+            error: e.message,
+        })
+
+        throw e
+    }
 }
 
 /**
@@ -98,7 +123,7 @@ export default {
     create: crud.create,
     update: crud.update,
     del: crud.del,
-    getById: crud.getById,
+    getById,
     list,
     hasPermission,
 }
