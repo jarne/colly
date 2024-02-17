@@ -23,17 +23,17 @@ describe("item router", () => {
     before(function (done) {
         const prepare = async () => {
             const createdUser = await user.create({
-                username: "itemroutetester",
-                password: "testPW123",
+                username: "test-route-item-EmeraldPhoenix",
+                password: "Encrypt10nRul3s",
             })
 
             uid = createdUser.id
             token = user.generateToken(createdUser)
 
             const createdTag = await tag.create({
-                name: "itemroutetesttag",
-                firstColor: "000000",
-                secondColor: "ffffff",
+                name: "test-route-item-rhythmic-melodies",
+                firstColor: "1abc9c",
+                secondColor: "f1c40f",
                 owner: uid,
             })
 
@@ -59,9 +59,10 @@ describe("item router", () => {
                 .set("Content-Type", "application/json")
                 .set("Authorization", `Bearer ${token}`)
                 .send({
-                    url: "https://www.example.com",
-                    name: "route example page",
-                    description: "is an example",
+                    url: "https://example.com/tech/gadgetgalaxy",
+                    name: "test-route-item-GadgetGalaxy",
+                    description:
+                        "Explore the latest gadgets and tech innovations in one cosmic destination.",
                     tags: [tid],
                 })
 
@@ -70,16 +71,17 @@ describe("item router", () => {
 
             const newItem = await controller.getById(res.body.id)
 
-            expect(newItem.name).to.equal("route example page")
+            expect(newItem.name).to.equal("test-route-item-GadgetGalaxy")
         })
     })
 
     describe("patch /api/item/:id", () => {
         it("should update the item", async () => {
             const created = await controller.create({
-                url: "https://www.example.com",
-                name: "route example page",
-                description: "is an example",
+                url: "https://example.com/lifestyle/eco/ecoeden",
+                name: "test-route-item-EcoEden",
+                description:
+                    "Dive into sustainable living with eco-friendly tips and green solutions.",
                 owner: uid,
                 tags: [tid],
             })
@@ -89,26 +91,32 @@ describe("item router", () => {
                 .set("Content-Type", "application/json")
                 .set("Authorization", `Bearer ${token}`)
                 .send({
-                    name: "route other page",
-                    description: "changed example page",
+                    name: "test-route-item-WhimsyWanderer",
+                    description:
+                        "Embark on enchanting adventures and whimsical journeys across the globe.",
                 })
 
             expect(res.status).to.eq(200)
 
             const updatedItem = await controller.getById(res.body.id)
 
-            expect(updatedItem.name).to.equal("route other page")
-            expect(updatedItem.description).to.equal("changed example page")
-            expect(updatedItem.url).to.equal("https://www.example.com")
+            expect(updatedItem.name).to.equal("test-route-item-WhimsyWanderer")
+            expect(updatedItem.description).to.equal(
+                "Embark on enchanting adventures and whimsical journeys across the globe."
+            )
+            expect(updatedItem.url).to.equal(
+                "https://example.com/lifestyle/eco/ecoeden"
+            )
         })
     })
 
     describe("delete /api/item/:id", () => {
         it("should delete the created item", async () => {
             const created = await controller.create({
-                url: "https://www.example.com",
-                name: "route example page",
-                description: "is an example",
+                url: "https://example.com/arts/crafty/canvas",
+                name: "test-route-item-CraftyCanvas",
+                description:
+                    "Unleash your creativity with DIY craft ideas and artistic inspirations.",
                 owner: uid,
                 tags: [tid],
             })
@@ -143,9 +151,7 @@ describe("item router", () => {
 
     afterEach(async () => {
         await Item.findOneAndDelete({
-            name: {
-                $in: ["route example page", "route other page"],
-            },
+            name: /^test-route-item-.*/,
         })
     })
 

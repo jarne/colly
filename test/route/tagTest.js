@@ -20,8 +20,8 @@ describe("tag router", () => {
     before(function (done) {
         const prepare = async () => {
             const created = await user.create({
-                username: "tagroutetester",
-                password: "testPW123",
+                username: "test-route-tag-AquaLioness",
+                password: "Saf3Gu@rd2024!",
             })
 
             uid = created.id
@@ -47,9 +47,9 @@ describe("tag router", () => {
                 .set("Content-Type", "application/json")
                 .set("Authorization", `Bearer ${token}`)
                 .send({
-                    name: "routetesttag",
-                    firstColor: "000000",
-                    secondColor: "ffffff",
+                    name: "test-route-tag-cosmic-adventures",
+                    firstColor: "ff7f50",
+                    secondColor: "ff4f4f",
                 })
 
             expect(res.status).to.eq(200)
@@ -57,16 +57,16 @@ describe("tag router", () => {
 
             const newTag = await controller.getById(res.body.id)
 
-            expect(newTag.name).to.equal("routetesttag")
+            expect(newTag.name).to.equal("test-route-tag-cosmic-adventures")
         })
     })
 
     describe("patch /api/tag/:id", () => {
         it("should update the tag", async () => {
             const created = await controller.create({
-                name: "routetesttag",
-                firstColor: "000000",
-                secondColor: "ffffff",
+                name: "test-route-tag-enchanted-gardens",
+                firstColor: "2ecc71",
+                secondColor: "3498db",
                 owner: uid,
             })
 
@@ -75,26 +75,26 @@ describe("tag router", () => {
                 .set("Content-Type", "application/json")
                 .set("Authorization", `Bearer ${token}`)
                 .send({
-                    name: "routeothertag",
-                    firstColor: "b5b5b5",
+                    name: "test-route-tag-pixel-perfection",
+                    firstColor: "e74c3c",
                 })
 
             expect(res.status).to.eq(200)
 
             const updatedTag = await controller.getById(res.body.id)
 
-            expect(updatedTag.name).to.equal("routeothertag")
-            expect(updatedTag.firstColor).to.equal("b5b5b5")
-            expect(updatedTag.secondColor).to.equal("ffffff")
+            expect(updatedTag.name).to.equal("test-route-tag-pixel-perfection")
+            expect(updatedTag.firstColor).to.equal("e74c3c")
+            expect(updatedTag.secondColor).to.equal("3498db")
         })
     })
 
     describe("delete /api/tag/:id", () => {
         it("should delete the created tag", async () => {
             const created = await controller.create({
-                name: "routetesttag",
-                firstColor: "000000",
-                secondColor: "ffffff",
+                name: "test-route-tag-mystical-wanderlust",
+                firstColor: "3498db",
+                secondColor: "2c3e50",
                 owner: uid,
             })
 
@@ -128,9 +128,7 @@ describe("tag router", () => {
 
     afterEach(async () => {
         await Tag.findOneAndDelete({
-            name: {
-                $in: ["routetesttag", "routeothertag"],
-            },
+            name: /^test-route-tag-.*/,
         })
     })
 

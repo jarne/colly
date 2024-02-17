@@ -38,7 +38,7 @@ describe("item controller", () => {
     describe("#create", () => {
         it("should create a new item", async () => {
             const item = await controller.create({
-                url: "http://example.com/cooking101",
+                url: "https://example.com/cooking101",
                 name: "test-ctrl-item-Cooking 101",
                 description:
                     "Your go-to resource for easy recipes and culinary tips.",
@@ -47,7 +47,7 @@ describe("item controller", () => {
             })
 
             expect(item.id).to.be.not.null
-            expect(item.url).to.equal("http://example.com/cooking101")
+            expect(item.url).to.equal("https://example.com/cooking101")
             expect(item.name).to.equal("test-ctrl-item-Cooking 101")
         })
 
@@ -69,18 +69,18 @@ describe("item controller", () => {
     describe("#update", () => {
         it("should update an item", async () => {
             const item = await controller.create({
-                url: "http://example.com/travelinsider",
+                url: "https://example.com/travelinsider",
                 name: "test-ctrl-item-TravelInsider",
                 description:
                     "Discover hidden gems and travel hacks for your next adventure.",
                 owner: userId,
             })
 
-            expect(item.url).to.equal("http://example.com/travelinsider")
+            expect(item.url).to.equal("https://example.com/travelinsider")
             expect(item.name).to.equal("test-ctrl-item-TravelInsider")
 
             const updatedItem = await controller.update(item.id, {
-                url: "http://example.com/mindfulnessjourney",
+                url: "https://example.com/mindfulnessjourney",
                 name: "test-ctrl-item-Mindfulness Journey",
                 description:
                     "Begin your journey to inner peace and mindfulness with guided meditation sessions.",
@@ -88,7 +88,7 @@ describe("item controller", () => {
             })
 
             expect(updatedItem.url).to.equal(
-                "http://example.com/mindfulnessjourney"
+                "https://example.com/mindfulnessjourney"
             )
             expect(updatedItem.name).to.equal(
                 "test-ctrl-item-Mindfulness Journey"
@@ -99,7 +99,7 @@ describe("item controller", () => {
         it("throws error for non-existing item", async () => {
             try {
                 await controller.update("6675932d4f2094eb2ec739ad", {
-                    url: "http://example.com/moneymatters",
+                    url: "https://example.com/moneymatters",
                     name: "test-ctrl-item-MoneyMatters",
                     description:
                         "Learn smart financial management strategies and investment tips.",
@@ -113,7 +113,7 @@ describe("item controller", () => {
     describe("#delete", () => {
         it("should delete the new item", async () => {
             const item = await controller.create({
-                url: "http://example.com/techbuzz",
+                url: "https://example.com/techbuzz",
                 name: "test-ctrl-item-TechBuzz",
                 description:
                     "Stay updated with the latest in technology news and gadget reviews.",
@@ -127,7 +127,7 @@ describe("item controller", () => {
     describe("#getById", () => {
         it("should get the new item", async () => {
             const item = await controller.create({
-                url: "http://example.com/fashionista",
+                url: "https://example.com/fashionista",
                 name: "test-ctrl-item-Fashionista",
                 description:
                     "Your ultimate style guide for trends, fashion tips, and beauty hacks.",
@@ -137,7 +137,7 @@ describe("item controller", () => {
             const gotItem = await controller.getById(item.id)
 
             expect(gotItem.id).to.be.not.null
-            expect(gotItem.url).to.equal("http://example.com/fashionista")
+            expect(gotItem.url).to.equal("https://example.com/fashionista")
             expect(gotItem.name).to.equal("test-ctrl-item-Fashionista")
         })
 
@@ -159,7 +159,7 @@ describe("item controller", () => {
 
         it("should return created item list", async () => {
             await controller.create({
-                url: "http://example.com/petparadise",
+                url: "https://example.com/petparadise",
                 name: "test-ctrl-item-#Pet #Paradise",
                 description:
                     "Spoil your furry friends with pet care advice, training tips, and adorable pet photos.",
@@ -171,7 +171,7 @@ describe("item controller", () => {
             expect(
                 items.some(
                     (itemObj) =>
-                        itemObj.url === "http://example.com/petparadise"
+                        itemObj.url === "https://example.com/petparadise"
                 )
             ).to.be.true
         })
@@ -180,7 +180,7 @@ describe("item controller", () => {
     describe("#hasPermission", () => {
         it("should have the permission for the item", async () => {
             const item = await controller.create({
-                url: "http://example.com/homeimprovement",
+                url: "https://example.com/homeimprovement",
                 name: "test-ctrl-item-HomeImprovement",
                 description:
                     "Transform your living space with DIY home decor ideas and renovation inspiration.",
@@ -194,7 +194,7 @@ describe("item controller", () => {
 
         it("should not have the permission for the item", async () => {
             const item = await controller.create({
-                url: "http://example.com/careerboost",
+                url: "https://example.com/careerboost",
                 name: "test-ctrl-item-Career!Boost",
                 description:
                     "Take your career to the next level with expert advice on job hunting, resume building, and professional development.",
