@@ -13,7 +13,7 @@ const UserSchema = new Schema({
         unique: true,
         lowercase: true,
         required: [true, "can't be blank"],
-        match: [/^[a-zA-Z0-9.-_]*$/, "contains invalid characters"],
+        match: [/^[a-zA-Z0-9.\-_]*$/, "contains invalid characters"],
         index: true,
     },
     password: {

@@ -11,12 +11,15 @@ import user from "./../../app/controller/user.js"
 
 const User = mongoose.model("User")
 
+const CORRECT_USER = "test-route-auth-the_rockstar22"
+const CORRECT_PASSWORD = "C0mpl3xP@55"
+
 describe("auth router", () => {
     before(function (done) {
         const prepare = async () => {
             await user.create({
-                username: "routeauthtester",
-                password: "testPW123",
+                username: CORRECT_USER,
+                password: CORRECT_PASSWORD,
                 isAdmin: false,
             })
 
@@ -39,13 +42,13 @@ describe("auth router", () => {
                 .post("/api/auth/login")
                 .set("Content-Type", "application/json")
                 .send({
-                    username: "routeauthtester",
-                    password: "testPW123",
+                    username: CORRECT_USER,
+                    password: CORRECT_PASSWORD,
                 })
 
             expect(res.status).to.eq(200)
             expect(res.body.token).to.be.not.null
-            expect(res.body.user.username).to.eq("routeauthtester")
+            expect(res.body.user.username).to.eq(CORRECT_USER)
         })
 
         it("should fail auth with wrong credentials", async () => {
@@ -53,8 +56,8 @@ describe("auth router", () => {
                 .post("/api/auth/login")
                 .set("Content-Type", "application/json")
                 .send({
-                    username: "routeauthtester",
-                    password: "wrongPassword456",
+                    username: CORRECT_USER,
+                    password: "Wr@ngxP@55",
                 })
 
             expect(res.status).to.eq(401)
@@ -67,8 +70,8 @@ describe("auth router", () => {
                 .post("/api/auth/login")
                 .set("Content-Type", "application/json")
                 .send({
-                    username: "nottherouteauthtester",
-                    password: "testPW123",
+                    username: "test-route-auth-coding_ninja55",
+                    password: CORRECT_PASSWORD,
                 })
 
             expect(res.status).to.eq(401)
@@ -83,8 +86,8 @@ describe("auth router", () => {
                 .post("/api/auth/login")
                 .set("Content-Type", "application/json")
                 .send({
-                    username: "routeauthtester",
-                    password: "testPW123",
+                    username: CORRECT_USER,
+                    password: CORRECT_PASSWORD,
                 })
 
             const token = authRes.body.token
@@ -96,7 +99,7 @@ describe("auth router", () => {
                 .send()
 
             expect(res.status).to.eq(200)
-            expect(res.body.user.username).to.eq("routeauthtester")
+            expect(res.body.user.username).to.eq(CORRECT_USER)
         })
 
         it("should throw error with invalid token", async () => {
@@ -125,7 +128,7 @@ describe("auth router", () => {
 
     after(async () => {
         await User.findOneAndDelete({
-            username: "routeauthtester",
+            username: /^test-route-auth-.*/,
         })
     })
 })
