@@ -10,13 +10,13 @@ const TEST_DATA_SERVER_PORT = 3388
 let instance
 
 export const mochaHooks = {
-    beforeAll: () => {
+    before: () => {
         const app = express()
 
         app.use(express.static(TEST_DATA_PATH))
         instance = app.listen(TEST_DATA_SERVER_PORT)
     },
-    afterAll: () => {
+    after: () => {
         instance.close()
     },
 }
