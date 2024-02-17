@@ -64,7 +64,7 @@ describe("item controller", () => {
             expect(created.id).to.be.not.null
             expect(created.name).to.equal("test-ctrl-item-StellarVoyage")
 
-            await new Promise((resolve) => setTimeout(resolve, 3000))
+            await new Promise((resolve) => setTimeout(resolve, 500))
 
             const item = await controller.getById(created.id)
 
@@ -72,7 +72,7 @@ describe("item controller", () => {
             expect(item.logo).to.be.not.null
             expect(item.logoUrl).to.be.not.null
             expect(item.imageUrl).to.be.not.null
-        }).timeout(5000)
+        })
 
         it("throws error with invalid url", async () => {
             try {
