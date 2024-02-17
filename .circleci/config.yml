@@ -11,7 +11,7 @@ jobs:
                   MONGO_HOST: 127.0.0.1
                   MONGO_DB: colly-test
                   JWT_SECRET: super-secret-123
-                  S3_ENDPOINT: 127.0.0.1
+                  S3_ENDPOINT: http://127.0.0.1:9000
                   S3_REGION: us-east-1
                   S3_ACCESS_KEY: super-root
                   S3_ACCESS_SECRET: super-secret-123
