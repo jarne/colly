@@ -4,8 +4,8 @@
 
 import express from "express"
 import passport from "passport"
-import jwt from "jsonwebtoken"
 
+import userController from "./../controller/user.js"
 import logger from "./../util/logger.js"
 
 const router = express.Router()
@@ -42,23 +42,14 @@ router.post("/login", (req, res) => {
                 })
             }
 
-            const token = await jwt.sign(
-                {
-                    id: user.id,
-                    username: user.username,
-                },
-                process.env.JWT_SECRET,
-                {
-                    expiresIn: `${process.env.EXPIRES_IN_SEC || 86400}s`,
-                }
-            )
+            const token = userController.generateToken(user)
 
             logger.verbose("auth_successful", { uid: user.id })
             return res.json({
                 user: {
                     username: user.username,
                 },
-                token: token,
+                token,
             })
         })
     })(req, res)

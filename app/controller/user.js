@@ -3,6 +3,7 @@
  */
 
 import mongoose from "mongoose"
+import jwt from "jsonwebtoken"
 
 import crudController from "./common/crud.js"
 import NotFoundError from "./exception/notFoundError.js"
@@ -91,10 +92,29 @@ const list = async () => {
     }
 }
 
+/**
+ * Generate JWT token for user
+ * @param {object} user User
+ * @returns {string} JWT token
+ */
+const generateToken = (user) => {
+    return jwt.sign(
+        {
+            id: user.id,
+            username: user.username,
+        },
+        process.env.JWT_SECRET,
+        {
+            expiresIn: `${process.env.EXPIRES_IN_SEC || 86400}s`,
+        }
+    )
+}
+
 export default {
     create,
     update,
     del: crud.del,
     getById: crud.getById,
     list,
+    generateToken,
 }
