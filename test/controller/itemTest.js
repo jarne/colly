@@ -22,14 +22,14 @@ describe("item controller", () => {
         await connectDbAsync()
 
         const createdUser = await user.create({
-            username: "itemtester",
-            password: "testPW123",
+            username: "test-ctrl-item-cool_cat99",
+            password: "Secret123$",
         })
         userId = createdUser.id
         const createdTag = await tag.create({
-            name: "itemtesttag",
-            firstColor: "000000",
-            secondColor: "ffffff",
+            name: "test-ctrl-item-photography-tips-tricks",
+            firstColor: "ff1493",
+            secondColor: "00ced1",
             owner: userId,
         })
         tagId = createdTag.id
@@ -38,24 +38,26 @@ describe("item controller", () => {
     describe("#create", () => {
         it("should create a new item", async () => {
             const item = await controller.create({
-                url: "https://www.example.com",
-                name: "example page",
-                description: "is an example",
+                url: "http://example.com/cooking101",
+                name: "test-ctrl-item-Cooking 101",
+                description:
+                    "Your go-to resource for easy recipes and culinary tips.",
                 owner: userId,
                 tags: [tagId],
             })
 
             expect(item.id).to.be.not.null
-            expect(item.url).to.equal("https://www.example.com")
-            expect(item.name).to.equal("example page")
+            expect(item.url).to.equal("http://example.com/cooking101")
+            expect(item.name).to.equal("test-ctrl-item-Cooking 101")
         })
 
         it("throws error with invalid url", async () => {
             try {
                 await controller.create({
-                    url: "htt ps:/www. $example.com",
-                    name: "example page",
-                    description: "is an example",
+                    url: "htt:/example.com/fitnesshub",
+                    name: "test-ctrl-item-Fitness Hub",
+                    description:
+                        "Get fit and stay healthy with expert workout routines and nutrition advice.",
                     owner: userId,
                 })
             } catch (e) {
@@ -67,33 +69,40 @@ describe("item controller", () => {
     describe("#update", () => {
         it("should update an item", async () => {
             const item = await controller.create({
-                url: "https://www.example.com",
-                name: "example page",
-                description: "is an example",
+                url: "http://example.com/travelinsider",
+                name: "test-ctrl-item-TravelInsider",
+                description:
+                    "Discover hidden gems and travel hacks for your next adventure.",
                 owner: userId,
             })
 
-            expect(item.url).to.equal("https://www.example.com")
-            expect(item.name).to.equal("example page")
+            expect(item.url).to.equal("http://example.com/travelinsider")
+            expect(item.name).to.equal("test-ctrl-item-TravelInsider")
 
             const updatedItem = await controller.update(item.id, {
-                url: "https://www.test.com",
-                name: "other page",
-                description: "is an example",
+                url: "http://example.com/mindfulnessjourney",
+                name: "test-ctrl-item-Mindfulness Journey",
+                description:
+                    "Begin your journey to inner peace and mindfulness with guided meditation sessions.",
                 tags: [tagId],
             })
 
-            expect(updatedItem.url).to.equal("https://www.test.com")
-            expect(updatedItem.name).to.equal("other page")
+            expect(updatedItem.url).to.equal(
+                "http://example.com/mindfulnessjourney"
+            )
+            expect(updatedItem.name).to.equal(
+                "test-ctrl-item-Mindfulness Journey"
+            )
             expect(updatedItem.tags).to.contain(tagId)
         })
 
         it("throws error for non-existing item", async () => {
             try {
                 await controller.update("6675932d4f2094eb2ec739ad", {
-                    url: "https://www.test.com",
-                    name: "other page",
-                    description: "is an example",
+                    url: "http://example.com/moneymatters",
+                    name: "test-ctrl-item-MoneyMatters",
+                    description:
+                        "Learn smart financial management strategies and investment tips.",
                 })
             } catch (e) {
                 expect(e.name).to.equal("NotFoundError")
@@ -104,9 +113,10 @@ describe("item controller", () => {
     describe("#delete", () => {
         it("should delete the new item", async () => {
             const item = await controller.create({
-                url: "https://www.example.com",
-                name: "example page",
-                description: "is an example",
+                url: "http://example.com/techbuzz",
+                name: "test-ctrl-item-TechBuzz",
+                description:
+                    "Stay updated with the latest in technology news and gadget reviews.",
                 owner: userId,
             })
 
@@ -117,17 +127,18 @@ describe("item controller", () => {
     describe("#getById", () => {
         it("should get the new item", async () => {
             const item = await controller.create({
-                url: "https://www.example.com",
-                name: "example page",
-                description: "is an example",
+                url: "http://example.com/fashionista",
+                name: "test-ctrl-item-Fashionista",
+                description:
+                    "Your ultimate style guide for trends, fashion tips, and beauty hacks.",
                 owner: userId,
             })
 
             const gotItem = await controller.getById(item.id)
 
             expect(gotItem.id).to.be.not.null
-            expect(gotItem.url).to.equal("https://www.example.com")
-            expect(gotItem.name).to.equal("example page")
+            expect(gotItem.url).to.equal("http://example.com/fashionista")
+            expect(gotItem.name).to.equal("test-ctrl-item-Fashionista")
         })
 
         it("should return null for non-existing item", async () => {
@@ -148,9 +159,10 @@ describe("item controller", () => {
 
         it("should return created item list", async () => {
             await controller.create({
-                url: "https://www.example.com",
-                name: "example page",
-                description: "is an example",
+                url: "http://example.com/petparadise",
+                name: "test-ctrl-item-#Pet #Paradise",
+                description:
+                    "Spoil your furry friends with pet care advice, training tips, and adorable pet photos.",
                 owner: userId,
             })
 
@@ -158,7 +170,8 @@ describe("item controller", () => {
 
             expect(
                 items.some(
-                    (itemObj) => itemObj.url === "https://www.example.com"
+                    (itemObj) =>
+                        itemObj.url === "http://example.com/petparadise"
                 )
             ).to.be.true
         })
@@ -167,9 +180,10 @@ describe("item controller", () => {
     describe("#hasPermission", () => {
         it("should have the permission for the item", async () => {
             const item = await controller.create({
-                url: "https://www.example.com",
-                name: "example page",
-                description: "is an example",
+                url: "http://example.com/homeimprovement",
+                name: "test-ctrl-item-HomeImprovement",
+                description:
+                    "Transform your living space with DIY home decor ideas and renovation inspiration.",
                 owner: userId,
             })
 
@@ -180,9 +194,10 @@ describe("item controller", () => {
 
         it("should not have the permission for the item", async () => {
             const item = await controller.create({
-                url: "https://www.example.com",
-                name: "example page",
-                description: "is an example",
+                url: "http://example.com/careerboost",
+                name: "test-ctrl-item-Career!Boost",
+                description:
+                    "Take your career to the next level with expert advice on job hunting, resume building, and professional development.",
                 owner: userId,
             })
 
@@ -196,9 +211,7 @@ describe("item controller", () => {
 
     afterEach(async () => {
         await Item.findOneAndDelete({
-            name: {
-                $in: ["example page", "other page"],
-            },
+            name: /^test-ctrl-item-.*/,
         })
     })
 

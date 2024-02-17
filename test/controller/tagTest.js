@@ -19,8 +19,8 @@ describe("tag controller", () => {
         await connectDbAsync()
 
         const createdUser = await user.create({
-            username: "tagtester",
-            password: "testPW123",
+            username: "test-ctrl-tag-savvy_surfer77",
+            password: "Qwerty12345!",
         })
         userId = createdUser.id
     })
@@ -28,22 +28,22 @@ describe("tag controller", () => {
     describe("#create", () => {
         it("should create a new tag", async () => {
             const tag = await controller.create({
-                name: "testtag",
-                firstColor: "000000",
-                secondColor: "ffffff",
+                name: "test-ctrl-tag-introduction-to-ai",
+                firstColor: "ff5733",
+                secondColor: "ffd700",
                 owner: userId,
             })
 
             expect(tag.id).to.be.not.null
-            expect(tag.name).to.equal("testtag")
+            expect(tag.name).to.equal("test-ctrl-tag-introduction-to-ai")
         })
 
         it("throws error with invalid tag name", async () => {
             try {
                 await controller.create({
-                    name: "Tag ! ?",
-                    firstColor: "000000",
-                    secondColor: "ffffff",
+                    name: "test-ctrl-tag-web-design !tips?",
+                    firstColor: "8a2be2",
+                    secondColor: "00ff00",
                     owner: userId,
                 })
             } catch (e) {
@@ -54,9 +54,9 @@ describe("tag controller", () => {
         it("throws error with invalid color", async () => {
             try {
                 await controller.create({
-                    name: "testtag",
-                    firstColor: "0x000k",
-                    secondColor: "ffffff",
+                    name: "test-ctrl-tag-healthy-eating-habits",
+                    firstColor: "80x00k",
+                    secondColor: "ff6347",
                     owner: userId,
                 })
             } catch (e) {
@@ -68,30 +68,32 @@ describe("tag controller", () => {
     describe("#update", () => {
         it("should update a tag", async () => {
             const tag = await controller.create({
-                name: "testtag",
-                firstColor: "000000",
-                secondColor: "ffffff",
+                name: "test-ctrl-tag-travel-destinations-guide",
+                firstColor: "00bfff",
+                secondColor: "ff1493",
                 owner: userId,
             })
 
-            expect(tag.name).to.equal("testtag")
+            expect(tag.name).to.equal("test-ctrl-tag-travel-destinations-guide")
 
             const updatedTag = await controller.update(tag.id, {
-                name: "othertag",
-                firstColor: "000000",
-                secondColor: "ffffff",
+                name: "test-ctrl-tag-mindfulness-meditation",
+                firstColor: "9932cc",
+                secondColor: "ff4500",
                 owner: userId,
             })
 
-            expect(updatedTag.name).to.equal("othertag")
+            expect(updatedTag.name).to.equal(
+                "test-ctrl-tag-mindfulness-meditation"
+            )
         })
 
         it("throws error for non-existing tag", async () => {
             try {
                 await controller.update("6675932d4f2094eb2ec739ad", {
-                    name: "othertag",
-                    firstColor: "000000",
-                    secondColor: "ffffff",
+                    name: "test-ctrl-tag-coding-best-practices",
+                    firstColor: "ff8c00",
+                    secondColor: "8fbc8f",
                     owner: userId,
                 })
             } catch (e) {
@@ -103,9 +105,9 @@ describe("tag controller", () => {
     describe("#del", () => {
         it("should delete the new tag", async () => {
             const tag = await controller.create({
-                name: "testtag",
-                firstColor: "000000",
-                secondColor: "ffffff",
+                name: "test-ctrl-tag-financial-planning-tips",
+                firstColor: "2e8b57",
+                secondColor: "ba55d3",
                 owner: userId,
             })
 
@@ -122,23 +124,26 @@ describe("tag controller", () => {
 
         it("should return created tag list", async () => {
             await controller.create({
-                name: "testtag",
-                firstColor: "000000",
-                secondColor: "ffffff",
+                name: "test-ctrl-tag-beginner-yoga-poses",
+                firstColor: "1e90ff",
+                secondColor: "ffd700",
                 owner: userId,
             })
 
             const tags = await controller.list()
 
-            expect(tags.some((tagObj) => tagObj.name === "testtag")).to.be.true
+            expect(
+                tags.some(
+                    (tagObj) =>
+                        tagObj.name === "test-ctrl-tag-beginner-yoga-poses"
+                )
+            ).to.be.true
         })
     })
 
     afterEach(async () => {
         await Tag.findOneAndDelete({
-            name: {
-                $in: ["testtag", "othertag"],
-            },
+            name: /^test-ctrl-tag-.*/,
         })
     })
 
