@@ -1,4 +1,7 @@
-version: 2
+version: 2.1
+
+orbs:
+    docker: circleci/docker@2.5.0
 
 jobs:
     mocha:
@@ -59,8 +62,18 @@ jobs:
                   path: lint-results
 
 workflows:
-    version: 2
     tests:
         jobs:
             - mocha
             - eslint
+    docker-publish:
+        jobs:
+            - docker/publish:
+                  filters:
+                      tags:
+                          only: /.*/
+                      branches:
+                          ignore: /.*/
+                  registry: ghcr.io
+                  image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+                  tag: "$CIRCLE_TAG,latest"
