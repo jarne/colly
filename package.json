@@ -25,6 +25,7 @@
     },
     "scripts": {
         "start": "node app.js",
+        "start:prod": "cd client && yarn build && cd .. && yarn start",
         "dev": "nodemon -i client app.js",
         "test": "mocha --recursive --parallel",
         "test-ci": "mocha --recursive --exit --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results/mocha/junit.xml",
