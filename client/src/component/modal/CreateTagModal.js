@@ -155,6 +155,7 @@ const CreateTagModal = forwardRef((props, ref) => {
                             placeholder="tag-name-123"
                             value={tagName}
                             onChange={handleTagNameChange}
+                            autoFocus
                         />
                     </div>
                     <div className="mb-3">

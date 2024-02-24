@@ -181,6 +181,7 @@ const CreateItemModal = forwardRef((props, ref) => {
                             value={itemUrl}
                             onChange={handleItemUrlChange}
                             onBlur={handleItemUrlBlur}
+                            autoFocus
                         />
                     </div>
                     <div className="mb-3">
