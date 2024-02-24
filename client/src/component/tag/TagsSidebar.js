@@ -15,7 +15,7 @@ function TagsSidebar(props) {
 
     useEffect(() => {
         loadTags()
-    }, [loadTags])
+    }, [])
 
     const handleEditModeChange = (e) => {
         setEditMode(!isEditMode)

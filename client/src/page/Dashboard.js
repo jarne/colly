@@ -57,7 +57,7 @@ function Dashboard() {
         }
 
         loadItems()
-    }, [accessToken, loadItems, navigate])
+    }, [accessToken])
 
     return (
         <>
