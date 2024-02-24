@@ -4503,6 +4503,7 @@ __metadata:
     react-bootstrap: "npm:^2.10"
     react-colorful: "npm:^5.6"
     react-dom: "npm:^18.2"
+    react-responsive-masonry: "npm:^2.2.0"
     react-router-dom: "npm:^6.21"
     react-scripts: "npm:^5.0"
     react-toastify: "npm:^10.0"
@@ -10825,6 +10826,13 @@ __metadata:
   version: 0.11.0
   resolution: "react-refresh@npm:0.11.0"
   checksum: 10c0/cbb5616c7ba670bbd2f37ddadcdfefa66e727ea188e89733ccb8184d3b874631104b0bc016d5676a7ade4d9c79100b99b46b6ed10cd117ab5d1ddcbf8653a9f2
+  languageName: node
+  linkType: hard
+
+"react-responsive-masonry@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "react-responsive-masonry@npm:2.2.0"
+  checksum: 10c0/156285df87fbcc0b86cb3a18f2df36be5902a0b6ce3435006b96bc88bd1f8e44f9f0b7627f9bc319df49a5eab54d2c31d3c982a866950b24e807f1c1325de108
   languageName: node
   linkType: hard
 

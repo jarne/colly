@@ -4,6 +4,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 import { toast } from "react-toastify"
 
 import TagsSidebar from "./../component/tag/TagsSidebar"
@@ -137,21 +138,19 @@ function Dashboard() {
             </nav>
             <main className="dashboard-main">
                 <TagsSidebar createTagModalRef={createTagModalRef} />
-                <div className="row w-100 m-3 main-cards-view">
-                    {items.map((item) => {
-                        return (
-                            <div
-                                key={item._id}
-                                className="col-4 card-container"
-                            >
+                <ResponsiveMasonry className="w-100 m-3 main-cards-view">
+                    <Masonry gutter="16px">
+                        {items.map((item) => {
+                            return (
                                 <ItemCard
+                                    key={item._id}
                                     item={item}
                                     createItemModalRef={createItemModalRef}
                                 />
-                            </div>
-                        )
-                    })}
-                </div>
+                            )
+                        })}
+                    </Masonry>
+                </ResponsiveMasonry>
             </main>
             <CreateTagModal ref={createTagModalRef} />
             <CreateItemModal ref={createItemModalRef} />
