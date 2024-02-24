@@ -1,6 +1,9 @@
 {
     "root": true,
-    "extends": ["react-app"],
+    "extends": ["react-app", "plugin:jsdoc/recommended"],
+    "rules": {
+        "jsdoc/require-jsdoc": "off"
+    },
     "env": {
         "browser": true
     },
