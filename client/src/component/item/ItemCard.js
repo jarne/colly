@@ -36,15 +36,14 @@ function ItemCard({ item, createItemModalRef }) {
             <div className="card-body">
                 <h5 className="card-title">
                     {item.name}{" "}
-                    <a
-                        href="#"
+                    <button
                         onClick={(e) => {
                             handleItemEditClick(e, item._id)
                         }}
-                        className="card-edit text-theme-pink"
+                        className="card-edit bg-transparent border-0 text-theme-pink"
                     >
                         <i className="bi bi-pencil-square"></i>
-                    </a>
+                    </button>
                 </h5>
                 <p className="card-text card-url">{formatUrlText(item.url)}</p>
                 <p className="card-text card-description">{item.description}</p>

@@ -15,7 +15,7 @@ function TagsSidebar(props) {
 
     useEffect(() => {
         loadTags()
-    }, [])
+    }, [loadTags])
 
     const handleEditModeChange = (e) => {
         setEditMode(!isEditMode)
@@ -38,10 +38,10 @@ function TagsSidebar(props) {
         <div className="tags-sidebar d-flex flex-column bg-theme-light p-3">
             {tags.map((tag) => {
                 return (
-                    <a
+                    <div
                         key={tag._id}
                         className="tags-sidebar-tag text-theme-dark text-decoration-none"
-                        href="#"
+                        role="button"
                         onClick={(e) => {
                             handleTagClick(e, tag._id)
                         }}
@@ -53,7 +53,7 @@ function TagsSidebar(props) {
                             }}
                         ></div>
                         {tag.name}
-                    </a>
+                    </div>
                 )
             })}
             <div className="form-check tags-edit-mode-check">

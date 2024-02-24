@@ -6,8 +6,7 @@ import InternalAPI from "./../../util/InternalAPI"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
 
 /**
- * Create new tag
- *
+ * Create tag
  * @param {string} name tag name
  * @param {string} firstColor first gradient color
  * @param {string} secondColor second gradient color
@@ -47,7 +46,6 @@ export const createTag = async (name, firstColor, secondColor, accessToken) => {
 
 /**
  * Update tag
- *
  * @param {string} id tag ID
  * @param {string} name tag name
  * @param {string} firstColor first gradient color
@@ -92,7 +90,6 @@ export const updateTag = async (
 
 /**
  * Delete tag
- *
  * @param {string} id tag ID
  * @param {string} accessToken API access token
  */
@@ -121,9 +118,8 @@ export const deleteTag = async (id, accessToken) => {
 
 /**
  * Get all tags
- *
  * @param {string} accessToken API access token
- * @returns list of all tags
+ * @returns {Array} tag objects
  */
 export const listTags = async (accessToken) => {
     let res

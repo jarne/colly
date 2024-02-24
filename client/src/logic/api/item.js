@@ -6,8 +6,7 @@ import InternalAPI from "./../../util/InternalAPI"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
 
 /**
- * Create new item
- *
+ * Create item
  * @param {string} url item URL
  * @param {string} name item name
  * @param {string} description item description
@@ -48,8 +47,7 @@ export const createItem = async (url, name, description, tags, accessToken) => {
 }
 
 /**
- * Update collection item
- *
+ * Update item
  * @param {string} id item ID
  * @param {string} url item URL
  * @param {string} name item name
@@ -97,7 +95,6 @@ export const updateItem = async (
 
 /**
  * Delete item
- *
  * @param {string} id item ID
  * @param {string} accessToken API access token
  */
@@ -125,10 +122,9 @@ export const deleteItem = async (id, accessToken) => {
 }
 
 /**
- * Get all collection items
- *
+ * Get all items
  * @param {string} accessToken API access token
- * @returns list of all items
+ * @returns {Array} item objects
  */
 export const listItems = async (accessToken) => {
     let res
@@ -152,11 +148,10 @@ export const listItems = async (accessToken) => {
 }
 
 /**
- * Get metadata preview of item URL
- *
+ * Get metadata preview of an item URL
  * @param {string} url item URL
  * @param {string} accessToken API access token
- * @returns metadata preview info (page title and description)
+ * @returns {object} metadata preview info (page title and description)
  */
 export const generatePreview = async (url, accessToken) => {
     let res

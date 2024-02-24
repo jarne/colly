@@ -16,16 +16,16 @@ function TagBadge({ tag, clickAction }) {
     }
 
     return (
-        <a href={clickAction ? "#" : undefined} onClick={handleClick}>
-            <span
-                className="badge tag-badge"
-                style={{
-                    background: `linear-gradient(to bottom right, #${tag.firstColor}, #${tag.secondColor})`,
-                }}
-            >
-                {tag.name}
-            </span>
-        </a>
+        <span
+            className="badge tag-badge"
+            style={{
+                background: `linear-gradient(to bottom right, #${tag.firstColor}, #${tag.secondColor})`,
+            }}
+            role={clickAction ? "button" : undefined}
+            onClick={handleClick}
+        >
+            {tag.name}
+        </span>
     )
 }
 

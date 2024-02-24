@@ -2,10 +2,9 @@
  * Colly | dashboard page
  */
 
-import { useState, useEffect, useRef } from "react"
-import { useNavigate } from "react-router-dom"
+import { useEffect, useRef } from "react"
+import { useNavigate, Link } from "react-router-dom"
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
-import { toast } from "react-toastify"
 
 import TagsSidebar from "./../component/tag/TagsSidebar"
 import ItemCard from "./../component/item/ItemCard"
@@ -58,13 +57,13 @@ function Dashboard() {
         }
 
         loadItems()
-    }, [])
+    }, [accessToken, loadItems, navigate])
 
     return (
         <>
             <nav className="navbar navbar-expand-lg sticky-top bg-theme-light">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">
+                    <Link className="navbar-brand" to="/dashboard">
                         <img
                             src={collyLogoImg}
                             alt=""
@@ -73,63 +72,56 @@ function Dashboard() {
                             className="d-inline-block align-text-top me-1"
                         />
                         Colly
-                    </a>
+                    </Link>
                     <ul className="navbar-nav">
                         <li className="nav-item dropdown">
-                            <a
+                            <button
                                 className="nav-link dropdown-toggle"
-                                href="#"
-                                role="button"
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false"
                             >
                                 <i className="bi bi-plus-lg"></i> Add
-                            </a>
+                            </button>
                             <ul className="dropdown-menu dropdown-menu-end position-absolute">
                                 <li>
-                                    <a
+                                    <button
                                         className="dropdown-item"
-                                        href="#"
                                         onClick={handleCreateItem}
                                     >
                                         Collection item
-                                    </a>
+                                    </button>
                                 </li>
                                 <li>
-                                    <a
+                                    <button
                                         className="dropdown-item"
-                                        href="#"
                                         onClick={handleCreateTag}
                                     >
                                         Tag
-                                    </a>
+                                    </button>
                                 </li>
                             </ul>
                         </li>
                         <li className="nav-item dropdown">
-                            <a
+                            <button
                                 className="nav-link dropdown-toggle"
-                                href="#"
-                                role="button"
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false"
                             >
                                 {displayName}
-                            </a>
+                            </button>
                             <ul className="dropdown-menu dropdown-menu-end position-absolute">
                                 <li>
-                                    <a className="dropdown-item" href="#">
+                                    <button className="dropdown-item">
                                         Preferences
-                                    </a>
+                                    </button>
                                 </li>
                                 <li>
-                                    <a
+                                    <button
                                         className="dropdown-item"
-                                        href="#"
                                         onClick={handleLogoutClick}
                                     >
                                         Logout
-                                    </a>
+                                    </button>
                                 </li>
                             </ul>
                         </li>
