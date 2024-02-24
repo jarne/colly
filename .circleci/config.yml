@@ -71,12 +71,40 @@ jobs:
             # Save lint results
             - store_test_results:
                   path: lint-results
+    eslint-client:
+        docker:
+            - image: cimg/node:20.11.0
+        steps:
+            # Checkout branch
+            - checkout
+
+            # Change to client directory
+            - run: cd client
+
+            # Install client Yarn dependencies
+            - restore_cache:
+                  key: yarn-client-{{ checksum "yarn.lock" }}
+            - run: yarn install
+            - save_cache:
+                  key: yarn-client-{{ checksum "yarn.lock" }}
+                  paths:
+                      - node_modules
+
+            # Run ESLint
+            - run: yarn lint:ci
+
+            # Save lint results
+            - store_test_results:
+                  path: lint-results
 
 workflows:
     tests:
         jobs:
             - mocha
             - eslint
+    tests-client:
+        jobs:
+            - eslint-client
     docker-publish:
         jobs:
             - docker/publish:

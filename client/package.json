@@ -28,7 +28,8 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "lint": "eslint ."
+        "lint": "eslint .",
+        "lint:ci": "eslint --format junit --output-file ./lint-results/eslint/junit.xml ."
     },
     "dependencies": {
         "@uidotdev/usehooks": "^2.4",
