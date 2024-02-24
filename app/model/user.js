@@ -12,13 +12,13 @@ const UserSchema = new Schema({
         type: String,
         unique: true,
         lowercase: true,
-        required: [true, "can't be blank"],
+        required: [true, "is required"],
         match: [/^[a-zA-Z0-9.\-_]*$/, "contains invalid characters"],
         index: true,
     },
     password: {
         type: String,
-        required: [true, "can't be blank"],
+        required: [true, "is required"],
     },
     isAdmin: {
         type: Boolean,

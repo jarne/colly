@@ -12,16 +12,16 @@ const TagSchema = new Schema({
         type: String,
         unique: true,
         lowercase: true,
-        required: [true, "tag name may not be empty"],
+        required: [true, "is required"],
         match: [
             /^[a-zA-Z0-9.\-_]*$/,
-            "invalid tag name, may only contain letters, numbers and hyphens",
+            "invalid, may only contain letters, numbers and hyphens",
         ],
         index: true,
     },
     firstColor: {
         type: String,
-        required: true,
+        required: [true, "is required"],
         validate: {
             validator: validator.isHexColor,
             message: "invalid hex color",
@@ -29,7 +29,7 @@ const TagSchema = new Schema({
     },
     secondColor: {
         type: String,
-        required: true,
+        required: [true, "is required"],
         validate: {
             validator: validator.isHexColor,
             message: "invalid hex color",

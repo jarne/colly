@@ -3,6 +3,7 @@
  */
 
 import InternalAPI from "./../../util/InternalAPI"
+import { generateValidationErrorMessage } from "./util/errorCodeHandling"
 
 /**
  * Create new tag
@@ -35,10 +36,7 @@ export const createTag = async (name, firstColor, secondColor, accessToken) => {
     if (res.error) {
         switch (res.error.code) {
             case "validation_error":
-                const valMsgs = res.error.fields.map((field) => {
-                    return field.message
-                })
-                throw new Error(`Invalid input: ${valMsgs.join(", ")}!`)
+                throw new Error(generateValidationErrorMessage(res.error))
             case "duplicate_entry":
                 throw new Error("A tag with this name already exists!")
             default:
@@ -85,10 +83,7 @@ export const updateTag = async (
     if (res.error) {
         switch (res.error.code) {
             case "validation_error":
-                const valMsgs = res.error.fields.map((field) => {
-                    return field.message
-                })
-                throw new Error(`Invalid input: ${valMsgs.join(", ")}!`)
+                throw new Error(generateValidationErrorMessage(res.error))
             default:
                 throw new Error("Unknown error!")
         }

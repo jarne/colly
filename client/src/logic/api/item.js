@@ -3,6 +3,7 @@
  */
 
 import InternalAPI from "./../../util/InternalAPI"
+import { generateValidationErrorMessage } from "./util/errorCodeHandling"
 
 /**
  * Create new item
@@ -37,10 +38,7 @@ export const createItem = async (url, name, description, tags, accessToken) => {
     if (res.error) {
         switch (res.error.code) {
             case "validation_error":
-                const valMsgs = res.error.fields.map((field) => {
-                    return field.message
-                })
-                throw new Error(`Invalid input: ${valMsgs.join(", ")}!`)
+                throw new Error(generateValidationErrorMessage(res.error))
             case "duplicate_entry":
                 throw new Error("An item with this name already exists!")
             default:
@@ -90,10 +88,7 @@ export const updateItem = async (
     if (res.error) {
         switch (res.error.code) {
             case "validation_error":
-                const valMsgs = res.error.fields.map((field) => {
-                    return field.message
-                })
-                throw new Error(`Invalid input: ${valMsgs.join(", ")}!`)
+                throw new Error(generateValidationErrorMessage(res.error))
             default:
                 throw new Error("Unknown error!")
         }

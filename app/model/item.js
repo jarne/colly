@@ -14,7 +14,7 @@ const ItemSchema = new Schema({
     url: {
         type: String,
         lowercase: true,
-        required: true,
+        required: [true, "is required"],
         validate: {
             validator: validator.isURL,
             message: "invalid url",
@@ -23,11 +23,11 @@ const ItemSchema = new Schema({
     },
     name: {
         type: String,
-        required: true,
+        required: [true, "is required"],
     },
     description: {
         type: String,
-        required: true,
+        required: [true, "is required"],
     },
     tags: [
         {
