@@ -6,7 +6,7 @@ import { createContext, useContext, useState } from "react"
 
 import { useUserAuth } from "./UserAuthProvider"
 import { listTags } from "./../../logic/api/tag"
-import { listItems } from "./../../logic/api/item"
+import { findItems } from "./../../logic/api/item"
 
 const AppDataContext = createContext(null)
 
@@ -27,10 +27,10 @@ const AppDataProvider = (props) => {
         setTags(tags)
     }
 
-    const loadItems = async () => {
+    const loadItems = async (filter) => {
         let items
         try {
-            items = await listItems(accessToken)
+            items = await findItems(accessToken, filter)
         } catch (e) {
             return
         }

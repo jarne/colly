@@ -35,8 +35,14 @@ function Dashboard() {
             return
         }
 
-        loadItems()
-    }, [accessToken])
+        if (tagId) {
+            loadItems({
+                tags: tagId,
+            })
+        } else {
+            loadItems()
+        }
+    }, [accessToken, tagId])
 
     return (
         <>
