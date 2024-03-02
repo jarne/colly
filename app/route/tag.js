@@ -42,7 +42,7 @@ router.patch("/:id", update)
 router.delete("/:id", del)
 
 /**
- * Get all tags
+ * Get tags
  */
 router.get("/", find)
 

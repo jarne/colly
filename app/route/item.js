@@ -43,7 +43,7 @@ router.patch("/:id", update)
 router.delete("/:id", del)
 
 /**
- * Get all items
+ * Get items
  */
 router.get("/", find)
 
