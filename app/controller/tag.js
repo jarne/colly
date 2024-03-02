@@ -14,5 +14,5 @@ export default {
     update: crud.update,
     del: crud.del,
     getById: crud.getById,
-    list: crud.list,
+    find: crud.find,
 }

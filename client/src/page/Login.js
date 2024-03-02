@@ -59,7 +59,7 @@ function Login() {
         setAccessToken(res.token)
         setDisplayName(res.user.username)
 
-        navigate("/dashboard")
+        navigate("/")
     }
 
     return (

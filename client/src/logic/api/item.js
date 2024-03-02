@@ -2,6 +2,8 @@
  * Colly | collection item API logic
  */
 
+import qs from "qs"
+
 import InternalAPI from "./../../util/InternalAPI"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
 
@@ -122,19 +124,30 @@ export const deleteItem = async (id, accessToken) => {
 }
 
 /**
- * Get all items
+ * Find items
  * @param {string} accessToken API access token
+ * @param {object} filter Filter
  * @returns {Array} item objects
  */
-export const listItems = async (accessToken) => {
+export const findItems = async (accessToken, filter) => {
+    const query = {
+        filter,
+    }
+    const queryStr = qs.stringify(query, {
+        encode: false,
+    })
+
     let res
     try {
-        const resp = await fetch(InternalAPI.API_ENDPOINT + "/item", {
-            method: "GET",
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-            },
-        })
+        const resp = await fetch(
+            `${InternalAPI.API_ENDPOINT}/item?${queryStr}`,
+            {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            }
+        )
         res = await resp.json()
     } catch (e) {
         throw new Error()

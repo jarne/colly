@@ -74,12 +74,11 @@ jobs:
     eslint-client:
         docker:
             - image: cimg/node:20.11.1
+        working_directory: ~/project/client
         steps:
             # Checkout branch
-            - checkout
-
-            # Change to client directory
-            - run: cd client
+            - checkout:
+                  path: ~/project
 
             # Install client Yarn dependencies
             - restore_cache:

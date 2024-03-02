@@ -11,7 +11,7 @@ import { handleError } from "./../routes.js"
 
 const router = express.Router()
 
-const { update, del, list } = crudRoutes(controller)
+const { update, del, find } = crudRoutes(controller)
 
 /**
  * Create new item
@@ -45,7 +45,7 @@ router.delete("/:id", del)
 /**
  * Get all items
  */
-router.get("/", list)
+router.get("/", find)
 
 /**
  * Generate basic metadata preview for URL

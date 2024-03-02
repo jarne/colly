@@ -3,6 +3,7 @@
  */
 
 import { handleError } from "./../../routes.js"
+import { parseFieldsArray } from "./../util/queryParser.js"
 
 /**
  * Common CRUD routes
@@ -90,15 +91,20 @@ const crud = (controller) => {
     }
 
     /**
-     * List operation
+     * Find operation
      * @param {object} req Request
      * @param {object} res Result
      * @returns {object} Result
      */
-    const list = async (req, res) => {
+    const find = async (req, res) => {
         let objs
         try {
-            objs = await controller.list()
+            objs = await controller.find(
+                req.query.filter,
+                parseFieldsArray(req.query.populate),
+                req.query.sort,
+                parseFieldsArray(req.query.select)
+            )
         } catch (e) {
             return handleError(e, res)
         }
@@ -113,7 +119,7 @@ const crud = (controller) => {
         update,
         del,
         getById,
-        list,
+        find,
     }
 }
 

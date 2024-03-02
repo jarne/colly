@@ -18,7 +18,7 @@ const crud = (model) => {
     /**
      * Create operation
      * @param {object} data Object data
-     * @returns {object} Created database object
+     * @returns {object} Created model object
      */
     const create = async (data) => {
         const obj = new model(data)
@@ -41,7 +41,7 @@ const crud = (model) => {
      * Update operation
      * @param {string} id Object ID
      * @param {object} data Object data
-     * @returns {object} Updated database object
+     * @returns {object} Updated model object
      */
     const update = async (id, data) => {
         try {
@@ -86,7 +86,7 @@ const crud = (model) => {
     /**
      * Get operation
      * @param {string} id Object ID
-     * @returns {object} Database object
+     * @returns {object} Model object
      */
     const getById = async (id) => {
         try {
@@ -102,14 +102,43 @@ const crud = (model) => {
     }
 
     /**
-     * List operation
-     * @returns {object[]} List of all database objects
+     * Find operation
+     * @param {object} filter Filter
+     * @param {Array} populate Fields to populate
+     * @param {object} sort Sorting
+     * @param {Array} select Fields to select
+     * @param {boolean} lean Return lean object
+     * @returns {object[]} Found model objects
      */
-    const list = async () => {
+    const find = async (
+        filter = {},
+        populate = [],
+        sort = {},
+        select = [],
+        lean = false
+    ) => {
         try {
-            return await model.find()
+            const query = model.find(filter || {})
+
+            if (populate) {
+                query.populate(populate)
+            }
+
+            if (sort) {
+                query.sort(sort)
+            }
+
+            if (select) {
+                query.select(select)
+            }
+
+            if (lean) {
+                query.lean()
+            }
+
+            return await query.exec()
         } catch (e) {
-            logger.error(`${modelName}_list_error`, {
+            logger.error(`${modelName}_find_error`, {
                 error: e.message,
             })
 
@@ -122,7 +151,7 @@ const crud = (model) => {
         update,
         del,
         getById,
-        list,
+        find,
     }
 }
 

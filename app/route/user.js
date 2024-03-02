@@ -9,7 +9,7 @@ import crudRoutes from "./common/crud.js"
 
 const router = express.Router()
 
-const { create, update, del, list } = crudRoutes(controller)
+const { create, update, del, find } = crudRoutes(controller)
 
 /**
  * Create new user
@@ -29,6 +29,6 @@ router.delete("/:id", del)
 /**
  * Get all users
  */
-router.get("/", list)
+router.get("/", find)
 
 export default router

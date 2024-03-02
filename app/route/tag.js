@@ -10,7 +10,7 @@ import { handleError } from "./../routes.js"
 
 const router = express.Router()
 
-const { update, del, list } = crudRoutes(controller)
+const { update, del, find } = crudRoutes(controller)
 
 /**
  * Create new tag
@@ -44,6 +44,6 @@ router.delete("/:id", del)
 /**
  * Get all tags
  */
-router.get("/", list)
+router.get("/", find)
 
 export default router

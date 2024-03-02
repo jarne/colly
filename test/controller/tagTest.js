@@ -115,9 +115,9 @@ describe("tag controller", () => {
         })
     })
 
-    describe("#list", () => {
+    describe("#find", () => {
         it("should return empty tag list", async () => {
-            const tags = await controller.list()
+            const tags = await controller.find()
 
             expect(tags).to.be.an("array")
         })
@@ -130,7 +130,7 @@ describe("tag controller", () => {
                 owner: userId,
             })
 
-            const tags = await controller.list()
+            const tags = await controller.find()
 
             expect(
                 tags.some(

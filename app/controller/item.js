@@ -79,17 +79,32 @@ const getById = async (id) => {
 }
 
 /**
- * List items
- * @returns {object[]} All items
+ * Find items
+ * @param {object} filter Filter
+ * @param {Array} populate Fields to populate
+ * @param {object} sort Sorting
+ * @param {Array} select Fields to select
+ * @returns {object[]} Found items
  */
-export const list = async () => {
+export const find = async (
+    filter = {},
+    populate = [],
+    sort = {},
+    select = []
+) => {
     try {
-        const items = await Item.find().populate("tags").lean()
+        const items = await crud.find(
+            filter,
+            ["tags", ...populate],
+            sort,
+            select,
+            true
+        )
         const withSignedUrls = await Promise.all(items.map(signImageUrls))
 
         return withSignedUrls
     } catch (e) {
-        logger.error("item_list_error", {
+        logger.error("item_find_error", {
             error: e.message,
         })
 
@@ -124,6 +139,6 @@ export default {
     update: crud.update,
     del: crud.del,
     getById,
-    list,
+    find,
     hasPermission,
 }
