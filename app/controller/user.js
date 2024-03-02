@@ -85,7 +85,7 @@ const update = async (id, data) => {
  * @param {boolean} lean Return lean object
  * @returns {object[]} Found users
  */
-const find = async (filter, populate, sort, select, lean) => {
+const find = async (filter = {}, populate = [], sort = {}, select = [], lean = false) => {
     try {
         return await crud.find(
             filter,

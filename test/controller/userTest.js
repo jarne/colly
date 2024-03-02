@@ -97,9 +97,9 @@ describe("user controller", () => {
         })
     })
 
-    describe("#list", () => {
+    describe("#find", () => {
         it("should return empty user list", async () => {
-            const users = await controller.list()
+            const users = await controller.find()
 
             expect(users).to.be.an("array")
         })
@@ -110,7 +110,7 @@ describe("user controller", () => {
                 password: "welcome2024",
             })
 
-            const users = await controller.list()
+            const users = await controller.find()
 
             expect(
                 users.some(

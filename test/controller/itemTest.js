@@ -173,9 +173,9 @@ describe("item controller", () => {
         })
     })
 
-    describe("#list", () => {
+    describe("#find", () => {
         it("should return empty item list", async () => {
-            const items = await controller.list()
+            const items = await controller.find()
 
             expect(items).to.be.an("array")
         })
@@ -189,7 +189,7 @@ describe("item controller", () => {
                 owner: userId,
             })
 
-            const items = await controller.list()
+            const items = await controller.find()
 
             expect(
                 items.some(
