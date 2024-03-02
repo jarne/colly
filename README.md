@@ -25,17 +25,45 @@
 
 ## 📙 Description
 
-Colly is a web-based URL/website collection app, where you can add links to your favorite web pages and organize them using tags.
+Colly is a web-based application designed for effortlessly collecting and organizing your favorite URL's and websites.
+With Colly, users can create a personalized library of web pages.
+
+One of Colly's features is its tagging system, which allows users to categorize and organize their collections with ease.
+Whether it's articles, blogs, tutorials, or any other web content, users can assign relevant tags to each link,
+enabling efficient retrieval and navigation within their collections.
+
+The collection of a user can also be set as public and accessed using a public access link by
+anyone who has the link.
+
+Whether you're a student, professional, or simply someone who loves to explore the web,
+Colly empowers users to create curated collections tailored to their unique preferences and interests.
+Say goodbye to scattered bookmarks and hello to a more organized, accessible, and enjoyable web browsing experience with Colly.
 
 ### Screenshots
 
 <img src=".github/.media/screenshot-login.png" alt="Screenshot of Colly login page">
 
+<img src=".github/.media/screenshot-dashboard.png" alt="Colly item dashboard">
+
+<img src=".github/.media/screenshot-item-edit.png" alt="Item edit view">
+
 ## 🖥 Usage
 
 ### Setup & requirements
 
-...
+The back-end of the application is written using Node.js and the Express framework, while
+the front-end part uses React.
+
+As dependencies, a MongoDB database and an S3-compatible object storage, such as MinIO,
+are required. Its access credentials need to be configured using the environment variables below.
+
+#### Deploy using Docker
+
+The recommended way to deploy Colly is using its [Docker](./Dockerfile) image.
+
+The image can be pulled from the
+[GitHub Packages registry](https://github.com/users/jarne/packages/container/package/colly)
+using: `docker pull ghcr.io/jarne/colly:latest`.
 
 #### Environment variables
 
