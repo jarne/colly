@@ -7,28 +7,66 @@ import { promises as fs } from "fs"
 
 import { connectDbAsync } from "./app/init.js"
 
-await connectDbAsync()
-
 const User = mongoose.model("User")
 const Tag = mongoose.model("Tag")
 const Item = mongoose.model("Item")
 
-const userContent = await fs.readFile("./test-data/content/user.json", "utf8")
-const tagContent = await fs.readFile("./test-data/content/tag.json", "utf8")
-const itemContent = await fs.readFile("./test-data/content/item.json", "utf8")
+const deleteData = async () => {
+    await User.collection.drop()
+    await Tag.collection.drop()
+    await Item.collection.drop()
+}
 
-const users = JSON.parse(userContent)
-const tags = JSON.parse(tagContent)
-const items = JSON.parse(itemContent)
+const replaceIdsInObject = (obj) => {
+    for (const key in obj) {
+        const val = obj[key]
 
-await User.collection.drop()
-await Tag.collection.drop()
-await Item.collection.drop()
+        if (Array.isArray(val)) {
+            obj[key] = replaceIdsInObject(val)
+        }
 
+        if (val.length === 24 && val[23] !== "=") {
+            obj[key] = new mongoose.Types.ObjectId(val)
+        }
+
+        if (val.length === 24 && val[23] === "=") {
+            obj[key] = new mongoose.Types.UUID(
+                Buffer.from(val, "base64").toString("hex")
+            )
+        }
+    }
+
+    return obj
+}
+
+const convertIdsToObjectIds = (data) => {
+    return data.map(replaceIdsInObject)
+}
+
+const importData = async () => {
+    const userContent = await fs.readFile(
+        "./test-data/content/user.json",
+        "utf8"
+    )
+    const tagContent = await fs.readFile("./test-data/content/tag.json", "utf8")
+    const itemContent = await fs.readFile(
+        "./test-data/content/item.json",
+        "utf8"
+    )
+
+    const users = JSON.parse(userContent)
+    const tags = JSON.parse(tagContent)
+    const items = JSON.parse(itemContent)
+
+    await User.collection.insertMany(convertIdsToObjectIds(users))
+    await Tag.collection.insertMany(convertIdsToObjectIds(tags))
+    await Item.collection.insertMany(convertIdsToObjectIds(items))
+}
+
+await connectDbAsync()
+
+await deleteData()
 console.log("Deleted existing data")
 
-await User.collection.insertMany(users)
-await Tag.collection.insertMany(tags)
-await Item.collection.insertMany(items)
-
+await importData()
 console.log("Imported test data")
