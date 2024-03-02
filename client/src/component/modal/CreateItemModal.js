@@ -18,7 +18,7 @@ const CreateItemModal = forwardRef((props, ref) => {
     const MAX_FILTERED_TAGS = 10
 
     const [accessToken] = useUserAuth()
-    const [tags, , , items, , loadItems] = useAppData()
+    const [tags, , , items] = useAppData()
 
     const [show, setShow] = useState(false)
 
@@ -150,7 +150,7 @@ const CreateItemModal = forwardRef((props, ref) => {
         )
         handleClose()
 
-        loadItems()
+        props.triggerItemLoad()
     }
 
     return (

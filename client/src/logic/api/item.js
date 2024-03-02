@@ -134,7 +134,7 @@ export const findItems = async (accessToken, filter) => {
         filter,
     }
     const queryStr = qs.stringify(query, {
-        encode: false
+        encode: false,
     })
 
     let res

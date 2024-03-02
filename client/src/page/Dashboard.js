@@ -28,13 +28,7 @@ function Dashboard() {
     const createTagModalRef = useRef()
     const createItemModalRef = useRef()
 
-    useEffect(() => {
-        if (accessToken === null) {
-            navigate("/login")
-
-            return
-        }
-
+    const triggerItemLoad = () => {
         if (tagId) {
             loadItems({
                 tags: tagId,
@@ -42,6 +36,16 @@ function Dashboard() {
         } else {
             loadItems()
         }
+    }
+
+    useEffect(() => {
+        if (accessToken === null) {
+            navigate("/login")
+
+            return
+        }
+
+        triggerItemLoad()
     }, [accessToken, tagId])
 
     return (
@@ -67,7 +71,10 @@ function Dashboard() {
                 </ResponsiveMasonry>
             </main>
             <CreateTagModal ref={createTagModalRef} />
-            <CreateItemModal ref={createItemModalRef} />
+            <CreateItemModal
+                triggerItemLoad={triggerItemLoad}
+                ref={createItemModalRef}
+            />
         </>
     )
 }
