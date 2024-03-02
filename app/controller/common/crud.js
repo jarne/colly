@@ -110,7 +110,13 @@ const crud = (model) => {
      * @param {boolean} lean Return lean object
      * @returns {object[]} Found model objects
      */
-    const find = async (filter = {}, populate = [], sort = {}, select = [], lean = false) => {
+    const find = async (
+        filter = {},
+        populate = [],
+        sort = {},
+        select = [],
+        lean = false
+    ) => {
         try {
             const query = model.find(filter || {})
 

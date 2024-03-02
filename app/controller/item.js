@@ -84,10 +84,14 @@ const getById = async (id) => {
  * @param {Array} populate Fields to populate
  * @param {object} sort Sorting
  * @param {Array} select Fields to select
- * @param {boolean} lean Return lean object
  * @returns {object[]} Found items
  */
-export const find = async (filter = {}, populate = [], sort = {}, select = [], lean = false) => {
+export const find = async (
+    filter = {},
+    populate = [],
+    sort = {},
+    select = []
+) => {
     try {
         const items = await crud.find(
             filter,

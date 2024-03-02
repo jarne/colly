@@ -82,18 +82,11 @@ const update = async (id, data) => {
  * @param {Array} populate Fields to populate
  * @param {object} sort Sorting
  * @param {Array} select Fields to select
- * @param {boolean} lean Return lean object
  * @returns {object[]} Found users
  */
-const find = async (filter = {}, populate = [], sort = {}, select = [], lean = false) => {
+const find = async (filter = {}, populate = [], sort = {}, select = []) => {
     try {
-        return await crud.find(
-            filter,
-            populate,
-            sort,
-            [...select, "-password"],
-            lean
-        )
+        return await crud.find(filter, populate, sort, [...select, "-password"])
     } catch (e) {
         logger.error("user_list_error", {
             error: e.message,
