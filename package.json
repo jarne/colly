@@ -27,6 +27,7 @@
         "start": "node app.js",
         "start:prod": "cd client && yarn build && cd .. && yarn start",
         "dev": "nodemon -i client app.js",
+        "dev:test-data": "node testDataServer.js",
         "test": "mocha --recursive --parallel --require test/fixtures.js",
         "test:ci": "mocha --recursive --exit --require test/fixtures.js --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results/mocha/junit.xml",
         "test:coverage": "c8 --all -x client -x .yarn --reporter html yarn test",
