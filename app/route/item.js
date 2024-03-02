@@ -11,26 +11,12 @@ import { handleError } from "./../routes.js"
 
 const router = express.Router()
 
-const { update, del, find } = crudRoutes(controller)
+const { create, update, del, find } = crudRoutes(controller, true)
 
 /**
  * Create new item
  */
-router.post("/", async (req, res) => {
-    let item
-    try {
-        item = await controller.create({
-            ...req.body,
-            owner: req.user.id,
-        })
-    } catch (e) {
-        return handleError(e, res)
-    }
-
-    return res.json({
-        id: item.id,
-    })
-})
+router.post("/", create)
 
 /**
  * Update item
