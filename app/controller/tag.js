@@ -5,6 +5,7 @@
 import mongoose from "mongoose"
 
 import crudController from "./common/crud.js"
+import logger from "./../util/logger.js"
 
 const Tag = mongoose.model("Tag")
 const crud = crudController(Tag)
