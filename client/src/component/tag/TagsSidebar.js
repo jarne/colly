@@ -3,12 +3,15 @@
  */
 
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 import { useAppData } from "./../context/DataProvider"
 
 import "./TagsSidebar.css"
 
 function TagsSidebar(props) {
+    const navigate = useNavigate()
+
     const [tags, , loadTags] = useAppData()
 
     const [isEditMode, setEditMode] = useState(false)
@@ -31,7 +34,7 @@ function TagsSidebar(props) {
             return
         }
 
-        // TODO: open tag page
+        navigate(`/tag/${tagId}`)
     }
 
     return (

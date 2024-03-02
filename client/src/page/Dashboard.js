@@ -3,7 +3,7 @@
  */
 
 import { useEffect, useRef } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 
 import Navbar from "./../component/Navbar"
@@ -20,6 +20,7 @@ import "./Dashboard.css"
 
 function Dashboard() {
     const navigate = useNavigate()
+    const { tagId } = useParams()
 
     const [accessToken] = useUserAuth()
     const [, , , items, , loadItems] = useAppData()

@@ -26,6 +26,7 @@ function App() {
                         <Routes>
                             <Route path="/login" element={<Login />} />
                             <Route path="/" element={<Dashboard />} />
+                            <Route path="/tag/:tagId" element={<Dashboard />} />
                         </Routes>
                     </BrowserRouter>
                 </AppDataProvider>
