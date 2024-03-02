@@ -77,12 +77,23 @@ const update = async (id, data) => {
 }
 
 /**
- * List users
- * @returns {object[]} All users
+ * Find users
+ * @param {object} filter Filter
+ * @param {Array} populate Fields to populate
+ * @param {object} sort Sorting
+ * @param {Array} select Fields to select
+ * @param {boolean} lean Return lean object
+ * @returns {object[]} Found users
  */
-const list = async () => {
+const find = async (filter, populate, sort, select, lean) => {
     try {
-        return await User.find().select("username isAdmin")
+        return await crud.find(
+            filter,
+            populate,
+            sort,
+            [...select, "-password"],
+            lean
+        )
     } catch (e) {
         logger.error("user_list_error", {
             error: e.message,
@@ -115,6 +126,6 @@ export default {
     update,
     del: crud.del,
     getById: crud.getById,
-    list,
+    find,
     generateToken,
 }
