@@ -4,7 +4,7 @@
 
 import express from "express"
 
-const TEST_DATA_PATH = "./test-data"
+const TEST_DATA_PATH = "./test-data/websites"
 const TEST_DATA_SERVER_PORT = 3387
 
 const app = express()
