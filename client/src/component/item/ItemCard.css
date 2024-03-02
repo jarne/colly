@@ -19,6 +19,13 @@
     border-top-left-radius: 12px !important;
 }
 
+.card-logo-img {
+    width: 24px;
+    height: 24px;
+
+    object-fit: contain;
+}
+
 .card-edit {
     float: right;
 }

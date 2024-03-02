@@ -29,13 +29,37 @@ function ItemCard({ item, createItemModalRef }) {
             {item.imageUrl && (
                 <img
                     src={item.imageUrl}
-                    alt={`${item.name} preview screenshot`}
+                    alt={`${item.name} article image`}
                     className="card-img-top"
                 />
             )}
             <div className="card-body">
                 <h5 className="card-title">
-                    {item.name}{" "}
+                    <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-reset text-decoration-none"
+                    >
+                        {item.logoUrl && (
+                            <img
+                                src={item.logoUrl}
+                                alt={`${item.name} page icon`}
+                                className="card-logo-img rounded-circle"
+                            />
+                        )}{" "}
+                        {item.name}
+                    </a>
+                </h5>
+                <p className="card-text card-url">
+                    <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-reset text-decoration-none"
+                    >
+                        {formatUrlText(item.url)}
+                    </a>{" "}
                     <button
                         onClick={(e) => {
                             handleItemEditClick(e, item._id)
@@ -44,8 +68,7 @@ function ItemCard({ item, createItemModalRef }) {
                     >
                         <i className="bi bi-pencil-square"></i>
                     </button>
-                </h5>
-                <p className="card-text card-url">{formatUrlText(item.url)}</p>
+                </p>
                 <p className="card-text card-description">{item.description}</p>
                 {item.tags.length > 0 && <TagList tags={item.tags} />}
             </div>
