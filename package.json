@@ -72,5 +72,5 @@
         "supertest": "^6.3.4"
     },
     "type": "module",
-    "packageManager": "yarn@4.1.0"
+    "packageManager": "yarn@4.1.1"
 }
