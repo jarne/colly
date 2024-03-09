@@ -14,6 +14,11 @@
             "versioning": "node"
         },
         {
+            "extends": "monorepo:aws-sdk-js-v3",
+            "groupName": "aws-sdk-js-v3 monorepo",
+            "matchUpdateTypes": ["digest", "patch", "minor", "major"]
+        },
+        {
             "matchPackagePatterns": "^metascraper",
             "groupName": "metascraper monorepo",
             "matchUpdateTypes": ["digest", "patch", "minor", "major"]
