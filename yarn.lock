@@ -598,8 +598,8 @@ __metadata:
   linkType: hard
 
 "@aws-sdk/s3-request-presigner@npm:^3.511.0":
-  version: 3.525.0
-  resolution: "@aws-sdk/s3-request-presigner@npm:3.525.0"
+  version: 3.529.1
+  resolution: "@aws-sdk/s3-request-presigner@npm:3.529.1"
   dependencies:
     "@aws-sdk/signature-v4-multi-region": "npm:3.525.0"
     "@aws-sdk/types": "npm:3.523.0"
@@ -609,7 +609,7 @@ __metadata:
     "@smithy/smithy-client": "npm:^2.4.2"
     "@smithy/types": "npm:^2.10.1"
     tslib: "npm:^2.5.0"
-  checksum: 10c0/72067ba9b32eddbd090e874eb12013ebaba9ee636daa83d6195cbcb3580fe246a83ca5bba8d2802ea5defec45af567d7e238096614ac946385308c01264f8eec
+  checksum: 10c0/7a25a6ab20dab91ab2ee5589bc31dbe9000389e326dcd236320aae3decd23697f17b9b3a8c317585ff3f1711fedfff080183dbf7c06e799ed0ca593021fdcd70
   languageName: node
   linkType: hard
 
