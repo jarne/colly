@@ -4674,14 +4674,14 @@ __metadata:
   linkType: hard
 
 "metascraper-logo-favicon@npm:^5.43.6":
-  version: 5.45.0
-  resolution: "metascraper-logo-favicon@npm:5.45.0"
+  version: 5.45.2
+  resolution: "metascraper-logo-favicon@npm:5.45.2"
   dependencies:
     "@keyvhq/memoize": "npm:~2.1.0"
     "@metascraper/helpers": "npm:^5.45.0"
     lodash: "npm:~4.17.21"
     reachable-url: "npm:~1.8.0"
-  checksum: 10c0/7fb7df4777a16aaebdd569267461c3135102f86e9f7ab71e276ae2686b0b16f5a708f2e569f0a7e2b21fcd276df2a7d2a7978fab09a179c3cfcf1c1666559512
+  checksum: 10c0/2595663ac703fb699f8e03a505cb639b7a3ef03d439d6270f1a300fd4c037c73aafddc2ac32e1e58c84ad40c981a46d0107458d61402effea52da8e9ce50d937
   languageName: node
   linkType: hard
 
@@ -4705,14 +4705,14 @@ __metadata:
   linkType: hard
 
 "metascraper@npm:^5.43.4":
-  version: 5.45.0
-  resolution: "metascraper@npm:5.45.0"
+  version: 5.45.2
+  resolution: "metascraper@npm:5.45.2"
   dependencies:
     "@metascraper/helpers": "npm:^5.45.0"
     cheerio: "npm:~1.0.0-rc.12"
     lodash: "npm:~4.17.21"
     whoops: "npm:~4.1.7"
-  checksum: 10c0/f20c53c4ed9d723df93bb8d0fa8c58471f65be2d9e9f638a731c3d5cc5480b4c19c79735524f185711f9e345514f239c4d23297815ab215a715950c9b3fcd2ff
+  checksum: 10c0/7bc94190e1fb670d9a52a11f5bcdf9f009bb77ab06f1ba72d9d905f52a7e3f8f0655ba01ea3ccbebbe56b116b559bfa2f32ec52ee6f7c00995029fcd9a87a7bf
   languageName: node
   linkType: hard
 
