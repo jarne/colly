@@ -2377,9 +2377,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@restart/ui@npm:^1.6.6":
-  version: 1.6.6
-  resolution: "@restart/ui@npm:1.6.6"
+"@restart/ui@npm:^1.6.8":
+  version: 1.6.8
+  resolution: "@restart/ui@npm:1.6.8"
   dependencies:
     "@babel/runtime": "npm:^7.21.0"
     "@popperjs/core": "npm:^2.11.6"
@@ -2393,7 +2393,7 @@ __metadata:
   peerDependencies:
     react: ">=16.14.0"
     react-dom: ">=16.14.0"
-  checksum: 10c0/a5faed96af630ca3ffaf25f8e435149f90482d8b00642315c4f97055171536b6ff9c9e710f411f0905a40c84fa50056765ea93aa874a24e4da0b5cca2307389d
+  checksum: 10c0/d87c397316f2c3e34b31541b4a880065c904ca22b0236d1479f273e1216bfb75713e9f545aa8adfeca888cd5f3aca287fa90932feb26a04d7eeacf4a06286a20
   languageName: node
   linkType: hard
 
@@ -10831,12 +10831,12 @@ __metadata:
   linkType: hard
 
 "react-bootstrap@npm:^2.10":
-  version: 2.10.1
-  resolution: "react-bootstrap@npm:2.10.1"
+  version: 2.10.2
+  resolution: "react-bootstrap@npm:2.10.2"
   dependencies:
     "@babel/runtime": "npm:^7.22.5"
     "@restart/hooks": "npm:^0.4.9"
-    "@restart/ui": "npm:^1.6.6"
+    "@restart/ui": "npm:^1.6.8"
     "@types/react-transition-group": "npm:^4.4.6"
     classnames: "npm:^2.3.2"
     dom-helpers: "npm:^5.2.1"
@@ -10853,7 +10853,7 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 10c0/94b6174e856c571886e6911c5155ee45a6ff93e392fdcda1bfabf5d3b744a824403abf3841a6667046a26d27c428852673b09e56d0bd34d3c0e4ec8f13753976
+  checksum: 10c0/bd50d18df9ee726b1a48e18ba3586602401503993786ebcffcc73ee38c9775ed3532b53f9251bea12c5346d1f7b065c3f920cd1ac295554533f636b0c3b0ee76
   languageName: node
   linkType: hard
 
