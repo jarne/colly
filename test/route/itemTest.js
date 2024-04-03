@@ -20,15 +20,24 @@ describe("item router", () => {
     let tid
     let token
 
+    let rogueUid
+    let rogueToken
+
     before(function (done) {
         const prepare = async () => {
             const createdUser = await user.create({
                 username: "test-route-item-EmeraldPhoenix",
                 password: "Encrypt10nRul3s",
             })
-
             uid = createdUser.id
             token = user.generateToken(createdUser)
+
+            const createdRogueUser = await user.create({
+                username: "test-route-item-MidnightSerenade",
+                password: "TwilightMelody$123",
+            })
+            rogueUid = createdRogueUser.id
+            rogueToken = user.generateToken(createdRogueUser)
 
             const createdTag = await tag.create({
                 name: "test-route-item-rhythmic-melodies",
@@ -36,7 +45,6 @@ describe("item router", () => {
                 secondColor: "f1c40f",
                 owner: uid,
             })
-
             tid = createdTag.id
 
             done()
@@ -73,6 +81,23 @@ describe("item router", () => {
 
             expect(newItem.name).to.equal("test-route-item-GadgetGalaxy")
         })
+
+        it("should fail with a permission error using foreign tags", async () => {
+            const res = await request(app)
+                .post("/api/item")
+                .set("Content-Type", "application/json")
+                .set("Authorization", `Bearer ${rogueToken}`)
+                .send({
+                    url: "https://culinarycrafters.example.com/recipes",
+                    name: "test-route-item-CulinaryCrafters",
+                    description:
+                        "CulinaryCrafters offers recipes, tutorials, and chef tips for food enthusiasts.",
+                    tags: [tid],
+                })
+
+            expect(res.status).to.eq(403)
+            expect(res.body.error.code).to.eq("insufficient_permission")
+        })
     })
 
     describe("patch /api/item/:id", () => {
@@ -107,6 +132,30 @@ describe("item router", () => {
             expect(updatedItem.url).to.equal(
                 "https://example.com/lifestyle/eco/ecoeden"
             )
+        })
+
+        it("should throw a permission error updating a foreign item", async () => {
+            const created = await controller.create({
+                url: "https://ecoecoecho.example.com/lifestyle",
+                name: "test-route-item-EcoEcoEcho",
+                description:
+                    "Discover eco-friendly living tips and environmental news at EcoEcoEcho.",
+                owner: uid,
+                tags: [tid],
+            })
+
+            const res = await request(app)
+                .patch(`/api/item/${created.id}`)
+                .set("Content-Type", "application/json")
+                .set("Authorization", `Bearer ${rogueToken}`)
+                .send({
+                    name: "test-route-item-FitFusionFitness",
+                    description:
+                        "Achieve your fitness goals with workout routines and nutrition advice at FitFusionFitness.",
+                })
+
+            expect(res.status).to.eq(403)
+            expect(res.body.error.code).to.eq("insufficient_permission")
         })
     })
 
@@ -157,6 +206,7 @@ describe("item router", () => {
 
     after(async () => {
         await User.findByIdAndDelete(uid)
+        await User.findByIdAndDelete(rogueUid)
         await Tag.findByIdAndDelete(tid)
     })
 })
