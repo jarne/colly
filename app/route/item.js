@@ -25,7 +25,7 @@ const checkTagPermissions = async (itemData, userId) => {
         return true
     }
 
-    for (const tagId in itemData.tags) {
+    for (const tagId of itemData.tags) {
         const tagPermCheck = await tag.hasPermission(tagId, userId)
 
         if (!tagPermCheck) {
