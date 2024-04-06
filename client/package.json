@@ -47,7 +47,7 @@
         "sass": "^1.70"
     },
     "devDependencies": {
-        "eslint": "^8.56",
+        "eslint": "^9.0.0",
         "eslint-plugin-jsdoc": "^48.0.6"
     },
     "browserslist": {
