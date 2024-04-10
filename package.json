@@ -31,8 +31,8 @@
         "test": "mocha --recursive --parallel --require test/fixtures.js",
         "test:ci": "mocha --recursive --exit --require test/fixtures.js --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results/mocha/junit.xml",
         "test:coverage": "c8 --all -x client -x .yarn --reporter html yarn test",
-        "lint": "eslint .",
-        "lint:ci": "eslint --format junit --output-file ./lint-results/eslint/junit.xml .",
+        "lint": "eslint ./*.js app test",
+        "lint:ci": "eslint --format junit --output-file ./lint-results/eslint/junit.xml ./*.js app test",
         "format": "prettier --write \"**/*.{js,json,html,css,scss,yml,md}\""
     },
     "dependencies": {
@@ -64,6 +64,7 @@
         "cors": "^2.8",
         "eslint": "^9.0.0",
         "eslint-plugin-jsdoc": "^48.0.6",
+        "globals": "^15.0.0",
         "mocha": "^10.2",
         "mocha-junit-reporter": "^2.2",
         "morgan": "^1.10",
