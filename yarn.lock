@@ -6765,8 +6765,8 @@ __metadata:
   linkType: hard
 
 "winston-loki@npm:^6.0.8":
-  version: 6.1.1
-  resolution: "winston-loki@npm:6.1.1"
+  version: 6.1.2
+  resolution: "winston-loki@npm:6.1.2"
   dependencies:
     async-exit-hook: "npm:2.0.1"
     btoa: "npm:^1.2.1"
@@ -6777,7 +6777,7 @@ __metadata:
   dependenciesMeta:
     snappy:
       optional: true
-  checksum: 10c0/6b3c23d8b034030a24797e861b73f4a502f08a79fbc5d7e7ecb7f467ffd2f030c1e74359ef9f0d25a7fdc2f687c4ee2dceee2eaac1bbd07849e3013f013c43c6
+  checksum: 10c0/508d73a7b1f1bd1149f0c2612edfa652b532b69a4a332f5be9e4866f48122aa1cb1fe1a3b21d753b63e53c250b4ca8a9e561a259c64ed10fdac158fc3ed7fca0
   languageName: node
   linkType: hard
 
