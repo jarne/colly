@@ -1,5 +1,13 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        ":semanticPrefixFixDepsChoreOthers",
+        ":ignoreModulesAndTests",
+        "group:monorepos",
+        "group:recommended",
+        "replacements:all",
+        "workarounds:all"
+    ],
     "schedule": ["before 5am"],
     "prHourlyLimit": 2,
     "prConcurrentLimit": 3,
@@ -12,16 +20,6 @@
         {
             "matchPackageNames": ["node", "cimg/node"],
             "versioning": "node"
-        },
-        {
-            "extends": "monorepo:react",
-            "groupName": "react monorepo",
-            "matchUpdateTypes": ["digest", "patch", "minor", "major"]
-        },
-        {
-            "extends": "monorepo:aws-sdk-js-v3",
-            "groupName": "aws-sdk-js-v3 monorepo",
-            "matchUpdateTypes": ["digest", "patch", "minor", "major"]
         },
         {
             "matchPackagePatterns": "^metascraper",
