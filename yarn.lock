@@ -2651,6 +2651,7 @@ __metadata:
     cors: "npm:^2.8"
     dotenv: "npm:^16.4"
     eslint: "npm:^9.0.0"
+    eslint-formatter-junit: "npm:^8.40.0"
     eslint-plugin-jsdoc: "npm:^48.0.6"
     express: "npm:^4.18"
     globals: "npm:^15.0.0"
@@ -3226,6 +3227,13 @@ __metadata:
   version: 4.0.0
   resolution: "escape-string-regexp@npm:4.0.0"
   checksum: 10c0/9497d4dd307d845bd7f75180d8188bb17ea8c151c1edbf6b6717c100e104d629dc2dfb687686181b0f4b7d732c7dfdc4d5e7a8ff72de1b0ca283a75bbb3a9cd9
+  languageName: node
+  linkType: hard
+
+"eslint-formatter-junit@npm:^8.40.0":
+  version: 8.40.0
+  resolution: "eslint-formatter-junit@npm:8.40.0"
+  checksum: 10c0/ffb03c376213d5dda45f3181010f7525f1353243ad3ebe23018371fab8c6f0851209ba207f5583a4893feac91bbface2b5cb3df54787296b213d1ca5d308edab
   languageName: node
   linkType: hard
 

@@ -63,6 +63,7 @@
         "chai": "^5.0",
         "cors": "^2.8",
         "eslint": "^9.0.0",
+        "eslint-formatter-junit": "^8.40.0",
         "eslint-plugin-jsdoc": "^48.0.6",
         "globals": "^15.0.0",
         "mocha": "^10.2",
