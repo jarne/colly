@@ -48,8 +48,11 @@
     },
     "devDependencies": {
         "eslint": "^9.0.0",
-        "eslint-plugin-jsdoc": "^48.0.6"
+        "eslint-plugin-jsdoc": "^48.0.6",
+        "eslint-plugin-react": "^7.34.1",
+        "globals": "^15.1.0"
     },
+    "type": "module",
     "browserslist": {
         "production": [
             ">0.2%",
