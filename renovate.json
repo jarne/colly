@@ -5,11 +5,12 @@
         ":ignoreModulesAndTests",
         "group:monorepos",
         "group:recommended",
+        "group:allNonMajor",
         "replacements:all",
         "workarounds:all"
     ],
     "schedule": ["before 5am"],
-    "prHourlyLimit": 2,
+    "prHourlyLimit": 3,
     "prConcurrentLimit": 3,
     "enabledManagers": ["npm", "dockerfile", "circleci", "github-actions"],
     "packageRules": [
