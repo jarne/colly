@@ -3,9 +3,9 @@
     "extends": [
         ":semanticPrefixFixDepsChoreOthers",
         ":ignoreModulesAndTests",
+        ":automergePatch",
         "group:monorepos",
         "group:recommended",
-        "group:allNonMajor",
         "replacements:all",
         "workarounds:all"
     ],
@@ -15,8 +15,10 @@
     "enabledManagers": ["npm", "dockerfile", "circleci", "github-actions"],
     "packageRules": [
         {
-            "matchUpdateTypes": ["patch", "pin", "digest"],
-            "automerge": true
+            "groupName": "all minor dependencies",
+            "groupSlug": "all-minor",
+            "matchPackagePatterns": ["*"],
+            "matchUpdateTypes": ["minor"]
         },
         {
             "matchPackageNames": ["node", "cimg/node"],
@@ -25,7 +27,7 @@
         {
             "matchPackagePatterns": "^metascraper",
             "groupName": "metascraper monorepo",
-            "matchUpdateTypes": ["digest", "patch", "minor", "major"]
+            "matchUpdateTypes": ["major"]
         }
     ]
 }
