@@ -59,7 +59,7 @@
         "winston-loki": "^6.0.8"
     },
     "devDependencies": {
-        "c8": "^9.1",
+        "c8": "^10.0.0",
         "chai": "^5.0",
         "cors": "^2.8",
         "eslint": "^8.56",
