@@ -3280,8 +3280,8 @@ __metadata:
   linkType: hard
 
 "eslint-plugin-jsdoc@npm:^48.0.6":
-  version: 48.2.11
-  resolution: "eslint-plugin-jsdoc@npm:48.2.11"
+  version: 48.2.12
+  resolution: "eslint-plugin-jsdoc@npm:48.2.12"
   dependencies:
     "@es-joy/jsdoccomment": "npm:~0.43.1"
     are-docs-informative: "npm:^0.0.2"
@@ -3293,7 +3293,7 @@ __metadata:
     spdx-expression-parse: "npm:^4.0.0"
   peerDependencies:
     eslint: ^7.0.0 || ^8.0.0 || ^9.0.0
-  checksum: 10c0/688a3cf110180e428cc061403fb30c9687bc3f5b95cbcd15b4f1c6906ddff1404f6dace92cd6ffd908bc12524207d75f003f6ec7e8705f80b0114357da3c39eb
+  checksum: 10c0/18d1a56013391e93ba02815ef57830f068fbc95b05edcf3f378beb15e4bacedc9332b326ddae00a670c10d755622dc0c29af3e76027d1a5759627505aa64d487
   languageName: node
   linkType: hard
 
