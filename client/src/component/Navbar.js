@@ -88,6 +88,11 @@ function Navbar({ createTagModalRef, createItemModalRef }) {
                                 </button>
                             </li>
                             <li>
+                                <Link className="dropdown-item" to="/admin">
+                                    Admin panel
+                                </Link>
+                            </li>
+                            <li>
                                 <button
                                     className="dropdown-item"
                                     onClick={handleLogoutClick}
