@@ -55,7 +55,10 @@ function Dashboard() {
                 createItemModalRef={createItemModalRef}
             />
             <main className="dashboard-main">
-                <TagsSidebar createTagModalRef={createTagModalRef} />
+                <TagsSidebar
+                    createTagModalRef={createTagModalRef}
+                    activeTag={tagId}
+                />
                 <ResponsiveMasonry className="w-100 m-3 main-cards-view">
                     <Masonry gutter="16px">
                         {items.map((item) => {

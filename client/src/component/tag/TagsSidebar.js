@@ -43,7 +43,7 @@ function TagsSidebar(props) {
                 return (
                     <div
                         key={tag._id}
-                        className="tags-sidebar-tag text-theme-dark text-decoration-none"
+                        className={`tags-sidebar-tag text-theme-dark text-decoration-none${props.activeTag === tag._id ? " fw-bold" : ""}`}
                         role="button"
                         onClick={(e) => {
                             handleTagClick(e, tag._id)
