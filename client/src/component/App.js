@@ -9,6 +9,7 @@ import { UserAuthProvider } from "./context/UserAuthProvider"
 import { AppDataProvider } from "./context/DataProvider"
 import Login from "./../page/Login"
 import Dashboard from "./../page/Dashboard"
+import Admin from "./../page/Admin"
 
 import "./../util/CustomBootstrap.scss"
 import "./../../node_modules/bootstrap/dist/js/bootstrap.bundle"
@@ -26,6 +27,7 @@ function App() {
                         <Routes>
                             <Route path="/login" element={<Login />} />
                             <Route path="/" element={<Dashboard />} />
+                            <Route path="/admin" element={<Admin />} />
                             <Route path="/tag/:tagId" element={<Dashboard />} />
                         </Routes>
                     </BrowserRouter>
