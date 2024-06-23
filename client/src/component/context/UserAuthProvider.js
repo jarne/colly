@@ -9,10 +9,18 @@ const UserAuthContext = createContext(null)
 const UserAuthProvider = (props) => {
     const [accessToken, setAccessToken] = useState(null)
     const [displayName, setDisplayName] = useState("...")
+    const [isAdmin, setIsAdmin] = useState(false)
 
     return (
         <UserAuthContext.Provider
-            value={[accessToken, setAccessToken, displayName, setDisplayName]}
+            value={[
+                accessToken,
+                setAccessToken,
+                displayName,
+                setDisplayName,
+                isAdmin,
+                setIsAdmin,
+            ]}
             {...props}
         />
     )

@@ -10,7 +10,8 @@ import collyLogoImg from "./../asset/colly-logo.png"
 function Navbar({ createTagModalRef, createItemModalRef }) {
     const navigate = useNavigate()
 
-    const [, setAccessToken, displayName, setDisplayName] = useUserAuth()
+    const [, setAccessToken, displayName, setDisplayName, isAdmin, setIsAdmin] =
+        useUserAuth()
 
     const handleCreateTag = (e) => {
         e.preventDefault()
@@ -28,6 +29,7 @@ function Navbar({ createTagModalRef, createItemModalRef }) {
 
         setAccessToken(null)
         setDisplayName("...")
+        setIsAdmin(false)
 
         navigate("/login")
     }
@@ -46,33 +48,35 @@ function Navbar({ createTagModalRef, createItemModalRef }) {
                     Colly
                 </Link>
                 <ul className="navbar-nav">
-                    <li className="nav-item dropdown">
-                        <button
-                            className="nav-link dropdown-toggle"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                        >
-                            <i className="bi bi-plus-lg"></i> Add
-                        </button>
-                        <ul className="dropdown-menu dropdown-menu-end position-absolute">
-                            <li>
-                                <button
-                                    className="dropdown-item"
-                                    onClick={handleCreateItem}
-                                >
-                                    Collection item
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                    className="dropdown-item"
-                                    onClick={handleCreateTag}
-                                >
-                                    Tag
-                                </button>
-                            </li>
-                        </ul>
-                    </li>
+                    {createTagModalRef && createItemModalRef && (
+                        <li className="nav-item dropdown">
+                            <button
+                                className="nav-link dropdown-toggle"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                <i className="bi bi-plus-lg"></i> Add
+                            </button>
+                            <ul className="dropdown-menu dropdown-menu-end position-absolute">
+                                <li>
+                                    <button
+                                        className="dropdown-item"
+                                        onClick={handleCreateItem}
+                                    >
+                                        Collection item
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        className="dropdown-item"
+                                        onClick={handleCreateTag}
+                                    >
+                                        Tag
+                                    </button>
+                                </li>
+                            </ul>
+                        </li>
+                    )}
                     <li className="nav-item dropdown">
                         <button
                             className="nav-link dropdown-toggle"
@@ -87,6 +91,13 @@ function Navbar({ createTagModalRef, createItemModalRef }) {
                                     Preferences
                                 </button>
                             </li>
+                            {isAdmin && (
+                                <li>
+                                    <Link className="dropdown-item" to="/admin">
+                                        Admin panel
+                                    </Link>
+                                </li>
+                            )}
                             <li>
                                 <button
                                     className="dropdown-item"

@@ -27,6 +27,16 @@ const UserSchema = new Schema({
 })
 
 UserSchema.methods.setPassword = async function (password) {
+    if (password.length < 8) {
+        this.invalidate(
+            "password",
+            "must be at least 8 characters long",
+            password.length
+        )
+
+        return
+    }
+
     this.password = await bcrypt.hash(password, 10)
 }
 

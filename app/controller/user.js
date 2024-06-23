@@ -62,6 +62,7 @@ const update = async (id, data) => {
 
         if (password !== null) {
             await updated.setPassword(password)
+            await updated.save()
         }
 
         logger.verbose("user_updated", { id: updated.id })
