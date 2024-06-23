@@ -46,33 +46,35 @@ function Navbar({ createTagModalRef, createItemModalRef }) {
                     Colly
                 </Link>
                 <ul className="navbar-nav">
-                    <li className="nav-item dropdown">
-                        <button
-                            className="nav-link dropdown-toggle"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                        >
-                            <i className="bi bi-plus-lg"></i> Add
-                        </button>
-                        <ul className="dropdown-menu dropdown-menu-end position-absolute">
-                            <li>
-                                <button
-                                    className="dropdown-item"
-                                    onClick={handleCreateItem}
-                                >
-                                    Collection item
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                    className="dropdown-item"
-                                    onClick={handleCreateTag}
-                                >
-                                    Tag
-                                </button>
-                            </li>
-                        </ul>
-                    </li>
+                    {createTagModalRef && createItemModalRef && (
+                        <li className="nav-item dropdown">
+                            <button
+                                className="nav-link dropdown-toggle"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                <i className="bi bi-plus-lg"></i> Add
+                            </button>
+                            <ul className="dropdown-menu dropdown-menu-end position-absolute">
+                                <li>
+                                    <button
+                                        className="dropdown-item"
+                                        onClick={handleCreateItem}
+                                    >
+                                        Collection item
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        className="dropdown-item"
+                                        onClick={handleCreateTag}
+                                    >
+                                        Tag
+                                    </button>
+                                </li>
+                            </ul>
+                        </li>
+                    )}
                     <li className="nav-item dropdown">
                         <button
                             className="nav-link dropdown-toggle"
