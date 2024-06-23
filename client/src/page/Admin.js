@@ -85,7 +85,7 @@ function Admin() {
                                     <th scope="row">{user.username}</th>
                                     <td>
                                         {user.isAdmin ? (
-                                            <i class="bi bi-check"></i>
+                                            <i className="bi bi-check"></i>
                                         ) : (
                                             ""
                                         )}
