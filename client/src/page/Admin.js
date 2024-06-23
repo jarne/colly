@@ -13,8 +13,6 @@ import { useUserAuth } from "./../component/context/UserAuthProvider"
 import { useAppData } from "./../component/context/DataProvider"
 import { deleteUser } from "./../logic/api/user"
 
-import "./Admin.css"
-
 function Admin() {
     const navigate = useNavigate()
 
