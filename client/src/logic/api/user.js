@@ -69,7 +69,7 @@ export const updateUser = async (
             },
             body: JSON.stringify({
                 username,
-                password,
+                password: password === "" ? undefined : password,
                 isAdmin,
             }),
         })
