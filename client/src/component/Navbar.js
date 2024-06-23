@@ -10,7 +10,8 @@ import collyLogoImg from "./../asset/colly-logo.png"
 function Navbar({ createTagModalRef, createItemModalRef }) {
     const navigate = useNavigate()
 
-    const [, setAccessToken, displayName, setDisplayName] = useUserAuth()
+    const [, setAccessToken, displayName, setDisplayName, isAdmin, setIsAdmin] =
+        useUserAuth()
 
     const handleCreateTag = (e) => {
         e.preventDefault()
@@ -28,6 +29,7 @@ function Navbar({ createTagModalRef, createItemModalRef }) {
 
         setAccessToken(null)
         setDisplayName("...")
+        setIsAdmin(false)
 
         navigate("/login")
     }
@@ -89,11 +91,13 @@ function Navbar({ createTagModalRef, createItemModalRef }) {
                                     Preferences
                                 </button>
                             </li>
-                            <li>
-                                <Link className="dropdown-item" to="/admin">
-                                    Admin panel
-                                </Link>
-                            </li>
+                            {isAdmin && (
+                                <li>
+                                    <Link className="dropdown-item" to="/admin">
+                                        Admin panel
+                                    </Link>
+                                </li>
+                            )}
                             <li>
                                 <button
                                     className="dropdown-item"
