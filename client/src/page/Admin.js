@@ -2,16 +2,16 @@
  * Colly | admin panel
  */
 
-import { useState, useEffect, useRef } from "react"
+import { useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 
 import Navbar from "./../component/Navbar"
 import CreateUserModal from "./../component/modal/admin/CreateUserModal"
 
-import InternalAPI from "./../util/InternalAPI"
 import { useUserAuth } from "./../component/context/UserAuthProvider"
 import { useAppData } from "./../component/context/DataProvider"
+import { deleteUser } from "./../logic/api/user"
 
 import "./Admin.css"
 
@@ -28,50 +28,26 @@ function Admin() {
 
         createUserModalRef.current.open()
     }
+    const handleEditUser = (e, userId) => {
+        e.preventDefault()
 
-    // const [username, setUsername] = useState("")
-    // const [password, setPassword] = useState("")
+        createUserModalRef.current.setEditId(userId)
+        createUserModalRef.current.open()
+    }
+    const handleDeleteUser = async (e, userId) => {
+        e.preventDefault()
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault()
+        try {
+            await deleteUser(userId, accessToken)
+        } catch (ex) {
+            toast.error(ex.message)
 
-    //     let res
-    //     try {
-    //         const resp = await fetch(InternalAPI.API_ENDPOINT + "/auth/login", {
-    //             method: "POST",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: JSON.stringify({
-    //                 username: username,
-    //                 password: password,
-    //             }),
-    //         })
-    //         res = await resp.json()
-    //     } catch (e) {
-    //         toast.error("Error while communicating with the login server!")
+            return
+        }
 
-    //         return
-    //     }
-
-    //     if (res.error) {
-    //         switch (res.error_code) {
-    //             case "invalid_credentials":
-    //                 toast.error("Invalid username or password!")
-    //                 break
-    //             default:
-    //                 toast.error("Unknown error!")
-    //                 break
-    //         }
-
-    //         return
-    //     }
-
-    //     setAccessToken(res.token)
-    //     setDisplayName(res.user.username)
-
-    //     navigate("/")
-    // }
+        toast.success(`User has been deleted!`)
+        loadUsers()
+    }
 
     useEffect(() => {
         if (accessToken === null) {
@@ -101,6 +77,7 @@ function Admin() {
                         <tr>
                             <th scope="col">User name</th>
                             <th scope="col">Admin</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -114,6 +91,33 @@ function Admin() {
                                         ) : (
                                             ""
                                         )}
+                                    </td>
+                                    <td>
+                                        <div
+                                            className="btn-group"
+                                            role="group"
+                                            aria-label="User actions"
+                                        >
+                                            <button
+                                                className="btn btn-theme-orange btn-sm"
+                                                onClick={(e) => {
+                                                    handleEditUser(e, user._id)
+                                                }}
+                                            >
+                                                Edit
+                                            </button>
+                                            <button
+                                                className="btn btn-theme-pink btn-sm"
+                                                onClick={(e) => {
+                                                    handleDeleteUser(
+                                                        e,
+                                                        user._id
+                                                    )
+                                                }}
+                                            >
+                                                Delete
+                                            </button>
+                                        </div>
                                     </td>
                                 </tr>
                             )

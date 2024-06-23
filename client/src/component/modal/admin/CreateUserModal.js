@@ -149,7 +149,7 @@ const CreateUserModal = forwardRef((props, ref) => {
                             type="checkbox"
                             className="form-check-input"
                             id="isAdminInput"
-                            value={isAdmin}
+                            checked={isAdmin}
                             onChange={handleIsAdminChange}
                         />
                         <label
