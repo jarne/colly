@@ -2,11 +2,12 @@
  * Colly | admin panel
  */
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 
 import Navbar from "./../component/Navbar"
+import CreateUserModal from "./../component/modal/admin/CreateUserModal"
 
 import InternalAPI from "./../util/InternalAPI"
 import { useUserAuth } from "./../component/context/UserAuthProvider"
@@ -19,6 +20,14 @@ function Admin() {
 
     const [accessToken] = useUserAuth()
     const [, , , , , , users, , loadUsers] = useAppData()
+
+    const createUserModalRef = useRef()
+
+    const handleCreateUser = (e) => {
+        e.preventDefault()
+
+        createUserModalRef.current.open()
+    }
 
     // const [username, setUsername] = useState("")
     // const [password, setPassword] = useState("")
@@ -77,8 +86,16 @@ function Admin() {
     return (
         <>
             <Navbar />
-            <main className="container mt-2">
+            <main className="container mt-3">
                 <h2>Users</h2>
+                <p>
+                    <button
+                        className="btn btn-theme-pink"
+                        onClick={handleCreateUser}
+                    >
+                        Create user
+                    </button>
+                </p>
                 <table className="table table-striped">
                     <thead>
                         <tr>
@@ -104,6 +121,7 @@ function Admin() {
                     </tbody>
                 </table>
             </main>
+            <CreateUserModal ref={createUserModalRef} />
         </>
     )
 }
