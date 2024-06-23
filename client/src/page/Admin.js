@@ -77,6 +77,33 @@ function Admin() {
     return (
         <>
             <Navbar />
+            <main className="container mt-2">
+                <h2>Users</h2>
+                <table className="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">User name</th>
+                            <th scope="col">Admin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {users.map((user) => {
+                            return (
+                                <tr key={user._id}>
+                                    <th scope="row">{user.username}</th>
+                                    <td>
+                                        {user.isAdmin ? (
+                                            <i class="bi bi-check"></i>
+                                        ) : (
+                                            ""
+                                        )}
+                                    </td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </table>
+            </main>
         </>
     )
 }
