@@ -4817,14 +4817,14 @@ __metadata:
   linkType: hard
 
 "metascraper@npm:^5.43.4":
-  version: 5.45.12
-  resolution: "metascraper@npm:5.45.12"
+  version: 5.45.14
+  resolution: "metascraper@npm:5.45.14"
   dependencies:
     "@metascraper/helpers": "npm:^5.45.10"
     cheerio: "npm:~1.0.0-rc.12"
     lodash: "npm:~4.17.21"
     whoops: "npm:~4.1.7"
-  checksum: 10c0/4d94489b7cdc2db794ccf4f6b00d1d8a0c1cae6b15301f806e431dda6ad159a69b3b7511b3699cd1a4efe86ec3f889986391e3000e6d22e54fb0be8fdc9aad39
+  checksum: 10c0/1d61e63c88f9ed7108c8325cc98c81fe76c8bed22019f37e3681fb05a1957db3152d25cf395673336c43b3f7f0e1d34a75f980a90f931024968b592d7b16f140
   languageName: node
   linkType: hard
 
