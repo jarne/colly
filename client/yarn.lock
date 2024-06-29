@@ -4396,6 +4396,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"caniuse-lite@npm:^1.0.30001638":
+  version: 1.0.30001638
+  resolution: "caniuse-lite@npm:1.0.30001638"
+  checksum: 10c0/33019e0c53ed73f1e728b6f313efed2d7a25710dfa2ad3924d2be9939df10d0991556ac87523d3177d472c246654c9216f03e5532717ed97df58014728c3e798
+  languageName: node
+  linkType: hard
+
 "case-sensitive-paths-webpack-plugin@npm:^2.4.0":
   version: 2.4.0
   resolution: "case-sensitive-paths-webpack-plugin@npm:2.4.0"
@@ -10999,9 +11006,11 @@ __metadata:
   linkType: hard
 
 "react-responsive-masonry@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "react-responsive-masonry@npm:2.2.0"
-  checksum: 10c0/156285df87fbcc0b86cb3a18f2df36be5902a0b6ce3435006b96bc88bd1f8e44f9f0b7627f9bc319df49a5eab54d2c31d3c982a866950b24e807f1c1325de108
+  version: 2.2.1
+  resolution: "react-responsive-masonry@npm:2.2.1"
+  dependencies:
+    caniuse-lite: "npm:^1.0.30001638"
+  checksum: 10c0/429b1cf82fe3dc64d7da5ed3bbc5d8d2e71c23fa6a0a5f999563273ac4cde36ecdea4585660fbf90fe7c48f00ece3bff88590f930c1a8c6fce1a06b69d3ab6b9
   languageName: node
   linkType: hard
 
