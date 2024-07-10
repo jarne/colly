@@ -33,8 +33,8 @@ RUN yarn build
 # Switch back to app source folder
 WORKDIR /app
 
-# Start the application
-CMD ["yarn", "start:prod"]
+# Run startup commands
+CMD ["/bin/sh", "docker-cmd.sh"]
 
 # Open application ports
 EXPOSE 3000
