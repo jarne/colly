@@ -1825,16 +1825,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@es-joy/jsdoccomment@npm:~0.45.0":
-  version: 0.45.0
-  resolution: "@es-joy/jsdoccomment@npm:0.45.0"
+"@es-joy/jsdoccomment@npm:~0.46.0":
+  version: 0.46.0
+  resolution: "@es-joy/jsdoccomment@npm:0.46.0"
   dependencies:
-    "@types/eslint": "npm:^8.56.5"
-    "@types/estree": "npm:^1.0.5"
     comment-parser: "npm:1.4.1"
-    esquery: "npm:^1.5.0"
+    esquery: "npm:^1.6.0"
     jsdoc-type-pratt-parser: "npm:~4.0.0"
-  checksum: 10c0/a98ed5e1cdcb12c6d8e727a01fc85a471075461cf570aed6b627383c48dab81353c3f5c662fc6d60bab5db01777a74f01d88fb90ca984289598fafffe64eb2f1
+  checksum: 10c0/a7a67936ebf6d9aaf74af018c3ac744769af3552b05ad9b88fca96b2ffdca16e724b0ff497f53634ec4cca81e98d8c471b6b6bde0fa5b725af4222ad9a0707f0
   languageName: node
   linkType: hard
 
@@ -2767,16 +2765,6 @@ __metadata:
     "@types/estree": "npm:*"
     "@types/json-schema": "npm:*"
   checksum: 10c0/e33ca87a30a9454ba9943e1270ac759996f5fe598a1c1afbaec1d1e7346a339e20bf2a9d81f177067116bbaa6cfa4f748993cb338f57978ae862ad38ffae56fe
-  languageName: node
-  linkType: hard
-
-"@types/eslint@npm:^8.56.5":
-  version: 8.56.10
-  resolution: "@types/eslint@npm:8.56.10"
-  dependencies:
-    "@types/estree": "npm:*"
-    "@types/json-schema": "npm:*"
-  checksum: 10c0/674349d6c342c3864d70f4d5a9965f96fb253801532752c8c500ad6a1c2e8b219e01ccff5dc8791dcb58b5483012c495708bb9f3ff929f5c9322b3da126c15d3
   languageName: node
   linkType: hard
 
@@ -5951,10 +5939,10 @@ __metadata:
   linkType: hard
 
 "eslint-plugin-jsdoc@npm:^48.0.6":
-  version: 48.6.0
-  resolution: "eslint-plugin-jsdoc@npm:48.6.0"
+  version: 48.7.0
+  resolution: "eslint-plugin-jsdoc@npm:48.7.0"
   dependencies:
-    "@es-joy/jsdoccomment": "npm:~0.45.0"
+    "@es-joy/jsdoccomment": "npm:~0.46.0"
     are-docs-informative: "npm:^0.0.2"
     comment-parser: "npm:1.4.1"
     debug: "npm:^4.3.5"
@@ -5966,7 +5954,7 @@ __metadata:
     synckit: "npm:^0.9.0"
   peerDependencies:
     eslint: ^7.0.0 || ^8.0.0 || ^9.0.0
-  checksum: 10c0/c4522375cb222762c830cee1621b3127e872926c1af76d4a6900157cc0515db88da87d71c051330f8c8feaa7ff56bed85b01620d6c82884fd85ddc57ca6a37cd
+  checksum: 10c0/5f31b5dd832365bea2920172e6ae43122f8adff0c4ff5fb3823c643328256e0edadd0276564a4262740aad60260acd7e21883f3ee97a1f65dee1911619ebf54a
   languageName: node
   linkType: hard
 
@@ -6171,7 +6159,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esquery@npm:^1.4.2, esquery@npm:^1.5.0":
+"esquery@npm:^1.4.2":
   version: 1.5.0
   resolution: "esquery@npm:1.5.0"
   dependencies:
