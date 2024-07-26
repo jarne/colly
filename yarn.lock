@@ -1138,6 +1138,37 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@metascraper/helpers@npm:^5.45.22":
+  version: 5.45.22
+  resolution: "@metascraper/helpers@npm:5.45.22"
+  dependencies:
+    audio-extensions: "npm:0.0.0"
+    chrono-node: "npm:~2.7.6"
+    condense-whitespace: "npm:~2.0.0"
+    data-uri-utils: "npm:~1.0.8"
+    entities: "npm:~4.5.0"
+    file-extension: "npm:~4.0.5"
+    has-values: "npm:~2.0.1"
+    image-extensions: "npm:~1.1.0"
+    is-relative-url: "npm:~3.0.0"
+    is-uri: "npm:~1.2.6"
+    iso-639-3: "npm:~2.2.0"
+    isostring: "npm:0.0.1"
+    jsdom: "npm:~24.1.0"
+    lodash: "npm:~4.17.21"
+    memoize-one: "npm:~6.0.0"
+    microsoft-capitalize: "npm:~1.0.5"
+    mime: "npm:~3.0.0"
+    normalize-url: "npm:~6.1.0"
+    re2: "npm:~1.21.0"
+    smartquotes: "npm:~2.3.2"
+    tldts: "npm:~6.1.24"
+    url-regex-safe: "npm:~4.0.0"
+    video-extensions: "npm:~1.2.0"
+  checksum: 10c0/9c01834c8d83570729c306a0775a70e2449944d2392788a469cfa4cebe2ec87e3e1a1f491fda60219f1a4bed09b85a7b6e03cbad4a8a77e3c57cc6c23101d280
+  languageName: node
+  linkType: hard
+
 "@mongodb-js/saslprep@npm:^1.1.5":
   version: 1.1.5
   resolution: "@mongodb-js/saslprep@npm:1.1.5"
@@ -4840,14 +4871,14 @@ __metadata:
   linkType: hard
 
 "metascraper@npm:^5.43.4":
-  version: 5.45.19
-  resolution: "metascraper@npm:5.45.19"
+  version: 5.45.22
+  resolution: "metascraper@npm:5.45.22"
   dependencies:
-    "@metascraper/helpers": "npm:^5.45.10"
+    "@metascraper/helpers": "npm:^5.45.22"
     cheerio: "npm:~1.0.0-rc.12"
     lodash: "npm:~4.17.21"
     whoops: "npm:~4.1.7"
-  checksum: 10c0/449dacd0e7384f3d0c16486d3e057ab9b48a9b173c486d34c9daaea083b2f4dc72be583c9c0aee5a1362173faaa4416cb631891425aa6920607c3710aca71558
+  checksum: 10c0/ab35b54291b595a5c47baa3c9f66d947ffb8d3ca5875037abdb9d7a93a5655fe05b50d234c50f09597c2016b6b83929d86521494f17e10ec73fb11f627d33635
   languageName: node
   linkType: hard
 
