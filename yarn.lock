@@ -4831,11 +4831,11 @@ __metadata:
   linkType: hard
 
 "metascraper-image@npm:^5.43.4":
-  version: 5.45.10
-  resolution: "metascraper-image@npm:5.45.10"
+  version: 5.45.22
+  resolution: "metascraper-image@npm:5.45.22"
   dependencies:
-    "@metascraper/helpers": "npm:^5.45.10"
-  checksum: 10c0/08ffcca16d2e9242bbdf702694b892ab67d4cb5b9b24834e60ce3f59a2341993f2ed42ce7e4dceebae92d2a6a1f959f2cf34aec29c9ea7304e3040dae41a2e3d
+    "@metascraper/helpers": "npm:^5.45.22"
+  checksum: 10c0/bd81b53695d6ab7a9cc1cf96616257a8f8baabb73017c983c8c5f5eee4c88328bb8dbca91196ca4d97a8cd633ba7b183bbea7d4b265cdcba2e3f1f48df717010
   languageName: node
   linkType: hard
 
