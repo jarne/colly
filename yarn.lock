@@ -2709,7 +2709,7 @@ __metadata:
     cors: "npm:^2.8"
     dotenv: "npm:^16.4"
     eslint: "npm:^8.56"
-    eslint-plugin-jsdoc: "npm:^48.0.6"
+    eslint-plugin-jsdoc: "npm:^49.0.0"
     express: "npm:^4.18"
     jsonwebtoken: "npm:^9.0"
     metascraper: "npm:^5.43.4"
@@ -3314,9 +3314,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jsdoc@npm:^48.0.6":
-  version: 48.11.0
-  resolution: "eslint-plugin-jsdoc@npm:48.11.0"
+"eslint-plugin-jsdoc@npm:^49.0.0":
+  version: 49.0.0
+  resolution: "eslint-plugin-jsdoc@npm:49.0.0"
   dependencies:
     "@es-joy/jsdoccomment": "npm:~0.46.0"
     are-docs-informative: "npm:^0.0.2"
@@ -3331,7 +3331,7 @@ __metadata:
     synckit: "npm:^0.9.1"
   peerDependencies:
     eslint: ^7.0.0 || ^8.0.0 || ^9.0.0
-  checksum: 10c0/f78bac109e62f838c14f90ebd572a06a865f2896a16201c9324cb92be25b5ba8deb54ee1d8ea36232ee53a41c177d5d5ac80662c0fe2479d1e1e1e7633385659
+  checksum: 10c0/d5d55ac12fc04494ed509abf7561ec9e0b6a76e903406f5200c8be41cbee011b1b48493bcc0005ccab74a69b9a22b352980d1272c9734e7bd8d240a01e104a5e
   languageName: node
   linkType: hard
 

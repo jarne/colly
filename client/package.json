@@ -47,7 +47,7 @@
     },
     "devDependencies": {
         "eslint": "^8.56",
-        "eslint-plugin-jsdoc": "^48.0.6"
+        "eslint-plugin-jsdoc": "^49.0.0"
     },
     "browserslist": {
         "production": [
