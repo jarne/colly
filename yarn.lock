@@ -95,8 +95,8 @@ __metadata:
   linkType: hard
 
 "@aws-sdk/client-s3@npm:^3.511.0":
-  version: 3.626.0
-  resolution: "@aws-sdk/client-s3@npm:3.626.0"
+  version: 3.627.0
+  resolution: "@aws-sdk/client-s3@npm:3.627.0"
   dependencies:
     "@aws-crypto/sha1-browser": "npm:5.2.0"
     "@aws-crypto/sha256-browser": "npm:5.2.0"
@@ -156,7 +156,7 @@ __metadata:
     "@smithy/util-utf8": "npm:^3.0.0"
     "@smithy/util-waiter": "npm:^3.1.2"
     tslib: "npm:^2.6.2"
-  checksum: 10c0/b3b8b503e00fa0fe1c4071a50f04a05bf172cda7b6eccc3892aae74d7f6f5ce1b6afa7321620c25321b8436d70e3605098475be435c6219df297a44d0e7793a6
+  checksum: 10c0/a88a578b371bf79656bbfe27e9e4373d23f576a9aeccfe3fc8f34e3ace707cae918e4366c0700ffab4b8697a2f7de08917676c5d1ff7bcdbfaf77ced5c41960b
   languageName: node
   linkType: hard
 
@@ -582,8 +582,8 @@ __metadata:
   linkType: hard
 
 "@aws-sdk/s3-request-presigner@npm:^3.511.0":
-  version: 3.626.0
-  resolution: "@aws-sdk/s3-request-presigner@npm:3.626.0"
+  version: 3.627.0
+  resolution: "@aws-sdk/s3-request-presigner@npm:3.627.0"
   dependencies:
     "@aws-sdk/signature-v4-multi-region": "npm:3.626.0"
     "@aws-sdk/types": "npm:3.609.0"
@@ -593,7 +593,7 @@ __metadata:
     "@smithy/smithy-client": "npm:^3.1.12"
     "@smithy/types": "npm:^3.3.0"
     tslib: "npm:^2.6.2"
-  checksum: 10c0/14d16ba1160dd9e318b16fbcf90c27f6b9fb10d2bddd5023662be415e2d6b9cd736738526d86986c9711892ae38c596d22374d6785241844f8a9928a45b5685b
+  checksum: 10c0/bf0dc628c5103f86579ab84937e6ab00ca75b408ceada8f66f4b109ce2d808baa8714117009cc45f540e6b60beb36d21e44350cc5706edfc68ec9837772869e3
   languageName: node
   linkType: hard
 
@@ -7033,8 +7033,8 @@ __metadata:
   linkType: hard
 
 "winston@npm:^3.11.0":
-  version: 3.13.1
-  resolution: "winston@npm:3.13.1"
+  version: 3.14.1
+  resolution: "winston@npm:3.14.1"
   dependencies:
     "@colors/colors": "npm:^1.6.0"
     "@dabh/diagnostics": "npm:^2.0.2"
@@ -7047,7 +7047,7 @@ __metadata:
     stack-trace: "npm:0.0.x"
     triple-beam: "npm:^1.3.0"
     winston-transport: "npm:^4.7.0"
-  checksum: 10c0/986a542f17b71935b88c14465939bf7eaf64d8d13c18792f74b0eb19b31abdaf472df92049a1d7882405076aba95de13cdb5b3243d0c04c4f9632fac85f57788
+  checksum: 10c0/2d0f75a8110c00be97f71adee9f1afdba40a329659b98c6169062171304e34fe78877a9983a9dbd5755bbed3515a51f91cf582004e3781f1eb54de5b507e5207
   languageName: node
   linkType: hard
 
