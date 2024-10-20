@@ -4950,11 +4950,11 @@ __metadata:
   linkType: hard
 
 "metascraper-image@npm:^5.43.4":
-  version: 5.45.22
-  resolution: "metascraper-image@npm:5.45.22"
+  version: 5.45.25
+  resolution: "metascraper-image@npm:5.45.25"
   dependencies:
-    "@metascraper/helpers": "npm:^5.45.22"
-  checksum: 10c0/bd81b53695d6ab7a9cc1cf96616257a8f8baabb73017c983c8c5f5eee4c88328bb8dbca91196ca4d97a8cd633ba7b183bbea7d4b265cdcba2e3f1f48df717010
+    "@metascraper/helpers": "npm:^5.45.25"
+  checksum: 10c0/b8cd77203ad1da37d566124f123586c80eccfe61858378faa367b15f46086bbe4304ef1b0a1fd6eb6bc81ae3ffa64aeda9534afb73907e6f58393f9c7747d882
   languageName: node
   linkType: hard
 
