@@ -1,12 +1,12 @@
 version: 2.1
 
 orbs:
-    docker: circleci/docker@2.7.2
+    docker: circleci/docker@2.8.0
 
 jobs:
     mocha:
         docker:
-            - image: cimg/node:20.17.0
+            - image: cimg/node:20.18.0
               environment:
                   MONGO_HOST: 127.0.0.1
                   MONGO_DB: colly-test
@@ -51,7 +51,7 @@ jobs:
                   path: coverage
     eslint:
         docker:
-            - image: cimg/node:20.17.0
+            - image: cimg/node:20.18.0
         steps:
             # Checkout branch
             - checkout
@@ -73,7 +73,7 @@ jobs:
                   path: lint-results
     eslint-client:
         docker:
-            - image: cimg/node:20.17.0
+            - image: cimg/node:20.18.0
         working_directory: ~/project/client
         steps:
             # Checkout branch
