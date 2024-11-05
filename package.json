@@ -51,7 +51,7 @@
         "passport-jwt": "^4.0",
         "passport-local": "^1.0",
         "sharp": "^0.33.2",
-        "uuid": "^10.0.0",
+        "uuid": "^11.0.0",
         "validator": "^13.11",
         "winston": "^3.11.0",
         "winston-loki": "^6.0.8"
