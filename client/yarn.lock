@@ -11209,9 +11209,9 @@ __metadata:
   linkType: hard
 
 "react-responsive-masonry@npm:^2.2.0":
-  version: 2.4.1
-  resolution: "react-responsive-masonry@npm:2.4.1"
-  checksum: 10c0/4e55ba028329128f419297ff6ccb5c1141511ce2eba4ff1b82030bdb7299b98cb6716ed445279260edd6d12b6db495a009d5d6225acd952523bac095e6fd0608
+  version: 2.6.0
+  resolution: "react-responsive-masonry@npm:2.6.0"
+  checksum: 10c0/126d382b7c943967979b448d9a8d67477187f23cf85bf7e5a716f54d00500bee8ef143ad1460802b3e0f59719965d0af8c396dd799a4970814cff414c96cb68c
   languageName: node
   linkType: hard
 
@@ -11788,8 +11788,8 @@ __metadata:
   linkType: hard
 
 "sass@npm:^1.70":
-  version: 1.81.0
-  resolution: "sass@npm:1.81.0"
+  version: 1.83.1
+  resolution: "sass@npm:1.83.1"
   dependencies:
     "@parcel/watcher": "npm:^2.4.1"
     chokidar: "npm:^4.0.0"
@@ -11800,7 +11800,7 @@ __metadata:
       optional: true
   bin:
     sass: sass.js
-  checksum: 10c0/9c59b3c9b4231c18fcb4583cc232dbc4de501ddc11101b7a025e44833e3f3ce6031546dc1cd109ee9f04ebcfb1fe30ff870810af33b8feb9aa9e36dfba9ec1ef
+  checksum: 10c0/9772506cd8290df7b5e800055098e91a8a65100840fd9e90c660deb74b248b3ddbbd1a274b8f7f09777d472d2c873575357bd87939a40fb5a80bdf654985486f
   languageName: node
   linkType: hard
 
