@@ -5252,11 +5252,11 @@ __metadata:
   linkType: hard
 
 "metascraper-description@npm:^5.43.4":
-  version: 5.45.25
-  resolution: "metascraper-description@npm:5.45.25"
+  version: 5.46.1
+  resolution: "metascraper-description@npm:5.46.1"
   dependencies:
-    "@metascraper/helpers": "npm:^5.45.25"
-  checksum: 10c0/f402a3b61dbc09cb72473aa628962c2c596f70cff04cb631d5c94a2cf46092c02cb7cb059cfa6d0499b553c85de284e98c09a624d549ea6dc7fbae2b55d4572f
+    "@metascraper/helpers": "npm:5.46.1"
+  checksum: 10c0/a55d390ac2a66f9c28fdc23f53f4679f6345908a4096f700d41b2e41c68e3eb285c9ac749bc26378268937770eadfbeb0919705c6b4a2a258c59aec90e63bd98
   languageName: node
   linkType: hard
 
