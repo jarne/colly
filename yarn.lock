@@ -5261,11 +5261,11 @@ __metadata:
   linkType: hard
 
 "metascraper-image@npm:^5.43.4":
-  version: 5.45.25
-  resolution: "metascraper-image@npm:5.45.25"
+  version: 5.46.1
+  resolution: "metascraper-image@npm:5.46.1"
   dependencies:
-    "@metascraper/helpers": "npm:^5.45.25"
-  checksum: 10c0/b8cd77203ad1da37d566124f123586c80eccfe61858378faa367b15f46086bbe4304ef1b0a1fd6eb6bc81ae3ffa64aeda9534afb73907e6f58393f9c7747d882
+    "@metascraper/helpers": "npm:5.46.1"
+  checksum: 10c0/57d0f97f2d2535d65d6d0462ea47bc42fb545b54616388ec88e2deb86cd3760be8934946d41f250c99555139cd48bbbfca9c0b2154977189707adc63f021b9ef
   languageName: node
   linkType: hard
 
