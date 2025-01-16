@@ -1150,13 +1150,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keyvhq/memoize@npm:~2.1.1":
-  version: 2.1.1
-  resolution: "@keyvhq/memoize@npm:2.1.1"
+"@keyvhq/memoize@npm:~2.1.5":
+  version: 2.1.5
+  resolution: "@keyvhq/memoize@npm:2.1.5"
   dependencies:
     "@keyvhq/core": "npm:^2.1.1"
     mimic-fn: "npm:~3.0.0"
-  checksum: 10c0/df5694d318a640798c1e7dd9420ae54a044b5604b4bf066631dd2f9d04ff5897a06dce8cdbf6f8048429b3681e17529f558ff34961c14a2ecedd8007de309d88
+  checksum: 10c0/610dc0284e60aa762dd4383b65770c9e61ac50ee301b950c051842ace044144e172bb9efc81547b64a168a48bc8aea579d55d7af652981405fad76d6809d1af0
   languageName: node
   linkType: hard
 
@@ -5270,14 +5270,14 @@ __metadata:
   linkType: hard
 
 "metascraper-logo-favicon@npm:^5.43.6":
-  version: 5.45.26
-  resolution: "metascraper-logo-favicon@npm:5.45.26"
+  version: 5.46.1
+  resolution: "metascraper-logo-favicon@npm:5.46.1"
   dependencies:
-    "@keyvhq/memoize": "npm:~2.1.1"
-    "@metascraper/helpers": "npm:^5.45.25"
+    "@keyvhq/memoize": "npm:~2.1.5"
+    "@metascraper/helpers": "npm:5.46.1"
     lodash: "npm:~4.17.21"
     reachable-url: "npm:~1.8.1"
-  checksum: 10c0/dd3e327ca12f8b97e0c169cadc39960fdbf0628ec067539683a0112e1b9adeb80a74c9dee857f06bced53521b6023331eef54c2a4a8543adacaff0a6ce513428
+  checksum: 10c0/718dea853e5de0be532f4b4e2f8936bc8796de6afaeaed32d95888073f1b17f54f7ce6700a3f9627fdfa69ba785f08c4706bb2a407e173e79fa8bd77f06e6504
   languageName: node
   linkType: hard
 
