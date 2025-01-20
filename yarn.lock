@@ -1218,6 +1218,38 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@metascraper/helpers@npm:5.46.5":
+  version: 5.46.5
+  resolution: "@metascraper/helpers@npm:5.46.5"
+  dependencies:
+    audio-extensions: "npm:0.0.0"
+    chrono-node: "npm:~2.7.7"
+    condense-whitespace: "npm:~2.0.0"
+    data-uri-utils: "npm:~1.0.8"
+    debug-logfmt: "npm:~1.2.3"
+    entities: "npm:~6.0.0"
+    file-extension: "npm:~4.0.5"
+    has-values: "npm:~2.0.1"
+    image-extensions: "npm:~1.1.0"
+    is-relative-url: "npm:~3.0.0"
+    is-uri: "npm:~1.2.6"
+    iso-639-3: "npm:~2.2.0"
+    isostring: "npm:0.0.1"
+    jsdom: "npm:~25.0.1"
+    lodash: "npm:~4.17.21"
+    memoize-one: "npm:~6.0.0"
+    microsoft-capitalize: "npm:~1.0.5"
+    mime: "npm:3"
+    normalize-url: "npm:~6.1.0"
+    re2: "npm:~1.21.4"
+    smartquotes: "npm:~2.3.2"
+    tldts: "npm:~6.1.70"
+    url-regex-safe: "npm:~4.0.0"
+    video-extensions: "npm:1"
+  checksum: 10c0/e0e02263c955fd468fec55d74f6ce29fdf0643ca28a0443c02c95672ed610377597768f7cc22a438479473b826af6afaffe48e3c133f35ec7a4cf0f633457a5e
+  languageName: node
+  linkType: hard
+
 "@metascraper/helpers@npm:^5.45.25":
   version: 5.45.25
   resolution: "@metascraper/helpers@npm:5.45.25"
@@ -5304,15 +5336,15 @@ __metadata:
   linkType: hard
 
 "metascraper@npm:^5.43.4":
-  version: 5.46.1
-  resolution: "metascraper@npm:5.46.1"
+  version: 5.46.5
+  resolution: "metascraper@npm:5.46.5"
   dependencies:
-    "@metascraper/helpers": "npm:5.46.1"
+    "@metascraper/helpers": "npm:5.46.5"
     cheerio: "npm:~1.0.0"
     debug-logfmt: "npm:~1.2.3"
     lodash: "npm:~4.17.21"
     whoops: "npm:~4.1.7"
-  checksum: 10c0/434923496b7ec0cdc68ca75c060c48307956607b1462997a392864f7657389ea449bf0312ea35eb2a10bf503e5775945d557a4c6def2470a0345885b026a6ca1
+  checksum: 10c0/4b25b0f3c8281d5351cbce8f7f86e669b07d9bcabfcb4a368fff1a0273c138a15f894720541990c9045c752c1d2d46b2b96556ca55b7c901073e1d0584c4aeda
   languageName: node
   linkType: hard
 
