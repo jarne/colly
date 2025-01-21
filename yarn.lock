@@ -5317,12 +5317,12 @@ __metadata:
   linkType: hard
 
 "metascraper-logo@npm:^5.43.4":
-  version: 5.46.1
-  resolution: "metascraper-logo@npm:5.46.1"
+  version: 5.46.5
+  resolution: "metascraper-logo@npm:5.46.5"
   dependencies:
-    "@metascraper/helpers": "npm:5.46.1"
+    "@metascraper/helpers": "npm:5.46.5"
     lodash: "npm:~4.17.21"
-  checksum: 10c0/e9389c2d76a464d3a58caa727b4debd2bd9623f934f5b1661efaf1307e4a14386ed3535a0b41edd75b125af403343f545ce48d19596e198ec0a8defa36dd188d
+  checksum: 10c0/cfb404082d57448eb1312a44cbed539597bcae0ba2c859fdf46e87c86ac3932f6d14fc7103b5b36ecdf66758b063c8cb7a147b88c535c0412c4e6a60ae24471d
   languageName: node
   linkType: hard
 
