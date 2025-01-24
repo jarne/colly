@@ -42,7 +42,7 @@
         "react-responsive-masonry": "^2.2.0",
         "react-router-dom": "^7.0.0",
         "react-scripts": "^5.0",
-        "react-toastify": "^10.0",
+        "react-toastify": "^11.0.0",
         "sass": "^1.70"
     },
     "devDependencies": {
