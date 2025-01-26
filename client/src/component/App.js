@@ -4,6 +4,7 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
+import usePrefersColorScheme from "use-prefers-color-scheme"
 
 import { UserAuthProvider } from "./context/UserAuthProvider"
 import { AppDataProvider } from "./context/DataProvider"
@@ -18,9 +19,16 @@ import "./../../node_modules/bootstrap-icons/font/bootstrap-icons.css"
 import "./../../node_modules/react-toastify/dist/ReactToastify.css"
 
 function App() {
+    const prefersColorScheme = usePrefersColorScheme()
+    const isDarkMode = prefersColorScheme === "dark"
+
     return (
         <>
-            <ToastContainer position="bottom-right" autoClose={3000} />
+            <ToastContainer
+                position="bottom-right"
+                autoClose={3000}
+                theme={isDarkMode ? "dark" : "light"}
+            />
             <UserAuthProvider>
                 <AppDataProvider>
                     <BrowserRouter>

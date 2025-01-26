@@ -231,7 +231,7 @@ const CreateTagModal = forwardRef((props, ref) => {
                     <div>
                         <button
                             type="button"
-                            className="btn btn-light"
+                            className="btn btn-light me-2"
                             onClick={handleClose}
                         >
                             Cancel

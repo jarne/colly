@@ -9,6 +9,12 @@
     box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.15);
 }
 
+@media (prefers-color-scheme: dark) {
+    .card {
+        box-shadow: 0 0 8px 0 rgba(255, 255, 255, 0.15);
+    }
+}
+
 .card-img-top {
     height: 150px;
     width: auto;
