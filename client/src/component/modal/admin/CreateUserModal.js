@@ -161,12 +161,12 @@ const CreateUserModal = forwardRef((props, ref) => {
                 <div className="modal-footer">
                     <button
                         type="button"
-                        className="btn btn-theme-light"
+                        className="btn btn-light"
                         onClick={handleClose}
                     >
                         Cancel
                     </button>
-                    <button type="submit" className="btn btn-theme-pink">
+                    <button type="submit" className="btn btn-secondary">
                         {editId ? "Edit" : "Create"}
                     </button>
                 </div>

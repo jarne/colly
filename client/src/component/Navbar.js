@@ -35,7 +35,7 @@ function Navbar({ createTagModalRef, createItemModalRef }) {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg sticky-top bg-theme-light">
+        <nav className="navbar navbar-expand-lg sticky-top bg-light">
             <div className="container-fluid">
                 <Link className="navbar-brand" to="/">
                     <img

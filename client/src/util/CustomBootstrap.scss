@@ -4,18 +4,8 @@
 
 @import "./../../node_modules/bootstrap/scss/functions";
 
-$theme-orange: #f09235;
-$theme-pink: #e63493;
-
-$theme-light: #f7f7f7;
-$theme-dark: #2b2b2b;
-
-$theme-colors: (
-    "theme-orange": $theme-orange,
-    "theme-pink": $theme-pink,
-    "theme-light": $theme-light,
-    "theme-dark": $theme-dark,
-);
+$primary: #f09235;
+$secondary: #e63493;
 
 @import "./../../node_modules/bootstrap/scss/variables";
 @import "./../../node_modules/bootstrap/scss/variables-dark";

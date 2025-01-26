@@ -64,7 +64,7 @@ function ItemCard({ item, createItemModalRef }) {
                         onClick={(e) => {
                             handleItemEditClick(e, item._id)
                         }}
-                        className="card-edit bg-transparent border-0 text-theme-pink"
+                        className="card-edit bg-transparent border-0 text-secondary"
                     >
                         <i className="bi bi-pencil-square"></i>
                     </button>

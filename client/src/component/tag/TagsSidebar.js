@@ -38,12 +38,12 @@ function TagsSidebar(props) {
     }
 
     return (
-        <div className="tags-sidebar d-flex flex-column bg-theme-light p-3">
+        <div className="tags-sidebar d-flex flex-column bg-light p-3">
             {tags.map((tag) => {
                 return (
                     <div
                         key={tag._id}
-                        className={`tags-sidebar-tag text-theme-dark text-decoration-none${props.activeTag === tag._id ? " fw-bold" : ""}`}
+                        className={`tags-sidebar-tag text-dark text-decoration-none${props.activeTag === tag._id ? " fw-bold" : ""}`}
                         role="button"
                         onClick={(e) => {
                             handleTagClick(e, tag._id)

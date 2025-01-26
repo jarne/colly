@@ -116,7 +116,7 @@ function Login() {
                         </div>
                         <button
                             type="submit"
-                            className="btn btn-outline-theme-pink btn-lg mt-2"
+                            className="btn btn-outline-secondary btn-lg mt-2"
                         >
                             Login
                         </button>

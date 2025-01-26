@@ -64,7 +64,7 @@ function Admin() {
                 <h2>Users</h2>
                 <p>
                     <button
-                        className="btn btn-theme-pink"
+                        className="btn btn-secondary"
                         onClick={handleCreateUser}
                     >
                         Create user
@@ -97,7 +97,7 @@ function Admin() {
                                             aria-label="User actions"
                                         >
                                             <button
-                                                className="btn btn-theme-orange btn-sm"
+                                                className="btn btn-primary btn-sm"
                                                 onClick={(e) => {
                                                     handleEditUser(e, user._id)
                                                 }}
@@ -105,7 +105,7 @@ function Admin() {
                                                 Edit
                                             </button>
                                             <button
-                                                className="btn btn-theme-pink btn-sm"
+                                                className="btn btn-secondary btn-sm"
                                                 onClick={(e) => {
                                                     handleDeleteUser(
                                                         e,

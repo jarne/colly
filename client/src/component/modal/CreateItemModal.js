@@ -272,7 +272,7 @@ const CreateItemModal = forwardRef((props, ref) => {
                     {editId && (
                         <button
                             type="button"
-                            className="btn btn-theme-dark"
+                            className="btn btn-dark"
                             onClick={handleDelete}
                         >
                             Delete
@@ -281,12 +281,12 @@ const CreateItemModal = forwardRef((props, ref) => {
                     <div>
                         <button
                             type="button"
-                            className="btn btn-theme-light me-2"
+                            className="btn btn-light me-2"
                             onClick={handleClose}
                         >
                             Cancel
                         </button>
-                        <button type="submit" className="btn btn-theme-pink">
+                        <button type="submit" className="btn btn-secondary">
                             {editId ? "Edit" : "Create"}
                         </button>
                     </div>
