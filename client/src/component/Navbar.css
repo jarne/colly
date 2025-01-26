@@ -3,6 +3,6 @@
  */
 
 .bg-blur {
-    --bs-bg-opacity: .9;
+    --bs-bg-opacity: 0.9 !important;
     backdrop-filter: blur(6px);
 }
