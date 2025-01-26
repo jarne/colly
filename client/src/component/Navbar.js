@@ -3,12 +3,16 @@
  */
 
 import { useNavigate, Link } from "react-router-dom"
+import usePrefersColorScheme from "use-prefers-color-scheme"
 
 import { useUserAuth } from "./../component/context/UserAuthProvider"
 import collyLogoImg from "./../asset/colly-logo.png"
 
 function Navbar({ createTagModalRef, createItemModalRef }) {
     const navigate = useNavigate()
+
+    const prefersColorScheme = usePrefersColorScheme()
+    const isDarkMode = prefersColorScheme === "dark"
 
     const [, setAccessToken, displayName, setDisplayName, isAdmin, setIsAdmin] =
         useUserAuth()
@@ -35,7 +39,9 @@ function Navbar({ createTagModalRef, createItemModalRef }) {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg sticky-top bg-light">
+        <nav
+            className={`navbar navbar-expand-lg sticky-top ${isDarkMode ? "bg-dark" : "bg-light"}`}
+        >
             <div className="container-fluid">
                 <Link className="navbar-brand" to="/">
                     <img
