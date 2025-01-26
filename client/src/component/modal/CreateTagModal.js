@@ -10,7 +10,7 @@ import { toast } from "react-toastify"
 
 import { useUserAuth } from "./../context/UserAuthProvider"
 import { useAppData } from "./../context/DataProvider"
-import { createTag, updateTag } from "./../../logic/api/tag"
+import { createTag, updateTag, deleteTag } from "./../../logic/api/tag"
 
 import "./CreateTagModal.css"
 
@@ -128,6 +128,23 @@ const CreateTagModal = forwardRef((props, ref) => {
         loadTags()
     }
 
+    const handleDelete = async (e) => {
+        e.preventDefault()
+
+        try {
+            await deleteTag(editId, accessToken)
+        } catch (ex) {
+            toast.error(ex.message)
+
+            return
+        }
+
+        toast.success("Tag has been deleted!")
+        handleClose()
+
+        loadTags()
+    }
+
     return (
         <Modal show={show} onHide={handleClose}>
             <div className="modal-header">
@@ -199,17 +216,30 @@ const CreateTagModal = forwardRef((props, ref) => {
                         )}
                     </div>
                 </div>
-                <div className="modal-footer">
-                    <button
-                        type="button"
-                        className="btn btn-theme-light"
-                        onClick={handleClose}
-                    >
-                        Cancel
-                    </button>
-                    <button type="submit" className="btn btn-theme-pink">
-                        {editId ? "Edit" : "Create"}
-                    </button>
+                <div
+                    className={`modal-footer${editId ? " d-flex justify-content-between" : ""}`}
+                >
+                    {editId && (
+                        <button
+                            type="button"
+                            className="btn btn-theme-dark"
+                            onClick={handleDelete}
+                        >
+                            Delete
+                        </button>
+                    )}
+                    <div>
+                        <button
+                            type="button"
+                            className="btn btn-theme-light"
+                            onClick={handleClose}
+                        >
+                            Cancel
+                        </button>
+                        <button type="submit" className="btn btn-theme-pink">
+                            {editId ? "Edit" : "Create"}
+                        </button>
+                    </div>
                 </div>
             </form>
         </Modal>

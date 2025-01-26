@@ -10,7 +10,12 @@ import TagList from "./../tag/TagList"
 
 import { useUserAuth } from "./../context/UserAuthProvider"
 import { useAppData } from "./../context/DataProvider"
-import { createItem, updateItem, generatePreview } from "./../../logic/api/item"
+import {
+    createItem,
+    updateItem,
+    deleteItem,
+    generatePreview,
+} from "./../../logic/api/item"
 
 import "./CreateItemModal.css"
 
@@ -153,6 +158,23 @@ const CreateItemModal = forwardRef((props, ref) => {
         props.triggerItemLoad()
     }
 
+    const handleDelete = async (e) => {
+        e.preventDefault()
+
+        try {
+            await deleteItem(editId, accessToken)
+        } catch (ex) {
+            toast.error(ex.message)
+
+            return
+        }
+
+        toast.success("Item has been deleted!")
+        handleClose()
+
+        props.triggerItemLoad()
+    }
+
     return (
         <Modal show={show} onHide={handleClose}>
             <div className="modal-header">
@@ -244,17 +266,30 @@ const CreateItemModal = forwardRef((props, ref) => {
                         </div>
                     </div>
                 </div>
-                <div className="modal-footer">
-                    <button
-                        type="button"
-                        className="btn btn-theme-light"
-                        onClick={handleClose}
-                    >
-                        Cancel
-                    </button>
-                    <button type="submit" className="btn btn-theme-pink">
-                        {editId ? "Edit" : "Create"}
-                    </button>
+                <div
+                    className={`modal-footer${editId ? " d-flex justify-content-between" : ""}`}
+                >
+                    {editId && (
+                        <button
+                            type="button"
+                            className="btn btn-theme-dark"
+                            onClick={handleDelete}
+                        >
+                            Delete
+                        </button>
+                    )}
+                    <div>
+                        <button
+                            type="button"
+                            className="btn btn-theme-light me-2"
+                            onClick={handleClose}
+                        >
+                            Cancel
+                        </button>
+                        <button type="submit" className="btn btn-theme-pink">
+                            {editId ? "Edit" : "Create"}
+                        </button>
+                    </div>
                 </div>
             </form>
         </Modal>

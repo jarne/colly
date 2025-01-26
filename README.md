@@ -86,6 +86,7 @@ The following environment variables can be set:
 | `S3_ACCESS_KEY`          |               | Access key ID for S3 endpoint                                   |
 | `S3_ACCESS_SECRET`       |               | Secret access key for S3 endpoint                               |
 | `S3_BUCKET`              |               | Name of the S3 bucket                                           |
+| `S3_FORCE_PATH_STYLE`    | `false`       | Force path style URLs for S3 objects                            |
 
 ## 🙋‍ Contribution
 
