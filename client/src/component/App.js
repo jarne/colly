@@ -20,7 +20,7 @@ import "./../../node_modules/react-toastify/dist/ReactToastify.css"
 function App() {
     return (
         <>
-            <ToastContainer />
+            <ToastContainer position="bottom-right" autoClose={3000} />
             <UserAuthProvider>
                 <AppDataProvider>
                     <BrowserRouter>
