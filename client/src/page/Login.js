@@ -64,14 +64,8 @@ function Login() {
     }
 
     return (
-        <>
-            <img
-                src={loginBackgroundImg}
-                alt=""
-                className="login-background-img"
-                loading="lazy"
-            />
-            <div className="login-overlay bg-body">
+        <div className="d-flex flex-row">
+            <div className="login-overlay">
                 <div className="login-content">
                     <img
                         src={collyLogoImg}
@@ -123,7 +117,15 @@ function Login() {
                     </form>
                 </div>
             </div>
-        </>
+            <div className="flex-grow-1 bg-info">
+                <img
+                    src={loginBackgroundImg}
+                    alt=""
+                    className="login-background-img"
+                    loading="lazy"
+                />
+            </div>
+        </div>
     )
 }
 

@@ -37,6 +37,8 @@ const CreateItemModal = forwardRef((props, ref) => {
     const [tagSearchStr, setTagSearchStr] = useState("")
     const [filteredTags, setFilteredTags] = useState([])
 
+    const [isFetchingMeta, setIsFetchingMeta] = useState(false)
+
     useImperativeHandle(ref, () => ({
         open() {
             handleShow()
@@ -82,10 +84,17 @@ const CreateItemModal = forwardRef((props, ref) => {
         setItemUrl(e.target.value)
     }
     const handleItemUrlBlur = async (e) => {
+        if (itemName !== "" && itemDescription !== "") {
+            return
+        }
+
+        setIsFetchingMeta(true)
+
         let meta
         try {
             meta = await generatePreview(e.target.value, accessToken)
         } catch (ex) {
+            setIsFetchingMeta(false)
             return
         }
 
@@ -96,6 +105,8 @@ const CreateItemModal = forwardRef((props, ref) => {
         if (itemDescription === "") {
             setItemDescription(meta.description)
         }
+
+        setIsFetchingMeta(false)
     }
 
     const handleItemNameChange = (e) => {
@@ -193,7 +204,17 @@ const CreateItemModal = forwardRef((props, ref) => {
                 <div className="modal-body">
                     <div className="mb-3">
                         <label htmlFor="itemUrlInput" className="form-label">
-                            Item URL
+                            Item URL{" "}
+                            {isFetchingMeta && (
+                                <div
+                                    className="spinner-border spinner-border-sm ms-1"
+                                    role="status"
+                                >
+                                    <span className="visually-hidden">
+                                        Loading...
+                                    </span>
+                                </div>
+                            )}
                         </label>
                         <input
                             type="url"

@@ -8,6 +8,8 @@ import usePrefersColorScheme from "use-prefers-color-scheme"
 import { useUserAuth } from "./../component/context/UserAuthProvider"
 import collyLogoImg from "./../asset/colly-logo.png"
 
+import "./Navbar.css"
+
 function Navbar({ createTagModalRef, createItemModalRef }) {
     const navigate = useNavigate()
 
@@ -40,7 +42,7 @@ function Navbar({ createTagModalRef, createItemModalRef }) {
 
     return (
         <nav
-            className={`navbar navbar-expand-lg sticky-top ${isDarkMode ? "bg-dark" : "bg-light"}`}
+            className={`navbar navbar-expand-lg sticky-top ${isDarkMode ? "bg-dark" : "bg-light"} bg-blur`}
         >
             <div className="container-fluid">
                 <Link className="navbar-brand" to="/">
