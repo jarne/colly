@@ -207,10 +207,10 @@ const CreateItemModal = forwardRef((props, ref) => {
                             Item URL{" "}
                             {isFetchingMeta && (
                                 <div
-                                    class="spinner-border spinner-border-sm ms-1"
+                                    className="spinner-border spinner-border-sm ms-1"
                                     role="status"
                                 >
-                                    <span class="visually-hidden">
+                                    <span className="visually-hidden">
                                         Loading...
                                     </span>
                                 </div>
