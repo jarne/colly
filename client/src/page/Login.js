@@ -71,7 +71,7 @@ function Login() {
                 className="login-background-img"
                 loading="lazy"
             />
-            <div className="login-overlay">
+            <div className="login-overlay bg-body">
                 <div className="login-content">
                     <img
                         src={collyLogoImg}
