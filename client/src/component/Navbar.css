@@ -1,0 +1,8 @@
+/**
+ * Colly | navbar styles
+ */
+
+.bg-blur {
+    --bs-bg-opacity: .9;
+    backdrop-filter: blur(6px);
+}
