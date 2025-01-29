@@ -2705,15 +2705,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clean-stack@npm:~3.0.0":
-  version: 3.0.1
-  resolution: "clean-stack@npm:3.0.1"
-  dependencies:
-    escape-string-regexp: "npm:4.0.0"
-  checksum: 10c0/4ea5c03bdf78e8afb2592f34c1b5832d0c7858d37d8b0d40fba9d61a103508fa3bb527d39a99469019083e58e05d1ad54447e04217d5d36987e97182adab0e03
-  languageName: node
-  linkType: hard
-
 "cliui@npm:^8.0.1":
   version: 8.0.1
   resolution: "cliui@npm:8.0.1"
@@ -3485,7 +3476,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"escape-string-regexp@npm:4.0.0, escape-string-regexp@npm:^4.0.0":
+"escape-string-regexp@npm:^4.0.0":
   version: 4.0.0
   resolution: "escape-string-regexp@npm:4.0.0"
   checksum: 10c0/9497d4dd307d845bd7f75180d8188bb17ea8c151c1edbf6b6717c100e104d629dc2dfb687686181b0f4b7d732c7dfdc4d5e7a8ff72de1b0ca283a75bbb3a9cd9
@@ -5144,15 +5135,15 @@ __metadata:
   linkType: hard
 
 "metascraper@npm:^5.43.4":
-  version: 5.46.5
-  resolution: "metascraper@npm:5.46.5"
+  version: 5.46.7
+  resolution: "metascraper@npm:5.46.7"
   dependencies:
     "@metascraper/helpers": "npm:5.46.5"
     cheerio: "npm:~1.0.0"
     debug-logfmt: "npm:~1.2.3"
     lodash: "npm:~4.17.21"
-    whoops: "npm:~4.1.7"
-  checksum: 10c0/4b25b0f3c8281d5351cbce8f7f86e669b07d9bcabfcb4a368fff1a0273c138a15f894720541990c9045c752c1d2d46b2b96556ca55b7c901073e1d0584c4aeda
+    whoops: "npm:~5.0.1"
+  checksum: 10c0/3ed2fbf85cb7d302995c68a407be8cdfa946041b2ef94499d2a8843ba9b9fc3b1ee035a2c582daa4af084dfcdf1a9eb5df08b117cf1ab1fcd8ebd7ccdaa8be38
   languageName: node
   linkType: hard
 
@@ -5217,13 +5208,6 @@ __metadata:
   version: 3.0.0
   resolution: "mimic-fn@npm:3.0.0"
   checksum: 10c0/ff602fcfbae4d91c3f1601a615b28486a3675239017981bd38bfa2e58cf7d8ff07437ae85f1a80bdfadb3842c51edd40d6985002c2087327c8bc46b4aa947b81
-  languageName: node
-  linkType: hard
-
-"mimic-fn@npm:~3.1.0":
-  version: 3.1.0
-  resolution: "mimic-fn@npm:3.1.0"
-  checksum: 10c0/a07cdd8ed6490c2dff5b11f889b245d9556b80f5a653a552a651d17cff5a2d156e632d235106c2369f00cccef4071704589574cf3601bc1b1400a1f620dff067
   languageName: node
   linkType: hard
 
@@ -7325,13 +7309,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"whoops@npm:~4.1.7":
-  version: 4.1.7
-  resolution: "whoops@npm:4.1.7"
-  dependencies:
-    clean-stack: "npm:~3.0.0"
-    mimic-fn: "npm:~3.1.0"
-  checksum: 10c0/87887f34baf66588319a8a7cc57e820fe547e32c74b6432964c26ac260d1936d8681eedbf64b4ab29a1764872807e5773e1a3da4e66d71ec041c5f8dcad34ecb
+"whoops@npm:~5.0.1":
+  version: 5.0.1
+  resolution: "whoops@npm:5.0.1"
+  checksum: 10c0/9fd86b01f2a278ae2596dbf0600d7d9a4e6760096210e47fd8a885bedf317909f35053cbecdd32152d5e18fddb3b72e99199a5cc06f67a7825748f2aa3a3ea96
   languageName: node
   linkType: hard
 
