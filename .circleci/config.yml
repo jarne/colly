@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-    docker: circleci/docker@2.8.1
+    docker: circleci/docker@2.8.2
 
 jobs:
     mocha:
