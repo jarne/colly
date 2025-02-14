@@ -228,33 +228,56 @@ const CreateItemModal = forwardRef((props, ref) => {
                         />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="itemNameInput" className="form-label">
-                            Item name
-                        </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="itemNameInput"
-                            placeholder="My cool item"
-                            value={itemName}
-                            onChange={handleItemNameChange}
-                        />
-                    </div>
-                    <div className="mb-3">
-                        <label
-                            htmlFor="itemDescriptionInput"
-                            className="form-label"
+                        <a
+                            data-bs-toggle="collapse"
+                            href="#collapseItemDetails"
+                            role="button"
+                            aria-expanded="false"
+                            aria-controls="collapseItemDetails"
                         >
-                            Item description
-                        </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="itemDescriptionInput"
-                            placeholder="Add a text to describe your item"
-                            value={itemDescription}
-                            onChange={handleItemDescriptionChange}
-                        />
+                            {itemName ? (
+                                <>
+                                    {itemName} • {itemDescription}
+                                    <i className="bi bi-pencil-square ms-1"></i>
+                                </>
+                            ) : (
+                                "Paste an URL or click here to add information manually"
+                            )}
+                        </a>
+                    </div>
+                    <div className="collapse" id="collapseItemDetails">
+                        <div className="mb-3">
+                            <label
+                                htmlFor="itemNameInput"
+                                className="form-label"
+                            >
+                                Item name
+                            </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="itemNameInput"
+                                placeholder="My cool item"
+                                value={itemName}
+                                onChange={handleItemNameChange}
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label
+                                htmlFor="itemDescriptionInput"
+                                className="form-label"
+                            >
+                                Item description
+                            </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="itemDescriptionInput"
+                                placeholder="Add a text to describe your item"
+                                value={itemDescription}
+                                onChange={handleItemDescriptionChange}
+                            />
+                        </div>
                     </div>
                     <div className="mb-3">
                         <label
