@@ -16,11 +16,13 @@ import {
     deleteItem,
     generatePreview,
 } from "./../../logic/api/item"
-import { searchTags, updateLastUsedDate } from "./../../logic/api/tag"
+import { findTags, updateTag } from "./../../logic/api/tag"
 
 import "./CreateItemModal.css"
 
 const CreateItemModal = forwardRef((props, ref) => {
+    const MAX_FILTERED_TAGS = 5
+
     const [accessToken] = useUserAuth()
     const [, , , items] = useAppData()
 
@@ -126,7 +128,17 @@ const CreateItemModal = forwardRef((props, ref) => {
     const loadFilteredTags = async (name = "") => {
         let foundTags
         try {
-            foundTags = await searchTags(name, accessToken)
+            foundTags = await findTags(accessToken, {
+                filter: {
+                    name: {
+                        $regex: name,
+                    },
+                },
+                sort: {
+                    lastUsed: "desc",
+                },
+                limit: MAX_FILTERED_TAGS,
+            })
         } catch (e) {
             return
         }
@@ -136,7 +148,13 @@ const CreateItemModal = forwardRef((props, ref) => {
     const handleTagAdd = (tag) => {
         setItemTags([...itemTags, tag])
 
-        updateLastUsedDate(tag._id, new Date(), accessToken)
+        updateTag(
+            tag._id,
+            {
+                lastUsed: new Date(),
+            },
+            accessToken
+        )
     }
     const handleTagRemove = (tag) => {
         setItemTags(itemTags.filter((val) => val._id !== tag._id))
@@ -149,17 +167,21 @@ const CreateItemModal = forwardRef((props, ref) => {
             editId
                 ? await updateItem(
                       editId,
-                      itemUrl,
-                      itemName,
-                      itemDescription,
-                      itemTags,
+                      {
+                          url: itemUrl,
+                          name: itemName,
+                          description: itemDescription,
+                          tags: itemTags,
+                      },
                       accessToken
                   )
                 : await createItem(
-                      itemUrl,
-                      itemName,
-                      itemDescription,
-                      itemTags,
+                      {
+                          url: itemUrl,
+                          name: itemName,
+                          description: itemDescription,
+                          tags: itemTags,
+                      },
                       accessToken
                   )
         } catch (ex) {

@@ -2,19 +2,17 @@
  * Colly | tag API logic
  */
 
+import qs from "qs"
+
 import InternalAPI from "./../../util/InternalAPI"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
 
-const MAX_FILTERED_TAGS = 5
-
 /**
  * Create tag
- * @param {string} name tag name
- * @param {string} firstColor first gradient color
- * @param {string} secondColor second gradient color
+ * @param {object} tag tag object
  * @param {string} accessToken API access token
  */
-export const createTag = async (name, firstColor, secondColor, accessToken) => {
+export const createTag = async (tag, accessToken) => {
     let res
     try {
         const resp = await fetch(InternalAPI.API_ENDPOINT + "/tag", {
@@ -23,11 +21,7 @@ export const createTag = async (name, firstColor, secondColor, accessToken) => {
                 Authorization: `Bearer ${accessToken}`,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-                name,
-                firstColor,
-                secondColor,
-            }),
+            body: JSON.stringify(tag),
         })
         res = await resp.json()
     } catch (e) {
@@ -49,18 +43,10 @@ export const createTag = async (name, firstColor, secondColor, accessToken) => {
 /**
  * Update tag
  * @param {string} id tag ID
- * @param {string} name tag name
- * @param {string} firstColor first gradient color
- * @param {string} secondColor second gradient color
+ * @param {object} tag tag object
  * @param {string} accessToken API access token
  */
-export const updateTag = async (
-    id,
-    name,
-    firstColor,
-    secondColor,
-    accessToken
-) => {
+export const updateTag = async (id, tag, accessToken) => {
     let res
     try {
         const resp = await fetch(`${InternalAPI.API_ENDPOINT}/tag/${id}`, {
@@ -69,45 +55,7 @@ export const updateTag = async (
                 Authorization: `Bearer ${accessToken}`,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-                name,
-                firstColor,
-                secondColor,
-            }),
-        })
-        res = await resp.json()
-    } catch (e) {
-        throw new Error("Error while communicating with the server!")
-    }
-
-    if (res.error) {
-        switch (res.error.code) {
-            case "validation_error":
-                throw new Error(generateValidationErrorMessage(res.error))
-            default:
-                throw new Error("Unknown error!")
-        }
-    }
-}
-
-/**
- * Update last used date of tag
- * @param {string} id tag ID
- * @param {Date} lastUsed second gradient color
- * @param {string} accessToken API access token
- */
-export const updateLastUsedDate = async (id, lastUsed, accessToken) => {
-    let res
-    try {
-        const resp = await fetch(`${InternalAPI.API_ENDPOINT}/tag/${id}`, {
-            method: "PATCH",
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                lastUsed,
-            }),
+            body: JSON.stringify(tag),
         })
         res = await resp.json()
     } catch (e) {
@@ -153,42 +101,20 @@ export const deleteTag = async (id, accessToken) => {
 }
 
 /**
- * Get all tags
+ * Find tags
  * @param {string} accessToken API access token
+ * @param {object} query Query parameters
  * @returns {Array} tag objects
  */
-export const listTags = async (accessToken) => {
-    let res
-    try {
-        const resp = await fetch(InternalAPI.API_ENDPOINT + "/tag", {
-            method: "GET",
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-            },
-        })
-        res = await resp.json()
-    } catch (e) {
-        throw new Error()
-    }
+export const findTags = async (accessToken, query) => {
+    const queryStr = qs.stringify(query, {
+        encode: false,
+    })
 
-    if (res.error) {
-        throw new Error()
-    }
-
-    return res.data
-}
-
-/**
- * Search tags by its name and ordered using last use date
- * @param {string} name tag name search string
- * @param {string} accessToken API access token
- * @returns {Array} tag objects
- */
-export const searchTags = async (name, accessToken) => {
     let res
     try {
         const resp = await fetch(
-            `${InternalAPI.API_ENDPOINT}/tag?filter[name][$regex]=${name}&sort[lastUsed]=desc&limit=${MAX_FILTERED_TAGS}`,
+            `${InternalAPI.API_ENDPOINT}/tag?${queryStr}`,
             {
                 method: "GET",
                 headers: {

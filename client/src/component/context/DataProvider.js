@@ -5,9 +5,9 @@
 import { createContext, useContext, useState } from "react"
 
 import { useUserAuth } from "./UserAuthProvider"
-import { listTags } from "./../../logic/api/tag"
+import { findTags } from "./../../logic/api/tag"
 import { findItems } from "./../../logic/api/item"
-import { listUsers } from "./../../logic/api/user"
+import { findUsers } from "./../../logic/api/user"
 
 const AppDataContext = createContext(null)
 
@@ -18,10 +18,10 @@ const AppDataProvider = (props) => {
 
     const [accessToken] = useUserAuth()
 
-    const loadTags = async () => {
+    const loadTags = async (query) => {
         let tags
         try {
-            tags = await listTags(accessToken)
+            tags = await findTags(accessToken, query)
         } catch (e) {
             return
         }
@@ -29,10 +29,10 @@ const AppDataProvider = (props) => {
         setTags(tags)
     }
 
-    const loadItems = async (filter) => {
+    const loadItems = async (query) => {
         let items
         try {
-            items = await findItems(accessToken, filter)
+            items = await findItems(accessToken, query)
         } catch (e) {
             return
         }
@@ -40,10 +40,10 @@ const AppDataProvider = (props) => {
         setItems(items)
     }
 
-    const loadUsers = async (filter) => {
+    const loadUsers = async (query) => {
         let users
         try {
-            users = await listUsers(accessToken)
+            users = await findUsers(accessToken, query)
         } catch (e) {
             return
         }

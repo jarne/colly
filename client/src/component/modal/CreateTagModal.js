@@ -114,15 +114,19 @@ const CreateTagModal = forwardRef((props, ref) => {
             editId
                 ? await updateTag(
                       editId,
-                      tagName,
-                      colFirst.slice(1),
-                      colSec.slice(1),
+                      {
+                          name: tagName,
+                          firstColor: colFirst.slice(1),
+                          secondColor: colSec.slice(1),
+                      },
                       accessToken
                   )
                 : await createTag(
-                      tagName,
-                      colFirst.slice(1),
-                      colSec.slice(1),
+                      {
+                          name: tagName,
+                          firstColor: colFirst.slice(1),
+                          secondColor: colSec.slice(1),
+                      },
                       accessToken
                   )
         } catch (ex) {

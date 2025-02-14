@@ -9,13 +9,10 @@ import { generateValidationErrorMessage } from "./util/errorCodeHandling"
 
 /**
  * Create item
- * @param {string} url item URL
- * @param {string} name item name
- * @param {string} description item description
- * @param {string} tags associated tags
+ * @param {object} item item object
  * @param {string} accessToken API access token
  */
-export const createItem = async (url, name, description, tags, accessToken) => {
+export const createItem = async (item, accessToken) => {
     let res
     try {
         const resp = await fetch(InternalAPI.API_ENDPOINT + "/item", {
@@ -24,12 +21,7 @@ export const createItem = async (url, name, description, tags, accessToken) => {
                 Authorization: `Bearer ${accessToken}`,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-                url,
-                name,
-                description,
-                tags,
-            }),
+            body: JSON.stringify(item),
         })
         res = await resp.json()
     } catch (e) {
@@ -51,20 +43,10 @@ export const createItem = async (url, name, description, tags, accessToken) => {
 /**
  * Update item
  * @param {string} id item ID
- * @param {string} url item URL
- * @param {string} name item name
- * @param {string} description item description
- * @param {string} tags associated tags
+ * @param {object} item item object
  * @param {string} accessToken API access token
  */
-export const updateItem = async (
-    id,
-    url,
-    name,
-    description,
-    tags,
-    accessToken
-) => {
+export const updateItem = async (id, item, accessToken) => {
     let res
     try {
         const resp = await fetch(`${InternalAPI.API_ENDPOINT}/item/${id}`, {
@@ -73,12 +55,7 @@ export const updateItem = async (
                 Authorization: `Bearer ${accessToken}`,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-                url,
-                name,
-                description,
-                tags,
-            }),
+            body: JSON.stringify(item),
         })
         res = await resp.json()
     } catch (e) {
@@ -126,13 +103,10 @@ export const deleteItem = async (id, accessToken) => {
 /**
  * Find items
  * @param {string} accessToken API access token
- * @param {object} filter Filter
+ * @param {object} query Query parameters
  * @returns {Array} item objects
  */
-export const findItems = async (accessToken, filter) => {
-    const query = {
-        filter,
-    }
+export const findItems = async (accessToken, query) => {
     const queryStr = qs.stringify(query, {
         encode: false,
     })

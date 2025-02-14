@@ -31,7 +31,9 @@ function Dashboard() {
     const triggerItemLoad = () => {
         if (tagId) {
             loadItems({
-                tags: tagId,
+                filter: {
+                    tags: tagId,
+                },
             })
         } else {
             loadItems()
