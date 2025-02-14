@@ -84,13 +84,15 @@ const getById = async (id) => {
  * @param {Array} populate Fields to populate
  * @param {object} sort Sorting
  * @param {Array} select Fields to select
+ * @param {number} limit Limit amount of results
  * @returns {object[]} Found items
  */
 export const find = async (
     filter = {},
     populate = [],
     sort = {},
-    select = []
+    select = [],
+    limit
 ) => {
     try {
         const items = await crud.find(
@@ -98,6 +100,7 @@ export const find = async (
             ["tags", ...populate],
             sort,
             select,
+            limit,
             true
         )
         const withSignedUrls = await Promise.all(items.map(signImageUrls))

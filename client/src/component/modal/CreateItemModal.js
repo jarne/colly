@@ -16,15 +16,13 @@ import {
     deleteItem,
     generatePreview,
 } from "./../../logic/api/item"
-import { updateLastUsedDate } from "./../../logic/api/tag"
+import { searchTags, updateLastUsedDate } from "./../../logic/api/tag"
 
 import "./CreateItemModal.css"
 
 const CreateItemModal = forwardRef((props, ref) => {
-    const MAX_FILTERED_TAGS = 10
-
     const [accessToken] = useUserAuth()
-    const [tags, , , items] = useAppData()
+    const [, , , items] = useAppData()
 
     const [show, setShow] = useState(false)
 
@@ -71,7 +69,9 @@ const CreateItemModal = forwardRef((props, ref) => {
         }
     }
 
-    const handleShow = () => {
+    const handleShow = async () => {
+        await loadFilteredTags()
+
         setShow(true)
     }
 
@@ -116,15 +116,21 @@ const CreateItemModal = forwardRef((props, ref) => {
     const handleItemDescriptionChange = (e) => {
         setItemDescription(e.target.value)
     }
-    const handleTagSearchStrChange = (e) => {
+    const handleTagSearchStrChange = async (e) => {
         const val = e.target.value
 
         setTagSearchStr(val)
-        setFilteredTags(
-            tags
-                .filter((tag) => tag.name.includes(val))
-                .slice(0, MAX_FILTERED_TAGS)
-        )
+        await loadFilteredTags(val)
+    }
+
+    const loadFilteredTags = async (name = "") => {
+        let foundTags
+        try {
+            foundTags = await searchTags(name, accessToken)
+        } catch (e) {
+            return
+        }
+        setFilteredTags(foundTags)
     }
 
     const handleTagAdd = (tag) => {

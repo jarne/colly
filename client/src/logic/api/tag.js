@@ -5,6 +5,8 @@
 import InternalAPI from "./../../util/InternalAPI"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
 
+const MAX_FILTERED_TAGS = 5
+
 /**
  * Create tag
  * @param {string} name tag name
@@ -164,6 +166,36 @@ export const listTags = async (accessToken) => {
                 Authorization: `Bearer ${accessToken}`,
             },
         })
+        res = await resp.json()
+    } catch (e) {
+        throw new Error()
+    }
+
+    if (res.error) {
+        throw new Error()
+    }
+
+    return res.data
+}
+
+/**
+ * Search tags by its name and ordered using last use date
+ * @param {string} name tag name search string
+ * @param {string} accessToken API access token
+ * @returns {Array} tag objects
+ */
+export const searchTags = async (name, accessToken) => {
+    let res
+    try {
+        const resp = await fetch(
+            `${InternalAPI.API_ENDPOINT}/tag?filter[name][$regex]=${name}&sort[lastUsed]=desc&limit=${MAX_FILTERED_TAGS}`,
+            {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            }
+        )
         res = await resp.json()
     } catch (e) {
         throw new Error()

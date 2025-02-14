@@ -7,6 +7,8 @@ import mongoose from "mongoose"
 import NotFoundError from "./../exception/notFoundError.js"
 import logger from "./../../util/logger.js"
 
+const DEFAULT_RESULT_LIMIT = 100
+
 /**
  * Common CRUD operations
  * @param {mongoose.Model} model Mongoose database model
@@ -107,6 +109,7 @@ const crud = (model) => {
      * @param {Array} populate Fields to populate
      * @param {object} sort Sorting
      * @param {Array} select Fields to select
+     * @param {number} limit Limit amount of results
      * @param {boolean} lean Return lean object
      * @returns {object[]} Found model objects
      */
@@ -115,6 +118,7 @@ const crud = (model) => {
         populate = [],
         sort = {},
         select = [],
+        limit = DEFAULT_RESULT_LIMIT,
         lean = false
     ) => {
         try {
@@ -130,6 +134,10 @@ const crud = (model) => {
 
             if (select) {
                 query.select(select)
+            }
+
+            if (limit) {
+                query.limit(limit)
             }
 
             if (lean) {
