@@ -4,11 +4,14 @@
 
 import express from "express"
 import passport from "passport"
+import mongoose from "mongoose"
 
 import userController from "./../controller/user.js"
+import { handleError } from "./../routes.js"
 import logger from "./../util/logger.js"
 
 const router = express.Router()
+const User = mongoose.model("User")
 
 /**
  * Login as a user
@@ -68,6 +71,64 @@ router.get(
                 username: req.user.username,
             },
         })
+    }
+)
+
+/**
+ * Change password of the current user
+ */
+router.patch(
+    "/me/passwordChange",
+    passport.authenticate("jwt", { session: false }),
+    async (req, res) => {
+        let user
+        try {
+            user = await User.findById(req.user.id)
+        } catch (e) {
+            return res.status(403).json({
+                error: {
+                    code: "invalid_token",
+                },
+            })
+        }
+
+        if (!user) {
+            return res.status(403).json({
+                error: {
+                    code: "invalid_token",
+                },
+            })
+        }
+
+        const existingPassword = req.body.existingPassword
+        const newPassword = req.body.newPassword
+
+        if (existingPassword === undefined || newPassword === undefined) {
+            return res.status(400).json({
+                error: {
+                    code: "missing_required_arguments",
+                },
+            })
+        }
+
+        const passwordCheck = await user.checkPassword(existingPassword)
+
+        if (!passwordCheck) {
+            return res.status(400).json({
+                error: {
+                    code: "existing_password_incorrect",
+                },
+            })
+        }
+
+        try {
+            await user.setPassword(newPassword)
+            await user.save()
+        } catch (e) {
+            return handleError(e, res)
+        }
+
+        return res.status(204).send()
     }
 )
 
