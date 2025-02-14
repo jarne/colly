@@ -10,7 +10,11 @@ import collyLogoImg from "./../asset/colly-logo.png"
 
 import "./Navbar.css"
 
-function Navbar({ createTagModalRef, createItemModalRef }) {
+function Navbar({
+    createTagModalRef,
+    createItemModalRef,
+    preferencesModalRef,
+}) {
     const navigate = useNavigate()
 
     const prefersColorScheme = usePrefersColorScheme()
@@ -28,6 +32,11 @@ function Navbar({ createTagModalRef, createItemModalRef }) {
         e.preventDefault()
 
         createItemModalRef.current.open()
+    }
+    const handlePreferences = (e) => {
+        e.preventDefault()
+
+        preferencesModalRef.current.open()
     }
 
     const handleLogoutClick = (e) => {
@@ -95,7 +104,10 @@ function Navbar({ createTagModalRef, createItemModalRef }) {
                         </button>
                         <ul className="dropdown-menu dropdown-menu-end position-absolute">
                             <li>
-                                <button className="dropdown-item">
+                                <button
+                                    className="dropdown-item"
+                                    onClick={handlePreferences}
+                                >
                                     Preferences
                                 </button>
                             </li>
