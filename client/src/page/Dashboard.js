@@ -12,6 +12,7 @@ import ItemCard from "./../component/item/ItemCard"
 
 import CreateTagModal from "./../component/modal/CreateTagModal"
 import CreateItemModal from "./../component/modal/CreateItemModal"
+import PreferencesModal from "./../component/modal/PreferencesModal"
 
 import { useUserAuth } from "./../component/context/UserAuthProvider"
 import { useAppData } from "./../component/context/DataProvider"
@@ -27,6 +28,7 @@ function Dashboard() {
 
     const createTagModalRef = useRef()
     const createItemModalRef = useRef()
+    const preferencesModalRef = useRef()
 
     const triggerItemLoad = () => {
         if (tagId) {
@@ -55,6 +57,7 @@ function Dashboard() {
             <Navbar
                 createTagModalRef={createTagModalRef}
                 createItemModalRef={createItemModalRef}
+                preferencesModalRef={preferencesModalRef}
             />
             <main className="dashboard-main">
                 <TagsSidebar
@@ -80,6 +83,7 @@ function Dashboard() {
                 triggerItemLoad={triggerItemLoad}
                 ref={createItemModalRef}
             />
+            <PreferencesModal ref={preferencesModalRef} />
         </>
     )
 }
