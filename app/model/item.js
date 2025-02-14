@@ -6,7 +6,6 @@ import mongoose from "mongoose"
 import validator from "validator"
 
 import { trySaveImageMetadata } from "./../controller/itemPreview.js"
-import logger from "./../util/logger.js"
 
 const Schema = mongoose.Schema
 
