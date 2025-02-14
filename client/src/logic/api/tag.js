@@ -89,6 +89,40 @@ export const updateTag = async (
 }
 
 /**
+ * Update last used date of tag
+ * @param {string} id tag ID
+ * @param {Date} lastUsed second gradient color
+ * @param {string} accessToken API access token
+ */
+export const updateLastUsedDate = async (id, lastUsed, accessToken) => {
+    let res
+    try {
+        const resp = await fetch(`${InternalAPI.API_ENDPOINT}/tag/${id}`, {
+            method: "PATCH",
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                lastUsed,
+            }),
+        })
+        res = await resp.json()
+    } catch (e) {
+        throw new Error("Error while communicating with the server!")
+    }
+
+    if (res.error) {
+        switch (res.error.code) {
+            case "validation_error":
+                throw new Error(generateValidationErrorMessage(res.error))
+            default:
+                throw new Error("Unknown error!")
+        }
+    }
+}
+
+/**
  * Delete tag
  * @param {string} id tag ID
  * @param {string} accessToken API access token

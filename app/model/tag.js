@@ -40,6 +40,9 @@ const TagSchema = new Schema({
         ref: "User",
         required: true,
     },
+    lastUsed: {
+        type: Date,
+    },
 })
 
 mongoose.model("Tag", TagSchema)

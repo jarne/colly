@@ -16,6 +16,7 @@ import {
     deleteItem,
     generatePreview,
 } from "./../../logic/api/item"
+import { updateLastUsedDate } from "./../../logic/api/tag"
 
 import "./CreateItemModal.css"
 
@@ -128,6 +129,8 @@ const CreateItemModal = forwardRef((props, ref) => {
 
     const handleTagAdd = (tag) => {
         setItemTags([...itemTags, tag])
+
+        updateLastUsedDate(tag._id, new Date(), accessToken)
     }
     const handleTagRemove = (tag) => {
         setItemTags(itemTags.filter((val) => val._id !== tag._id))
