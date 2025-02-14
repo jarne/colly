@@ -2,17 +2,17 @@
  * Colly | tag API logic
  */
 
+import qs from "qs"
+
 import InternalAPI from "./../../util/InternalAPI"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
 
 /**
  * Create tag
- * @param {string} name tag name
- * @param {string} firstColor first gradient color
- * @param {string} secondColor second gradient color
+ * @param {object} tag tag object
  * @param {string} accessToken API access token
  */
-export const createTag = async (name, firstColor, secondColor, accessToken) => {
+export const createTag = async (tag, accessToken) => {
     let res
     try {
         const resp = await fetch(InternalAPI.API_ENDPOINT + "/tag", {
@@ -21,11 +21,7 @@ export const createTag = async (name, firstColor, secondColor, accessToken) => {
                 Authorization: `Bearer ${accessToken}`,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-                name,
-                firstColor,
-                secondColor,
-            }),
+            body: JSON.stringify(tag),
         })
         res = await resp.json()
     } catch (e) {
@@ -47,18 +43,10 @@ export const createTag = async (name, firstColor, secondColor, accessToken) => {
 /**
  * Update tag
  * @param {string} id tag ID
- * @param {string} name tag name
- * @param {string} firstColor first gradient color
- * @param {string} secondColor second gradient color
+ * @param {object} tag tag object
  * @param {string} accessToken API access token
  */
-export const updateTag = async (
-    id,
-    name,
-    firstColor,
-    secondColor,
-    accessToken
-) => {
+export const updateTag = async (id, tag, accessToken) => {
     let res
     try {
         const resp = await fetch(`${InternalAPI.API_ENDPOINT}/tag/${id}`, {
@@ -67,11 +55,7 @@ export const updateTag = async (
                 Authorization: `Bearer ${accessToken}`,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-                name,
-                firstColor,
-                secondColor,
-            }),
+            body: JSON.stringify(tag),
         })
         res = await resp.json()
     } catch (e) {
@@ -117,19 +101,27 @@ export const deleteTag = async (id, accessToken) => {
 }
 
 /**
- * Get all tags
+ * Find tags
  * @param {string} accessToken API access token
+ * @param {object} query Query parameters
  * @returns {Array} tag objects
  */
-export const listTags = async (accessToken) => {
+export const findTags = async (accessToken, query) => {
+    const queryStr = qs.stringify(query, {
+        encode: false,
+    })
+
     let res
     try {
-        const resp = await fetch(InternalAPI.API_ENDPOINT + "/tag", {
-            method: "GET",
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-            },
-        })
+        const resp = await fetch(
+            `${InternalAPI.API_ENDPOINT}/tag?${queryStr}`,
+            {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            }
+        )
         res = await resp.json()
     } catch (e) {
         throw new Error()

@@ -16,14 +16,15 @@ import {
     deleteItem,
     generatePreview,
 } from "./../../logic/api/item"
+import { findTags, updateTag } from "./../../logic/api/tag"
 
 import "./CreateItemModal.css"
 
 const CreateItemModal = forwardRef((props, ref) => {
-    const MAX_FILTERED_TAGS = 10
+    const MAX_FILTERED_TAGS = 5
 
     const [accessToken] = useUserAuth()
-    const [tags, , , items] = useAppData()
+    const [, , , items] = useAppData()
 
     const [show, setShow] = useState(false)
 
@@ -70,7 +71,9 @@ const CreateItemModal = forwardRef((props, ref) => {
         }
     }
 
-    const handleShow = () => {
+    const handleShow = async () => {
+        await loadFilteredTags()
+
         setShow(true)
     }
 
@@ -115,19 +118,45 @@ const CreateItemModal = forwardRef((props, ref) => {
     const handleItemDescriptionChange = (e) => {
         setItemDescription(e.target.value)
     }
-    const handleTagSearchStrChange = (e) => {
+    const handleTagSearchStrChange = async (e) => {
         const val = e.target.value
 
         setTagSearchStr(val)
-        setFilteredTags(
-            tags
-                .filter((tag) => tag.name.includes(val))
-                .slice(0, MAX_FILTERED_TAGS)
-        )
+        await loadFilteredTags(val)
     }
 
-    const handleTagAdd = (tag) => {
+    const loadFilteredTags = async (name = "") => {
+        let foundTags
+        try {
+            foundTags = await findTags(accessToken, {
+                filter: {
+                    name: {
+                        $regex: name,
+                    },
+                },
+                sort: {
+                    lastUsed: "desc",
+                },
+                limit: MAX_FILTERED_TAGS,
+            })
+        } catch (e) {
+            toast.error(e.message)
+
+            return
+        }
+        setFilteredTags(foundTags)
+    }
+
+    const handleTagAdd = async (tag) => {
         setItemTags([...itemTags, tag])
+
+        await updateTag(
+            tag._id,
+            {
+                lastUsed: new Date(),
+            },
+            accessToken
+        )
     }
     const handleTagRemove = (tag) => {
         setItemTags(itemTags.filter((val) => val._id !== tag._id))
@@ -140,17 +169,21 @@ const CreateItemModal = forwardRef((props, ref) => {
             editId
                 ? await updateItem(
                       editId,
-                      itemUrl,
-                      itemName,
-                      itemDescription,
-                      itemTags,
+                      {
+                          url: itemUrl,
+                          name: itemName,
+                          description: itemDescription,
+                          tags: itemTags,
+                      },
                       accessToken
                   )
                 : await createItem(
-                      itemUrl,
-                      itemName,
-                      itemDescription,
-                      itemTags,
+                      {
+                          url: itemUrl,
+                          name: itemName,
+                          description: itemDescription,
+                          tags: itemTags,
+                      },
                       accessToken
                   )
         } catch (ex) {
@@ -228,33 +261,56 @@ const CreateItemModal = forwardRef((props, ref) => {
                         />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="itemNameInput" className="form-label">
-                            Item name
-                        </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="itemNameInput"
-                            placeholder="My cool item"
-                            value={itemName}
-                            onChange={handleItemNameChange}
-                        />
-                    </div>
-                    <div className="mb-3">
-                        <label
-                            htmlFor="itemDescriptionInput"
-                            className="form-label"
+                        <a
+                            data-bs-toggle="collapse"
+                            href="#collapseItemDetails"
+                            role="button"
+                            aria-expanded="false"
+                            aria-controls="collapseItemDetails"
                         >
-                            Item description
-                        </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="itemDescriptionInput"
-                            placeholder="Add a text to describe your item"
-                            value={itemDescription}
-                            onChange={handleItemDescriptionChange}
-                        />
+                            {itemName ? (
+                                <>
+                                    {itemName} • {itemDescription}
+                                    <i className="bi bi-pencil-square ms-1"></i>
+                                </>
+                            ) : (
+                                "Paste an URL or click here to add information manually"
+                            )}
+                        </a>
+                    </div>
+                    <div className="collapse" id="collapseItemDetails">
+                        <div className="mb-3">
+                            <label
+                                htmlFor="itemNameInput"
+                                className="form-label"
+                            >
+                                Item name
+                            </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="itemNameInput"
+                                placeholder="My cool item"
+                                value={itemName}
+                                onChange={handleItemNameChange}
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label
+                                htmlFor="itemDescriptionInput"
+                                className="form-label"
+                            >
+                                Item description
+                            </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="itemDescriptionInput"
+                                placeholder="Add a text to describe your item"
+                                value={itemDescription}
+                                onChange={handleItemDescriptionChange}
+                            />
+                        </div>
                     </div>
                     <div className="mb-3">
                         <label

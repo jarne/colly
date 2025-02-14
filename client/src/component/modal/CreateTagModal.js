@@ -11,6 +11,7 @@ import { toast } from "react-toastify"
 import { useUserAuth } from "./../context/UserAuthProvider"
 import { useAppData } from "./../context/DataProvider"
 import { createTag, updateTag, deleteTag } from "./../../logic/api/tag"
+import { generateGradientColors } from "./../../util/ColorGenerator"
 
 import "./CreateTagModal.css"
 
@@ -72,6 +73,15 @@ const CreateTagModal = forwardRef((props, ref) => {
         }
     }
 
+    const suggestColors = () => {
+        const colors = generateGradientColors()
+
+        if (colFirst === DEFAULT_COL_FIRST && colSec === DEFAULT_COL_SEC) {
+            setColFirst(colors[0])
+            setColSec(colors[1])
+        }
+    }
+
     const handleShow = () => {
         setShow(true)
     }
@@ -93,6 +103,9 @@ const CreateTagModal = forwardRef((props, ref) => {
     const handleTagNameChange = (e) => {
         setTagName(e.target.value)
     }
+    const handleTagNameBlur = (e) => {
+        suggestColors()
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -101,15 +114,19 @@ const CreateTagModal = forwardRef((props, ref) => {
             editId
                 ? await updateTag(
                       editId,
-                      tagName,
-                      colFirst.slice(1),
-                      colSec.slice(1),
+                      {
+                          name: tagName,
+                          firstColor: colFirst.slice(1),
+                          secondColor: colSec.slice(1),
+                      },
                       accessToken
                   )
                 : await createTag(
-                      tagName,
-                      colFirst.slice(1),
-                      colSec.slice(1),
+                      {
+                          name: tagName,
+                          firstColor: colFirst.slice(1),
+                          secondColor: colSec.slice(1),
+                      },
                       accessToken
                   )
         } catch (ex) {
@@ -172,6 +189,7 @@ const CreateTagModal = forwardRef((props, ref) => {
                             placeholder="tag-name-123"
                             value={tagName}
                             onChange={handleTagNameChange}
+                            onBlur={handleTagNameBlur}
                             autoFocus
                         />
                     </div>

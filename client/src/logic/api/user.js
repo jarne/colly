@@ -2,17 +2,17 @@
  * Colly | user API logic
  */
 
+import qs from "qs"
+
 import InternalAPI from "./../../util/InternalAPI"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
 
 /**
  * Create user
- * @param {string} username user name
- * @param {string} password temporary password
- * @param {boolean} isAdmin user is admin
+ * @param {object} user user object
  * @param {string} accessToken API access token
  */
-export const createUser = async (username, password, isAdmin, accessToken) => {
+export const createUser = async (user, accessToken) => {
     let res
     try {
         const resp = await fetch(InternalAPI.API_ENDPOINT + "/user", {
@@ -21,11 +21,7 @@ export const createUser = async (username, password, isAdmin, accessToken) => {
                 Authorization: `Bearer ${accessToken}`,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-                username,
-                password,
-                isAdmin,
-            }),
+            body: JSON.stringify(user),
         })
         res = await resp.json()
     } catch (e) {
@@ -47,18 +43,14 @@ export const createUser = async (username, password, isAdmin, accessToken) => {
 /**
  * Update user
  * @param {string} id user ID
- * @param {string} username user name
- * @param {string} password temporary password
- * @param {boolean} isAdmin user is admin
+ * @param {object} user user object
  * @param {string} accessToken API access token
  */
-export const updateUser = async (
-    id,
-    username,
-    password,
-    isAdmin,
-    accessToken
-) => {
+export const updateUser = async (id, user, accessToken) => {
+    if (user.password === "") {
+        user.password = undefined
+    }
+
     let res
     try {
         const resp = await fetch(`${InternalAPI.API_ENDPOINT}/user/${id}`, {
@@ -67,11 +59,7 @@ export const updateUser = async (
                 Authorization: `Bearer ${accessToken}`,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-                username,
-                password: password === "" ? undefined : password,
-                isAdmin,
-            }),
+            body: JSON.stringify(user),
         })
         res = await resp.json()
     } catch (e) {
@@ -117,19 +105,26 @@ export const deleteUser = async (id, accessToken) => {
 }
 
 /**
- * Get all users
+ * Find users
  * @param {string} accessToken API access token
  * @returns {Array} user objects
  */
-export const listUsers = async (accessToken) => {
+export const findUsers = async (accessToken, query) => {
+    const queryStr = qs.stringify(query, {
+        encode: false,
+    })
+
     let res
     try {
-        const resp = await fetch(InternalAPI.API_ENDPOINT + "/user", {
-            method: "GET",
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-            },
-        })
+        const resp = await fetch(
+            `${InternalAPI.API_ENDPOINT}/user?${queryStr}`,
+            {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            }
+        )
         res = await resp.json()
     } catch (e) {
         throw new Error()

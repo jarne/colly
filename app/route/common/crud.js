@@ -161,7 +161,8 @@ const crud = (controller, userPermissions = false) => {
                 filter,
                 parseFieldsArray(req.query.populate),
                 req.query.sort,
-                parseFieldsArray(req.query.select)
+                parseFieldsArray(req.query.select),
+                req.query.limit
             )
         } catch (e) {
             return handleError(e, res)

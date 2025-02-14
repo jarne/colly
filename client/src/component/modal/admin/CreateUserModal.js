@@ -78,12 +78,21 @@ const CreateUserModal = forwardRef((props, ref) => {
             editId
                 ? await updateUser(
                       editId,
-                      username,
-                      password,
-                      isAdmin,
+                      {
+                          username: username,
+                          password: password,
+                          isAdmin: isAdmin,
+                      },
                       accessToken
                   )
-                : await createUser(username, password, isAdmin, accessToken)
+                : await createUser(
+                      {
+                          username: username,
+                          password: password,
+                          isAdmin: isAdmin,
+                      },
+                      accessToken
+                  )
         } catch (ex) {
             toast.error(ex.message)
 
