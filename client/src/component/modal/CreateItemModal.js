@@ -140,15 +140,17 @@ const CreateItemModal = forwardRef((props, ref) => {
                 limit: MAX_FILTERED_TAGS,
             })
         } catch (e) {
+            toast.error(e.message)
+
             return
         }
         setFilteredTags(foundTags)
     }
 
-    const handleTagAdd = (tag) => {
+    const handleTagAdd = async (tag) => {
         setItemTags([...itemTags, tag])
 
-        updateTag(
+        await updateTag(
             tag._id,
             {
                 lastUsed: new Date(),
