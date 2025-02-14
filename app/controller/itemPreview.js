@@ -213,3 +213,18 @@ export const saveImageMetadata = async (itemId) => {
         image: imageId,
     }
 }
+
+/**
+ * Try to call the function to fetch and store image metadata of an item
+ * @param {string} itemId Item ID
+ */
+export const trySaveImageMetadata = async (itemId) => {
+    try {
+        await saveImageMetadata(itemId)
+    } catch (e) {
+        logger.warn("item_image_meta_fetch_error", {
+            id: itemId,
+            error: e.message,
+        })
+    }
+}
