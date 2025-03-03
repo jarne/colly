@@ -2445,6 +2445,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bson@npm:^6.10.3":
+  version: 6.10.3
+  resolution: "bson@npm:6.10.3"
+  checksum: 10c0/15ad7a9b3bf8090add5fea1761b1ba7d75e5256efcfbb8c9ca448ca98e59c3b079c37c36c7aca0cc916236bd2d4684a5525c68f3d76da8a13d55dc230abbdd21
+  languageName: node
+  linkType: hard
+
 "btoa@npm:^1.2.1":
   version: 1.2.1
   resolution: "btoa@npm:1.2.1"
@@ -5426,12 +5433,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mongodb@npm:~6.13.0":
-  version: 6.13.0
-  resolution: "mongodb@npm:6.13.0"
+"mongodb@npm:~6.14.0":
+  version: 6.14.0
+  resolution: "mongodb@npm:6.14.0"
   dependencies:
     "@mongodb-js/saslprep": "npm:^1.1.9"
-    bson: "npm:^6.10.1"
+    bson: "npm:^6.10.3"
     mongodb-connection-string-url: "npm:^3.0.0"
   peerDependencies:
     "@aws-sdk/credential-providers": ^3.188.0
@@ -5456,22 +5463,22 @@ __metadata:
       optional: true
     socks:
       optional: true
-  checksum: 10c0/8fe03ef208113a47842a0ae3676abe287d6e1cff81d47414abf501c7b78257c7fecb80cafc5ba16b3e42821fffcd3652c62650302c8f4f58464c802a17910478
+  checksum: 10c0/92e43fa625f3f83a2352b273e8a84ba1648499a87bab6cc83d483031c076aee1ecdfc0cfdc8b6f83fba4616f24d3e718c1f35a076700bd2a05bcdace408cf89a
   languageName: node
   linkType: hard
 
 "mongoose@npm:^8.1":
-  version: 8.11.0
-  resolution: "mongoose@npm:8.11.0"
+  version: 8.12.0
+  resolution: "mongoose@npm:8.12.0"
   dependencies:
     bson: "npm:^6.10.1"
     kareem: "npm:2.6.3"
-    mongodb: "npm:~6.13.0"
+    mongodb: "npm:~6.14.0"
     mpath: "npm:0.9.0"
     mquery: "npm:5.0.0"
     ms: "npm:2.1.3"
     sift: "npm:17.1.3"
-  checksum: 10c0/779f5e450ac878c97a4689d623599b9efff2d92683acb8c395f7cb22f8965f11080033d7c8c1ae1a536f5ad80f1a065f2cb06b159136c9f5007aea20af0910c2
+  checksum: 10c0/8fd08d123c51800df10c98c67acfbed358bc742a935a768d557a766195dc4bd0c59683c81eebaa950802ac73caf4436f02c15b7ddff8f6249950e251868cb73a
   languageName: node
   linkType: hard
 
