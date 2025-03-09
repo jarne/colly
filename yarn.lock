@@ -5135,15 +5135,15 @@ __metadata:
   linkType: hard
 
 "metascraper@npm:^5.43.4":
-  version: 5.46.7
-  resolution: "metascraper@npm:5.46.7"
+  version: 5.46.9
+  resolution: "metascraper@npm:5.46.9"
   dependencies:
     "@metascraper/helpers": "npm:5.46.5"
     cheerio: "npm:~1.0.0"
     debug-logfmt: "npm:~1.2.3"
     lodash: "npm:~4.17.21"
     whoops: "npm:~5.0.1"
-  checksum: 10c0/3ed2fbf85cb7d302995c68a407be8cdfa946041b2ef94499d2a8843ba9b9fc3b1ee035a2c582daa4af084dfcdf1a9eb5df08b117cf1ab1fcd8ebd7ccdaa8be38
+  checksum: 10c0/bf0f9ded731733772854b6167d2188189362b62e7649a4c5363985c007b8d6d581889f3557d4bc50accb1785678840ad6b5917eff516c4fce63dc16dbcac06f3
   languageName: node
   linkType: hard
 
