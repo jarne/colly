@@ -135,12 +135,20 @@ yarn run lint
 yarn run format
 ```
 
+#### Test data
+
+There are several tool scripts and a test dataset for development and testing, placed in the [test-data](./test-data) folder.
+
+Create first user: `yarn node userInit.js`  
+Run web server to serve test websites: `yarn run dev:test-data`  
+Insert test data into database: `yarn node insertTestData.js`
+
 ### Front-end
 
 The front-end inside the `client` folder is written in JavaScript and is based on React, Vite and Bootstrap for styles.
 
-Run development server: `yarn run dev`
-Create build: `yarn run build`
+Run development server: `yarn run dev`  
+Create build: `yarn run build`  
 Run ESLint: `yarn run lint`
 
 Code style formatting is configured in the parent folder, so if you run `yarn run format` in the main folder,
