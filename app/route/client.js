@@ -12,13 +12,13 @@ const router = express.Router()
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-router.use(express.static(path.join(__dirname, "../../client/build")))
+router.use(express.static(path.join(__dirname, "../../client/dist")))
 
 /**
  * Serve static client
  */
 router.get("/*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../../client/build/index.html"))
+    res.sendFile(path.join(__dirname, "../../client/dist/index.html"))
 })
 
 export default router
