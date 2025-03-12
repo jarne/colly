@@ -48,7 +48,9 @@
     },
     "devDependencies": {
         "eslint": "^8.56",
-        "eslint-plugin-jsdoc": "^50.0.0"
+        "eslint-config-react-app": "^7.0.1",
+        "eslint-plugin-jsdoc": "^50.0.0",
+        "vite-plugin-eslint": "^1.8.1"
     },
     "browserslist": {
         "production": [
