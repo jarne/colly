@@ -13,10 +13,10 @@ import Dashboard from "./../page/Dashboard"
 import Admin from "./../page/Admin"
 
 import "./../util/CustomBootstrap.scss"
-import "./../../node_modules/bootstrap/dist/js/bootstrap.bundle"
+import "bootstrap/dist/js/bootstrap.bundle"
 
-import "./../../node_modules/bootstrap-icons/font/bootstrap-icons.css"
-import "./../../node_modules/react-toastify/dist/ReactToastify.css"
+import "bootstrap-icons/font/bootstrap-icons.css"
+import "react-toastify/dist/ReactToastify.css"
 
 function App() {
     const prefersColorScheme = usePrefersColorScheme()
