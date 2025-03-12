@@ -6,6 +6,7 @@ import mongoose from "mongoose"
 import { promises as fs } from "fs"
 
 import { connectDbAsync } from "./app/init.js"
+import { trySaveImageMetadata } from "./app/controller/itemPreview.js"
 
 const User = mongoose.model("User")
 const Tag = mongoose.model("Tag")
@@ -61,6 +62,10 @@ const importData = async () => {
     await User.collection.insertMany(convertIdsToObjectIds(users))
     await Tag.collection.insertMany(convertIdsToObjectIds(tags))
     await Item.collection.insertMany(convertIdsToObjectIds(items))
+
+    for (const item of items) {
+        trySaveImageMetadata(item._id)
+    }
 }
 
 await connectDbAsync()
