@@ -2,6 +2,12 @@
  * Colly | login page styles
  */
 
+@media (max-width: 500px) {
+    .login-bg-wrapper {
+        display: none;
+    }
+}
+
 .login-background-img {
     width: 100%;
     height: 100vh;
@@ -11,6 +17,7 @@
 }
 
 .login-overlay {
+    min-width: 350px;
     width: 500px;
     height: 100vh;
 
