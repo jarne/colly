@@ -51,7 +51,7 @@ function Navbar({
 
     return (
         <nav
-            className={`navbar navbar-expand-lg sticky-top ${isDarkMode ? "bg-dark" : "bg-light"} bg-blur`}
+            className={`navbar navbar-expand sticky-top ${isDarkMode ? "bg-dark" : "bg-light"} bg-blur`}
         >
             <div className="container-fluid">
                 <Link className="navbar-brand" to="/">

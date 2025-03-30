@@ -92,7 +92,7 @@ function TagsSidebar(props) {
                     className="bg-transparent border-0"
                 >
                     <i
-                        class={`bi bi-chevron-${isCollapsed ? "right" : "left"} fs-5`}
+                        className={`bi bi-chevron-${isCollapsed ? "right" : "left"} fs-5`}
                     ></i>
                 </button>
             </div>
