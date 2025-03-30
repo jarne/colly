@@ -3,11 +3,15 @@
  */
 
 .tags-sidebar {
-    width: 265px;
+    width: 56px;
     height: calc(100vh - 56px);
 
     position: sticky;
     top: 56px;
+}
+
+.tags-sidebar-expanded {
+    width: 265px;
 }
 
 .tags-sidebar-tag {
@@ -22,7 +26,9 @@
     height: 24px;
 
     border-radius: 50%;
+}
 
+.tags-sidebar-expanded .tags-sidebar-col-circle {
     margin-right: 8px;
 }
 
