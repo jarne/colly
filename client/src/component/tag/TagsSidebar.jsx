@@ -50,6 +50,7 @@ function TagsSidebar(props) {
 
     return (
         <div
+            id="tagsSidebar"
             className={`tags-sidebar${isCollapsed ? "" : " tags-sidebar-expanded"} d-flex flex-column ${isDarkMode ? "bg-dark" : "bg-light"} p-3`}
         >
             {tags.map((tag) => {
@@ -89,10 +90,16 @@ function TagsSidebar(props) {
             <div className="mt-auto text-end">
                 <button
                     onClick={handleCollapsedChange}
+                    aria-label={
+                        isCollapsed ? "Expand sidebar" : "Collapse sidebar"
+                    }
+                    aria-expanded={!isCollapsed}
+                    aria-controls="tagsSidebar"
                     className="bg-transparent border-0"
                 >
                     <i
                         className={`bi bi-chevron-${isCollapsed ? "right" : "left"} fs-5`}
+                        aria-hidden="true"
                     ></i>
                 </button>
             </div>

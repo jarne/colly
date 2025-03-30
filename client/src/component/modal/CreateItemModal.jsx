@@ -271,7 +271,10 @@ const CreateItemModal = forwardRef((props, ref) => {
                             {itemName ? (
                                 <>
                                     {itemName} • {itemDescription}
-                                    <i className="bi bi-pencil-square ms-1"></i>
+                                    <i
+                                        className="bi bi-pencil-square ms-1"
+                                        aria-label="Edit manually"
+                                    ></i>
                                 </>
                             ) : (
                                 "Paste an URL or click here to add information manually"

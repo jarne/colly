@@ -72,7 +72,11 @@ function Navbar({
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false"
                             >
-                                <i className="bi bi-plus-lg"></i> Add
+                                <i
+                                    className="bi bi-plus-lg"
+                                    aria-hidden="true"
+                                ></i>{" "}
+                                Add
                             </button>
                             <ul className="dropdown-menu dropdown-menu-end position-absolute">
                                 <li>

@@ -65,8 +65,12 @@ function ItemCard({ item, createItemModalRef }) {
                             handleItemEditClick(e, item._id)
                         }}
                         className="card-edit bg-transparent border-0 text-secondary"
+                        aria-label="Edit"
                     >
-                        <i className="bi bi-pencil-square"></i>
+                        <i
+                            className="bi bi-pencil-square"
+                            aria-hidden="true"
+                        ></i>
                     </button>
                 </p>
                 <p className="card-text card-description">{item.description}</p>
