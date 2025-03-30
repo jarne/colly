@@ -18,7 +18,9 @@ function TagsSidebar(props) {
 
     const [tags, , loadTags] = useAppData()
 
-    const [isCollapsed, setIsCollapsed] = useState(false)
+    const isMobile = window.innerWidth < 768
+
+    const [isCollapsed, setIsCollapsed] = useState(isMobile)
     const [isEditMode, setEditMode] = useState(false)
 
     useEffect(() => {

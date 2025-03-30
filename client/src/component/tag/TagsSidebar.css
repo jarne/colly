@@ -9,7 +9,7 @@
     position: sticky;
     top: 56px;
 
-    transition-duration: .4s;
+    transition-duration: 0.4s;
 }
 
 .tags-sidebar-expanded {
