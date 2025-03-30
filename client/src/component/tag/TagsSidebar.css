@@ -8,6 +8,8 @@
 
     position: sticky;
     top: 56px;
+
+    transition-duration: .4s;
 }
 
 .tags-sidebar-expanded {
