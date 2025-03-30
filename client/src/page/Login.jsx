@@ -117,7 +117,7 @@ function Login() {
                     </form>
                 </div>
             </div>
-            <div className="flex-grow-1 bg-info">
+            <div className="login-bg-wrapper flex-grow-1 bg-info">
                 <img
                     src={loginBackgroundImg}
                     alt=""

@@ -18,11 +18,18 @@ function TagsSidebar(props) {
 
     const [tags, , loadTags] = useAppData()
 
+    const isMobile = window.innerWidth < 768
+
+    const [isCollapsed, setIsCollapsed] = useState(isMobile)
     const [isEditMode, setEditMode] = useState(false)
 
     useEffect(() => {
         loadTags()
     }, [])
+
+    const handleCollapsedChange = (e) => {
+        setIsCollapsed(!isCollapsed)
+    }
 
     const handleEditModeChange = (e) => {
         setEditMode(!isEditMode)
@@ -43,13 +50,13 @@ function TagsSidebar(props) {
 
     return (
         <div
-            className={`tags-sidebar d-flex flex-column ${isDarkMode ? "bg-dark" : "bg-light"} p-3`}
+            className={`tags-sidebar${isCollapsed ? "" : " tags-sidebar-expanded"} d-flex flex-column ${isDarkMode ? "bg-dark" : "bg-light"} p-3`}
         >
             {tags.map((tag) => {
                 return (
                     <div
                         key={tag._id}
-                        className={`tags-sidebar-tag text-decoration-none${props.activeTag === tag._id ? " fw-bold" : ""}`}
+                        className={`tags-sidebar-tag text-decoration-none${props.activeTag === tag._id ? " tags-sidebar-tag-active fw-bold" : ""}`}
                         role="button"
                         onClick={(e) => {
                             handleTagClick(e, tag._id)
@@ -61,21 +68,33 @@ function TagsSidebar(props) {
                                 background: `linear-gradient(to bottom right, #${tag.firstColor}, #${tag.secondColor})`,
                             }}
                         ></div>
-                        {tag.name}
+                        {!isCollapsed && tag.name}
                     </div>
                 )
             })}
-            <div className="form-check tags-edit-mode-check">
-                <input
-                    type="checkbox"
-                    className="form-check-input"
-                    id="editModeCheck"
-                    checked={isEditMode}
-                    onChange={handleEditModeChange}
-                />
-                <label className="form-check-label" htmlFor="editModeCheck">
-                    Edit mode
-                </label>
+            {!isCollapsed && (
+                <div className="form-check tags-edit-mode-check">
+                    <input
+                        type="checkbox"
+                        className="form-check-input"
+                        id="editModeCheck"
+                        checked={isEditMode}
+                        onChange={handleEditModeChange}
+                    />
+                    <label className="form-check-label" htmlFor="editModeCheck">
+                        Edit mode
+                    </label>
+                </div>
+            )}
+            <div className="mt-auto text-end">
+                <button
+                    onClick={handleCollapsedChange}
+                    className="bg-transparent border-0"
+                >
+                    <i
+                        className={`bi bi-chevron-${isCollapsed ? "right" : "left"} fs-5`}
+                    ></i>
+                </button>
             </div>
         </div>
     )
