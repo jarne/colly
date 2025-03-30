@@ -48,13 +48,13 @@ function TagsSidebar(props) {
 
     return (
         <div
-            className={`tags-sidebar ${isCollapsed ? "" : "tags-sidebar-expanded"} d-flex flex-column ${isDarkMode ? "bg-dark" : "bg-light"} p-3`}
+            className={`tags-sidebar${isCollapsed ? "" : " tags-sidebar-expanded"} d-flex flex-column ${isDarkMode ? "bg-dark" : "bg-light"} p-3`}
         >
             {tags.map((tag) => {
                 return (
                     <div
                         key={tag._id}
-                        className={`tags-sidebar-tag text-decoration-none${props.activeTag === tag._id ? " fw-bold" : ""}`}
+                        className={`tags-sidebar-tag text-decoration-none${props.activeTag === tag._id ? " tags-sidebar-tag-active fw-bold" : ""}`}
                         role="button"
                         onClick={(e) => {
                             handleTagClick(e, tag._id)

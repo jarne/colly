@@ -28,6 +28,10 @@
     border-radius: 50%;
 }
 
+.tags-sidebar-tag-active .tags-sidebar-col-circle {
+    border: solid 2px var(--bs-body-color);
+}
+
 .tags-sidebar-expanded .tags-sidebar-col-circle {
     margin-right: 8px;
 }
