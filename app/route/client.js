@@ -17,7 +17,7 @@ router.use(express.static(path.join(__dirname, "../../client/dist")))
 /**
  * Serve static client
  */
-router.get("/*", (req, res) => {
+router.get("/*splat", (req, res) => {
     res.sendFile(path.join(__dirname, "../../client/dist/index.html"))
 })
 
