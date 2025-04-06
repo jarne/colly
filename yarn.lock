@@ -1128,22 +1128,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keyvhq/core@npm:^2.1.1":
-  version: 2.1.1
-  resolution: "@keyvhq/core@npm:2.1.1"
+"@keyvhq/core@npm:2.1.7":
+  version: 2.1.7
+  resolution: "@keyvhq/core@npm:2.1.7"
   dependencies:
     json-buffer: "npm:~3.0.1"
-  checksum: 10c0/1d8c84af8d1c1d2e763be918f602d8715ac8ae6b0c403076b55c39071e5d1505ce642d14249aa0e95146b1846f6f326e4c8a5b8d4873b892d403501cad305f2f
+  checksum: 10c0/fbc8590ae3cccc8ef19b21b7a2f5be0c8aa26281c3121648cb4eea876699c8cd401b3e1b6f3e16a5c3b14753b6591c7024b0dcebe0451f9ec6f227bcba47ce50
   languageName: node
   linkType: hard
 
-"@keyvhq/memoize@npm:~2.1.5":
-  version: 2.1.5
-  resolution: "@keyvhq/memoize@npm:2.1.5"
+"@keyvhq/memoize@npm:~2.1.7":
+  version: 2.1.7
+  resolution: "@keyvhq/memoize@npm:2.1.7"
   dependencies:
-    "@keyvhq/core": "npm:^2.1.1"
+    "@keyvhq/core": "npm:2.1.7"
     mimic-fn: "npm:~3.0.0"
-  checksum: 10c0/610dc0284e60aa762dd4383b65770c9e61ac50ee301b950c051842ace044144e172bb9efc81547b64a168a48bc8aea579d55d7af652981405fad76d6809d1af0
+  checksum: 10c0/79c84b8d4a275e915ea7f1aced686c739bbc8901ec3c335d3c900ebb135c26f223876dc1d7aafcc18eb8077dcc60e2c90491678986ed100cea1dedfce005d21c
   languageName: node
   linkType: hard
 
@@ -5313,14 +5313,14 @@ __metadata:
   linkType: hard
 
 "metascraper-logo-favicon@npm:^5.43.6":
-  version: 5.46.9
-  resolution: "metascraper-logo-favicon@npm:5.46.9"
+  version: 5.46.11
+  resolution: "metascraper-logo-favicon@npm:5.46.11"
   dependencies:
-    "@keyvhq/memoize": "npm:~2.1.5"
-    "@metascraper/helpers": "npm:5.46.5"
+    "@keyvhq/memoize": "npm:~2.1.7"
+    "@metascraper/helpers": "npm:5.46.11"
     lodash: "npm:~4.17.21"
     reachable-url: "npm:~1.8.1"
-  checksum: 10c0/e5f6bb098dc41fb83eac5ca9d299511536a3d0220745f949a797fc4822be297905eaa138a4cba375b7d912e4b0094e7082a38e2ca4676cd81b9b3f4f9b1ef603
+  checksum: 10c0/cd45270bfc9c6ad471c88766168f1507694bc51f003fe8a076fcefb7db34849d21cbd5dbef24798dc75d0a5f71a7e8a2c7792e834a5c8c524cca41a5982d12c4
   languageName: node
   linkType: hard
 
