@@ -24,7 +24,7 @@ export const createTag = async (tag, accessToken) => {
             body: JSON.stringify(tag),
         })
         res = await resp.json()
-    } catch (e) {
+    } catch {
         throw new Error("Error while communicating with the server!")
     }
 
@@ -58,7 +58,7 @@ export const updateTag = async (id, tag, accessToken) => {
             body: JSON.stringify(tag),
         })
         res = await resp.json()
-    } catch (e) {
+    } catch {
         throw new Error("Error while communicating with the server!")
     }
 
@@ -88,7 +88,7 @@ export const deleteTag = async (id, accessToken) => {
             },
         })
         res = await resp.json()
-    } catch (e) {
+    } catch {
         throw new Error("Error while communicating with the server!")
     }
 
@@ -123,7 +123,7 @@ export const findTags = async (accessToken, query) => {
             }
         )
         res = await resp.json()
-    } catch (e) {
+    } catch {
         throw new Error()
     }
 

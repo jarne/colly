@@ -22,7 +22,7 @@ const AppDataProvider = (props) => {
         let tags
         try {
             tags = await findTags(accessToken, query)
-        } catch (e) {
+        } catch {
             return
         }
 
@@ -33,7 +33,7 @@ const AppDataProvider = (props) => {
         let items
         try {
             items = await findItems(accessToken, query)
-        } catch (e) {
+        } catch {
             return
         }
 
@@ -44,7 +44,7 @@ const AppDataProvider = (props) => {
         let users
         try {
             users = await findUsers(accessToken, query)
-        } catch (e) {
+        } catch {
             return
         }
 

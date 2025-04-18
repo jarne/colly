@@ -24,7 +24,7 @@ export const createUser = async (user, accessToken) => {
             body: JSON.stringify(user),
         })
         res = await resp.json()
-    } catch (e) {
+    } catch {
         throw new Error("Error while communicating with the server!")
     }
 
@@ -62,7 +62,7 @@ export const updateUser = async (id, user, accessToken) => {
             body: JSON.stringify(user),
         })
         res = await resp.json()
-    } catch (e) {
+    } catch {
         throw new Error("Error while communicating with the server!")
     }
 
@@ -92,7 +92,7 @@ export const deleteUser = async (id, accessToken) => {
             },
         })
         res = await resp.json()
-    } catch (e) {
+    } catch {
         throw new Error("Error while communicating with the server!")
     }
 
@@ -107,6 +107,7 @@ export const deleteUser = async (id, accessToken) => {
 /**
  * Find users
  * @param {string} accessToken API access token
+ * @param {object} query find query
  * @returns {Array} user objects
  */
 export const findUsers = async (accessToken, query) => {
@@ -126,7 +127,7 @@ export const findUsers = async (accessToken, query) => {
             }
         )
         res = await resp.json()
-    } catch (e) {
+    } catch {
         throw new Error()
     }
 
@@ -167,7 +168,7 @@ export const changePassword = async (
         if (resp.status !== 204) {
             res = await resp.json()
         }
-    } catch (e) {
+    } catch {
         throw new Error("Error while communicating with the server!")
     }
 
