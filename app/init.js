@@ -11,7 +11,6 @@ import "./util/passportStrategies.js"
  * Establish connection to database
  */
 export const connectDb = () => {
-    // eslint-disable-next-line no-extra-semi
     ;(async () => {
         await connect()
     })()
