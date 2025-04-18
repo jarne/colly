@@ -20,7 +20,7 @@ import { findTags, updateTag } from "./../../logic/api/tag"
 
 import "./CreateItemModal.css"
 
-const CreateItemModal = forwardRef((props, ref) => {
+const CreateItemModal = forwardRef(function CreateItemModal(props, ref) {
     const MAX_FILTERED_TAGS = 5
 
     const [accessToken] = useUserAuth()
@@ -96,7 +96,7 @@ const CreateItemModal = forwardRef((props, ref) => {
         let meta
         try {
             meta = await generatePreview(e.target.value, accessToken)
-        } catch (ex) {
+        } catch {
             setIsFetchingMeta(false)
             return
         }

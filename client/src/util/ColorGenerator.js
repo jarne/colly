@@ -4,7 +4,7 @@
 
 /**
  * Generate random colors for a color gradient
- * @returns {array} two HEX colors for a color gradient
+ * @returns {Array} two HEX colors for a color gradient
  */
 export const generateGradientColors = () => {
     const first = randomHexColor()
@@ -28,6 +28,7 @@ export const randomHexColor = () => {
 
 /**
  * Generate a random HEX color
+ * @param {string} firstColor first color (HEX format) as base
  * @returns {string} random HEX color
  */
 export const calculateSecondColor = (firstColor) => {

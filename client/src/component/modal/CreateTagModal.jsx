@@ -15,7 +15,7 @@ import { generateGradientColors } from "./../../util/ColorGenerator"
 
 import "./CreateTagModal.css"
 
-const CreateTagModal = forwardRef((props, ref) => {
+const CreateTagModal = forwardRef(function CreateTagModal(props, ref) {
     const DEFAULT_EMPTY = ""
     const DEFAULT_OPEN = false
 
@@ -103,7 +103,7 @@ const CreateTagModal = forwardRef((props, ref) => {
     const handleTagNameChange = (e) => {
         setTagName(e.target.value)
     }
-    const handleTagNameBlur = (e) => {
+    const handleTagNameBlur = () => {
         suggestColors()
     }
 

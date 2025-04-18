@@ -24,7 +24,7 @@ export const createItem = async (item, accessToken) => {
             body: JSON.stringify(item),
         })
         res = await resp.json()
-    } catch (e) {
+    } catch {
         throw new Error("Error while communicating with the server!")
     }
 
@@ -58,7 +58,7 @@ export const updateItem = async (id, item, accessToken) => {
             body: JSON.stringify(item),
         })
         res = await resp.json()
-    } catch (e) {
+    } catch {
         throw new Error("Error while communicating with the server!")
     }
 
@@ -88,7 +88,7 @@ export const deleteItem = async (id, accessToken) => {
             },
         })
         res = await resp.json()
-    } catch (e) {
+    } catch {
         throw new Error("Error while communicating with the server!")
     }
 
@@ -123,7 +123,7 @@ export const findItems = async (accessToken, query) => {
             }
         )
         res = await resp.json()
-    } catch (e) {
+    } catch {
         throw new Error()
     }
 
@@ -154,7 +154,7 @@ export const generatePreview = async (url, accessToken) => {
             }),
         })
         res = await resp.json()
-    } catch (e) {
+    } catch {
         throw new Error()
     }
 

@@ -84,7 +84,7 @@ router.patch(
         let user
         try {
             user = await User.findById(req.user.id)
-        } catch (e) {
+        } catch {
             return res.status(403).json({
                 error: {
                     code: "invalid_token",

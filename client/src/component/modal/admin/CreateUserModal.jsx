@@ -10,7 +10,7 @@ import { useUserAuth } from "./../../context/UserAuthProvider"
 import { useAppData } from "./../../context/DataProvider"
 import { createUser, updateUser } from "./../../../logic/api/user"
 
-const CreateUserModal = forwardRef((props, ref) => {
+const CreateUserModal = forwardRef(function CreateUserModal(props, ref) {
     const DEFAULT_EMPTY = ""
     const DEFAULT_FALSE = false
 

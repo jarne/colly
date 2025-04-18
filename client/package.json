@@ -26,8 +26,8 @@
         "dev": "vite",
         "build": "vite build",
         "preview": "vite preview",
-        "lint": "eslint .",
-        "lint:ci": "eslint --format junit --output-file ./lint-results/eslint/junit.xml ."
+        "lint": "eslint src",
+        "lint:ci": "eslint --format junit --output-file ./lint-results/eslint/junit.xml src"
     },
     "dependencies": {
         "@uidotdev/usehooks": "^2.4",
@@ -47,11 +47,15 @@
         "vite": "^6.2.1"
     },
     "devDependencies": {
-        "eslint": "^8.56",
-        "eslint-config-react-app": "^7.0.1",
+        "@eslint/js": "^9.24.0",
+        "eslint": "^9.23.0",
+        "eslint-formatter-junit": "^8.40.0",
         "eslint-plugin-jsdoc": "^50.0.0",
+        "eslint-plugin-react": "^7.37.4",
+        "globals": "^16.0.0",
         "vite-plugin-eslint": "^1.8.1"
     },
+    "type": "module",
     "browserslist": {
         "production": [
             ">0.2%",

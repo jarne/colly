@@ -27,11 +27,11 @@ function TagsSidebar(props) {
         loadTags()
     }, [])
 
-    const handleCollapsedChange = (e) => {
+    const handleCollapsedChange = () => {
         setIsCollapsed(!isCollapsed)
     }
 
-    const handleEditModeChange = (e) => {
+    const handleEditModeChange = () => {
         setEditMode(!isEditMode)
     }
 

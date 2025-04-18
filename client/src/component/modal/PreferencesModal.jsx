@@ -9,7 +9,7 @@ import { toast } from "react-toastify"
 import { useUserAuth } from "./../context/UserAuthProvider"
 import { changePassword } from "./../../logic/api/user"
 
-const PreferencesModal = forwardRef((props, ref) => {
+const PreferencesModal = forwardRef(function PreferencesModal(props, ref) {
     const DEFAULT_EMPTY = ""
 
     const [accessToken] = useUserAuth()
