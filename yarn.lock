@@ -5306,11 +5306,11 @@ __metadata:
   linkType: hard
 
 "metascraper-description@npm:^5.43.4":
-  version: 5.46.11
-  resolution: "metascraper-description@npm:5.46.11"
+  version: 5.46.15
+  resolution: "metascraper-description@npm:5.46.15"
   dependencies:
-    "@metascraper/helpers": "npm:5.46.11"
-  checksum: 10c0/c797172689833765f3c9e197fede507d500acadc958f8a81070497b6bb4cb8d07f91783b8f2404d2d8fc49792c0185293c6663d1f6d8d61e76976f9804c62098
+    "@metascraper/helpers": "npm:5.46.15"
+  checksum: 10c0/21bb9e259e790f7f504675bf8afdfcde928d29c02fb0c86707348800350abed7b04ad1e87f435ecd5e6828af0130dc35b9daa4cc63e505d2d9f6e5b045878bcb
   languageName: node
   linkType: hard
 
