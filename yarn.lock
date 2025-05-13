@@ -5315,11 +5315,11 @@ __metadata:
   linkType: hard
 
 "metascraper-image@npm:^5.43.4":
-  version: 5.46.11
-  resolution: "metascraper-image@npm:5.46.11"
+  version: 5.46.15
+  resolution: "metascraper-image@npm:5.46.15"
   dependencies:
-    "@metascraper/helpers": "npm:5.46.11"
-  checksum: 10c0/bebbff0395e8df93a032d0b475327f818f3b18634806dfd08283ba2ce560c730b219a689bea144b92cda76cb812dc90e47d11eba17e50c381b7c99a888809cec
+    "@metascraper/helpers": "npm:5.46.15"
+  checksum: 10c0/2da7c752f898f8631abc2d245a8f0a017702894a20aff637763049af3303fea23a6d1bb70fe7ea442fe3c16f1d48dfebff9c529785c659550c686edb8cedc25d
   languageName: node
   linkType: hard
 
