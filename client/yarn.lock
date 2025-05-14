@@ -1469,9 +1469,9 @@ __metadata:
   linkType: hard
 
 "bootstrap-icons@npm:^1.11":
-  version: 1.12.1
-  resolution: "bootstrap-icons@npm:1.12.1"
-  checksum: 10c0/73b3e40e3a3cac65627fd119044cf9b9ecebb5c74386b13cdd5a45f5c0f13f641fb92524d0c37c396e28129a6669147d0abfda483969972667a9797b27d74b43
+  version: 1.13.1
+  resolution: "bootstrap-icons@npm:1.13.1"
+  checksum: 10c0/2c1adeb1796502e67b476ce049c86bc3a7ff7984c61777e056820389a8db5ec6535c12a33f76f3ed52674bca4c01472065a7fbcde6cc384ebb86c2eae51390bd
   languageName: node
   linkType: hard
 
@@ -4489,8 +4489,8 @@ __metadata:
   linkType: hard
 
 "sass@npm:^1.70":
-  version: 1.87.0
-  resolution: "sass@npm:1.87.0"
+  version: 1.88.0
+  resolution: "sass@npm:1.88.0"
   dependencies:
     "@parcel/watcher": "npm:^2.4.1"
     chokidar: "npm:^4.0.0"
@@ -4501,7 +4501,7 @@ __metadata:
       optional: true
   bin:
     sass: sass.js
-  checksum: 10c0/bd245faf14e4783dc547765350cf05817edaac0d6d6f6e4da8ab751f3eb3cc3873afd563c0ce416a24aa6c9c4e9023b05096447fc006660a01f76adffb54fbc6
+  checksum: 10c0/dcb16dc29116bfa5a90485d24fd8020d2b0d95155bd2e31285901588729343b59fefe44365c5f146b2ba5a9ebadef90b23a7220b902507bdbd91ca2ba0a0b688
   languageName: node
   linkType: hard
 
