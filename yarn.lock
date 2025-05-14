@@ -5324,14 +5324,14 @@ __metadata:
   linkType: hard
 
 "metascraper-logo-favicon@npm:^5.43.6":
-  version: 5.46.11
-  resolution: "metascraper-logo-favicon@npm:5.46.11"
+  version: 5.46.15
+  resolution: "metascraper-logo-favicon@npm:5.46.15"
   dependencies:
     "@keyvhq/memoize": "npm:~2.1.7"
-    "@metascraper/helpers": "npm:5.46.11"
+    "@metascraper/helpers": "npm:5.46.15"
     lodash: "npm:~4.17.21"
     reachable-url: "npm:~1.8.1"
-  checksum: 10c0/cd45270bfc9c6ad471c88766168f1507694bc51f003fe8a076fcefb7db34849d21cbd5dbef24798dc75d0a5f71a7e8a2c7792e834a5c8c524cca41a5982d12c4
+  checksum: 10c0/98492000cbc8cc33ecc5059893075188241036b8340ba2e25181dffc3edc8125922f2bf3633e53cc9dc2c24a2e116b21a18e8bf2b36b79ca3d4a88d480288248
   languageName: node
   linkType: hard
 
