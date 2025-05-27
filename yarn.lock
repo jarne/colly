@@ -1178,13 +1178,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keyvhq/memoize@npm:~2.1.7":
-  version: 2.1.7
-  resolution: "@keyvhq/memoize@npm:2.1.7"
+"@keyvhq/memoize@npm:~2.1.9":
+  version: 2.1.9
+  resolution: "@keyvhq/memoize@npm:2.1.9"
   dependencies:
     "@keyvhq/core": "npm:2.1.7"
     mimic-fn: "npm:~3.0.0"
-  checksum: 10c0/79c84b8d4a275e915ea7f1aced686c739bbc8901ec3c335d3c900ebb135c26f223876dc1d7aafcc18eb8077dcc60e2c90491678986ed100cea1dedfce005d21c
+    null-prototype-object: "npm:~1.0.0"
+  checksum: 10c0/a09fde530164c28b48fba2bb58e485039d7af98f11a4b8832075c1b326f3f31f1e927c635dc93fd5cfe5eb4133ee99c9eac8820487ba693b59360fdecfe4bdac
   languageName: node
   linkType: hard
 
@@ -5184,14 +5185,14 @@ __metadata:
   linkType: hard
 
 "metascraper-logo-favicon@npm:^5.43.6":
-  version: 5.46.15
-  resolution: "metascraper-logo-favicon@npm:5.46.15"
+  version: 5.46.18
+  resolution: "metascraper-logo-favicon@npm:5.46.18"
   dependencies:
-    "@keyvhq/memoize": "npm:~2.1.7"
-    "@metascraper/helpers": "npm:5.46.15"
+    "@keyvhq/memoize": "npm:~2.1.9"
+    "@metascraper/helpers": "npm:5.46.18"
     lodash: "npm:~4.17.21"
     reachable-url: "npm:~1.8.1"
-  checksum: 10c0/98492000cbc8cc33ecc5059893075188241036b8340ba2e25181dffc3edc8125922f2bf3633e53cc9dc2c24a2e116b21a18e8bf2b36b79ca3d4a88d480288248
+  checksum: 10c0/3125a138f35d8407b4acbf121da8c18e792357119188ca6a44fbeef2193b88b1c8b71244dccdc36c8a0515c15c2fc704e1832a0987ad3999c01260da9c424d6a
   languageName: node
   linkType: hard
 
@@ -5835,6 +5836,13 @@ __metadata:
   dependencies:
     boolbase: "npm:^1.0.0"
   checksum: 10c0/5fee7ff309727763689cfad844d979aedd2204a817fbaaf0e1603794a7c20db28548d7b024692f953557df6ce4a0ee4ae46cd8ebd9b36cfb300b9226b567c479
+  languageName: node
+  linkType: hard
+
+"null-prototype-object@npm:~1.0.0":
+  version: 1.0.0
+  resolution: "null-prototype-object@npm:1.0.0"
+  checksum: 10c0/3078dcdd5a9cb152cd753289eabd221714a642251a9b0b68ae72f6304ba4853c7e3c9ab42904396107775b55b75d2698f6c8781539d4fee15e52aaee756d09a5
   languageName: node
   linkType: hard
 
