@@ -1201,38 +1201,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@metascraper/helpers@npm:5.47.1":
-  version: 5.47.1
-  resolution: "@metascraper/helpers@npm:5.47.1"
-  dependencies:
-    audio-extensions: "npm:0.0.0"
-    chrono-node: "npm:2.8.0"
-    condense-whitespace: "npm:~2.0.0"
-    data-uri-utils: "npm:~1.0.8"
-    debug-logfmt: "npm:~1.2.3"
-    entities: "npm:~6.0.0"
-    file-extension: "npm:~4.0.5"
-    has-values: "npm:~2.0.1"
-    image-extensions: "npm:~1.1.0"
-    is-relative-url: "npm:~3.0.0"
-    is-uri: "npm:~1.2.7"
-    iso-639-3: "npm:~2.2.0"
-    isostring: "npm:0.0.1"
-    jsdom: "npm:~26.1.0"
-    lodash: "npm:~4.17.21"
-    memoize-one: "npm:~6.0.0"
-    microsoft-capitalize: "npm:~1.0.5"
-    mime: "npm:3"
-    normalize-url: "npm:~6.1.0"
-    re2: "npm:~1.22.0"
-    smartquotes: "npm:~2.3.2"
-    tldts: "npm:~7.0.7"
-    url-regex-safe: "npm:~4.0.0"
-    video-extensions: "npm:1"
-  checksum: 10c0/c45e122254c4eef6c7f96f10c22ee5946f2e6c812ae08526a70cacd28603640bf8271ab2b513448c07fa371eabb02434da528af2afc0631138d31863fc92bd3f
-  languageName: node
-  linkType: hard
-
 "@metascraper/helpers@npm:5.47.2":
   version: 5.47.2
   resolution: "@metascraper/helpers@npm:5.47.2"
@@ -2815,15 +2783,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chrono-node@npm:2.8.0":
-  version: 2.8.0
-  resolution: "chrono-node@npm:2.8.0"
-  dependencies:
-    dayjs: "npm:^1.10.0"
-  checksum: 10c0/77ff6eb95c4e42c874c1acfadfff6066801513c39324baecac9bebcae8e422990f81d89bdae9b09015d4b84cf0ff84a90b4989f95c0cb031f529d4b8cdc0e9d1
-  languageName: node
-  linkType: hard
-
 "chrono-node@npm:2.8.3":
   version: 2.8.3
   resolution: "chrono-node@npm:2.8.3"
@@ -3496,13 +3455,6 @@ __metadata:
   version: 6.0.1
   resolution: "entities@npm:6.0.1"
   checksum: 10c0/ed836ddac5acb34341094eb495185d527bd70e8632b6c0d59548cbfa23defdbae70b96f9a405c82904efa421230b5b3fd2283752447d737beffd3f3e6ee74414
-  languageName: node
-  linkType: hard
-
-"entities@npm:~6.0.0":
-  version: 6.0.0
-  resolution: "entities@npm:6.0.0"
-  checksum: 10c0/b82a7bd5de282860f3c36a91e815e41e874fd036c83956a568b82729678492eb088359d6f7e0a4f5c00776427263fcba04959b8340fefa430c39b9bce770427e
   languageName: node
   linkType: hard
 
@@ -5234,11 +5186,11 @@ __metadata:
   linkType: hard
 
 "metascraper-title@npm:^5.43.4":
-  version: 5.47.1
-  resolution: "metascraper-title@npm:5.47.1"
+  version: 5.47.2
+  resolution: "metascraper-title@npm:5.47.2"
   dependencies:
-    "@metascraper/helpers": "npm:5.47.1"
-  checksum: 10c0/d9d1a2865b9c573f9aee56c38e384d9d0f816fbe11026082a96fe9cbb6b83d537667764bdd636de9e708c805a0a783dbbe6051ccf70d4a95c134d3d3fe2aa7fd
+    "@metascraper/helpers": "npm:5.47.2"
+  checksum: 10c0/7cb12688f38544ba123ac71402c3fc13a2768a93e942dceaa81a996341d0ef6b38420fd1fcd18b95b4a9f312981010a92ca7ea98899915894466809a93376e15
   languageName: node
   linkType: hard
 
@@ -6352,7 +6304,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"re2@npm:~1.22.0, re2@npm:~1.22.1":
+"re2@npm:~1.22.1":
   version: 1.22.1
   resolution: "re2@npm:1.22.1"
   dependencies:
@@ -7138,13 +7090,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tldts-core@npm:^7.0.7":
-  version: 7.0.7
-  resolution: "tldts-core@npm:7.0.7"
-  checksum: 10c0/801a9861973dce3b45fce25c3775848a1c0d5c225752bc0f84e843e61dba9c31be60c610525cf0fc42039ae3c06944e5f76e429243a4bdc91ce5c8268f14f659
-  languageName: node
-  linkType: hard
-
 "tldts-core@npm:^7.0.9":
   version: 7.0.9
   resolution: "tldts-core@npm:7.0.9"
@@ -7160,17 +7105,6 @@ __metadata:
   bin:
     tldts: bin/cli.js
   checksum: 10c0/fb1bfb6ec78ce334b9d7b0c8813ab553a9f9f8759d681e6f109dd55caced45f901a19d162d8bc2f12b37afc366e438154248ae1dab67ad091565146b8e57d217
-  languageName: node
-  linkType: hard
-
-"tldts@npm:~7.0.7":
-  version: 7.0.7
-  resolution: "tldts@npm:7.0.7"
-  dependencies:
-    tldts-core: "npm:^7.0.7"
-  bin:
-    tldts: bin/cli.js
-  checksum: 10c0/d8eb99cd40af98ea96bc8cc9245513cd13ff178c97c25286443467cadc0916455d1e2558ecee7dd2dfb3374dd357c82274e3b39e4f0722c60ab1aaa893678f54
   languageName: node
   linkType: hard
 
