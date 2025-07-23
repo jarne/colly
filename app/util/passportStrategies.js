@@ -9,6 +9,10 @@ import mongoose from "mongoose"
 
 const User = mongoose.model("User")
 
+const getJwt = (req) => {
+    return req.cookies.token || ExtractJwt.fromAuthHeaderAsBearerToken()(req)
+}
+
 passport.use(
     new LocalStrategy(async (username, password, done) => {
         let user
@@ -37,7 +41,7 @@ passport.use(
 passport.use(
     new JwtStrategy(
         {
-            jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+            jwtFromRequest: getJwt,
             secretOrKey: process.env.JWT_SECRET,
         },
         (jwtPayload, done) => {
@@ -54,7 +58,7 @@ passport.use(
     "jwt_admin",
     new JwtStrategy(
         {
-            jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+            jwtFromRequest: getJwt,
             secretOrKey: process.env.JWT_SECRET,
         },
         async (jwtPayload, done) => {

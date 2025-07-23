@@ -120,6 +120,7 @@ const generateToken = (user) => {
         {
             id: user.id,
             username: user.username,
+            isAdmin: user.isAdmin,
         },
         process.env.JWT_SECRET,
         {

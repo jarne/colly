@@ -48,6 +48,12 @@ router.post("/login", (req, res) => {
             const token = userController.generateToken(user)
 
             logger.verbose("auth_successful", { uid: user.id })
+            res.cookie("token", token, {
+                maxAge: (process.env.EXPIRES_IN_SEC || 86400) * 1000,
+                httpOnly: true,
+                secure: process.env.USE_HTTPS || true,
+                sameSite: "strict",
+            })
             return res.json({
                 user: {
                     username: user.username,
@@ -69,6 +75,7 @@ router.get(
         return res.json({
             user: {
                 username: req.user.username,
+                isAdmin: req.user.isAdmin,
             },
         })
     }

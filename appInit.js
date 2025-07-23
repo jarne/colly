@@ -3,6 +3,7 @@
  */
 
 import express from "express"
+import cookieParser from "cookie-parser"
 import cors from "cors"
 import morgan from "morgan"
 import "dotenv/config"
@@ -16,7 +17,9 @@ import logger from "./app/util/logger.js"
 let app = express()
 
 app.set("query parser", "extended")
+
 app.use(express.json())
+app.use(cookieParser())
 
 /* Database connection */
 

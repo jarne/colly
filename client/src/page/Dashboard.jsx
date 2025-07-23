@@ -30,25 +30,23 @@ function Dashboard() {
     const createItemModalRef = useRef()
     const preferencesModalRef = useRef()
 
-    const triggerItemLoad = () => {
-        if (tagId) {
-            loadItems({
-                filter: {
-                    tags: tagId,
-                },
-            })
-        } else {
-            loadItems()
+    const triggerItemLoad = async () => {
+        try {
+            if (tagId) {
+                await loadItems({
+                    filter: {
+                        tags: tagId,
+                    },
+                })
+            } else {
+                await loadItems()
+            }
+        } catch {
+            navigate("/login")
         }
     }
 
     useEffect(() => {
-        if (accessToken === null) {
-            navigate("/login")
-
-            return
-        }
-
         triggerItemLoad()
     }, [accessToken, tagId])
 

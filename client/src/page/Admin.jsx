@@ -47,14 +47,16 @@ function Admin() {
         loadUsers()
     }
 
-    useEffect(() => {
-        if (accessToken === null) {
+    const triggerUserLoad = async () => {
+        try {
+            await loadUsers()
+        } catch {
             navigate("/login")
-
-            return
         }
+    }
 
-        loadUsers()
+    useEffect(() => {
+        triggerUserLoad()
     }, [accessToken])
 
     return (
