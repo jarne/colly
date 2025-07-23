@@ -51,7 +51,9 @@ router.post("/login", (req, res) => {
             res.cookie("token", token, {
                 maxAge: (process.env.EXPIRES_IN_SEC || 86400) * 1000,
                 httpOnly: true,
-                secure: process.env.USE_HTTPS || true,
+                secure: process.env.USE_HTTPS
+                    ? process.env.USE_HTTPS !== "false"
+                    : true,
                 sameSite: "strict",
             })
             return res.json({
@@ -64,6 +66,19 @@ router.post("/login", (req, res) => {
         })
     })(req, res)
 })
+
+/**
+ * Log-out the current user by destroying its token cookie
+ */
+router.post(
+    "/logout",
+    passport.authenticate("jwt", { session: false }),
+    (_, res) => {
+        res.clearCookie("token")
+
+        return res.status(204).send()
+    }
+)
 
 /**
  * Get information about the current user
