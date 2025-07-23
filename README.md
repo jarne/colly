@@ -104,14 +104,15 @@ The following environment variables need be set:
 
 In addition, the following _optional_ environment variables can be set:
 
-| Env variable             | Default Value | Description                                                     |
-| ------------------------ | ------------- | --------------------------------------------------------------- |
-| `EXPIRES_IN_SEC`         | `86400`       | Expiration of JWT (in seconds)                                  |
-| `INITIAL_ADMIN_USERNAME` |               | Create initial admin user with this username                    |
-| `INITIAL_ADMIN_PASSWORD` |               | Password for initial admin user                                 |
-| `LOG_LEVEL`              | `info`        | Log level of the app                                            |
-| `LOKI_HOST`              |               | Hostname for Grafana Loki to send logs to                       |
-| `LOKI_BASIC_AUTH`        |               | Authentication credentials (basic auth format) for Grafana Loki |
+| Env variable             | Default Value | Description                                                                    |
+| ------------------------ | ------------- | ------------------------------------------------------------------------------ |
+| `EXPIRES_IN_SEC`         | `86400`       | Expiration of JWT (in seconds)                                                 |
+| `INITIAL_ADMIN_USERNAME` |               | Create initial admin user with this username                                   |
+| `INITIAL_ADMIN_PASSWORD` |               | Password for initial admin user                                                |
+| `LOG_LEVEL`              | `info`        | Log level of the app                                                           |
+| `LOKI_HOST`              |               | Hostname for Grafana Loki to send logs to                                      |
+| `LOKI_BASIC_AUTH`        |               | Authentication credentials (basic auth format) for Grafana Loki                |
+| `USE_HTTPS`              | `true`        | Set if HTTPS should enforced for session cookies (only disable in development) |
 
 ## ⌨️ Development
 

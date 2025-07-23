@@ -48,6 +48,14 @@ router.post("/login", (req, res) => {
             const token = userController.generateToken(user)
 
             logger.verbose("auth_successful", { uid: user.id })
+            res.cookie("token", token, {
+                maxAge: (process.env.EXPIRES_IN_SEC || 86400) * 1000,
+                httpOnly: true,
+                secure: process.env.USE_HTTPS
+                    ? process.env.USE_HTTPS !== "false"
+                    : true,
+                sameSite: "strict",
+            })
             return res.json({
                 user: {
                     username: user.username,
@@ -60,6 +68,19 @@ router.post("/login", (req, res) => {
 })
 
 /**
+ * Log-out the current user by destroying its token cookie
+ */
+router.post(
+    "/logout",
+    passport.authenticate("jwt", { session: false }),
+    (_, res) => {
+        res.clearCookie("token")
+
+        return res.status(204).send()
+    }
+)
+
+/**
  * Get information about the current user
  */
 router.get(
@@ -69,6 +90,7 @@ router.get(
         return res.json({
             user: {
                 username: req.user.username,
+                isAdmin: req.user.isAdmin,
             },
         })
     }

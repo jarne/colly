@@ -2,10 +2,13 @@
  * Colly | app navigation bar
  */
 
+import { useEffect } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import usePrefersColorScheme from "use-prefers-color-scheme"
+import { toast } from "react-toastify"
 
 import { useUserAuth } from "./../component/context/UserAuthProvider"
+import { getMe, logout } from "./../logic/api/auth"
 import collyLogoImg from "./../asset/colly-logo.png"
 
 import "./Navbar.css"
@@ -20,8 +23,49 @@ function Navbar({
     const prefersColorScheme = usePrefersColorScheme()
     const isDarkMode = prefersColorScheme === "dark"
 
-    const [, setAccessToken, displayName, setDisplayName, isAdmin, setIsAdmin] =
-        useUserAuth()
+    const [
+        accessToken,
+        setAccessToken,
+        displayName,
+        setDisplayName,
+        isAdmin,
+        setIsAdmin,
+    ] = useUserAuth()
+
+    /**
+     * Check if user information is available due to previous authentication,
+     * otherwise, fetch it from the API endpoint
+     */
+    const checkUserInfoAvailable = async () => {
+        if (displayName !== "...") {
+            return
+        }
+
+        let user
+        try {
+            user = await getMe(accessToken)
+        } catch {
+            return
+        }
+
+        setDisplayName(user.username)
+        setIsAdmin(user.isAdmin)
+    }
+
+    const doLogout = async () => {
+        try {
+            await logout(accessToken)
+        } catch {
+            toast.error("Log-out on server failed!")
+            return
+        }
+
+        setAccessToken(null)
+        setDisplayName("...")
+        setIsAdmin(false)
+
+        navigate("/login")
+    }
 
     const handleCreateTag = (e) => {
         e.preventDefault()
@@ -42,12 +86,12 @@ function Navbar({
     const handleLogoutClick = (e) => {
         e.preventDefault()
 
-        setAccessToken(null)
-        setDisplayName("...")
-        setIsAdmin(false)
-
-        navigate("/login")
+        doLogout()
     }
+
+    useEffect(() => {
+        checkUserInfoAvailable()
+    }, [])
 
     return (
         <nav

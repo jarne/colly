@@ -33,7 +33,11 @@ const AppDataProvider = (props) => {
         let items
         try {
             items = await findItems(accessToken, query)
-        } catch {
+        } catch (e) {
+            if (e.message === "unauthorized") {
+                throw e
+            }
+
             return
         }
 
@@ -44,7 +48,11 @@ const AppDataProvider = (props) => {
         let users
         try {
             users = await findUsers(accessToken, query)
-        } catch {
+        } catch (e) {
+            if (e.message === "unauthorized") {
+                throw e
+            }
+
             return
         }
 
