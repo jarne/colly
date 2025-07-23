@@ -15,6 +15,7 @@ import logger from "./app/util/logger.js"
 
 let app = express()
 
+app.set("query parser", "extended")
 app.use(express.json())
 
 /* Database connection */
