@@ -70,7 +70,6 @@ export const getMe = async (accessToken) => {
             Authorization: `Bearer ${accessToken}`,
         },
     })
-    checkRequestSuccessful(resp)
     const res = await resp.json()
 
     if (res.error) {
