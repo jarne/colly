@@ -7,7 +7,7 @@ import Modal from "react-bootstrap/Modal"
 import { toast } from "react-toastify"
 
 import { useUserAuth } from "./../context/UserAuthProvider"
-import { changePassword } from "./../../logic/api/user"
+import { changePassword } from "./../../logic/api/auth"
 
 const PreferencesModal = forwardRef(function PreferencesModal(props, ref) {
     const DEFAULT_EMPTY = ""

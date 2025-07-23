@@ -6,7 +6,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 
-import InternalAPI from "./../util/InternalAPI"
+import { login } from "./../logic/api/auth"
 import { useUserAuth } from "./../component/context/UserAuthProvider"
 
 import loginBackgroundImg from "./../asset/login-background.jpg"
@@ -24,41 +24,18 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        let res
+        let data
         try {
-            const resp = await fetch(InternalAPI.API_ENDPOINT + "/auth/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    username: username,
-                    password: password,
-                }),
-            })
-            res = await resp.json()
-        } catch {
-            toast.error("Error while communicating with the login server!")
+            data = await login(username, password)
+        } catch (e) {
+            toast.error(e.message)
 
             return
         }
 
-        if (res.error) {
-            switch (res.error_code) {
-                case "invalid_credentials":
-                    toast.error("Invalid username or password!")
-                    break
-                default:
-                    toast.error("Unknown error!")
-                    break
-            }
-
-            return
-        }
-
-        setAccessToken(res.token)
-        setDisplayName(res.user.username)
-        setIsAdmin(res.user.isAdmin)
+        setAccessToken(data.token)
+        setDisplayName(data.user.username)
+        setIsAdmin(data.user.isAdmin)
 
         navigate("/")
     }
