@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom"
 import usePrefersColorScheme from "use-prefers-color-scheme"
 
 import { useAppData } from "./../context/DataProvider"
+import { useCurrentInput } from "./../context/CurrentInputProvider"
 
 import "./TagsSidebar.css"
 
@@ -17,11 +18,11 @@ function TagsSidebar(props) {
     const isDarkMode = prefersColorScheme === "dark"
 
     const [tags, , loadTags] = useAppData()
+    const [, , , , , , isEditMode, setEditMode] = useCurrentInput()
 
     const isMobile = window.innerWidth < 768
 
     const [isCollapsed, setIsCollapsed] = useState(isMobile)
-    const [isEditMode, setEditMode] = useState(false)
 
     useEffect(() => {
         loadTags()

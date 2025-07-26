@@ -158,3 +158,21 @@ export const generatePreview = async (url, accessToken) => {
 
     return res.meta
 }
+
+/**
+ * Trigger meta data image update of an item
+ * @param {string} id item ID
+ * @param {string} accessToken API access token
+ */
+export const updateMetaImage = async (id, accessToken) => {
+    const resp = await fetch(
+        `${InternalAPI.API_ENDPOINT}/item/${id}/updateMetaImage`,
+        {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+        }
+    )
+    checkRequestSuccessful(resp)
+}
