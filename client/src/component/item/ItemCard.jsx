@@ -4,6 +4,7 @@
 
 import Dropdown from "react-bootstrap/Dropdown"
 import { toast } from "react-toastify"
+import usePrefersColorScheme from "use-prefers-color-scheme"
 
 import TagList from "./../tag/TagList"
 import { useUserAuth } from "./../context/UserAuthProvider"
@@ -13,6 +14,9 @@ import { updateMetaImage } from "./../../logic/api/item"
 import "./ItemCard.css"
 
 function ItemCard({ item, createItemModalRef }) {
+    const prefersColorScheme = usePrefersColorScheme()
+    const isDarkMode = prefersColorScheme === "dark"
+
     const [accessToken] = useUserAuth()
     const [, , , , , , isEditMode] = useCurrentInput()
 
@@ -101,7 +105,9 @@ function ItemCard({ item, createItemModalRef }) {
                     </p>
                     <Dropdown>
                         <Dropdown.Toggle
-                            variant="outline-dark"
+                            variant={
+                                isDarkMode ? "outline-light" : "outline-dark"
+                            }
                             className="btn-sm card-edit"
                         >
                             <i
