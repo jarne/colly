@@ -26,7 +26,7 @@ function Dashboard() {
 
     const [accessToken] = useUserAuth()
     const [, , , items, , loadItems] = useAppData()
-    const [, setSelectedTag, searchStr] = useCurrentInput()
+    const [, setSelectedTag, searchStr, , sortValue, ,] = useCurrentInput()
 
     const createTagModalRef = useRef()
     const createItemModalRef = useRef()
@@ -47,6 +47,7 @@ function Dashboard() {
         try {
             await loadItems({
                 filter,
+                sort: sortValue,
             })
         } catch {
             navigate("/login")
@@ -56,7 +57,7 @@ function Dashboard() {
     useEffect(() => {
         setSelectedTag(tagId)
         triggerItemLoad()
-    }, [accessToken, tagId, searchStr])
+    }, [accessToken, tagId, searchStr, sortValue])
 
     return (
         <>
