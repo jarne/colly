@@ -20,10 +20,10 @@ function SortSelect() {
                 value={sortValue}
                 onChange={handlSortValueChange}
             >
-                <option value="updatedAt">Updated</option>
-                <option value="-updatedAt">Updated (oldest first)</option>
-                <option value="createdAt">Created</option>
-                <option value="-createdAt">Created (oldest first)</option>
+                <option value="-updatedAt">Updated</option>
+                <option value="updatedAt">Updated (oldest first)</option>
+                <option value="-createdAt">Created</option>
+                <option value="createdAt">Created (oldest first)</option>
                 <option value="name">Title</option>
                 <option value="-name">Title (desc)</option>
             </select>
