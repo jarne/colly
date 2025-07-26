@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 
-import Navbar from "./../component/Navbar"
+import Navbar from "./../component/nav/Navbar"
 import TagsSidebar from "./../component/tag/TagsSidebar"
 import ItemCard from "./../component/item/ItemCard"
 

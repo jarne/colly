@@ -2,15 +2,18 @@
  * Colly | app navigation bar
  */
 
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import usePrefersColorScheme from "use-prefers-color-scheme"
+import OverlayTrigger from "react-bootstrap/OverlayTrigger"
+import Popover from "react-bootstrap/Popover"
 import { toast } from "react-toastify"
 
-import { useUserAuth } from "./../component/context/UserAuthProvider"
-import { useCurrentInput } from "./../component/context/CurrentInputProvider"
-import { getMe, logout } from "./../logic/api/auth"
-import collyLogoImg from "./../asset/colly-logo.png"
+import { useUserAuth } from "./../../component/context/UserAuthProvider"
+import { useCurrentInput } from "./../../component/context/CurrentInputProvider"
+import { getMe, logout } from "./../../logic/api/auth"
+import ItemSearch from "./ItemSearch"
+import collyLogoImg from "./../../asset/colly-logo.png"
 
 import "./Navbar.css"
 
@@ -33,8 +36,6 @@ function Navbar({
         setIsAdmin,
     ] = useUserAuth()
     const [, , , setSearchStr] = useCurrentInput()
-
-    const [tmpSearchStr, setTmpSearchStr] = useState("")
 
     /**
      * Check if user information is available due to previous authentication,
@@ -71,15 +72,6 @@ function Navbar({
         navigate("/login")
     }
 
-    const handleTmpSearchStrChange = (e) => {
-        setTmpSearchStr(e.target.value)
-    }
-    const handleTmpSearchStrBlur = () => {
-        if (tmpSearchStr === "") {
-            setSearchStr("")
-        }
-    }
-
     const handleCreateTag = (e) => {
         e.preventDefault()
 
@@ -96,11 +88,6 @@ function Navbar({
         preferencesModalRef.current.open()
     }
 
-    const handleSearchSubmit = (e) => {
-        e.preventDefault()
-
-        setSearchStr(tmpSearchStr)
-    }
     const handleLogoutClick = (e) => {
         e.preventDefault()
 
@@ -127,63 +114,69 @@ function Navbar({
                     Colly
                 </Link>
                 <div className="d-flex">
-                    {createTagModalRef && createItemModalRef && (
-                        <form
-                            className="d-flex me-3"
-                            role="search"
-                            onSubmit={handleSearchSubmit}
-                        >
-                            <input
-                                type="search"
-                                className="form-control me-2"
-                                id="tagNameInput"
-                                placeholder="Search"
-                                aria-label="Search"
-                                value={tmpSearchStr}
-                                onChange={handleTmpSearchStrChange}
-                                onBlur={handleTmpSearchStrBlur}
-                            />
-                            <button
-                                type="submit"
-                                className="btn btn-outline-primary"
-                            >
-                                Search
-                            </button>
-                        </form>
-                    )}
+                    <div className="d-none d-md-block">
+                        {createTagModalRef && createItemModalRef && (
+                            <ItemSearch setSearchStr={setSearchStr} />
+                        )}
+                    </div>
                     <ul className="navbar-nav">
                         {createTagModalRef && createItemModalRef && (
-                            <li className="nav-item dropdown">
-                                <button
-                                    className="nav-link dropdown-toggle"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false"
+                            <>
+                                <OverlayTrigger
+                                    trigger="click"
+                                    placement="bottom"
+                                    overlay={
+                                        <Popover>
+                                            <Popover.Body>
+                                                <ItemSearch
+                                                    setSearchStr={setSearchStr}
+                                                />
+                                            </Popover.Body>
+                                        </Popover>
+                                    }
                                 >
-                                    <i
-                                        className="bi bi-plus-lg"
-                                        aria-hidden="true"
-                                    ></i>{" "}
-                                    Add
-                                </button>
-                                <ul className="dropdown-menu dropdown-menu-end position-absolute">
-                                    <li>
-                                        <button
-                                            className="dropdown-item"
-                                            onClick={handleCreateItem}
-                                        >
-                                            Collection item
-                                        </button>
+                                    <li className="nav-item d-md-none">
+                                        <a className="nav-link">
+                                            <i
+                                                className="bi bi-search"
+                                                aria-hidden="true"
+                                            ></i>{" "}
+                                            Search
+                                        </a>
                                     </li>
-                                    <li>
-                                        <button
-                                            className="dropdown-item"
-                                            onClick={handleCreateTag}
-                                        >
-                                            Tag
-                                        </button>
-                                    </li>
-                                </ul>
-                            </li>
+                                </OverlayTrigger>
+                                <li className="nav-item dropdown">
+                                    <button
+                                        className="nav-link dropdown-toggle"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false"
+                                    >
+                                        <i
+                                            className="bi bi-plus-lg"
+                                            aria-hidden="true"
+                                        ></i>{" "}
+                                        Add
+                                    </button>
+                                    <ul className="dropdown-menu dropdown-menu-end position-absolute">
+                                        <li>
+                                            <button
+                                                className="dropdown-item"
+                                                onClick={handleCreateItem}
+                                            >
+                                                Collection item
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button
+                                                className="dropdown-item"
+                                                onClick={handleCreateTag}
+                                            >
+                                                Tag
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </>
                         )}
                         <li className="nav-item dropdown">
                             <button

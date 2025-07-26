@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 
-import Navbar from "./../component/Navbar"
+import Navbar from "./../component/nav/Navbar"
 import CreateUserModal from "./../component/modal/admin/CreateUserModal"
 
 import { useUserAuth } from "./../component/context/UserAuthProvider"
