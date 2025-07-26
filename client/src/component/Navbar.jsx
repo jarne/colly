@@ -74,6 +74,11 @@ function Navbar({
     const handleTmpSearchStrChange = (e) => {
         setTmpSearchStr(e.target.value)
     }
+    const handleTmpSearchStrBlur = () => {
+        if (tmpSearchStr === "") {
+            setSearchStr("")
+        }
+    }
 
     const handleCreateTag = (e) => {
         e.preventDefault()
@@ -136,6 +141,7 @@ function Navbar({
                                 aria-label="Search"
                                 value={tmpSearchStr}
                                 onChange={handleTmpSearchStrChange}
+                                onBlur={handleTmpSearchStrBlur}
                             />
                             <button
                                 type="submit"
