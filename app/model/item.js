@@ -43,6 +43,12 @@ const ItemSchema = new Schema({
     image: Schema.Types.UUID,
 })
 
+ItemSchema.index({
+    url: "text",
+    name: "text",
+    description: "text",
+})
+
 /**
  * Generate preview after saving item
  */
