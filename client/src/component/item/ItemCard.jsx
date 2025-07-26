@@ -7,12 +7,14 @@ import { toast } from "react-toastify"
 
 import TagList from "./../tag/TagList"
 import { useUserAuth } from "./../context/UserAuthProvider"
+import { useCurrentInput } from "./../context/CurrentInputProvider"
 import { updateMetaImage } from "./../../logic/api/item"
 
 import "./ItemCard.css"
 
 function ItemCard({ item, createItemModalRef }) {
     const [accessToken] = useUserAuth()
+    const [, , , , , , isEditMode] = useCurrentInput()
 
     const formatUrlText = (url) => {
         const parts = url.split("/")
@@ -24,6 +26,13 @@ function ItemCard({ item, createItemModalRef }) {
         return parts[2]
     }
 
+    const handleItemLinkClick = (e, itemId) => {
+        if (!isEditMode) {
+            return
+        }
+
+        handleItemEditClick(e, itemId)
+    }
     const handleItemEditClick = (e, itemId) => {
         e.preventDefault()
 
@@ -62,6 +71,9 @@ function ItemCard({ item, createItemModalRef }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-reset text-decoration-none"
+                        onClick={(e) => {
+                            handleItemLinkClick(e, item._id)
+                        }}
                     >
                         {item.logoUrl && (
                             <img
@@ -80,6 +92,9 @@ function ItemCard({ item, createItemModalRef }) {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-reset text-decoration-none"
+                            onClick={(e) => {
+                                handleItemLinkClick(e, item._id)
+                            }}
                         >
                             {formatUrlText(item.url)}
                         </a>

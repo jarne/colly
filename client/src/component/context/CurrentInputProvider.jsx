@@ -10,6 +10,7 @@ const CurrentInputProvider = (props) => {
     const [selectedTag, setSelectedTag] = useState()
     const [searchStr, setSearchStr] = useState("")
     const [sortValue, setSortValue] = useState("-updatedAt")
+    const [isEditMode, setEditMode] = useState(false)
 
     return (
         <CurrentInputContext.Provider
@@ -20,6 +21,8 @@ const CurrentInputProvider = (props) => {
                 setSearchStr,
                 sortValue,
                 setSortValue,
+                isEditMode,
+                setEditMode,
             ]}
             {...props}
         />
