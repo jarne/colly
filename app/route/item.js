@@ -9,6 +9,7 @@ import tag from "./../controller/tag.js"
 import { getBasicMetadata } from "./../controller/itemPreview.js"
 import crudRoutes from "./common/crud.js"
 import { handleError } from "./../routes.js"
+import { trySaveImageMetadata } from "./../controller/itemPreview.js"
 
 const router = express.Router()
 
@@ -121,6 +122,27 @@ router.post("/meta", async (req, res) => {
     return res.json({
         meta,
     })
+})
+
+/**
+ * Trigger meta data image update
+ */
+router.post("/:id/updateMetaImage", async (req, res) => {
+    const id = req.params.id
+
+    const permCheck = await controller.hasPermission(id, req.user.id)
+
+    if (!permCheck) {
+        return res.status(403).json({
+            error: {
+                code: "insufficient_permission",
+            },
+        })
+    }
+
+    trySaveImageMetadata(id)
+
+    return res.status(204).send()
 })
 
 export default router

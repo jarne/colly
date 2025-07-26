@@ -3,11 +3,17 @@
  */
 
 import Dropdown from "react-bootstrap/Dropdown"
+import { toast } from "react-toastify"
+
 import TagList from "./../tag/TagList"
+import { useUserAuth } from "./../context/UserAuthProvider"
+import { updateMetaImage } from "./../../logic/api/item"
 
 import "./ItemCard.css"
 
 function ItemCard({ item, createItemModalRef }) {
+    const [accessToken] = useUserAuth()
+
     const formatUrlText = (url) => {
         const parts = url.split("/")
 
@@ -23,6 +29,21 @@ function ItemCard({ item, createItemModalRef }) {
 
         createItemModalRef.current.setEditId(itemId)
         createItemModalRef.current.open()
+    }
+    const handleItemUpdateMetaImageClick = async (e, itemId) => {
+        e.preventDefault()
+
+        try {
+            await updateMetaImage(itemId, accessToken)
+        } catch (ex) {
+            toast.error(ex.message)
+
+            return
+        }
+
+        toast.success(
+            "Re-crawling for item meta data image has been requested!"
+        )
     }
 
     return (
@@ -80,6 +101,14 @@ function ItemCard({ item, createItemModalRef }) {
                                 }}
                             >
                                 Edit
+                            </Dropdown.Item>
+                            <Dropdown.Divider />
+                            <Dropdown.Item
+                                onClick={(e) => {
+                                    handleItemUpdateMetaImageClick(e, item._id)
+                                }}
+                            >
+                                Re-crawl image
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
