@@ -13,6 +13,7 @@ import { useUserAuth } from "./../../component/context/UserAuthProvider"
 import { useCurrentInput } from "./../../component/context/CurrentInputProvider"
 import { getMe, logout } from "./../../logic/api/auth"
 import ItemSearch from "./ItemSearch"
+import SortSelect from "./SortSelect"
 import collyLogoImg from "./../../asset/colly-logo.png"
 
 import "./Navbar.css"
@@ -116,7 +117,10 @@ function Navbar({
                 <div className="d-flex">
                     <div className="d-none d-md-block">
                         {createTagModalRef && createItemModalRef && (
-                            <ItemSearch setSearchStr={setSearchStr} />
+                            <div className="d-flex">
+                                <ItemSearch setSearchStr={setSearchStr} />
+                                <SortSelect />
+                            </div>
                         )}
                     </div>
                     <ul className="navbar-nav">
@@ -128,9 +132,14 @@ function Navbar({
                                     overlay={
                                         <Popover>
                                             <Popover.Body>
-                                                <ItemSearch
-                                                    setSearchStr={setSearchStr}
-                                                />
+                                                <div className="mb-2">
+                                                    <ItemSearch
+                                                        setSearchStr={
+                                                            setSearchStr
+                                                        }
+                                                    />
+                                                </div>
+                                                <SortSelect />
                                             </Popover.Body>
                                         </Popover>
                                     }

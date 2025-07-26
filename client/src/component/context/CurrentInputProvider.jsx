@@ -9,10 +9,18 @@ const CurrentInputContext = createContext(null)
 const CurrentInputProvider = (props) => {
     const [selectedTag, setSelectedTag] = useState()
     const [searchStr, setSearchStr] = useState("")
+    const [sortValue, setSortValue] = useState("updatedAt")
 
     return (
         <CurrentInputContext.Provider
-            value={[selectedTag, setSelectedTag, searchStr, setSearchStr]}
+            value={[
+                selectedTag,
+                setSelectedTag,
+                searchStr,
+                setSearchStr,
+                sortValue,
+                setSortValue,
+            ]}
             {...props}
         />
     )
