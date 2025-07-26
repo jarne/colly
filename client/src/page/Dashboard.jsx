@@ -16,6 +16,7 @@ import PreferencesModal from "./../component/modal/PreferencesModal"
 
 import { useUserAuth } from "./../component/context/UserAuthProvider"
 import { useAppData } from "./../component/context/DataProvider"
+import { useCurrentInput } from "./../component/context/CurrentInputProvider"
 
 import "./Dashboard.css"
 
@@ -25,30 +26,37 @@ function Dashboard() {
 
     const [accessToken] = useUserAuth()
     const [, , , items, , loadItems] = useAppData()
+    const [, setSelectedTag, searchStr] = useCurrentInput()
 
     const createTagModalRef = useRef()
     const createItemModalRef = useRef()
     const preferencesModalRef = useRef()
 
     const triggerItemLoad = async () => {
-        try {
-            if (tagId) {
-                await loadItems({
-                    filter: {
-                        tags: tagId,
-                    },
-                })
-            } else {
-                await loadItems()
+        let filter = {}
+
+        if (tagId) {
+            filter.tags = tagId
+        }
+        if (searchStr !== "") {
+            filter.$text = {
+                $search: searchStr,
             }
+        }
+
+        try {
+            await loadItems({
+                filter,
+            })
         } catch {
             navigate("/login")
         }
     }
 
     useEffect(() => {
+        setSelectedTag(tagId)
         triggerItemLoad()
-    }, [accessToken, tagId])
+    }, [accessToken, tagId, searchStr])
 
     return (
         <>

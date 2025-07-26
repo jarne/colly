@@ -2,12 +2,13 @@
  * Colly | app navigation bar
  */
 
-import { useEffect } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import usePrefersColorScheme from "use-prefers-color-scheme"
 import { toast } from "react-toastify"
 
 import { useUserAuth } from "./../component/context/UserAuthProvider"
+import { useCurrentInput } from "./../component/context/CurrentInputProvider"
 import { getMe, logout } from "./../logic/api/auth"
 import collyLogoImg from "./../asset/colly-logo.png"
 
@@ -31,6 +32,9 @@ function Navbar({
         isAdmin,
         setIsAdmin,
     ] = useUserAuth()
+    const [, , , setSearchStr] = useCurrentInput()
+
+    const [tmpSearchStr, setTmpSearchStr] = useState("")
 
     /**
      * Check if user information is available due to previous authentication,
@@ -67,6 +71,10 @@ function Navbar({
         navigate("/login")
     }
 
+    const handleTmpSearchStrChange = (e) => {
+        setTmpSearchStr(e.target.value)
+    }
+
     const handleCreateTag = (e) => {
         e.preventDefault()
 
@@ -83,6 +91,11 @@ function Navbar({
         preferencesModalRef.current.open()
     }
 
+    const handleSearchSubmit = (e) => {
+        e.preventDefault()
+
+        setSearchStr(tmpSearchStr)
+    }
     const handleLogoutClick = (e) => {
         e.preventDefault()
 
@@ -108,75 +121,103 @@ function Navbar({
                     />
                     Colly
                 </Link>
-                <ul className="navbar-nav">
+                <div className="d-flex">
                     {createTagModalRef && createItemModalRef && (
+                        <form
+                            className="d-flex me-3"
+                            role="search"
+                            onSubmit={handleSearchSubmit}
+                        >
+                            <input
+                                type="search"
+                                className="form-control me-2"
+                                id="tagNameInput"
+                                placeholder="Search"
+                                aria-label="Search"
+                                value={tmpSearchStr}
+                                onChange={handleTmpSearchStrChange}
+                            />
+                            <button
+                                type="submit"
+                                className="btn btn-outline-primary"
+                            >
+                                Search
+                            </button>
+                        </form>
+                    )}
+                    <ul className="navbar-nav">
+                        {createTagModalRef && createItemModalRef && (
+                            <li className="nav-item dropdown">
+                                <button
+                                    className="nav-link dropdown-toggle"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                >
+                                    <i
+                                        className="bi bi-plus-lg"
+                                        aria-hidden="true"
+                                    ></i>{" "}
+                                    Add
+                                </button>
+                                <ul className="dropdown-menu dropdown-menu-end position-absolute">
+                                    <li>
+                                        <button
+                                            className="dropdown-item"
+                                            onClick={handleCreateItem}
+                                        >
+                                            Collection item
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button
+                                            className="dropdown-item"
+                                            onClick={handleCreateTag}
+                                        >
+                                            Tag
+                                        </button>
+                                    </li>
+                                </ul>
+                            </li>
+                        )}
                         <li className="nav-item dropdown">
                             <button
                                 className="nav-link dropdown-toggle"
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false"
                             >
-                                <i
-                                    className="bi bi-plus-lg"
-                                    aria-hidden="true"
-                                ></i>{" "}
-                                Add
+                                {displayName}
                             </button>
                             <ul className="dropdown-menu dropdown-menu-end position-absolute">
                                 <li>
                                     <button
                                         className="dropdown-item"
-                                        onClick={handleCreateItem}
+                                        onClick={handlePreferences}
                                     >
-                                        Collection item
+                                        Preferences
                                     </button>
                                 </li>
+                                {isAdmin && (
+                                    <li>
+                                        <Link
+                                            className="dropdown-item"
+                                            to="/admin"
+                                        >
+                                            Admin panel
+                                        </Link>
+                                    </li>
+                                )}
                                 <li>
                                     <button
                                         className="dropdown-item"
-                                        onClick={handleCreateTag}
+                                        onClick={handleLogoutClick}
                                     >
-                                        Tag
+                                        Logout
                                     </button>
                                 </li>
                             </ul>
                         </li>
-                    )}
-                    <li className="nav-item dropdown">
-                        <button
-                            className="nav-link dropdown-toggle"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                        >
-                            {displayName}
-                        </button>
-                        <ul className="dropdown-menu dropdown-menu-end position-absolute">
-                            <li>
-                                <button
-                                    className="dropdown-item"
-                                    onClick={handlePreferences}
-                                >
-                                    Preferences
-                                </button>
-                            </li>
-                            {isAdmin && (
-                                <li>
-                                    <Link className="dropdown-item" to="/admin">
-                                        Admin panel
-                                    </Link>
-                                </li>
-                            )}
-                            <li>
-                                <button
-                                    className="dropdown-item"
-                                    onClick={handleLogoutClick}
-                                >
-                                    Logout
-                                </button>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                    </ul>
+                </div>
             </div>
         </nav>
     )
