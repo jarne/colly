@@ -10,6 +10,7 @@ import { toast } from "react-toastify"
 
 import { useUserAuth } from "./../context/UserAuthProvider"
 import { useAppData } from "./../context/DataProvider"
+import { useCurrentInput } from "./../context/CurrentInputProvider"
 import { createTag, updateTag, deleteTag } from "./../../logic/api/tag"
 import { generateGradientColors } from "./../../util/ColorGenerator"
 
@@ -24,6 +25,7 @@ const CreateTagModal = forwardRef(function CreateTagModal(props, ref) {
 
     const [accessToken] = useUserAuth()
     const [tags, , loadTags] = useAppData()
+    const [, , , , , , , , workspace] = useCurrentInput()
 
     const [show, setShow] = useState(false)
 
@@ -119,6 +121,7 @@ const CreateTagModal = forwardRef(function CreateTagModal(props, ref) {
                           firstColor: colFirst.slice(1),
                           secondColor: colSec.slice(1),
                       },
+                      workspace,
                       accessToken
                   )
                 : await createTag(
@@ -127,6 +130,7 @@ const CreateTagModal = forwardRef(function CreateTagModal(props, ref) {
                           firstColor: colFirst.slice(1),
                           secondColor: colSec.slice(1),
                       },
+                      workspace,
                       accessToken
                   )
         } catch (ex) {
@@ -149,7 +153,7 @@ const CreateTagModal = forwardRef(function CreateTagModal(props, ref) {
         e.preventDefault()
 
         try {
-            await deleteTag(editId, accessToken)
+            await deleteTag(editId, workspace, accessToken)
         } catch (ex) {
             toast.error(ex.message)
 

@@ -5,6 +5,7 @@
 import { createContext, useContext, useState } from "react"
 
 import { useUserAuth } from "./UserAuthProvider"
+import { useCurrentInput } from "./CurrentInputProvider"
 import { findTags } from "./../../logic/api/tag"
 import { findItems } from "./../../logic/api/item"
 import { findUsers } from "./../../logic/api/user"
@@ -17,11 +18,12 @@ const AppDataProvider = (props) => {
     const [users, setUsers] = useState([])
 
     const [accessToken] = useUserAuth()
+    const [, , , , , , , , workspace] = useCurrentInput()
 
     const loadTags = async (query) => {
         let tags
         try {
-            tags = await findTags(accessToken, query)
+            tags = await findTags(query, workspace, accessToken)
         } catch {
             return
         }
@@ -32,7 +34,7 @@ const AppDataProvider = (props) => {
     const loadItems = async (query) => {
         let items
         try {
-            items = await findItems(accessToken, query)
+            items = await findItems(query, workspace, accessToken)
         } catch (e) {
             if (e.message === "unauthorized") {
                 throw e
@@ -47,7 +49,7 @@ const AppDataProvider = (props) => {
     const loadUsers = async (query) => {
         let users
         try {
-            users = await findUsers(accessToken, query)
+            users = await findUsers(query, accessToken)
         } catch (e) {
             if (e.message === "unauthorized") {
                 throw e

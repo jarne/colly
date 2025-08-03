@@ -31,8 +31,8 @@ function App() {
                 theme={isDarkMode ? "dark" : "light"}
             />
             <UserAuthProvider>
-                <AppDataProvider>
-                    <CurrentInputProvider>
+                <CurrentInputProvider>
+                    <AppDataProvider>
                         <BrowserRouter>
                             <Routes>
                                 <Route path="/login" element={<Login />} />
@@ -44,8 +44,8 @@ function App() {
                                 />
                             </Routes>
                         </BrowserRouter>
-                    </CurrentInputProvider>
-                </AppDataProvider>
+                    </AppDataProvider>
+                </CurrentInputProvider>
             </UserAuthProvider>
         </>
     )

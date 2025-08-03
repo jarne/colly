@@ -11,19 +11,23 @@ import { generateValidationErrorMessage } from "./util/errorCodeHandling"
 /**
  * Create item
  * @param {object} item item object
+ * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
  */
-export const createItem = async (item, accessToken) => {
+export const createItem = async (item, workspace, accessToken) => {
     let res
     try {
-        const resp = await fetch(InternalAPI.API_ENDPOINT + "/item", {
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(item),
-        })
+        const resp = await fetch(
+            `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/item`,
+            {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(item),
+            }
+        )
         res = await resp.json()
     } catch {
         throw new Error("Error while communicating with the server!")
@@ -45,19 +49,23 @@ export const createItem = async (item, accessToken) => {
  * Update item
  * @param {string} id item ID
  * @param {object} item item object
+ * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
  */
-export const updateItem = async (id, item, accessToken) => {
+export const updateItem = async (id, item, workspace, accessToken) => {
     let res
     try {
-        const resp = await fetch(`${InternalAPI.API_ENDPOINT}/item/${id}`, {
-            method: "PATCH",
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(item),
-        })
+        const resp = await fetch(
+            `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/item/${id}`,
+            {
+                method: "PATCH",
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(item),
+            }
+        )
         res = await resp.json()
     } catch {
         throw new Error("Error while communicating with the server!")
@@ -76,18 +84,22 @@ export const updateItem = async (id, item, accessToken) => {
 /**
  * Delete item
  * @param {string} id item ID
+ * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
  */
-export const deleteItem = async (id, accessToken) => {
+export const deleteItem = async (id, workspace, accessToken) => {
     let res
     try {
-        const resp = await fetch(`${InternalAPI.API_ENDPOINT}/item/${id}`, {
-            method: "DELETE",
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-                "Content-Type": "application/json",
-            },
-        })
+        const resp = await fetch(
+            `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/item/${id}`,
+            {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                    "Content-Type": "application/json",
+                },
+            }
+        )
         res = await resp.json()
     } catch {
         throw new Error("Error while communicating with the server!")
@@ -103,21 +115,25 @@ export const deleteItem = async (id, accessToken) => {
 
 /**
  * Find items
- * @param {string} accessToken API access token
  * @param {object} query Query parameters
+ * @param {string} workspace workspace ID
+ * @param {string} accessToken API access token
  * @returns {Array} item objects
  */
-export const findItems = async (accessToken, query) => {
+export const findItems = async (query, workspace, accessToken) => {
     const queryStr = qs.stringify(query, {
         encode: false,
     })
 
-    const resp = await fetch(`${InternalAPI.API_ENDPOINT}/item?${queryStr}`, {
-        method: "GET",
-        headers: {
-            Authorization: `Bearer ${accessToken}`,
-        },
-    })
+    const resp = await fetch(
+        `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/item?${queryStr}`,
+        {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+        }
+    )
     checkRequestSuccessful(resp)
     const res = await resp.json()
 
@@ -131,22 +147,26 @@ export const findItems = async (accessToken, query) => {
 /**
  * Get metadata preview of an item URL
  * @param {string} url item URL
+ * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
  * @returns {object} metadata preview info (page title and description)
  */
-export const generatePreview = async (url, accessToken) => {
+export const generatePreview = async (url, workspace, accessToken) => {
     let res
     try {
-        const resp = await fetch(InternalAPI.API_ENDPOINT + "/item/meta", {
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                url,
-            }),
-        })
+        const resp = await fetch(
+            `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/item/meta`,
+            {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    url,
+                }),
+            }
+        )
         res = await resp.json()
     } catch {
         throw new Error()
@@ -162,11 +182,12 @@ export const generatePreview = async (url, accessToken) => {
 /**
  * Trigger meta data image update of an item
  * @param {string} id item ID
+ * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
  */
-export const updateMetaImage = async (id, accessToken) => {
+export const updateMetaImage = async (id, workspace, accessToken) => {
     const resp = await fetch(
-        `${InternalAPI.API_ENDPOINT}/item/${id}/updateMetaImage`,
+        `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/item/${id}/updateMetaImage`,
         {
             method: "POST",
             headers: {

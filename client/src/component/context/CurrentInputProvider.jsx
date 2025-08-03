@@ -11,6 +11,7 @@ const CurrentInputProvider = (props) => {
     const [searchStr, setSearchStr] = useState("")
     const [sortValue, setSortValue] = useState("-updatedAt")
     const [isEditMode, setEditMode] = useState(false)
+    const [workspace, setWorkspace] = useState("688f9772e0aa2f2833ecb10d") // TODO: change to select
 
     return (
         <CurrentInputContext.Provider
@@ -23,6 +24,8 @@ const CurrentInputProvider = (props) => {
                 setSortValue,
                 isEditMode,
                 setEditMode,
+                workspace,
+                setWorkspace,
             ]}
             {...props}
         />
