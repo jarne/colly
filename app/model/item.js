@@ -35,6 +35,11 @@ const ItemSchema = new Schema(
                 ref: "Tag",
             },
         ],
+        workspace: {
+            type: Schema.Types.ObjectId,
+            ref: "Workspace",
+            required: true,
+        },
         owner: {
             type: Schema.Types.ObjectId,
             ref: "User",
