@@ -6,6 +6,7 @@ import { createContext, useContext, useState } from "react"
 
 import { useUserAuth } from "./UserAuthProvider"
 import { useCurrentInput } from "./CurrentInputProvider"
+import { findWorkspaces } from "./../../logic/api/workspace"
 import { findTags } from "./../../logic/api/tag"
 import { findItems } from "./../../logic/api/item"
 import { findUsers } from "./../../logic/api/user"
@@ -13,12 +14,24 @@ import { findUsers } from "./../../logic/api/user"
 const AppDataContext = createContext(null)
 
 const AppDataProvider = (props) => {
+    const [workspaces, setWorkspaces] = useState([])
     const [tags, setTags] = useState([])
     const [items, setItems] = useState([])
     const [users, setUsers] = useState([])
 
     const { accessToken } = useUserAuth()
     const { workspace } = useCurrentInput()
+
+    const loadWorkspaces = async (query) => {
+        let workspaces
+        try {
+            workspaces = await findWorkspaces(query, workspace, accessToken)
+        } catch {
+            return
+        }
+
+        setWorkspaces(workspaces)
+    }
 
     const loadTags = async (query) => {
         let tags
@@ -64,6 +77,9 @@ const AppDataProvider = (props) => {
     return (
         <AppDataContext.Provider
             value={{
+                workspaces,
+                setWorkspaces,
+                loadWorkspaces,
                 tags,
                 setTags,
                 loadTags,
