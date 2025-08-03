@@ -15,7 +15,10 @@ const router = express.Router({
     mergeParams: true,
 })
 
-const { del, find } = crudRoutes(controller, CHECK_WORKSPACE_PERMISSIONS)
+const { create, update, del, find } = crudRoutes(
+    controller,
+    CHECK_WORKSPACE_PERMISSIONS
+)
 
 /**
  * Check if the user has permission for all used tags of an item
@@ -54,28 +57,16 @@ router.post("/", async (req, res) => {
         })
     }
 
-    let obj
-    try {
-        obj = await controller.create(data)
-    } catch (e) {
-        return handleError(e, res)
-    }
-
-    return res.json({
-        id: obj.id,
-    })
+    return await create(req, res)
 })
 
 /**
  * Update item
  */
 router.patch("/:id", async (req, res) => {
-    const id = req.params.id
-
-    const permCheck = await controller.hasPermission(id, req.user.id, "write")
     const tagPermCheck = await checkTagPermissions(req.body, req.user.id)
 
-    if (!permCheck || !tagPermCheck) {
+    if (!tagPermCheck) {
         return res.status(403).json({
             error: {
                 code: "insufficient_permission",
@@ -83,16 +74,7 @@ router.patch("/:id", async (req, res) => {
         })
     }
 
-    let obj
-    try {
-        obj = await controller.update(id, req.body)
-    } catch (e) {
-        return handleError(e, res)
-    }
-
-    return res.json({
-        id: obj.id,
-    })
+    return await update(req, res)
 })
 
 /**
