@@ -181,7 +181,14 @@ const crud = (controller, permissionChecks = -1) => {
             filter = {
                 $and: [
                     {
-                        owner: req.user.id,
+                        members: {
+                            $elemMatch: {
+                                user: req.user.id,
+                                permissionLevel: {
+                                    $in: ["admin", "write", "read"],
+                                },
+                            },
+                        },
                     },
                     req.query.filter || {},
                 ],

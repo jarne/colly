@@ -27,8 +27,11 @@ const hasPermission = async (wsId, userId, action) => {
 
         throw e
     }
+    if (!ws) {
+        return false
+    }
 
-    for (const membership in ws.members) {
+    for (const membership of ws.members) {
         if (membership.user.toString() === userId) {
             if (action === "admin") {
                 return membership.permissionLevel === "admin"
