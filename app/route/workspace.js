@@ -4,8 +4,8 @@
 
 import express from "express"
 
-import tagRoutes from "./route/tag.js"
-import itemRoutes from "./route/item.js"
+import tagRoutes from "./tag.js"
+import itemRoutes from "./item.js"
 import controller from "./../controller/workspace.js"
 import crudRoutes, { CHECK_USER_PERMISSIONS } from "./common/crud.js"
 
