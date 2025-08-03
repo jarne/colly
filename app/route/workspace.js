@@ -4,6 +4,8 @@
 
 import express from "express"
 
+import tagRoutes from "./route/tag.js"
+import itemRoutes from "./route/item.js"
 import controller from "./../controller/workspace.js"
 import crudRoutes, { CHECK_USER_PERMISSIONS } from "./common/crud.js"
 
@@ -33,5 +35,8 @@ router.delete("/:id", del)
  * Get workspaces
  */
 router.get("/", find)
+
+router.use("/:wsId/tag", tagRoutes)
+router.use("/:wsId/item", itemRoutes)
 
 export default router

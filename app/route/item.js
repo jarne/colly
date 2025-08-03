@@ -11,7 +11,9 @@ import crudRoutes, { CHECK_WORKSPACE_PERMISSIONS } from "./common/crud.js"
 import { handleError } from "./../routes.js"
 import { trySaveImageMetadata } from "./../controller/itemPreview.js"
 
-const router = express.Router()
+const router = express.Router({
+    mergeParams: true,
+})
 
 const { del, find } = crudRoutes(controller, CHECK_WORKSPACE_PERMISSIONS)
 
