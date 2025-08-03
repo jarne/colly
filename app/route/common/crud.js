@@ -4,6 +4,7 @@
 
 import { handleError } from "./../../routes.js"
 import { parseFieldsArray } from "./../util/queryParser.js"
+import workspace from "./../../controller/workspace.js"
 
 /**
  * Common CRUD routes
@@ -19,14 +20,21 @@ const crud = (controller, userPermissions = false) => {
      * @returns {object} Result
      */
     const create = async (req, res) => {
-        let data
-        if (userPermissions) {
-            data = {
-                ...req.body,
-                owner: req.user.id,
+        const data = req.body
+
+        if (userPermissions && data.workspace) {
+            const permCheck = await workspace.hasPermission(
+                data.workspace.toString(),
+                req.user.id,
+                "write"
+            )
+            if (!permCheck) {
+                return res.status(403).json({
+                    error: {
+                        code: "insufficient_permission",
+                    },
+                })
             }
-        } else {
-            data = req.body
         }
 
         let obj
@@ -51,7 +59,11 @@ const crud = (controller, userPermissions = false) => {
         const id = req.params.id
 
         if (userPermissions) {
-            const permCheck = await controller.hasPermission(id, req.user.id)
+            const permCheck = await controller.hasPermission(
+                id,
+                req.user.id,
+                "write"
+            )
             if (!permCheck) {
                 return res.status(403).json({
                     error: {
@@ -83,7 +95,11 @@ const crud = (controller, userPermissions = false) => {
         const id = req.params.id
 
         if (userPermissions) {
-            const permCheck = await controller.hasPermission(id, req.user.id)
+            const permCheck = await controller.hasPermission(
+                id,
+                req.user.id,
+                "write"
+            )
             if (!permCheck) {
                 return res.status(403).json({
                     error: {
@@ -114,7 +130,11 @@ const crud = (controller, userPermissions = false) => {
         const id = req.params.id
 
         if (userPermissions) {
-            const permCheck = await controller.hasPermission(id, req.user.id)
+            const permCheck = await controller.hasPermission(
+                id,
+                req.user.id,
+                "read"
+            )
             if (!permCheck) {
                 return res.status(403).json({
                     error: {
@@ -143,6 +163,7 @@ const crud = (controller, userPermissions = false) => {
     const find = async (req, res) => {
         let filter
         if (userPermissions) {
+            // TODO: update filter query to use workspace permissions
             filter = {
                 $and: [
                     {

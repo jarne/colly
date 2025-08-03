@@ -27,7 +27,7 @@ const checkTagPermissions = async (itemData, userId) => {
     }
 
     for (const tagId of itemData.tags) {
-        const tagPermCheck = await tag.hasPermission(tagId, userId)
+        const tagPermCheck = await tag.hasPermission(tagId, userId, "read")
 
         if (!tagPermCheck) {
             return false
@@ -73,7 +73,7 @@ router.post("/", async (req, res) => {
 router.patch("/:id", async (req, res) => {
     const id = req.params.id
 
-    const permCheck = await controller.hasPermission(id, req.user.id)
+    const permCheck = await controller.hasPermission(id, req.user.id, "write")
     const tagPermCheck = await checkTagPermissions(req.body, req.user.id)
 
     if (!permCheck || !tagPermCheck) {
@@ -130,7 +130,7 @@ router.post("/meta", async (req, res) => {
 router.post("/:id/updateMetaImage", async (req, res) => {
     const id = req.params.id
 
-    const permCheck = await controller.hasPermission(id, req.user.id)
+    const permCheck = await controller.hasPermission(id, req.user.id, "write")
 
     if (!permCheck) {
         return res.status(403).json({
