@@ -25,7 +25,7 @@ const AppDataProvider = (props) => {
     const loadWorkspaces = async (query) => {
         let workspaces
         try {
-            workspaces = await findWorkspaces(query, workspace, accessToken)
+            workspaces = await findWorkspaces(query, accessToken)
         } catch {
             return
         }

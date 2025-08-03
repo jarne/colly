@@ -26,7 +26,8 @@ function Dashboard() {
 
     const { accessToken } = useUserAuth()
     const { items, loadItems } = useAppData()
-    const { setSelectedTag, searchStr, sortValue } = useCurrentInput()
+    const { workspace, setSelectedTag, searchStr, sortValue } =
+        useCurrentInput()
 
     const createTagModalRef = useRef()
     const createItemModalRef = useRef()
@@ -57,7 +58,7 @@ function Dashboard() {
     useEffect(() => {
         setSelectedTag(tagId)
         triggerItemLoad()
-    }, [accessToken, tagId, searchStr, sortValue])
+    }, [accessToken, workspace, tagId, searchStr, sortValue])
 
     return (
         <>
