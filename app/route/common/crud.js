@@ -24,6 +24,9 @@ const crud = (controller, permissionChecks = -1) => {
      */
     const create = async (req, res) => {
         const data = req.body
+        if (req.params.wsId) {
+            data.workspace = req.params.wsId
+        }
 
         if (permissionChecks === CHECK_WORKSPACE_PERMISSIONS) {
             let permCheck = false

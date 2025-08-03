@@ -43,10 +43,7 @@ const checkTagPermissions = async (itemData, userId) => {
  * Create new item
  */
 router.post("/", async (req, res) => {
-    const data = {
-        ...req.body,
-        owner: req.user.id,
-    }
+    const data = req.body
 
     const tagPermCheck = await checkTagPermissions(data, req.user.id)
     if (!tagPermCheck) {

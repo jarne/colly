@@ -43,7 +43,6 @@ const ItemSchema = new Schema(
         owner: {
             type: Schema.Types.ObjectId,
             ref: "User",
-            required: true,
         },
         logo: Schema.Types.UUID,
         image: Schema.Types.UUID,
