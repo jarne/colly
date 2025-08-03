@@ -7,7 +7,7 @@ import { createContext, useContext, useState } from "react"
 const CurrentInputContext = createContext(null)
 
 const CurrentInputProvider = (props) => {
-    const [workspace, setWorkspace] = useState("688f9772e0aa2f2833ecb10d") // TODO: change to select
+    const [workspace, setWorkspace] = useState()
     const [isEditMode, setEditMode] = useState(false)
 
     const [selectedTag, setSelectedTag] = useState()

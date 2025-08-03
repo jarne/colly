@@ -36,7 +36,7 @@ function Navbar({
         isAdmin,
         setIsAdmin,
     } = useUserAuth()
-    const { setSearchStr } = useCurrentInput()
+    const { workspace, setSearchStr } = useCurrentInput()
 
     /**
      * Check if user information is available due to previous authentication,
@@ -104,7 +104,7 @@ function Navbar({
             className={`navbar navbar-expand sticky-top ${isDarkMode ? "bg-dark" : "bg-light"} bg-blur`}
         >
             <div className="container-fluid">
-                <Link className="navbar-brand" to="/">
+                <Link className="navbar-brand" to={`/workspace/${workspace}`}>
                     <img
                         src={collyLogoImg}
                         alt=""

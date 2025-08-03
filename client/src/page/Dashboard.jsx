@@ -22,18 +22,37 @@ import "./Dashboard.css"
 
 function Dashboard() {
     const navigate = useNavigate()
-    const { tagId } = useParams()
+    const { wsId, tagId } = useParams()
 
     const { accessToken } = useUserAuth()
-    const { items, loadItems } = useAppData()
-    const { workspace, setSelectedTag, searchStr, sortValue } =
+    const { workspaces, items, loadItems } = useAppData()
+    const { workspace, setWorkspace, setSelectedTag, searchStr, sortValue } =
         useCurrentInput()
 
     const createTagModalRef = useRef()
     const createItemModalRef = useRef()
     const preferencesModalRef = useRef()
 
+    const checkWorkspaceActive = () => {
+        if (wsId) {
+            return
+        }
+
+        if (workspaces.length < 1) {
+            // TODO: open create new workspace modal
+
+            return
+        }
+
+        const firstWorkspace = workspaces[0]
+        navigate(`/workspace/${firstWorkspace._id}`)
+    }
+
     const triggerItemLoad = async () => {
+        if (!workspace) {
+            return
+        }
+
         let filter = {}
 
         if (tagId) {
@@ -56,9 +75,12 @@ function Dashboard() {
     }
 
     useEffect(() => {
+        setWorkspace(wsId)
         setSelectedTag(tagId)
+
+        checkWorkspaceActive()
         triggerItemLoad()
-    }, [accessToken, workspace, tagId, searchStr, sortValue])
+    }, [accessToken, wsId, workspace, workspaces, tagId, searchStr, sortValue])
 
     return (
         <>

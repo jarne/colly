@@ -18,8 +18,7 @@ function TagsSidebar(props) {
     const isDarkMode = prefersColorScheme === "dark"
 
     const { workspaces, loadWorkspaces, tags, loadTags } = useAppData()
-    const { workspace, setWorkspace, isEditMode, setEditMode } =
-        useCurrentInput()
+    const { workspace, isEditMode, setEditMode } = useCurrentInput()
 
     const isMobile = window.innerWidth < 768
 
@@ -27,11 +26,13 @@ function TagsSidebar(props) {
 
     useEffect(() => {
         loadWorkspaces()
-        loadTags()
+        if (workspace) {
+            loadTags()
+        }
     }, [workspace])
 
     const handlWorkspaceChange = (e) => {
-        setWorkspace(e.target.value)
+        navigate(`/workspace/${e.target.value}`)
     }
     const handleEditModeChange = () => {
         setEditMode(!isEditMode)
@@ -50,7 +51,7 @@ function TagsSidebar(props) {
             return
         }
 
-        navigate(`/tag/${tagId}`)
+        navigate(`/workspace/${workspace}/tag/${tagId}`)
     }
 
     return (

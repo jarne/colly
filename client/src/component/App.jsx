@@ -39,7 +39,11 @@ function App() {
                                 <Route path="/" element={<Dashboard />} />
                                 <Route path="/admin" element={<Admin />} />
                                 <Route
-                                    path="/tag/:tagId"
+                                    path="/workspace/:wsId"
+                                    element={<Dashboard />}
+                                />
+                                <Route
+                                    path="/workspace/:wsId/tag/:tagId"
                                     element={<Dashboard />}
                                 />
                             </Routes>
