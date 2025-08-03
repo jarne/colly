@@ -30,6 +30,9 @@ const hasPermission = async (tagId, userId, action) => {
 
         throw e
     }
+    if (!tag) {
+        return false
+    }
 
     return workspace.hasPermission(tag.workspace.toString(), userId, action)
 }

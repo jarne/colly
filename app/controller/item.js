@@ -135,6 +135,9 @@ const hasPermission = async (itemId, userId, action) => {
 
         throw e
     }
+    if (!item) {
+        return false
+    }
 
     return workspace.hasPermission(item.workspace.toString(), userId, action)
 }
