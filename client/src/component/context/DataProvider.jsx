@@ -17,8 +17,8 @@ const AppDataProvider = (props) => {
     const [items, setItems] = useState([])
     const [users, setUsers] = useState([])
 
-    const [accessToken] = useUserAuth()
-    const [, , , , , , , , workspace] = useCurrentInput()
+    const { accessToken } = useUserAuth()
+    const { workspace } = useCurrentInput()
 
     const loadTags = async (query) => {
         let tags
@@ -63,7 +63,7 @@ const AppDataProvider = (props) => {
 
     return (
         <AppDataContext.Provider
-            value={[
+            value={{
                 tags,
                 setTags,
                 loadTags,
@@ -73,7 +73,7 @@ const AppDataProvider = (props) => {
                 users,
                 setUsers,
                 loadUsers,
-            ]}
+            }}
             {...props}
         />
     )

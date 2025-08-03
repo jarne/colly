@@ -23,9 +23,9 @@ const CreateTagModal = forwardRef(function CreateTagModal(props, ref) {
     const DEFAULT_COL_FIRST = "#000000"
     const DEFAULT_COL_SEC = "#ffffff"
 
-    const [accessToken] = useUserAuth()
-    const [tags, , loadTags] = useAppData()
-    const [, , , , , , , , workspace] = useCurrentInput()
+    const { accessToken } = useUserAuth()
+    const { tags, loadTags } = useAppData()
+    const { workspace } = useCurrentInput()
 
     const [show, setShow] = useState(false)
 

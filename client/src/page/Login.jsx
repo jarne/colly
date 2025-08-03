@@ -19,7 +19,7 @@ function Login() {
     const [password, setPassword] = useState("")
 
     const navigate = useNavigate()
-    const [, setAccessToken, , setDisplayName, , setIsAdmin] = useUserAuth()
+    const { setAccessToken, setDisplayName, setIsAdmin } = useUserAuth()
 
     const handleSubmit = async (e) => {
         e.preventDefault()

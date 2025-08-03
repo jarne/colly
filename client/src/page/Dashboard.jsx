@@ -24,9 +24,9 @@ function Dashboard() {
     const navigate = useNavigate()
     const { tagId } = useParams()
 
-    const [accessToken] = useUserAuth()
-    const [, , , items, , loadItems] = useAppData()
-    const [, setSelectedTag, searchStr, , sortValue, ,] = useCurrentInput()
+    const { accessToken } = useUserAuth()
+    const { items, loadItems } = useAppData()
+    const { setSelectedTag, searchStr, sortValue } = useCurrentInput()
 
     const createTagModalRef = useRef()
     const createItemModalRef = useRef()

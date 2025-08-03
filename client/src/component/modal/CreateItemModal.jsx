@@ -24,9 +24,9 @@ import "./CreateItemModal.css"
 const CreateItemModal = forwardRef(function CreateItemModal(props, ref) {
     const MAX_FILTERED_TAGS = 5
 
-    const [accessToken] = useUserAuth()
-    const [, , , items] = useAppData()
-    const [, , , , , , , , workspace] = useCurrentInput()
+    const { accessToken } = useUserAuth()
+    const { items } = useAppData()
+    const { workspace } = useCurrentInput()
 
     const [show, setShow] = useState(false)
 

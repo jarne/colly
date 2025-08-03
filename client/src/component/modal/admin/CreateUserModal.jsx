@@ -14,8 +14,8 @@ const CreateUserModal = forwardRef(function CreateUserModal(props, ref) {
     const DEFAULT_EMPTY = ""
     const DEFAULT_FALSE = false
 
-    const [accessToken] = useUserAuth()
-    const [, , , , , , users, , loadUsers] = useAppData()
+    const { accessToken } = useUserAuth()
+    const { users, loadUsers } = useAppData()
 
     const [show, setShow] = useState(false)
 

@@ -28,15 +28,15 @@ function Navbar({
     const prefersColorScheme = usePrefersColorScheme()
     const isDarkMode = prefersColorScheme === "dark"
 
-    const [
+    const {
         accessToken,
         setAccessToken,
         displayName,
         setDisplayName,
         isAdmin,
         setIsAdmin,
-    ] = useUserAuth()
-    const [, , , setSearchStr] = useCurrentInput()
+    } = useUserAuth()
+    const { setSearchStr } = useCurrentInput()
 
     /**
      * Check if user information is available due to previous authentication,

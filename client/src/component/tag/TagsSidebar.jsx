@@ -17,8 +17,8 @@ function TagsSidebar(props) {
     const prefersColorScheme = usePrefersColorScheme()
     const isDarkMode = prefersColorScheme === "dark"
 
-    const [tags, , loadTags] = useAppData()
-    const [, , , , , , isEditMode, setEditMode] = useCurrentInput()
+    const { tags, loadTags } = useAppData()
+    const { isEditMode, setEditMode } = useCurrentInput()
 
     const isMobile = window.innerWidth < 768
 

@@ -13,14 +13,14 @@ const UserAuthProvider = (props) => {
 
     return (
         <UserAuthContext.Provider
-            value={[
+            value={{
                 accessToken,
                 setAccessToken,
                 displayName,
                 setDisplayName,
                 isAdmin,
                 setIsAdmin,
-            ]}
+            }}
             {...props}
         />
     )

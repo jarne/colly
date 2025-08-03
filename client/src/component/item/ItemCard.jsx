@@ -17,8 +17,8 @@ function ItemCard({ item, createItemModalRef }) {
     const prefersColorScheme = usePrefersColorScheme()
     const isDarkMode = prefersColorScheme === "dark"
 
-    const [accessToken] = useUserAuth()
-    const [, , , , , , isEditMode, , workspace] = useCurrentInput()
+    const { accessToken } = useUserAuth()
+    const { isEditMode, workspace } = useCurrentInput()
 
     const formatUrlText = (url) => {
         const parts = url.split("/")
