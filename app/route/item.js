@@ -7,13 +7,13 @@ import express from "express"
 import controller from "./../controller/item.js"
 import tag from "./../controller/tag.js"
 import { getBasicMetadata } from "./../controller/itemPreview.js"
-import crudRoutes from "./common/crud.js"
+import crudRoutes, { CHECK_WORKSPACE_PERMISSIONS } from "./common/crud.js"
 import { handleError } from "./../routes.js"
 import { trySaveImageMetadata } from "./../controller/itemPreview.js"
 
 const router = express.Router()
 
-const { del, find } = crudRoutes(controller, true)
+const { del, find } = crudRoutes(controller, CHECK_WORKSPACE_PERMISSIONS)
 
 /**
  * Check if the user has permission for all used tags of an item

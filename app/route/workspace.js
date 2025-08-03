@@ -5,11 +5,14 @@
 import express from "express"
 
 import controller from "./../controller/workspace.js"
-import crudRoutes from "./common/crud.js"
+import crudRoutes, { CHECK_USER_PERMISSIONS } from "./common/crud.js"
 
 const router = express.Router()
 
-const { create, update, del, find } = crudRoutes(controller, true)
+const { create, update, del, find } = crudRoutes(
+    controller,
+    CHECK_USER_PERMISSIONS
+)
 
 /**
  * Create new workspace
