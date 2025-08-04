@@ -3,6 +3,7 @@
  */
 
 import { useState, useImperativeHandle, forwardRef } from "react"
+import { useNavigate } from "react-router-dom"
 import Modal from "react-bootstrap/Modal"
 import { toast } from "react-toastify"
 
@@ -20,6 +21,7 @@ const CreateWorkspaceModal = forwardRef(
         const DEFAULT_EMPTY = ""
         const DEFAULT_PERM_LEVEL = "read"
 
+        const navigate = useNavigate()
         const { accessToken, userId, displayName } = useUserAuth()
         const { workspaces, loadWorkspaces } = useAppData()
 
@@ -153,23 +155,26 @@ const CreateWorkspaceModal = forwardRef(
         const handleSubmit = async (e) => {
             e.preventDefault()
 
+            let createdId
             try {
-                editId
-                    ? await updateWorkspace(
-                          editId,
-                          {
-                              name: wsName,
-                              members,
-                          },
-                          accessToken
-                      )
-                    : await createWorkspace(
-                          {
-                              name: wsName,
-                              members,
-                          },
-                          accessToken
-                      )
+                if (editId) {
+                    await updateWorkspace(
+                        editId,
+                        {
+                            name: wsName,
+                            members,
+                        },
+                        accessToken
+                    )
+                } else {
+                    createdId = await createWorkspace(
+                        {
+                            name: wsName,
+                            members,
+                        },
+                        accessToken
+                    )
+                }
             } catch (ex) {
                 toast.error(ex.message)
 
@@ -186,6 +191,10 @@ const CreateWorkspaceModal = forwardRef(
             loadWorkspaces({
                 populate: "members.user",
             })
+
+            if (createdId) {
+                navigate(`/workspace/${createdId}`)
+            }
         }
         const handleDelete = async (e) => {
             e.preventDefault()
@@ -204,6 +213,7 @@ const CreateWorkspaceModal = forwardRef(
             loadWorkspaces({
                 populate: "members.user",
             })
+            navigate("/")
         }
 
         return (

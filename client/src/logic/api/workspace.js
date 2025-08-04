@@ -12,6 +12,7 @@ import { generateValidationErrorMessage } from "./util/errorCodeHandling"
  * Create workspace
  * @param {object} workspace workspace object
  * @param {string} accessToken API access token
+ * @returns {string} created workspace ID
  */
 export const createWorkspace = async (workspace, accessToken) => {
     let res
@@ -37,6 +38,8 @@ export const createWorkspace = async (workspace, accessToken) => {
                 throw new Error("Unknown error!")
         }
     }
+
+    return res.id
 }
 
 /**
