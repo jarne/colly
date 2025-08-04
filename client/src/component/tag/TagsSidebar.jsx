@@ -24,11 +24,19 @@ function TagsSidebar(props) {
 
     const [isCollapsed, setIsCollapsed] = useState(isMobile)
 
-    useEffect(() => {
-        loadWorkspaces()
-        if (workspace) {
-            loadTags()
+    const triggerDataLoad = async () => {
+        try {
+            await loadWorkspaces()
+            if (workspace) {
+                await loadTags()
+            }
+        } catch {
+            navigate("/login")
         }
+    }
+
+    useEffect(() => {
+        triggerDataLoad()
     }, [workspace])
 
     const handlWorkspaceChange = (e) => {

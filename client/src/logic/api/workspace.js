@@ -5,6 +5,7 @@
 import qs from "qs"
 
 import InternalAPI from "./../../util/InternalAPI"
+import { checkRequestSuccessful } from "./util/requestHelper"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
 
 /**
@@ -115,24 +116,20 @@ export const findWorkspaces = async (query, accessToken) => {
         encode: false,
     })
 
-    let res
-    try {
-        const resp = await fetch(
-            `${InternalAPI.API_ENDPOINT}/workspace?${queryStr}`,
-            {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            }
-        )
-        res = await resp.json()
-    } catch {
-        throw new Error()
-    }
+    const resp = await fetch(
+        `${InternalAPI.API_ENDPOINT}/workspace?${queryStr}`,
+        {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+        }
+    )
+    checkRequestSuccessful(resp)
+    const res = await resp.json()
 
     if (res.error) {
-        throw new Error()
+        throw new Error(res.error_code)
     }
 
     return res.data

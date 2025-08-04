@@ -26,7 +26,11 @@ const AppDataProvider = (props) => {
         let workspaces
         try {
             workspaces = await findWorkspaces(query, accessToken)
-        } catch {
+        } catch (e) {
+            if (e.message === "unauthorized") {
+                throw e
+            }
+
             return
         }
 
@@ -37,7 +41,11 @@ const AppDataProvider = (props) => {
         let tags
         try {
             tags = await findTags(query, workspace, accessToken)
-        } catch {
+        } catch (e) {
+            if (e.message === "unauthorized") {
+                throw e
+            }
+
             return
         }
 
