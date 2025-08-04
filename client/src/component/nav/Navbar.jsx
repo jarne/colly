@@ -32,6 +32,7 @@ function Navbar({
     const {
         accessToken,
         setAccessToken,
+        setUserId,
         displayName,
         setDisplayName,
         isAdmin,
@@ -55,6 +56,7 @@ function Navbar({
             return
         }
 
+        setUserId(user.id)
         setDisplayName(user.username)
         setIsAdmin(user.isAdmin)
     }
@@ -68,6 +70,7 @@ function Navbar({
         }
 
         setAccessToken(null)
+        setUserId(null)
         setDisplayName("...")
         setIsAdmin(false)
 

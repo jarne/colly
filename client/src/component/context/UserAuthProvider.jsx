@@ -8,6 +8,7 @@ const UserAuthContext = createContext(null)
 
 const UserAuthProvider = (props) => {
     const [accessToken, setAccessToken] = useState(null)
+    const [userId, setUserId] = useState(null)
     const [displayName, setDisplayName] = useState("...")
     const [isAdmin, setIsAdmin] = useState(false)
 
@@ -16,6 +17,8 @@ const UserAuthProvider = (props) => {
             value={{
                 accessToken,
                 setAccessToken,
+                userId,
+                setUserId,
                 displayName,
                 setDisplayName,
                 isAdmin,

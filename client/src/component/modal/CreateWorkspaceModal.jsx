@@ -18,18 +18,27 @@ import {
 const CreateWorkspaceModal = forwardRef(
     function CreateWorkspaceModal(props, ref) {
         const DEFAULT_EMPTY = ""
-        const DEFAULT_EMPTY_ARRAY = []
         const DEFAULT_PERM_LEVEL = "read"
 
-        const { accessToken } = useUserAuth()
+        const { accessToken, userId, displayName } = useUserAuth()
         const { workspaces, loadWorkspaces } = useAppData()
+
+        const DEFAULT_MEMBERS = [
+            {
+                user: {
+                    _id: userId,
+                    username: displayName,
+                },
+                permissionLevel: "admin",
+            },
+        ]
 
         const [show, setShow] = useState(false)
 
         const [editId, setEditId] = useState(null)
 
         const [wsName, setWsName] = useState(DEFAULT_EMPTY)
-        const [members, setMembers] = useState(DEFAULT_EMPTY_ARRAY)
+        const [members, setMembers] = useState(DEFAULT_MEMBERS)
 
         const [addUsername, setAddUsername] = useState(DEFAULT_EMPTY)
         const [addPerm, setAddPerm] = useState(DEFAULT_PERM_LEVEL)
@@ -47,7 +56,7 @@ const CreateWorkspaceModal = forwardRef(
         const resetInput = () => {
             setEditId(null)
             setWsName(DEFAULT_EMPTY)
-            setMembers(DEFAULT_EMPTY_ARRAY)
+            setMembers(DEFAULT_MEMBERS)
             setAddUsername(DEFAULT_EMPTY)
             setAddPerm(DEFAULT_PERM_LEVEL)
         }
@@ -72,9 +81,17 @@ const CreateWorkspaceModal = forwardRef(
         const handleWsNameChange = (e) => {
             setWsName(e.target.value)
         }
-        const handleMemberPermLevelChange = (e, memberId) => {
+        const handleMemberPermLevelChange = (e, uid) => {
+            if (uid === userId) {
+                toast.error(
+                    "Cannot change current user's permissions in workspace!"
+                )
+
+                return
+            }
+
             const changedMembers = members.map((member) => {
-                if (member._id === memberId) {
+                if (member.user._id === uid) {
                     member.permissionLevel = e.target.value
                 }
 
@@ -89,9 +106,15 @@ const CreateWorkspaceModal = forwardRef(
             setAddPerm(e.target.value)
         }
 
-        const handleMemberRemoveClick = (memberId) => {
+        const handleMemberRemoveClick = (uid) => {
+            if (uid === userId) {
+                toast.error("Cannot remove current user from workspace!")
+
+                return
+            }
+
             const changedMembers = members.filter((member) => {
-                return member._id !== memberId
+                return member.user._id !== uid
             })
             setMembers(changedMembers)
         }
@@ -233,7 +256,7 @@ const CreateWorkspaceModal = forwardRef(
                                 </thead>
                                 <tbody>
                                     {members.map((member) => (
-                                        <tr key={member._id || member.user_id}>
+                                        <tr key={member.user._id}>
                                             <th scope="row">
                                                 {member.user.username}
                                             </th>
@@ -247,7 +270,7 @@ const CreateWorkspaceModal = forwardRef(
                                                     onChange={(e) => {
                                                         handleMemberPermLevelChange(
                                                             e,
-                                                            member._id
+                                                            member.user._id
                                                         )
                                                     }}
                                                 >
@@ -268,7 +291,7 @@ const CreateWorkspaceModal = forwardRef(
                                                     className="btn btn-link"
                                                     onClick={() => {
                                                         handleMemberRemoveClick(
-                                                            member._id
+                                                            member.user._id
                                                         )
                                                     }}
                                                 >
