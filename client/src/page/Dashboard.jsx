@@ -41,8 +41,6 @@ function Dashboard() {
         }
 
         if (workspaces.length < 1) {
-            createWorkspaceModalRef.current.open()
-
             return
         }
 

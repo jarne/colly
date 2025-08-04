@@ -26,9 +26,15 @@ function TagsSidebar(props) {
 
     const triggerDataLoad = async () => {
         try {
-            await loadWorkspaces({
+            const res = await loadWorkspaces({
                 populate: "members.user",
             })
+            if (res.length < 1) {
+                props.createWorkspaceModalRef.current.open()
+
+                return
+            }
+
             if (workspace) {
                 await loadTags()
             }

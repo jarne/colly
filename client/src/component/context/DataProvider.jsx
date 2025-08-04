@@ -35,6 +35,7 @@ const AppDataProvider = (props) => {
         }
 
         setWorkspaces(workspaces)
+        return workspaces
     }
 
     const loadTags = async (query) => {
@@ -50,6 +51,7 @@ const AppDataProvider = (props) => {
         }
 
         setTags(tags)
+        return tags
     }
 
     const loadItems = async (query) => {
@@ -65,6 +67,7 @@ const AppDataProvider = (props) => {
         }
 
         setItems(items)
+        return items
     }
 
     const loadUsers = async (query) => {
@@ -80,6 +83,7 @@ const AppDataProvider = (props) => {
         }
 
         setUsers(users)
+        return users
     }
 
     return (
