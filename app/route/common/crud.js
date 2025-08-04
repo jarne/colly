@@ -209,7 +209,9 @@ const crud = (controller, permissionChecks = -1) => {
             filter = {
                 $and: [
                     {
-                        workspace: wsId,
+                        workspace: {
+                            $eq: wsId,
+                        },
                     },
                     req.query.filter || {},
                 ],
