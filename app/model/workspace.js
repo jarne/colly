@@ -27,4 +27,22 @@ const WorkspaceSchema = new Schema({
     ],
 })
 
+/**
+ * Validate to not allow duplicate users as members of the workspace
+ */
+WorkspaceSchema.path("members").validate((members) => {
+    const seen = new Set()
+
+    for (const member of members) {
+        const uid = member.user.toString()
+
+        if (seen.has(uid)) {
+            return false
+        }
+        seen.add(uid)
+    }
+
+    return true
+}, "duplicate members in workspace")
+
 export default mongoose.model("Workspace", WorkspaceSchema)

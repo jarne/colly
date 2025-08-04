@@ -26,7 +26,9 @@ function TagsSidebar(props) {
 
     const triggerDataLoad = async () => {
         try {
-            await loadWorkspaces()
+            await loadWorkspaces({
+                populate: "members.user",
+            })
             if (workspace) {
                 await loadTags()
             }
@@ -60,6 +62,16 @@ function TagsSidebar(props) {
         }
 
         navigate(`/workspace/${workspace}/tag/${tagId}`)
+    }
+    const handleWorkspaceClick = (e) => {
+        if (!isEditMode) {
+            return
+        }
+
+        e.preventDefault()
+
+        props.createWorkspaceModalRef.current.setEditId(workspace)
+        props.createWorkspaceModalRef.current.open()
     }
 
     return (
@@ -98,6 +110,7 @@ function TagsSidebar(props) {
                                 aria-label="Select workspace"
                                 value={workspace}
                                 onChange={handlWorkspaceChange}
+                                onClick={handleWorkspaceClick}
                             >
                                 {workspaces.map((workspace) => (
                                     <option

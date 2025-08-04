@@ -10,6 +10,7 @@ import Navbar from "./../component/nav/Navbar"
 import TagsSidebar from "./../component/tag/TagsSidebar"
 import ItemCard from "./../component/item/ItemCard"
 
+import CreateWorkspaceModal from "./../component/modal/CreateWorkspaceModal"
 import CreateTagModal from "./../component/modal/CreateTagModal"
 import CreateItemModal from "./../component/modal/CreateItemModal"
 import PreferencesModal from "./../component/modal/PreferencesModal"
@@ -29,6 +30,7 @@ function Dashboard() {
     const { workspace, setWorkspace, setSelectedTag, searchStr, sortValue } =
         useCurrentInput()
 
+    const createWorkspaceModalRef = useRef()
     const createTagModalRef = useRef()
     const createItemModalRef = useRef()
     const preferencesModalRef = useRef()
@@ -39,7 +41,7 @@ function Dashboard() {
         }
 
         if (workspaces.length < 1) {
-            // TODO: open create new workspace modal
+            createWorkspaceModalRef.current.open()
 
             return
         }
@@ -85,12 +87,14 @@ function Dashboard() {
     return (
         <>
             <Navbar
+                createWorkspaceModalRef={createWorkspaceModalRef}
                 createTagModalRef={createTagModalRef}
                 createItemModalRef={createItemModalRef}
                 preferencesModalRef={preferencesModalRef}
             />
             <main className="dashboard-main">
                 <TagsSidebar
+                    createWorkspaceModalRef={createWorkspaceModalRef}
                     createTagModalRef={createTagModalRef}
                     activeTag={tagId}
                 />
@@ -108,6 +112,7 @@ function Dashboard() {
                     </Masonry>
                 </ResponsiveMasonry>
             </main>
+            <CreateWorkspaceModal ref={createWorkspaceModalRef} />
             <CreateTagModal ref={createTagModalRef} />
             <CreateItemModal
                 triggerItemLoad={triggerItemLoad}

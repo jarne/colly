@@ -49,6 +49,7 @@ const crud = (model) => {
         try {
             const updated = await model.findByIdAndUpdate(id, data, {
                 returnDocument: "after",
+                runValidators: true,
             })
 
             if (updated === null) {

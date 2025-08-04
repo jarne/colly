@@ -134,3 +134,33 @@ export const findWorkspaces = async (query, accessToken) => {
 
     return res.data
 }
+
+/**
+ * Get user ID by its username
+ * @param {string} username username
+ * @param {string} accessToken API access token
+ * @returns {Array} workspace objects
+ */
+export const getUserByUsername = async (username, accessToken) => {
+    const resp = await fetch(
+        `${InternalAPI.API_ENDPOINT}/workspace/userByUsername/${username}`,
+        {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+        }
+    )
+    const res = await resp.json()
+
+    if (res.error) {
+        switch (res.error.code) {
+            case "username_not_found":
+                throw new Error("No user found with this username!")
+            default:
+                throw new Error("Unknown error!")
+        }
+    }
+
+    return res.data
+}

@@ -19,6 +19,7 @@ import collyLogoImg from "./../../asset/colly-logo.png"
 import "./Navbar.css"
 
 function Navbar({
+    createWorkspaceModalRef,
     createTagModalRef,
     createItemModalRef,
     preferencesModalRef,
@@ -73,6 +74,11 @@ function Navbar({
         navigate("/login")
     }
 
+    const handleCreateWorkspace = (e) => {
+        e.preventDefault()
+
+        createWorkspaceModalRef.current.open()
+    }
     const handleCreateTag = (e) => {
         e.preventDefault()
 
@@ -116,77 +122,91 @@ function Navbar({
                 </Link>
                 <div className="d-flex">
                     <div className="d-none d-md-block">
-                        {createTagModalRef && createItemModalRef && (
-                            <div className="d-flex">
-                                <ItemSearch setSearchStr={setSearchStr} />
-                                <SortSelect />
-                            </div>
-                        )}
+                        {createWorkspaceModalRef &&
+                            createTagModalRef &&
+                            createItemModalRef && (
+                                <div className="d-flex">
+                                    <ItemSearch setSearchStr={setSearchStr} />
+                                    <SortSelect />
+                                </div>
+                            )}
                     </div>
                     <ul className="navbar-nav">
-                        {createTagModalRef && createItemModalRef && (
-                            <>
-                                <OverlayTrigger
-                                    trigger="click"
-                                    placement="bottom"
-                                    overlay={
-                                        <Popover>
-                                            <Popover.Body>
-                                                <div className="mb-2">
-                                                    <ItemSearch
-                                                        setSearchStr={
-                                                            setSearchStr
-                                                        }
-                                                    />
-                                                </div>
-                                                <SortSelect />
-                                            </Popover.Body>
-                                        </Popover>
-                                    }
-                                >
-                                    <li className="nav-item d-md-none">
-                                        <a className="nav-link">
+                        {createWorkspaceModalRef &&
+                            createTagModalRef &&
+                            createItemModalRef && (
+                                <>
+                                    <OverlayTrigger
+                                        trigger="click"
+                                        placement="bottom"
+                                        overlay={
+                                            <Popover>
+                                                <Popover.Body>
+                                                    <div className="mb-2">
+                                                        <ItemSearch
+                                                            setSearchStr={
+                                                                setSearchStr
+                                                            }
+                                                        />
+                                                    </div>
+                                                    <SortSelect />
+                                                </Popover.Body>
+                                            </Popover>
+                                        }
+                                    >
+                                        <li className="nav-item d-md-none">
+                                            <a className="nav-link">
+                                                <i
+                                                    className="bi bi-search"
+                                                    aria-hidden="true"
+                                                ></i>{" "}
+                                                Search
+                                            </a>
+                                        </li>
+                                    </OverlayTrigger>
+                                    <li className="nav-item dropdown">
+                                        <button
+                                            className="nav-link dropdown-toggle"
+                                            data-bs-toggle="dropdown"
+                                            aria-expanded="false"
+                                        >
                                             <i
-                                                className="bi bi-search"
+                                                className="bi bi-plus-lg"
                                                 aria-hidden="true"
                                             ></i>{" "}
-                                            Search
-                                        </a>
+                                            Add
+                                        </button>
+                                        <ul className="dropdown-menu dropdown-menu-end position-absolute">
+                                            <li>
+                                                <button
+                                                    className="dropdown-item"
+                                                    onClick={handleCreateItem}
+                                                >
+                                                    Collection item
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button
+                                                    className="dropdown-item"
+                                                    onClick={handleCreateTag}
+                                                >
+                                                    Tag
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button
+                                                    className="dropdown-item"
+                                                    onClick={
+                                                        handleCreateWorkspace
+                                                    }
+                                                >
+                                                    Workspace
+                                                </button>
+                                            </li>
+                                        </ul>
                                     </li>
-                                </OverlayTrigger>
-                                <li className="nav-item dropdown">
-                                    <button
-                                        className="nav-link dropdown-toggle"
-                                        data-bs-toggle="dropdown"
-                                        aria-expanded="false"
-                                    >
-                                        <i
-                                            className="bi bi-plus-lg"
-                                            aria-hidden="true"
-                                        ></i>{" "}
-                                        Add
-                                    </button>
-                                    <ul className="dropdown-menu dropdown-menu-end position-absolute">
-                                        <li>
-                                            <button
-                                                className="dropdown-item"
-                                                onClick={handleCreateItem}
-                                            >
-                                                Collection item
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button
-                                                className="dropdown-item"
-                                                onClick={handleCreateTag}
-                                            >
-                                                Tag
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </>
-                        )}
+                                </>
+                            )}
                         <li className="nav-item dropdown">
                             <button
                                 className="nav-link dropdown-toggle"

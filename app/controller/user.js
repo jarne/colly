@@ -54,6 +54,7 @@ const update = async (id, data) => {
     try {
         const updated = await User.findByIdAndUpdate(id, data, {
             returnDocument: "after",
+            runValidators: true,
         })
 
         if (updated === null) {
