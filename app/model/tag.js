@@ -49,4 +49,4 @@ const TagSchema = new Schema({
     },
 })
 
-mongoose.model("Tag", TagSchema)
+export default mongoose.model("Tag", TagSchema)

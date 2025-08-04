@@ -4,6 +4,9 @@
 
 import mongoose from "mongoose"
 
+import Item from "./item.js"
+import Tag from "./tag.js"
+
 const Schema = mongoose.Schema
 
 const WorkspaceSchema = new Schema({
@@ -44,5 +47,17 @@ WorkspaceSchema.path("members").validate((members) => {
 
     return true
 }, "duplicate members in workspace")
+
+/**
+ * Delete items and tags associated to workspace when deleting it
+ */
+WorkspaceSchema.pre("findOneAndDelete", async function () {
+    const ws = await this.model.findOne(this.getFilter())
+
+    if (ws) {
+        await Item.deleteMany({ workspace: ws._id })
+        await Tag.deleteMany({ workspace: ws._id })
+    }
+})
 
 export default mongoose.model("Workspace", WorkspaceSchema)
