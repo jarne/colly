@@ -1,0 +1,14 @@
+[
+    {
+        "_id": { "$oid": "6892484974e5e19830f0442b" },
+        "name": "Idea Crate",
+        "members": [
+            {
+                "user": { "$oid": "63c0607b431d6d242e572f6c" },
+                "permissionLevel": "admin",
+                "_id": { "$oid": "6892484974e5e19830f0442c" }
+            }
+        ],
+        "__v": 0
+    }
+]

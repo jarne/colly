@@ -1,6 +1,6 @@
 [
     {
-        "_id": "63c0607b431d6d242e572f6c",
+        "_id": { "$oid": "63c0607b431d6d242e572f6c" },
         "isAdmin": false,
         "username": "test",
         "password": "$2b$10$8HfHsZhowiRYBrrwjQ.tmedi8c/M.D8p.MCePBU5cj323cgzJ7rm.",

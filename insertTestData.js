@@ -9,59 +9,68 @@ import { connectDbAsync } from "./app/init.js"
 import { trySaveImageMetadata } from "./app/controller/itemPreview.js"
 
 const User = mongoose.model("User")
+const Workspace = mongoose.model("Workspace")
 const Tag = mongoose.model("Tag")
 const Item = mongoose.model("Item")
 
 const deleteData = async () => {
     await User.collection.drop()
+    await Workspace.collection.drop()
     await Tag.collection.drop()
     await Item.collection.drop()
 }
 
-const replaceIdsInObject = (obj) => {
+const replaceDbTypesInObject = (obj) => {
     for (const key in obj) {
         const val = obj[key]
 
-        if (Array.isArray(val)) {
-            obj[key] = replaceIdsInObject(val)
-        }
+        if (val.$oid !== undefined) {
+            obj[key] = new mongoose.Types.ObjectId(val.$oid)
+        } else if (val.$binary !== undefined) {
+            obj[key] = Buffer.from(val.$binary.base64, "base64")
+        } else if (typeof val === "object") {
+            if (key === "parent") {
+                continue
+            }
 
-        if (val.length === 24 && val[23] !== "=") {
-            obj[key] = new mongoose.Types.ObjectId(val)
-        }
-
-        if (val.length === 24 && val[23] === "=") {
-            obj[key] = new mongoose.Types.UUID(
-                Buffer.from(val, "base64").toString("hex")
-            )
+            obj[key] = replaceDbTypesInObject(val)
         }
     }
 
     return obj
 }
 
-const convertIdsToObjectIds = (data) => {
-    return data.map(replaceIdsInObject)
+const convertDbTypes = (data) => {
+    return data.map(replaceDbTypesInObject)
 }
 
 const importData = async () => {
     const userContent = await fs.readFile(
-        "./test-data/content/user.json",
+        "./test-data/content/users.json",
         "utf8"
     )
-    const tagContent = await fs.readFile("./test-data/content/tag.json", "utf8")
+    const workspaceContent = await fs.readFile(
+        "./test-data/content/workspaces.json",
+        "utf8"
+    )
+    const tagContent = await fs.readFile(
+        "./test-data/content/tags.json",
+        "utf8"
+    )
     const itemContent = await fs.readFile(
-        "./test-data/content/item.json",
+        "./test-data/content/items.json",
         "utf8"
     )
 
     const users = JSON.parse(userContent)
+    const workspaces = JSON.parse(workspaceContent)
     const tags = JSON.parse(tagContent)
     const items = JSON.parse(itemContent)
 
-    await User.collection.insertMany(convertIdsToObjectIds(users))
-    await Tag.collection.insertMany(convertIdsToObjectIds(tags))
-    await Item.collection.insertMany(convertIdsToObjectIds(items))
+    await User.collection.insertMany(convertDbTypes(users))
+    await Workspace.collection.insertMany(convertDbTypes(workspaces))
+    await Tag.collection.insertMany(convertDbTypes(tags))
+    await Item.collection.insertMany(convertDbTypes(items))
 
     for (const item of items) {
         trySaveImageMetadata(item._id)
