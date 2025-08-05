@@ -5,11 +5,16 @@
 import express from "express"
 
 import controller from "./../controller/tag.js"
-import crudRoutes from "./common/crud.js"
+import crudRoutes, { CHECK_WORKSPACE_PERMISSIONS } from "./common/crud.js"
 
-const router = express.Router()
+const router = express.Router({
+    mergeParams: true,
+})
 
-const { create, update, del, find } = crudRoutes(controller, true)
+const { create, update, del, find } = crudRoutes(
+    controller,
+    CHECK_WORKSPACE_PERMISSIONS
+)
 
 /**
  * Create new tag

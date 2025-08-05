@@ -12,20 +12,34 @@ import user from "./../../app/controller/user.js"
 
 const Tag = mongoose.model("Tag")
 const User = mongoose.model("User")
+const Workspace = mongoose.model("Workspace")
+
+const TEST_PREFIX = "test-route-tag-"
 
 describe("tag router", () => {
     let uid
+    let wsId
     let token
 
     before(function (done) {
         const prepare = async () => {
-            const created = await user.create({
-                username: "test-route-tag-AquaLioness",
+            const createdUser = await user.create({
+                username: `${TEST_PREFIX}AquaLioness`,
                 password: "Saf3Gu@rd2024!",
             })
+            uid = createdUser.id
+            token = user.generateToken(createdUser)
 
-            uid = created.id
-            token = user.generateToken(created)
+            const createdWorkspace = await Workspace.create({
+                name: `${TEST_PREFIX}Idea Crate`,
+                members: [
+                    {
+                        user: uid,
+                        permissionLevel: "admin",
+                    },
+                ],
+            })
+            wsId = createdWorkspace.id
 
             done()
         }
@@ -40,14 +54,14 @@ describe("tag router", () => {
         mongoose.connection.on("connected", prepare)
     })
 
-    describe("post /api/tag", () => {
+    describe("post /api/workspace/:wsId/tag", () => {
         it("should create a new tag", async () => {
             const res = await request(app)
-                .post("/api/tag")
+                .post(`/api/workspace/${wsId}/tag`)
                 .set("Content-Type", "application/json")
                 .set("Authorization", `Bearer ${token}`)
                 .send({
-                    name: "test-route-tag-cosmic-adventures",
+                    name: `${TEST_PREFIX}cosmic-adventures`,
                     firstColor: "ff7f50",
                     secondColor: "ff4f4f",
                 })
@@ -57,25 +71,25 @@ describe("tag router", () => {
 
             const newTag = await controller.getById(res.body.id)
 
-            expect(newTag.name).to.equal("test-route-tag-cosmic-adventures")
+            expect(newTag.name).to.equal(`${TEST_PREFIX}cosmic-adventures`)
         })
     })
 
-    describe("patch /api/tag/:id", () => {
+    describe("patch /api/workspace/:wsId/tag/:id", () => {
         it("should update the tag", async () => {
             const created = await controller.create({
-                name: "test-route-tag-enchanted-gardens",
+                name: `${TEST_PREFIX}enchanted-gardens`,
                 firstColor: "2ecc71",
                 secondColor: "3498db",
-                owner: uid,
+                workspace: wsId,
             })
 
             const res = await request(app)
-                .patch(`/api/tag/${created.id}`)
+                .patch(`/api/workspace/${wsId}/tag/${created.id}`)
                 .set("Content-Type", "application/json")
                 .set("Authorization", `Bearer ${token}`)
                 .send({
-                    name: "test-route-tag-pixel-perfection",
+                    name: `${TEST_PREFIX}pixel-perfection`,
                     firstColor: "e74c3c",
                 })
 
@@ -83,23 +97,23 @@ describe("tag router", () => {
 
             const updatedTag = await controller.getById(res.body.id)
 
-            expect(updatedTag.name).to.equal("test-route-tag-pixel-perfection")
+            expect(updatedTag.name).to.equal(`${TEST_PREFIX}pixel-perfection`)
             expect(updatedTag.firstColor).to.equal("e74c3c")
             expect(updatedTag.secondColor).to.equal("3498db")
         })
     })
 
-    describe("delete /api/tag/:id", () => {
+    describe("delete /api/workspace/:wsId/tag/:id", () => {
         it("should delete the created tag", async () => {
             const created = await controller.create({
-                name: "test-route-tag-mystical-wanderlust",
+                name: `${TEST_PREFIX}mystical-wanderlust`,
                 firstColor: "3498db",
                 secondColor: "2c3e50",
-                owner: uid,
+                workspace: wsId,
             })
 
             const res = await request(app)
-                .delete(`/api/tag/${created.id}`)
+                .delete(`/api/workspace/${wsId}/tag/${created.id}`)
                 .set("Content-Type", "application/json")
                 .set("Authorization", `Bearer ${token}`)
                 .send()
@@ -113,10 +127,10 @@ describe("tag router", () => {
         })
     })
 
-    describe("get /api/tag", () => {
+    describe("get /api/workspace/:wsId/tag", () => {
         it("should list all tags", async () => {
             const res = await request(app)
-                .get("/api/tag")
+                .get(`/api/workspace/${wsId}/tag`)
                 .set("Content-Type", "application/json")
                 .set("Authorization", `Bearer ${token}`)
                 .send()
@@ -133,6 +147,7 @@ describe("tag router", () => {
     })
 
     after(async () => {
+        await Workspace.findByIdAndDelete(wsId)
         await User.findByIdAndDelete(uid)
     })
 })

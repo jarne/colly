@@ -11,40 +11,54 @@ import user from "./../../app/controller/user.js"
 
 const Tag = mongoose.model("Tag")
 const User = mongoose.model("User")
+const Workspace = mongoose.model("Workspace")
+
+const TEST_PREFIX = "test-ctrl-tag-"
 
 describe("tag controller", () => {
     let userId
+    let wsId
 
     before(async () => {
         await connectDbAsync()
 
         const createdUser = await user.create({
-            username: "test-ctrl-tag-savvy_surfer77",
+            username: `${TEST_PREFIX}savvy_surfer77`,
             password: "Qwerty12345!",
         })
         userId = createdUser.id
+        const createdWorkspace = await Workspace.create({
+            name: `${TEST_PREFIX}EchoBin`,
+            members: [
+                {
+                    user: userId,
+                    permissionLevel: "admin",
+                },
+            ],
+        })
+        wsId = createdWorkspace.id
     })
 
     describe("#create", () => {
         it("should create a new tag", async () => {
             const tag = await controller.create({
-                name: "test-ctrl-tag-introduction-to-ai",
+                name: `${TEST_PREFIX}introduction-to-ai`,
                 firstColor: "ff5733",
                 secondColor: "ffd700",
-                owner: userId,
+                workspace: wsId,
             })
 
             expect(tag.id).to.be.not.null
-            expect(tag.name).to.equal("test-ctrl-tag-introduction-to-ai")
+            expect(tag.name).to.equal(`${TEST_PREFIX}introduction-to-ai`)
         })
 
         it("throws error with invalid tag name", async () => {
             try {
                 await controller.create({
-                    name: "test-ctrl-tag-web-design !tips?",
+                    name: `${TEST_PREFIX}web-design !tips?`,
                     firstColor: "8a2be2",
                     secondColor: "00ff00",
-                    owner: userId,
+                    workspace: wsId,
                 })
             } catch (e) {
                 expect(e.name).to.equal("ValidationError")
@@ -54,10 +68,10 @@ describe("tag controller", () => {
         it("throws error with invalid color", async () => {
             try {
                 await controller.create({
-                    name: "test-ctrl-tag-healthy-eating-habits",
+                    name: `${TEST_PREFIX}healthy-eating-habits`,
                     firstColor: "80x00k",
                     secondColor: "ff6347",
-                    owner: userId,
+                    workspace: wsId,
                 })
             } catch (e) {
                 expect(e.name).to.equal("ValidationError")
@@ -68,33 +82,33 @@ describe("tag controller", () => {
     describe("#update", () => {
         it("should update a tag", async () => {
             const tag = await controller.create({
-                name: "test-ctrl-tag-travel-destinations-guide",
+                name: `${TEST_PREFIX}travel-destinations-guide`,
                 firstColor: "00bfff",
                 secondColor: "ff1493",
-                owner: userId,
+                workspace: wsId,
             })
 
-            expect(tag.name).to.equal("test-ctrl-tag-travel-destinations-guide")
+            expect(tag.name).to.equal(`${TEST_PREFIX}travel-destinations-guide`)
 
             const updatedTag = await controller.update(tag.id, {
-                name: "test-ctrl-tag-mindfulness-meditation",
+                name: `${TEST_PREFIX}mindfulness-meditation`,
                 firstColor: "9932cc",
                 secondColor: "ff4500",
-                owner: userId,
+                workspace: wsId,
             })
 
             expect(updatedTag.name).to.equal(
-                "test-ctrl-tag-mindfulness-meditation"
+                `${TEST_PREFIX}mindfulness-meditation`
             )
         })
 
         it("throws error for non-existing tag", async () => {
             try {
                 await controller.update("6675932d4f2094eb2ec739ad", {
-                    name: "test-ctrl-tag-coding-best-practices",
+                    name: `${TEST_PREFIX}coding-best-practices`,
                     firstColor: "ff8c00",
                     secondColor: "8fbc8f",
-                    owner: userId,
+                    workspace: wsId,
                 })
             } catch (e) {
                 expect(e.name).to.equal("NotFoundError")
@@ -105,10 +119,10 @@ describe("tag controller", () => {
     describe("#del", () => {
         it("should delete the new tag", async () => {
             const tag = await controller.create({
-                name: "test-ctrl-tag-financial-planning-tips",
+                name: `${TEST_PREFIX}financial-planning-tips`,
                 firstColor: "2e8b57",
                 secondColor: "ba55d3",
-                owner: userId,
+                workspace: wsId,
             })
 
             await controller.del(tag.id)
@@ -124,10 +138,10 @@ describe("tag controller", () => {
 
         it("should return created tag list", async () => {
             await controller.create({
-                name: "test-ctrl-tag-beginner-yoga-poses",
+                name: `${TEST_PREFIX}beginner-yoga-poses`,
                 firstColor: "1e90ff",
                 secondColor: "ffd700",
-                owner: userId,
+                workspace: wsId,
             })
 
             const tags = await controller.find()
@@ -135,7 +149,7 @@ describe("tag controller", () => {
             expect(
                 tags.some(
                     (tagObj) =>
-                        tagObj.name === "test-ctrl-tag-beginner-yoga-poses"
+                        tagObj.name === `${TEST_PREFIX}beginner-yoga-poses`
                 )
             ).to.be.true
         })
@@ -148,6 +162,7 @@ describe("tag controller", () => {
     })
 
     after(async () => {
+        await Workspace.findByIdAndDelete(wsId)
         await User.findByIdAndDelete(userId)
     })
 })

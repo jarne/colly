@@ -1,5 +1,5 @@
 /**
- * Colly | collection item API logic
+ * Colly | workspace API logic
  */
 
 import qs from "qs"
@@ -9,25 +9,22 @@ import { checkRequestSuccessful } from "./util/requestHelper"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
 
 /**
- * Create item
- * @param {object} item item object
- * @param {string} workspace workspace ID
+ * Create workspace
+ * @param {object} workspace workspace object
  * @param {string} accessToken API access token
+ * @returns {string} created workspace ID
  */
-export const createItem = async (item, workspace, accessToken) => {
+export const createWorkspace = async (workspace, accessToken) => {
     let res
     try {
-        const resp = await fetch(
-            `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/item`,
-            {
-                method: "POST",
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(item),
-            }
-        )
+        const resp = await fetch(`${InternalAPI.API_ENDPOINT}/workspace`, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(workspace),
+        })
         res = await resp.json()
     } catch {
         throw new Error("Error while communicating with the server!")
@@ -37,33 +34,32 @@ export const createItem = async (item, workspace, accessToken) => {
         switch (res.error.code) {
             case "validation_error":
                 throw new Error(generateValidationErrorMessage(res.error))
-            case "duplicate_entry":
-                throw new Error("An item with this name already exists!")
             default:
                 throw new Error("Unknown error!")
         }
     }
+
+    return res.id
 }
 
 /**
- * Update item
- * @param {string} id item ID
- * @param {object} item item object
- * @param {string} workspace workspace ID
+ * Update workspace
+ * @param {string} id workspace ID
+ * @param {object} workspace workspace object
  * @param {string} accessToken API access token
  */
-export const updateItem = async (id, item, workspace, accessToken) => {
+export const updateWorkspace = async (id, workspace, accessToken) => {
     let res
     try {
         const resp = await fetch(
-            `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/item/${id}`,
+            `${InternalAPI.API_ENDPOINT}/workspace/${id}`,
             {
                 method: "PATCH",
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(item),
+                body: JSON.stringify(workspace),
             }
         )
         res = await resp.json()
@@ -82,16 +78,15 @@ export const updateItem = async (id, item, workspace, accessToken) => {
 }
 
 /**
- * Delete item
- * @param {string} id item ID
- * @param {string} workspace workspace ID
+ * Delete workspace
+ * @param {string} id workspace ID
  * @param {string} accessToken API access token
  */
-export const deleteItem = async (id, workspace, accessToken) => {
+export const deleteWorkspace = async (id, accessToken) => {
     let res
     try {
         const resp = await fetch(
-            `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/item/${id}`,
+            `${InternalAPI.API_ENDPOINT}/workspace/${id}`,
             {
                 method: "DELETE",
                 headers: {
@@ -114,19 +109,18 @@ export const deleteItem = async (id, workspace, accessToken) => {
 }
 
 /**
- * Find items
+ * Find workspaces
  * @param {object} query Query parameters
- * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
- * @returns {Array} item objects
+ * @returns {Array} workspace objects
  */
-export const findItems = async (query, workspace, accessToken) => {
+export const findWorkspaces = async (query, accessToken) => {
     const queryStr = qs.stringify(query, {
         encode: false,
     })
 
     const resp = await fetch(
-        `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/item?${queryStr}`,
+        `${InternalAPI.API_ENDPOINT}/workspace?${queryStr}`,
         {
             method: "GET",
             headers: {
@@ -145,55 +139,31 @@ export const findItems = async (query, workspace, accessToken) => {
 }
 
 /**
- * Get metadata preview of an item URL
- * @param {string} url item URL
- * @param {string} workspace workspace ID
+ * Get user ID by its username
+ * @param {string} username username
  * @param {string} accessToken API access token
- * @returns {object} metadata preview info (page title and description)
+ * @returns {Array} workspace objects
  */
-export const generatePreview = async (url, workspace, accessToken) => {
-    let res
-    try {
-        const resp = await fetch(
-            `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/item/meta`,
-            {
-                method: "POST",
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    url,
-                }),
-            }
-        )
-        res = await resp.json()
-    } catch {
-        throw new Error()
-    }
-
-    if (res.error) {
-        throw new Error()
-    }
-
-    return res.meta
-}
-
-/**
- * Trigger meta data image update of an item
- * @param {string} id item ID
- * @param {string} workspace workspace ID
- * @param {string} accessToken API access token
- */
-export const updateMetaImage = async (id, workspace, accessToken) => {
+export const getUserByUsername = async (username, accessToken) => {
     const resp = await fetch(
-        `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/item/${id}/updateMetaImage`,
+        `${InternalAPI.API_ENDPOINT}/workspace/userByUsername/${username}`,
         {
-            method: "POST",
+            method: "GET",
             headers: {
                 Authorization: `Bearer ${accessToken}`,
             },
         }
     )
-    checkRequestSuccessful(resp)
+    const res = await resp.json()
+
+    if (res.error) {
+        switch (res.error.code) {
+            case "username_not_found":
+                throw new Error("No user found with this username!")
+            default:
+                throw new Error("Unknown error!")
+        }
+    }
+
+    return res.data
 }

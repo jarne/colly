@@ -7,13 +7,18 @@ import express from "express"
 import controller from "./../controller/item.js"
 import tag from "./../controller/tag.js"
 import { getBasicMetadata } from "./../controller/itemPreview.js"
-import crudRoutes from "./common/crud.js"
+import crudRoutes, { CHECK_WORKSPACE_PERMISSIONS } from "./common/crud.js"
 import { handleError } from "./../routes.js"
 import { trySaveImageMetadata } from "./../controller/itemPreview.js"
 
-const router = express.Router()
+const router = express.Router({
+    mergeParams: true,
+})
 
-const { del, find } = crudRoutes(controller, true)
+const { create, update, del, find } = crudRoutes(
+    controller,
+    CHECK_WORKSPACE_PERMISSIONS
+)
 
 /**
  * Check if the user has permission for all used tags of an item
@@ -27,7 +32,7 @@ const checkTagPermissions = async (itemData, userId) => {
     }
 
     for (const tagId of itemData.tags) {
-        const tagPermCheck = await tag.hasPermission(tagId, userId)
+        const tagPermCheck = await tag.hasPermission(tagId, userId, "read")
 
         if (!tagPermCheck) {
             return false
@@ -41,10 +46,7 @@ const checkTagPermissions = async (itemData, userId) => {
  * Create new item
  */
 router.post("/", async (req, res) => {
-    const data = {
-        ...req.body,
-        owner: req.user.id,
-    }
+    const data = req.body
 
     const tagPermCheck = await checkTagPermissions(data, req.user.id)
     if (!tagPermCheck) {
@@ -55,28 +57,16 @@ router.post("/", async (req, res) => {
         })
     }
 
-    let obj
-    try {
-        obj = await controller.create(data)
-    } catch (e) {
-        return handleError(e, res)
-    }
-
-    return res.json({
-        id: obj.id,
-    })
+    return await create(req, res)
 })
 
 /**
  * Update item
  */
 router.patch("/:id", async (req, res) => {
-    const id = req.params.id
-
-    const permCheck = await controller.hasPermission(id, req.user.id)
     const tagPermCheck = await checkTagPermissions(req.body, req.user.id)
 
-    if (!permCheck || !tagPermCheck) {
+    if (!tagPermCheck) {
         return res.status(403).json({
             error: {
                 code: "insufficient_permission",
@@ -84,16 +74,7 @@ router.patch("/:id", async (req, res) => {
         })
     }
 
-    let obj
-    try {
-        obj = await controller.update(id, req.body)
-    } catch (e) {
-        return handleError(e, res)
-    }
-
-    return res.json({
-        id: obj.id,
-    })
+    return await update(req, res)
 })
 
 /**
@@ -130,7 +111,7 @@ router.post("/meta", async (req, res) => {
 router.post("/:id/updateMetaImage", async (req, res) => {
     const id = req.params.id
 
-    const permCheck = await controller.hasPermission(id, req.user.id)
+    const permCheck = await controller.hasPermission(id, req.user.id, "write")
 
     if (!permCheck) {
         return res.status(403).json({

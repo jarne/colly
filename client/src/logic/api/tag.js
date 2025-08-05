@@ -5,24 +5,29 @@
 import qs from "qs"
 
 import InternalAPI from "./../../util/InternalAPI"
+import { checkRequestSuccessful } from "./util/requestHelper"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
 
 /**
  * Create tag
  * @param {object} tag tag object
+ * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
  */
-export const createTag = async (tag, accessToken) => {
+export const createTag = async (tag, workspace, accessToken) => {
     let res
     try {
-        const resp = await fetch(InternalAPI.API_ENDPOINT + "/tag", {
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(tag),
-        })
+        const resp = await fetch(
+            `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/tag`,
+            {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(tag),
+            }
+        )
         res = await resp.json()
     } catch {
         throw new Error("Error while communicating with the server!")
@@ -44,19 +49,23 @@ export const createTag = async (tag, accessToken) => {
  * Update tag
  * @param {string} id tag ID
  * @param {object} tag tag object
+ * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
  */
-export const updateTag = async (id, tag, accessToken) => {
+export const updateTag = async (id, tag, workspace, accessToken) => {
     let res
     try {
-        const resp = await fetch(`${InternalAPI.API_ENDPOINT}/tag/${id}`, {
-            method: "PATCH",
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(tag),
-        })
+        const resp = await fetch(
+            `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/tag/${id}`,
+            {
+                method: "PATCH",
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(tag),
+            }
+        )
         res = await resp.json()
     } catch {
         throw new Error("Error while communicating with the server!")
@@ -75,18 +84,22 @@ export const updateTag = async (id, tag, accessToken) => {
 /**
  * Delete tag
  * @param {string} id tag ID
+ * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
  */
-export const deleteTag = async (id, accessToken) => {
+export const deleteTag = async (id, workspace, accessToken) => {
     let res
     try {
-        const resp = await fetch(`${InternalAPI.API_ENDPOINT}/tag/${id}`, {
-            method: "DELETE",
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-                "Content-Type": "application/json",
-            },
-        })
+        const resp = await fetch(
+            `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/tag/${id}`,
+            {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                    "Content-Type": "application/json",
+                },
+            }
+        )
         res = await resp.json()
     } catch {
         throw new Error("Error while communicating with the server!")
@@ -102,33 +115,30 @@ export const deleteTag = async (id, accessToken) => {
 
 /**
  * Find tags
- * @param {string} accessToken API access token
  * @param {object} query Query parameters
+ * @param {string} workspace workspace ID
+ * @param {string} accessToken API access token
  * @returns {Array} tag objects
  */
-export const findTags = async (accessToken, query) => {
+export const findTags = async (query, workspace, accessToken) => {
     const queryStr = qs.stringify(query, {
         encode: false,
     })
 
-    let res
-    try {
-        const resp = await fetch(
-            `${InternalAPI.API_ENDPOINT}/tag?${queryStr}`,
-            {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            }
-        )
-        res = await resp.json()
-    } catch {
-        throw new Error()
-    }
+    const resp = await fetch(
+        `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/tag?${queryStr}`,
+        {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+        }
+    )
+    checkRequestSuccessful(resp)
+    const res = await resp.json()
 
     if (res.error) {
-        throw new Error()
+        throw new Error(res.error_code)
     }
 
     return res.data

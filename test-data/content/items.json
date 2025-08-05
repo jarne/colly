@@ -1,0 +1,75 @@
+[
+    {
+        "_id": { "$oid": "65e359341b719d7c526079f5" },
+        "url": "http://10.0.1.8:3387/stellarvoyage/",
+        "name": "StellarVoyage",
+        "description": "Embark on a cosmic journey with StellarVoyage - your portal to the wonders of space exploration.",
+        "tags": [
+            { "$oid": "65e358ab1b719d7c526079e6" },
+            { "$oid": "65e359021b719d7c526079f2" }
+        ],
+        "__v": 0,
+        "image": {
+            "$binary": { "base64": "AJSZPWRHRfesTQ7MyGIMiw==", "subType": "04" }
+        },
+        "logo": {
+            "$binary": { "base64": "Cg+Akub6RbyqGMHNmmLM5Q==", "subType": "04" }
+        },
+        "updatedAt": { "$date": "2025-08-05T18:07:05.183Z" },
+        "workspace": { "$oid": "6892484974e5e19830f0442b" }
+    },
+    {
+        "_id": { "$oid": "65e3594b1b719d7c526079ff" },
+        "url": "http://10.0.1.8:3387/sustainableliving/",
+        "name": "Sustainable Living",
+        "description": "Explore sustainable living practices, eco-friendly products, and tips for reducing your carbon footprint. Embrace a green lifestyle for a healthier planet.",
+        "tags": [{ "$oid": "65e358c31b719d7c526079e9" }],
+        "__v": 0,
+        "image": {
+            "$binary": { "base64": "+Wpnq1ZKTACo64dSdUMDPw==", "subType": "04" }
+        },
+        "logo": {
+            "$binary": { "base64": "n2QOv34SRI2huDLumGJkjw==", "subType": "04" }
+        },
+        "updatedAt": { "$date": "2025-08-05T18:07:05.206Z" },
+        "workspace": { "$oid": "6892484974e5e19830f0442b" }
+    },
+    {
+        "_id": { "$oid": "65e3595d1b719d7c52607a05" },
+        "url": "http://10.0.1.8:3387/vintagefashion/",
+        "name": "Vintage Fashion Hub",
+        "description": "Explore the world of vintage fashion, where classic styles meet modern trends. Discover iconic looks, styling tips, and the history behind vintage clothing.",
+        "tags": [
+            { "$oid": "65e358f31b719d7c526079ef" },
+            { "$oid": "65e358c31b719d7c526079e9" }
+        ],
+        "__v": 0,
+        "image": {
+            "$binary": { "base64": "rlkVuTWvQbaR3ucCJ88rFA==", "subType": "04" }
+        },
+        "logo": {
+            "$binary": { "base64": "BomPnp1oSKyp/0QHXpzntg==", "subType": "04" }
+        },
+        "updatedAt": { "$date": "2025-08-05T18:07:05.209Z" },
+        "workspace": { "$oid": "6892484974e5e19830f0442b" }
+    },
+    {
+        "_id": { "$oid": "65e359801b719d7c52607a0f" },
+        "url": "http://10.0.1.8:3387/homedecor/",
+        "name": "DIY Home Decor Ideas",
+        "description": "Explore creative and affordable DIY home decor ideas to transform your living space. Get inspired with easy-to-follow tutorials and tips for decorating on a budget.",
+        "tags": [
+            { "$oid": "65e358c31b719d7c526079e9" },
+            { "$oid": "65e358d81b719d7c526079ec" }
+        ],
+        "__v": 0,
+        "image": {
+            "$binary": { "base64": "lK9PCsHLS8m+oxuzLhgyow==", "subType": "04" }
+        },
+        "logo": {
+            "$binary": { "base64": "rcKybP/sT7OkvtDw4EiBrA==", "subType": "04" }
+        },
+        "updatedAt": { "$date": "2025-08-05T18:07:05.212Z" },
+        "workspace": { "$oid": "6892484974e5e19830f0442b" }
+    }
+]

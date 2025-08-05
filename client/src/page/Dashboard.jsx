@@ -10,6 +10,7 @@ import Navbar from "./../component/nav/Navbar"
 import TagsSidebar from "./../component/tag/TagsSidebar"
 import ItemCard from "./../component/item/ItemCard"
 
+import CreateWorkspaceModal from "./../component/modal/CreateWorkspaceModal"
 import CreateTagModal from "./../component/modal/CreateTagModal"
 import CreateItemModal from "./../component/modal/CreateItemModal"
 import PreferencesModal from "./../component/modal/PreferencesModal"
@@ -22,17 +23,36 @@ import "./Dashboard.css"
 
 function Dashboard() {
     const navigate = useNavigate()
-    const { tagId } = useParams()
+    const { wsId, tagId } = useParams()
 
-    const [accessToken] = useUserAuth()
-    const [, , , items, , loadItems] = useAppData()
-    const [, setSelectedTag, searchStr, , sortValue, ,] = useCurrentInput()
+    const { accessToken } = useUserAuth()
+    const { workspaces, items, loadItems } = useAppData()
+    const { workspace, setWorkspace, setSelectedTag, searchStr, sortValue } =
+        useCurrentInput()
 
+    const createWorkspaceModalRef = useRef()
     const createTagModalRef = useRef()
     const createItemModalRef = useRef()
     const preferencesModalRef = useRef()
 
+    const checkWorkspaceActive = () => {
+        if (wsId) {
+            return
+        }
+
+        if (workspaces.length < 1) {
+            return
+        }
+
+        const firstWorkspace = workspaces[0]
+        navigate(`/workspace/${firstWorkspace._id}`)
+    }
+
     const triggerItemLoad = async () => {
+        if (!workspace) {
+            return
+        }
+
         let filter = {}
 
         if (tagId) {
@@ -55,19 +75,24 @@ function Dashboard() {
     }
 
     useEffect(() => {
+        setWorkspace(wsId)
         setSelectedTag(tagId)
+
+        checkWorkspaceActive()
         triggerItemLoad()
-    }, [accessToken, tagId, searchStr, sortValue])
+    }, [accessToken, wsId, workspace, workspaces, tagId, searchStr, sortValue])
 
     return (
         <>
             <Navbar
+                createWorkspaceModalRef={createWorkspaceModalRef}
                 createTagModalRef={createTagModalRef}
                 createItemModalRef={createItemModalRef}
                 preferencesModalRef={preferencesModalRef}
             />
             <main className="dashboard-main">
                 <TagsSidebar
+                    createWorkspaceModalRef={createWorkspaceModalRef}
                     createTagModalRef={createTagModalRef}
                     activeTag={tagId}
                 />
@@ -85,6 +110,7 @@ function Dashboard() {
                     </Masonry>
                 </ResponsiveMasonry>
             </main>
+            <CreateWorkspaceModal ref={createWorkspaceModalRef} />
             <CreateTagModal ref={createTagModalRef} />
             <CreateItemModal
                 triggerItemLoad={triggerItemLoad}

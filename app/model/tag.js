@@ -35,14 +35,18 @@ const TagSchema = new Schema({
             message: "invalid hex color",
         },
     },
+    workspace: {
+        type: Schema.Types.ObjectId,
+        ref: "Workspace",
+        required: true,
+    },
     owner: {
         type: Schema.Types.ObjectId,
         ref: "User",
-        required: true,
     },
     lastUsed: {
         type: Date,
     },
 })
 
-mongoose.model("Tag", TagSchema)
+export default mongoose.model("Tag", TagSchema)

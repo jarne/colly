@@ -16,8 +16,8 @@ import { deleteUser } from "./../logic/api/user"
 function Admin() {
     const navigate = useNavigate()
 
-    const [accessToken] = useUserAuth()
-    const [, , , , , , users, , loadUsers] = useAppData()
+    const { accessToken } = useUserAuth()
+    const { users, loadUsers } = useAppData()
 
     const createUserModalRef = useRef()
 

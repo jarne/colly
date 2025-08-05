@@ -35,10 +35,14 @@ const ItemSchema = new Schema(
                 ref: "Tag",
             },
         ],
+        workspace: {
+            type: Schema.Types.ObjectId,
+            ref: "Workspace",
+            required: true,
+        },
         owner: {
             type: Schema.Types.ObjectId,
             ref: "User",
-            required: true,
         },
         logo: Schema.Types.UUID,
         image: Schema.Types.UUID,
@@ -54,11 +58,17 @@ ItemSchema.index({
     description: "text",
 })
 
+ItemSchema.pre("save", function () {
+    this.$locals.wasNew = this.isNew
+})
+
 /**
  * Generate preview after saving item
  */
-ItemSchema.post("save", async (item) => {
-    trySaveImageMetadata(item.id)
+ItemSchema.post("save", function (item) {
+    if (this.$locals.wasNew) {
+        trySaveImageMetadata(item.id)
+    }
 })
 
 export default mongoose.model("Item", ItemSchema)

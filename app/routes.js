@@ -6,8 +6,7 @@ import passport from "passport"
 
 import authRoutes from "./route/auth.js"
 import userRoutes from "./route/user.js"
-import tagRoutes from "./route/tag.js"
-import itemRoutes from "./route/item.js"
+import workspaceRoutes from "./route/workspace.js"
 import clientRoutes from "./route/client.js"
 
 /**
@@ -23,14 +22,9 @@ export const registerRoutes = (app) => {
         userRoutes
     )
     app.use(
-        "/api/tag",
+        "/api/workspace",
         passport.authenticate("jwt", { session: false }),
-        tagRoutes
-    )
-    app.use(
-        "/api/item",
-        passport.authenticate("jwt", { session: false }),
-        itemRoutes
+        workspaceRoutes
     )
 
     app.use("/", clientRoutes)

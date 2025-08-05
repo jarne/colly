@@ -10,6 +10,7 @@ import TagList from "./../tag/TagList"
 
 import { useUserAuth } from "./../context/UserAuthProvider"
 import { useAppData } from "./../context/DataProvider"
+import { useCurrentInput } from "./../context/CurrentInputProvider"
 import {
     createItem,
     updateItem,
@@ -23,8 +24,9 @@ import "./CreateItemModal.css"
 const CreateItemModal = forwardRef(function CreateItemModal(props, ref) {
     const MAX_FILTERED_TAGS = 5
 
-    const [accessToken] = useUserAuth()
-    const [, , , items] = useAppData()
+    const { accessToken } = useUserAuth()
+    const { items } = useAppData()
+    const { workspace } = useCurrentInput()
 
     const [show, setShow] = useState(false)
 
@@ -95,7 +97,7 @@ const CreateItemModal = forwardRef(function CreateItemModal(props, ref) {
 
         let meta
         try {
-            meta = await generatePreview(e.target.value, accessToken)
+            meta = await generatePreview(e.target.value, workspace, accessToken)
         } catch {
             setIsFetchingMeta(false)
             return
@@ -128,17 +130,21 @@ const CreateItemModal = forwardRef(function CreateItemModal(props, ref) {
     const loadFilteredTags = async (name = "") => {
         let foundTags
         try {
-            foundTags = await findTags(accessToken, {
-                filter: {
-                    name: {
-                        $regex: name,
+            foundTags = await findTags(
+                {
+                    filter: {
+                        name: {
+                            $regex: name,
+                        },
                     },
+                    sort: {
+                        lastUsed: "desc",
+                    },
+                    limit: MAX_FILTERED_TAGS,
                 },
-                sort: {
-                    lastUsed: "desc",
-                },
-                limit: MAX_FILTERED_TAGS,
-            })
+                workspace,
+                accessToken
+            )
         } catch (e) {
             toast.error(e.message)
 
@@ -155,6 +161,7 @@ const CreateItemModal = forwardRef(function CreateItemModal(props, ref) {
             {
                 lastUsed: new Date(),
             },
+            workspace,
             accessToken
         )
     }
@@ -175,6 +182,7 @@ const CreateItemModal = forwardRef(function CreateItemModal(props, ref) {
                           description: itemDescription,
                           tags: itemTags,
                       },
+                      workspace,
                       accessToken
                   )
                 : await createItem(
@@ -184,6 +192,7 @@ const CreateItemModal = forwardRef(function CreateItemModal(props, ref) {
                           description: itemDescription,
                           tags: itemTags,
                       },
+                      workspace,
                       accessToken
                   )
         } catch (ex) {
@@ -206,7 +215,7 @@ const CreateItemModal = forwardRef(function CreateItemModal(props, ref) {
         e.preventDefault()
 
         try {
-            await deleteItem(editId, accessToken)
+            await deleteItem(editId, workspace, accessToken)
         } catch (ex) {
             toast.error(ex.message)
 

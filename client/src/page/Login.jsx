@@ -19,7 +19,8 @@ function Login() {
     const [password, setPassword] = useState("")
 
     const navigate = useNavigate()
-    const [, setAccessToken, , setDisplayName, , setIsAdmin] = useUserAuth()
+    const { setAccessToken, setUserId, setDisplayName, setIsAdmin } =
+        useUserAuth()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -34,6 +35,7 @@ function Login() {
         }
 
         setAccessToken(data.token)
+        setUserId(data.user.id)
         setDisplayName(data.user.username)
         setIsAdmin(data.user.isAdmin)
 

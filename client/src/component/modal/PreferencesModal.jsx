@@ -12,7 +12,7 @@ import { changePassword } from "./../../logic/api/auth"
 const PreferencesModal = forwardRef(function PreferencesModal(props, ref) {
     const DEFAULT_EMPTY = ""
 
-    const [accessToken] = useUserAuth()
+    const { accessToken } = useUserAuth()
 
     const [show, setShow] = useState(false)
 

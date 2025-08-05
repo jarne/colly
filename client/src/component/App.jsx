@@ -31,21 +31,25 @@ function App() {
                 theme={isDarkMode ? "dark" : "light"}
             />
             <UserAuthProvider>
-                <AppDataProvider>
-                    <CurrentInputProvider>
+                <CurrentInputProvider>
+                    <AppDataProvider>
                         <BrowserRouter>
                             <Routes>
                                 <Route path="/login" element={<Login />} />
                                 <Route path="/" element={<Dashboard />} />
                                 <Route path="/admin" element={<Admin />} />
                                 <Route
-                                    path="/tag/:tagId"
+                                    path="/workspace/:wsId"
+                                    element={<Dashboard />}
+                                />
+                                <Route
+                                    path="/workspace/:wsId/tag/:tagId"
                                     element={<Dashboard />}
                                 />
                             </Routes>
                         </BrowserRouter>
-                    </CurrentInputProvider>
-                </AppDataProvider>
+                    </AppDataProvider>
+                </CurrentInputProvider>
             </UserAuthProvider>
         </>
     )

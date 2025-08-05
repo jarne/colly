@@ -17,8 +17,8 @@ function ItemCard({ item, createItemModalRef }) {
     const prefersColorScheme = usePrefersColorScheme()
     const isDarkMode = prefersColorScheme === "dark"
 
-    const [accessToken] = useUserAuth()
-    const [, , , , , , isEditMode] = useCurrentInput()
+    const { accessToken } = useUserAuth()
+    const { isEditMode, workspace } = useCurrentInput()
 
     const formatUrlText = (url) => {
         const parts = url.split("/")
@@ -47,7 +47,7 @@ function ItemCard({ item, createItemModalRef }) {
         e.preventDefault()
 
         try {
-            await updateMetaImage(itemId, accessToken)
+            await updateMetaImage(itemId, workspace, accessToken)
         } catch (ex) {
             toast.error(ex.message)
 

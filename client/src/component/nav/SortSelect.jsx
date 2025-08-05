@@ -5,7 +5,7 @@
 import { useCurrentInput } from "./../../component/context/CurrentInputProvider"
 
 function SortSelect() {
-    const [, , , , sortValue, setSortValue] = useCurrentInput()
+    const { sortValue, setSortValue } = useCurrentInput()
 
     const handlSortValueChange = (e) => {
         setSortValue(e.target.value)

@@ -9,6 +9,7 @@ import morgan from "morgan"
 import "dotenv/config"
 
 import { connectDb } from "./app/init.js"
+import { runMigrations } from "./app/migration/migrations.js"
 import { registerRoutes } from "./app/routes.js"
 import logger from "./app/util/logger.js"
 
@@ -21,9 +22,10 @@ app.set("query parser", "extended")
 app.use(express.json())
 app.use(cookieParser())
 
-/* Database connection */
+/* Database connection and migrations */
 
 connectDb()
+runMigrations()
 
 /* Routes */
 

@@ -107,11 +107,11 @@ export const deleteUser = async (id, accessToken) => {
 
 /**
  * Find users
- * @param {string} accessToken API access token
  * @param {object} query find query
+ * @param {string} accessToken API access token
  * @returns {Array} user objects
  */
-export const findUsers = async (accessToken, query) => {
+export const findUsers = async (query, accessToken) => {
     const queryStr = qs.stringify(query, {
         encode: false,
     })

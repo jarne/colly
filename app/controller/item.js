@@ -7,6 +7,7 @@ import { GetObjectCommand } from "@aws-sdk/client-s3"
 
 import Item from "./../model/item.js"
 import crudController from "./common/crud.js"
+import workspace from "./workspace.js"
 import { getS3StorageKey } from "./itemPreview.js"
 import logger from "./../util/logger.js"
 import { s3Client } from "./../util/s3Storage.js"
@@ -116,12 +117,13 @@ export const find = async (
 }
 
 /**
- * Check if user has permission to access an item
+ * Check if a user has permission to access an item
  * @param {string} itemId Item ID
  * @param {string} userId User ID
+ * @param {string} action action to perform (write or read level)
  * @returns {boolean} access allowed
  */
-const hasPermission = async (itemId, userId) => {
+const hasPermission = async (itemId, userId, action) => {
     let item
     try {
         item = await Item.findById(itemId)
@@ -133,8 +135,11 @@ const hasPermission = async (itemId, userId) => {
 
         throw e
     }
+    if (!item) {
+        return false
+    }
 
-    return item.owner.toString() === userId
+    return workspace.hasPermission(item.workspace.toString(), userId, action)
 }
 
 export default {

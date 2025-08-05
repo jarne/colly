@@ -58,6 +58,7 @@ router.post("/login", (req, res) => {
             })
             return res.json({
                 user: {
+                    id: user.id,
                     username: user.username,
                     isAdmin: user.isAdmin,
                 },
@@ -89,6 +90,7 @@ router.get(
     (req, res) => {
         return res.json({
             user: {
+                id: req.user.id,
                 username: req.user.username,
                 isAdmin: req.user.isAdmin,
             },
