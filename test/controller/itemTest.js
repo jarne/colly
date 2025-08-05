@@ -12,25 +12,39 @@ import tag from "./../../app/controller/tag.js"
 
 const Item = mongoose.model("Item")
 const User = mongoose.model("User")
+const Workspace = mongoose.model("Workspace")
 const Tag = mongoose.model("Tag")
+
+const TEST_PREFIX = "test-ctrl-item-"
 
 describe("item controller", () => {
     let userId
+    let wsId
     let tagId
 
     before(async () => {
         await connectDbAsync()
 
         const createdUser = await user.create({
-            username: "test-ctrl-item-cool_cat99",
+            username: `${TEST_PREFIX}cool_cat99`,
             password: "Secret123$",
         })
         userId = createdUser.id
+        const createdWorkspace = await Workspace.create({
+            name: `${TEST_PREFIX}Bits & Pieces`,
+            members: [
+                {
+                    user: userId,
+                    permissionLevel: "admin",
+                },
+            ],
+        })
+        wsId = createdWorkspace.id
         const createdTag = await tag.create({
-            name: "test-ctrl-item-photography-tips-tricks",
+            name: `${TEST_PREFIX}photography-tips-tricks`,
             firstColor: "ff1493",
             secondColor: "00ced1",
-            owner: userId,
+            workspace: wsId,
         })
         tagId = createdTag.id
     })
@@ -39,30 +53,30 @@ describe("item controller", () => {
         it("should create a new item", async () => {
             const item = await controller.create({
                 url: "https://example.com/cooking101",
-                name: "test-ctrl-item-Cooking 101",
+                name: `${TEST_PREFIX}Cooking 101`,
                 description:
                     "Your go-to resource for easy recipes and culinary tips.",
-                owner: userId,
+                workspace: wsId,
                 tags: [tagId],
             })
 
             expect(item.id).to.be.not.null
             expect(item.url).to.equal("https://example.com/cooking101")
-            expect(item.name).to.equal("test-ctrl-item-Cooking 101")
+            expect(item.name).to.equal(`${TEST_PREFIX}Cooking 101`)
         })
 
         it("should create a new item with image metadata", async () => {
             const created = await controller.create({
                 url: "http://127.0.0.1:3388/stellarvoyage/index.html",
-                name: "test-ctrl-item-StellarVoyage",
+                name: `${TEST_PREFIX}StellarVoyage`,
                 description:
                     "Embark on a cosmic journey with StellarVoyage - your portal to the wonders of space exploration.",
-                owner: userId,
+                workspace: wsId,
                 tags: [tagId],
             })
 
             expect(created.id).to.be.not.null
-            expect(created.name).to.equal("test-ctrl-item-StellarVoyage")
+            expect(created.name).to.equal(`${TEST_PREFIX}StellarVoyage`)
 
             await new Promise((resolve) => setTimeout(resolve, 500))
 
@@ -78,10 +92,10 @@ describe("item controller", () => {
             try {
                 await controller.create({
                     url: "htt:/example.com/fitnesshub",
-                    name: "test-ctrl-item-Fitness Hub",
+                    name: `${TEST_PREFIX}Fitness Hub`,
                     description:
                         "Get fit and stay healthy with expert workout routines and nutrition advice.",
-                    owner: userId,
+                    workspace: wsId,
                 })
             } catch (e) {
                 expect(e.name).to.equal("ValidationError")
@@ -93,18 +107,18 @@ describe("item controller", () => {
         it("should update an item", async () => {
             const item = await controller.create({
                 url: "https://example.com/travelinsider",
-                name: "test-ctrl-item-TravelInsider",
+                name: `${TEST_PREFIX}TravelInsider`,
                 description:
                     "Discover hidden gems and travel hacks for your next adventure.",
-                owner: userId,
+                workspace: wsId,
             })
 
             expect(item.url).to.equal("https://example.com/travelinsider")
-            expect(item.name).to.equal("test-ctrl-item-TravelInsider")
+            expect(item.name).to.equal(`${TEST_PREFIX}TravelInsider`)
 
             const updatedItem = await controller.update(item.id, {
                 url: "https://example.com/mindfulnessjourney",
-                name: "test-ctrl-item-Mindfulness Journey",
+                name: `${TEST_PREFIX}Mindfulness Journey`,
                 description:
                     "Begin your journey to inner peace and mindfulness with guided meditation sessions.",
                 tags: [tagId],
@@ -114,7 +128,7 @@ describe("item controller", () => {
                 "https://example.com/mindfulnessjourney"
             )
             expect(updatedItem.name).to.equal(
-                "test-ctrl-item-Mindfulness Journey"
+                `${TEST_PREFIX}Mindfulness Journey`
             )
             expect(updatedItem.tags).to.contain(tagId)
         })
@@ -123,7 +137,7 @@ describe("item controller", () => {
             try {
                 await controller.update("6675932d4f2094eb2ec739ad", {
                     url: "https://example.com/moneymatters",
-                    name: "test-ctrl-item-MoneyMatters",
+                    name: `${TEST_PREFIX}MoneyMatters`,
                     description:
                         "Learn smart financial management strategies and investment tips.",
                 })
@@ -137,10 +151,10 @@ describe("item controller", () => {
         it("should delete the new item", async () => {
             const item = await controller.create({
                 url: "https://example.com/techbuzz",
-                name: "test-ctrl-item-TechBuzz",
+                name: `${TEST_PREFIX}TechBuzz`,
                 description:
                     "Stay updated with the latest in technology news and gadget reviews.",
-                owner: userId,
+                workspace: wsId,
             })
 
             await controller.del(item.id)
@@ -151,17 +165,17 @@ describe("item controller", () => {
         it("should get the new item", async () => {
             const item = await controller.create({
                 url: "https://example.com/fashionista",
-                name: "test-ctrl-item-Fashionista",
+                name: `${TEST_PREFIX}Fashionista`,
                 description:
                     "Your ultimate style guide for trends, fashion tips, and beauty hacks.",
-                owner: userId,
+                workspace: wsId,
             })
 
             const gotItem = await controller.getById(item.id)
 
             expect(gotItem.id).to.be.not.null
             expect(gotItem.url).to.equal("https://example.com/fashionista")
-            expect(gotItem.name).to.equal("test-ctrl-item-Fashionista")
+            expect(gotItem.name).to.equal(`${TEST_PREFIX}Fashionista`)
         })
 
         it("should return null for non-existing item", async () => {
@@ -183,10 +197,10 @@ describe("item controller", () => {
         it("should return created item list", async () => {
             await controller.create({
                 url: "https://example.com/petparadise",
-                name: "test-ctrl-item-#Pet #Paradise",
+                name: `${TEST_PREFIX}#Pet #Paradise`,
                 description:
                     "Spoil your furry friends with pet care advice, training tips, and adorable pet photos.",
-                owner: userId,
+                workspace: wsId,
             })
 
             const items = await controller.find()
@@ -204,31 +218,63 @@ describe("item controller", () => {
         it("should have the permission for the item", async () => {
             const item = await controller.create({
                 url: "https://example.com/homeimprovement",
-                name: "test-ctrl-item-HomeImprovement",
+                name: `${TEST_PREFIX}HomeImprovement`,
                 description:
                     "Transform your living space with DIY home decor ideas and renovation inspiration.",
-                owner: userId,
+                workspace: wsId,
             })
 
-            const hasPerm = await controller.hasPermission(item.id, userId)
+            const hasAdmin = await controller.hasPermission(
+                item.id,
+                userId,
+                "admin"
+            )
+            const hasWrite = await controller.hasPermission(
+                item.id,
+                userId,
+                "write"
+            )
+            const hasRead = await controller.hasPermission(
+                item.id,
+                userId,
+                "read"
+            )
 
-            expect(hasPerm).to.be.true
+            expect(hasAdmin).to.be.true
+            expect(hasWrite).to.be.true
+            expect(hasRead).to.be.true
         })
 
         it("should not have the permission for the item", async () => {
             const item = await controller.create({
                 url: "https://example.com/careerboost",
-                name: "test-ctrl-item-Career!Boost",
+                name: `${TEST_PREFIX}Career!Boost`,
                 description:
                     "Take your career to the next level with expert advice on job hunting, resume building, and professional development.",
-                owner: userId,
+                workspace: wsId,
             })
 
             const wrongUserId = "927546ad1438adb20df54d45"
 
-            const hasPerm = await controller.hasPermission(item.id, wrongUserId)
+            const hasAdmin = await controller.hasPermission(
+                item.id,
+                wrongUserId,
+                "admin"
+            )
+            const hasWrite = await controller.hasPermission(
+                item.id,
+                wrongUserId,
+                "write"
+            )
+            const hasRead = await controller.hasPermission(
+                item.id,
+                wrongUserId,
+                "read"
+            )
 
-            expect(hasPerm).to.be.false
+            expect(hasAdmin).to.be.false
+            expect(hasWrite).to.be.false
+            expect(hasRead).to.be.false
         })
     })
 
@@ -239,7 +285,8 @@ describe("item controller", () => {
     })
 
     after(async () => {
-        await User.findByIdAndDelete(userId)
         await Tag.findByIdAndDelete(tagId)
+        await Workspace.findByIdAndDelete(wsId)
+        await User.findByIdAndDelete(userId)
     })
 })

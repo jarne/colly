@@ -13,10 +13,14 @@ import tag from "./../../app/controller/tag.js"
 
 const Item = mongoose.model("Item")
 const User = mongoose.model("User")
+const Workspace = mongoose.model("Workspace")
 const Tag = mongoose.model("Tag")
+
+const TEST_PREFIX = "test-route-item-"
 
 describe("item router", () => {
     let uid
+    let wsId
     let tid
     let token
 
@@ -26,24 +30,35 @@ describe("item router", () => {
     before(function (done) {
         const prepare = async () => {
             const createdUser = await user.create({
-                username: "test-route-item-EmeraldPhoenix",
+                username: `${TEST_PREFIX}EmeraldPhoenix`,
                 password: "Encrypt10nRul3s",
             })
             uid = createdUser.id
             token = user.generateToken(createdUser)
 
             const createdRogueUser = await user.create({
-                username: "test-route-item-MidnightSerenade",
+                username: `${TEST_PREFIX}MidnightSerenade`,
                 password: "TwilightMelody$123",
             })
             rogueUid = createdRogueUser.id
             rogueToken = user.generateToken(createdRogueUser)
 
+            const createdWorkspace = await Workspace.create({
+                name: `${TEST_PREFIX}Idea Crate`,
+                members: [
+                    {
+                        user: uid,
+                        permissionLevel: "admin",
+                    },
+                ],
+            })
+            wsId = createdWorkspace.id
+
             const createdTag = await tag.create({
-                name: "test-route-item-rhythmic-melodies",
+                name: `${TEST_PREFIX}rhythmic-melodies`,
                 firstColor: "1abc9c",
                 secondColor: "f1c40f",
-                owner: uid,
+                workspace: wsId,
             })
             tid = createdTag.id
 
@@ -60,15 +75,15 @@ describe("item router", () => {
         mongoose.connection.on("connected", prepare)
     })
 
-    describe("post /api/item", () => {
+    describe("post /api/workspace/:wsId/item", () => {
         it("should create a new item", async () => {
             const res = await request(app)
-                .post("/api/item")
+                .post(`/api/workspace/${wsId}/item`)
                 .set("Content-Type", "application/json")
                 .set("Authorization", `Bearer ${token}`)
                 .send({
                     url: "https://example.com/tech/gadgetgalaxy",
-                    name: "test-route-item-GadgetGalaxy",
+                    name: `${TEST_PREFIX}GadgetGalaxy`,
                     description:
                         "Explore the latest gadgets and tech innovations in one cosmic destination.",
                     tags: [tid],
@@ -79,17 +94,17 @@ describe("item router", () => {
 
             const newItem = await controller.getById(res.body.id)
 
-            expect(newItem.name).to.equal("test-route-item-GadgetGalaxy")
+            expect(newItem.name).to.equal(`${TEST_PREFIX}GadgetGalaxy`)
         })
 
         it("should fail with a permission error using foreign tags", async () => {
             const res = await request(app)
-                .post("/api/item")
+                .post(`/api/workspace/${wsId}/item`)
                 .set("Content-Type", "application/json")
                 .set("Authorization", `Bearer ${rogueToken}`)
                 .send({
                     url: "https://culinarycrafters.example.com/recipes",
-                    name: "test-route-item-CulinaryCrafters",
+                    name: `${TEST_PREFIX}CulinaryCrafters`,
                     description:
                         "CulinaryCrafters offers recipes, tutorials, and chef tips for food enthusiasts.",
                     tags: [tid],
@@ -100,23 +115,23 @@ describe("item router", () => {
         })
     })
 
-    describe("patch /api/item/:id", () => {
+    describe("patch /api/workspace/:wsId/item/:id", () => {
         it("should update the item", async () => {
             const created = await controller.create({
                 url: "https://example.com/lifestyle/eco/ecoeden",
-                name: "test-route-item-EcoEden",
+                name: `${TEST_PREFIX}EcoEden`,
                 description:
                     "Dive into sustainable living with eco-friendly tips and green solutions.",
-                owner: uid,
+                workspace: wsId,
                 tags: [tid],
             })
 
             const res = await request(app)
-                .patch(`/api/item/${created.id}`)
+                .patch(`/api/workspace/${wsId}/item/${created.id}`)
                 .set("Content-Type", "application/json")
                 .set("Authorization", `Bearer ${token}`)
                 .send({
-                    name: "test-route-item-WhimsyWanderer",
+                    name: `${TEST_PREFIX}WhimsyWanderer`,
                     description:
                         "Embark on enchanting adventures and whimsical journeys across the globe.",
                 })
@@ -125,7 +140,7 @@ describe("item router", () => {
 
             const updatedItem = await controller.getById(res.body.id)
 
-            expect(updatedItem.name).to.equal("test-route-item-WhimsyWanderer")
+            expect(updatedItem.name).to.equal(`${TEST_PREFIX}WhimsyWanderer`)
             expect(updatedItem.description).to.equal(
                 "Embark on enchanting adventures and whimsical journeys across the globe."
             )
@@ -137,19 +152,19 @@ describe("item router", () => {
         it("should throw a permission error updating a foreign item", async () => {
             const created = await controller.create({
                 url: "https://ecoecoecho.example.com/lifestyle",
-                name: "test-route-item-EcoEcoEcho",
+                name: `${TEST_PREFIX}EcoEcoEcho`,
                 description:
                     "Discover eco-friendly living tips and environmental news at EcoEcoEcho.",
-                owner: uid,
+                workspace: wsId,
                 tags: [tid],
             })
 
             const res = await request(app)
-                .patch(`/api/item/${created.id}`)
+                .patch(`/api/workspace/${wsId}/item/${created.id}`)
                 .set("Content-Type", "application/json")
                 .set("Authorization", `Bearer ${rogueToken}`)
                 .send({
-                    name: "test-route-item-FitFusionFitness",
+                    name: `${TEST_PREFIX}FitFusionFitness`,
                     description:
                         "Achieve your fitness goals with workout routines and nutrition advice at FitFusionFitness.",
                 })
@@ -159,19 +174,19 @@ describe("item router", () => {
         })
     })
 
-    describe("delete /api/item/:id", () => {
+    describe("delete /api/workspace/:wsId/item/:id", () => {
         it("should delete the created item", async () => {
             const created = await controller.create({
                 url: "https://example.com/arts/crafty/canvas",
-                name: "test-route-item-CraftyCanvas",
+                name: `${TEST_PREFIX}CraftyCanvas`,
                 description:
                     "Unleash your creativity with DIY craft ideas and artistic inspirations.",
-                owner: uid,
+                workspace: wsId,
                 tags: [tid],
             })
 
             const res = await request(app)
-                .delete(`/api/item/${created.id}`)
+                .delete(`/api/workspace/${wsId}/item/${created.id}`)
                 .set("Content-Type", "application/json")
                 .set("Authorization", `Bearer ${token}`)
                 .send()
@@ -185,10 +200,10 @@ describe("item router", () => {
         })
     })
 
-    describe("get /api/item", () => {
+    describe("get /api/workspace/:wsId/item", () => {
         it("should list all items", async () => {
             const res = await request(app)
-                .get("/api/item")
+                .get(`/api/workspace/${wsId}/item`)
                 .set("Content-Type", "application/json")
                 .set("Authorization", `Bearer ${token}`)
                 .send()
@@ -205,8 +220,9 @@ describe("item router", () => {
     })
 
     after(async () => {
+        await Tag.findByIdAndDelete(tid)
+        await Workspace.findByIdAndDelete(wsId)
         await User.findByIdAndDelete(uid)
         await User.findByIdAndDelete(rogueUid)
-        await Tag.findByIdAndDelete(tid)
     })
 })

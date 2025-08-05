@@ -15,18 +15,32 @@ import user from "./../../app/controller/user.js"
 
 const Item = mongoose.model("Item")
 const User = mongoose.model("User")
+const Workspace = mongoose.model("Workspace")
+
+const TEST_PREFIX = "test-ctrl-preview-"
 
 describe("item preview controller", () => {
     let userId
+    let wsId
 
     before(async () => {
         await connectDbAsync()
 
         const createdUser = await user.create({
-            username: "test-ctrl-preview-FrostyDragonfly",
+            username: `${TEST_PREFIX}FrostyDragonfly`,
             password: "Passw0rdM@n1@",
         })
         userId = createdUser.id
+        const createdWorkspace = await Workspace.create({
+            name: `${TEST_PREFIX}The Stash!`,
+            members: [
+                {
+                    user: userId,
+                    permissionLevel: "admin",
+                },
+            ],
+        })
+        wsId = createdWorkspace.id
     })
 
     describe("#getBasicMetadata", () => {
@@ -55,10 +69,10 @@ describe("item preview controller", () => {
         it("should fetch image metadata infos", async () => {
             const created = await item.create({
                 url: "http://127.0.0.1:3388/stellarvoyage/index.html",
-                name: "test-ctrl-preview-StellarVoyage",
+                name: `${TEST_PREFIX}StellarVoyage`,
                 description:
                     "Embark on a cosmic journey with StellarVoyage - your portal to the wonders of space exploration.",
-                owner: userId,
+                workspace: wsId,
             })
 
             const refs = await saveImageMetadata(created.id)
@@ -70,9 +84,9 @@ describe("item preview controller", () => {
         it("should return no metadata images", async () => {
             const created = await item.create({
                 url: "http://127.0.0.1:3388/coffeelovers-no-meta/index.html",
-                name: "test-ctrl-preview-Coffee Lover's Haven",
+                name: `${TEST_PREFIX}Coffee Lover's Haven`,
                 description: "Welcome to the World of Coffee",
-                owner: userId,
+                workspace: wsId,
             })
 
             const refs = await saveImageMetadata(created.id)
@@ -84,10 +98,10 @@ describe("item preview controller", () => {
         it("should not return invalid metadata images", async () => {
             const created = await item.create({
                 url: "http://127.0.0.1:3388/mountainexploration-invalid-meta/index.html",
-                name: "test-ctrl-preview-Mountain Exploration",
+                name: `${TEST_PREFIX}Mountain Exploration`,
                 description:
                     "Embark on an adventure to explore majestic mountains and breathtaking landscapes.",
-                owner: userId,
+                workspace: wsId,
             })
 
             const refs = await saveImageMetadata(created.id)
@@ -104,6 +118,7 @@ describe("item preview controller", () => {
     })
 
     after(async () => {
+        await Workspace.findByIdAndDelete(wsId)
         await User.findByIdAndDelete(userId)
     })
 })
