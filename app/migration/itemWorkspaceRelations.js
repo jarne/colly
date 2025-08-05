@@ -13,11 +13,13 @@ export const associateItemsAndTags = async () => {
         owner: { $exists: true },
     })
     const tagOwners = await Tag.distinct("owner", { owner: { $exists: true } })
-    const allOwners = [...itemOwners, ...tagOwners]
+    const allOwnerIds = Array.from(
+        new Set([...itemOwners, ...tagOwners].map((id) => id.toString()))
+    )
 
     // create a default workspace for each owner
     const ownerWorkspaceMap = {}
-    for (const ownerId of allOwners) {
+    for (const ownerId of allOwnerIds) {
         const workspace = await Workspace.create({
             name: `Default Workspace`,
             members: [
@@ -27,7 +29,7 @@ export const associateItemsAndTags = async () => {
                 },
             ],
         })
-        ownerWorkspaceMap[ownerId.toString()] = workspace._id
+        ownerWorkspaceMap[ownerId] = workspace._id
     }
 
     // associate items with the default workspace
