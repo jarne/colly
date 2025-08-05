@@ -84,14 +84,6 @@ const CreateWorkspaceModal = forwardRef(
             setWsName(e.target.value)
         }
         const handleMemberPermLevelChange = (e, uid) => {
-            if (uid === userId) {
-                toast.error(
-                    "Cannot change current user's permissions in workspace!"
-                )
-
-                return
-            }
-
             const changedMembers = members.map((member) => {
                 if (member.user._id === uid) {
                     member.permissionLevel = e.target.value
@@ -109,12 +101,6 @@ const CreateWorkspaceModal = forwardRef(
         }
 
         const handleMemberRemoveClick = (uid) => {
-            if (uid === userId) {
-                toast.error("Cannot remove current user from workspace!")
-
-                return
-            }
-
             const changedMembers = members.filter((member) => {
                 return member.user._id !== uid
             })

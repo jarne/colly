@@ -49,6 +49,13 @@ WorkspaceSchema.path("members").validate((members) => {
 }, "duplicate members in workspace")
 
 /**
+ * Validate workspace to have at least one admin member
+ */
+WorkspaceSchema.path("members").validate((members) => {
+    return members.some((member) => member.permissionLevel === "admin")
+}, "at least one admin member is required")
+
+/**
  * Delete items and tags associated to workspace when deleting it
  */
 WorkspaceSchema.pre("findOneAndDelete", async function () {
