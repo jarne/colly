@@ -58,11 +58,17 @@ ItemSchema.index({
     description: "text",
 })
 
+ItemSchema.pre("save", function () {
+    this.$locals.wasNew = this.isNew
+})
+
 /**
  * Generate preview after saving item
  */
-ItemSchema.post("save", async (item) => {
-    trySaveImageMetadata(item.id)
+ItemSchema.post("save", function (item) {
+    if (this.$locals.wasNew) {
+        trySaveImageMetadata(item.id)
+    }
 })
 
 export default mongoose.model("Item", ItemSchema)
