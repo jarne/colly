@@ -10,6 +10,11 @@ const filterSchema = z
         name: z.string().optional(),
         description: z.string().optional(),
         tags: z.string().optional(),
+        $text: z
+            .object({
+                $search: z.string(),
+            })
+            .optional(),
     })
     .optional()
 

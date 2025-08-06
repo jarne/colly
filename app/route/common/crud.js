@@ -190,7 +190,11 @@ const crud = (
             ),
             sort: sanitizeSchemas.sortSchema.safeParse(req.query.sort),
             select: sanitizeSchemas.selectSchema.safeParse(req.query.select),
-            limit: sanitizeSchemas.limitSchema.safeParse(req.query.limit),
+            limit: sanitizeSchemas.limitSchema.safeParse(
+                req.query.limit !== undefined
+                    ? Number(req.query.limit)
+                    : undefined
+            ),
         }
 
         if (!sanitizedQuery.filter.success) {
