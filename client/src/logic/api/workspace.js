@@ -5,7 +5,6 @@
 import qs from "qs"
 
 import InternalAPI from "./../../util/InternalAPI"
-import { checkRequestSuccessful } from "./util/requestHelper"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
 
 /**
@@ -71,6 +70,10 @@ export const updateWorkspace = async (id, workspace, accessToken) => {
         switch (res.error.code) {
             case "validation_error":
                 throw new Error(generateValidationErrorMessage(res.error))
+            case "insufficient_permission":
+                throw new Error(
+                    "You do not have permission to update this workspace!"
+                )
             default:
                 throw new Error("Unknown error!")
         }
@@ -102,6 +105,10 @@ export const deleteWorkspace = async (id, accessToken) => {
 
     if (res.error) {
         switch (res.error.code) {
+            case "insufficient_permission":
+                throw new Error(
+                    "You do not have permission to delete this workspace!"
+                )
             default:
                 throw new Error("Unknown error!")
         }
@@ -128,11 +135,10 @@ export const findWorkspaces = async (query, accessToken) => {
             },
         }
     )
-    checkRequestSuccessful(resp)
     const res = await resp.json()
 
     if (res.error) {
-        throw new Error(res.error_code)
+        throw new Error(res.error.code)
     }
 
     return res.data

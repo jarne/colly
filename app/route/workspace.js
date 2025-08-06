@@ -9,14 +9,15 @@ import itemRoutes from "./item.js"
 import controller from "./../controller/workspace.js"
 import userController from "./../controller/user.js"
 import crudRoutes, { CHECK_USER_PERMISSIONS } from "./common/crud.js"
+import sanitizeSchemas from "./sanitize/workspace.js"
 import { handleError } from "./../routes.js"
 
 const router = express.Router()
 
-const { create, update, del, find } = crudRoutes(
-    controller,
-    CHECK_USER_PERMISSIONS
-)
+const { create, update, del, find } = crudRoutes(controller, {
+    permissionChecks: CHECK_USER_PERMISSIONS,
+    sanitizeSchemas,
+})
 
 /**
  * Create new workspace

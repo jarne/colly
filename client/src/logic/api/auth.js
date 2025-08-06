@@ -31,7 +31,7 @@ export const login = async (username, password) => {
     }
 
     if (res.error) {
-        switch (res.error_code) {
+        switch (res.error.code) {
             case "validation_error":
                 throw new Error(generateValidationErrorMessage(res.error))
             case "invalid_credentials":
@@ -73,7 +73,7 @@ export const getMe = async (accessToken) => {
     const res = await resp.json()
 
     if (res.error) {
-        throw new Error(res.error_code)
+        throw new Error(res.error.code)
     }
 
     return res.user

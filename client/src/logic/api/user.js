@@ -5,7 +5,6 @@
 import qs from "qs"
 
 import InternalAPI from "./../../util/InternalAPI"
-import { checkRequestSuccessful } from "./util/requestHelper"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
 
 /**
@@ -122,11 +121,10 @@ export const findUsers = async (query, accessToken) => {
             Authorization: `Bearer ${accessToken}`,
         },
     })
-    checkRequestSuccessful(resp)
     const res = await resp.json()
 
     if (res.error) {
-        throw new Error(res.error_code)
+        throw new Error(res.error.code)
     }
 
     return res.data

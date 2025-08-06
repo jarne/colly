@@ -89,6 +89,10 @@ const CreateItemModal = forwardRef(function CreateItemModal(props, ref) {
         setItemUrl(e.target.value)
     }
     const handleItemUrlBlur = async (e) => {
+        if (e.target.value === "") {
+            return
+        }
+
         if (itemName !== "" && itemDescription !== "") {
             return
         }

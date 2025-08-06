@@ -107,12 +107,16 @@ const CreateWorkspaceModal = forwardRef(
             setMembers(changedMembers)
         }
         const handleMemberAddClick = async () => {
+            if (addUsername === "") {
+                toast.error("Username cannot be empty!")
+                return
+            }
+
             const duplicate = members.some((member) => {
                 return member.user.username === addUsername
             })
             if (duplicate) {
                 toast.error("User is already a member of the workspace!")
-
                 return
             }
 
@@ -121,7 +125,6 @@ const CreateWorkspaceModal = forwardRef(
                 userData = await getUserByUsername(addUsername, accessToken)
             } catch (ex) {
                 toast.error(ex.message)
-
                 return
             }
 
@@ -175,7 +178,10 @@ const CreateWorkspaceModal = forwardRef(
             handleClose()
 
             loadWorkspaces({
-                populate: "members.user",
+                populate: {
+                    path: "members.user",
+                    select: "username",
+                },
             })
 
             if (createdId) {
@@ -197,7 +203,10 @@ const CreateWorkspaceModal = forwardRef(
             handleClose()
 
             loadWorkspaces({
-                populate: "members.user",
+                populate: {
+                    path: "members.user",
+                    select: "username",
+                },
             })
             navigate("/")
         }

@@ -5,7 +5,6 @@
 import qs from "qs"
 
 import InternalAPI from "./../../util/InternalAPI"
-import { checkRequestSuccessful } from "./util/requestHelper"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
 
 /**
@@ -39,6 +38,10 @@ export const createItem = async (item, workspace, accessToken) => {
                 throw new Error(generateValidationErrorMessage(res.error))
             case "duplicate_entry":
                 throw new Error("An item with this name already exists!")
+            case "insufficient_permission":
+                throw new Error(
+                    "You do not have permission to create items in this workspace!"
+                )
             default:
                 throw new Error("Unknown error!")
         }
@@ -75,6 +78,10 @@ export const updateItem = async (id, item, workspace, accessToken) => {
         switch (res.error.code) {
             case "validation_error":
                 throw new Error(generateValidationErrorMessage(res.error))
+            case "insufficient_permission":
+                throw new Error(
+                    "You do not have permission to update this item!"
+                )
             default:
                 throw new Error("Unknown error!")
         }
@@ -107,6 +114,10 @@ export const deleteItem = async (id, workspace, accessToken) => {
 
     if (res.error) {
         switch (res.error.code) {
+            case "insufficient_permission":
+                throw new Error(
+                    "You do not have permission to delete this item!"
+                )
             default:
                 throw new Error("Unknown error!")
         }
@@ -134,11 +145,10 @@ export const findItems = async (query, workspace, accessToken) => {
             },
         }
     )
-    checkRequestSuccessful(resp)
     const res = await resp.json()
 
     if (res.error) {
-        throw new Error(res.error_code)
+        throw new Error(res.error.code)
     }
 
     return res.data
@@ -152,28 +162,23 @@ export const findItems = async (query, workspace, accessToken) => {
  * @returns {object} metadata preview info (page title and description)
  */
 export const generatePreview = async (url, workspace, accessToken) => {
-    let res
-    try {
-        const resp = await fetch(
-            `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/item/meta`,
-            {
-                method: "POST",
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    url,
-                }),
-            }
-        )
-        res = await resp.json()
-    } catch {
-        throw new Error()
-    }
+    const resp = await fetch(
+        `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/item/meta`,
+        {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                url,
+            }),
+        }
+    )
+    const res = await resp.json()
 
     if (res.error) {
-        throw new Error()
+        throw new Error(res.error.code)
     }
 
     return res.meta
@@ -186,14 +191,32 @@ export const generatePreview = async (url, workspace, accessToken) => {
  * @param {string} accessToken API access token
  */
 export const updateMetaImage = async (id, workspace, accessToken) => {
-    const resp = await fetch(
-        `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/item/${id}/updateMetaImage`,
-        {
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-            },
+    let res
+    try {
+        const resp = await fetch(
+            `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/item/${id}/updateMetaImage`,
+            {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            }
+        )
+        if (resp.status !== 204) {
+            res = await resp.json()
         }
-    )
-    checkRequestSuccessful(resp)
+    } catch {
+        throw new Error("Error while communicating with the server!")
+    }
+
+    if (res && res.error) {
+        switch (res.error.code) {
+            case "insufficient_permission":
+                throw new Error(
+                    "You do not have permission to update the meta image of this item!"
+                )
+            default:
+                throw new Error("Unknown error!")
+        }
+    }
 }

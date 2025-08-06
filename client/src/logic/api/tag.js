@@ -5,7 +5,6 @@
 import qs from "qs"
 
 import InternalAPI from "./../../util/InternalAPI"
-import { checkRequestSuccessful } from "./util/requestHelper"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
 
 /**
@@ -39,6 +38,10 @@ export const createTag = async (tag, workspace, accessToken) => {
                 throw new Error(generateValidationErrorMessage(res.error))
             case "duplicate_entry":
                 throw new Error("A tag with this name already exists!")
+            case "insufficient_permission":
+                throw new Error(
+                    "You do not have permission to create tags in this workspace!"
+                )
             default:
                 throw new Error("Unknown error!")
         }
@@ -75,6 +78,10 @@ export const updateTag = async (id, tag, workspace, accessToken) => {
         switch (res.error.code) {
             case "validation_error":
                 throw new Error(generateValidationErrorMessage(res.error))
+            case "insufficient_permission":
+                throw new Error(
+                    "You do not have permission to update this tag!"
+                )
             default:
                 throw new Error("Unknown error!")
         }
@@ -107,6 +114,10 @@ export const deleteTag = async (id, workspace, accessToken) => {
 
     if (res.error) {
         switch (res.error.code) {
+            case "insufficient_permission":
+                throw new Error(
+                    "You do not have permission to delete this tag!"
+                )
             default:
                 throw new Error("Unknown error!")
         }
@@ -134,11 +145,10 @@ export const findTags = async (query, workspace, accessToken) => {
             },
         }
     )
-    checkRequestSuccessful(resp)
     const res = await resp.json()
 
     if (res.error) {
-        throw new Error(res.error_code)
+        throw new Error(res.error.code)
     }
 
     return res.data
