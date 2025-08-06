@@ -197,6 +197,7 @@ const crud = (
             return res.status(400).json({
                 error: {
                     code: "invalid_filter_query",
+                    issues: sanitizedQuery.filter.error.issues,
                 },
             })
         }
@@ -204,6 +205,7 @@ const crud = (
             return res.status(400).json({
                 error: {
                     code: "invalid_populate_query",
+                    issues: sanitizedQuery.populate.error.issues,
                 },
             })
         }
@@ -211,6 +213,7 @@ const crud = (
             return res.status(400).json({
                 error: {
                     code: "invalid_sort_query",
+                    issues: sanitizedQuery.sort.error.issues,
                 },
             })
         }
@@ -218,6 +221,7 @@ const crud = (
             return res.status(400).json({
                 error: {
                     code: "invalid_select_query",
+                    issues: sanitizedQuery.select.error.issues,
                 },
             })
         }
@@ -225,6 +229,7 @@ const crud = (
             return res.status(400).json({
                 error: {
                     code: "invalid_limit_query",
+                    issues: sanitizedQuery.limit.error.issues,
                 },
             })
         }

@@ -4,10 +4,12 @@
 
 import * as z from "zod"
 
-const filterSchema = z.object({
-    username: z.string().optional(),
-    isAdmin: z.boolean().optional(),
-})
+const filterSchema = z
+    .object({
+        username: z.string().optional(),
+        isAdmin: z.boolean().optional(),
+    })
+    .optional()
 
 const populateSchema = z.object({}).optional()
 

@@ -4,9 +4,11 @@
 
 import * as z from "zod"
 
-const filterSchema = z.object({
-    name: z.string().optional(),
-})
+const filterSchema = z
+    .object({
+        name: z.string().optional(),
+    })
+    .optional()
 
 const populateSchema = z.object({}).optional()
 

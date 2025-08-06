@@ -4,12 +4,14 @@
 
 import * as z from "zod"
 
-const filterSchema = z.object({
-    url: z.string().optional(),
-    name: z.string().optional(),
-    description: z.string().optional(),
-    tags: z.string().optional(),
-})
+const filterSchema = z
+    .object({
+        url: z.string().optional(),
+        name: z.string().optional(),
+        description: z.string().optional(),
+        tags: z.string().optional(),
+    })
+    .optional()
 
 const populateSchema = z.object({}).optional()
 
