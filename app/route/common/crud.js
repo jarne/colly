@@ -3,19 +3,23 @@
  */
 
 import { handleError } from "./../../routes.js"
-import { parseFieldsArray } from "./../util/queryParser.js"
 import workspace from "./../../controller/workspace.js"
 
+export const NO_PERMISSION_CHECKS = 0
 export const CHECK_USER_PERMISSIONS = 1
 export const CHECK_WORKSPACE_PERMISSIONS = 2
 
 /**
  * Common CRUD routes
  * @param {object} controller Controller for model
- * @param {number} permissionChecks Use workspace permission checks or user and owner relations for controller
+ * @param {number} permissionChecks use workspace permission checks or user and owner relations for controller
+ * @param {object} sanitizeSchemas schemas to sanitize query input in find operation
  * @returns {Function} CRUD functions
  */
-const crud = (controller, permissionChecks = -1) => {
+const crud = (
+    controller,
+    { permissionChecks = NO_PERMISSION_CHECKS, sanitizeSchemas } = {}
+) => {
     /**
      * Create operation
      * @param {object} req Request
@@ -179,6 +183,52 @@ const crud = (controller, permissionChecks = -1) => {
      * @returns {object} Result
      */
     const find = async (req, res) => {
+        const sanitizedQuery = {
+            filter: sanitizeSchemas.filterSchema.safeParse(req.query.filter),
+            populate: sanitizeSchemas.populateSchema.safeParse(
+                req.query.populate
+            ),
+            sort: sanitizeSchemas.sortSchema.safeParse(req.query.sort),
+            select: sanitizeSchemas.selectSchema.safeParse(req.query.select),
+            limit: sanitizeSchemas.limitSchema.safeParse(req.query.limit),
+        }
+
+        if (!sanitizedQuery.filter.success) {
+            return res.status(400).json({
+                error: {
+                    code: "invalid_filter_query",
+                },
+            })
+        }
+        if (!sanitizedQuery.populate.success) {
+            return res.status(400).json({
+                error: {
+                    code: "invalid_populate_query",
+                },
+            })
+        }
+        if (!sanitizedQuery.sort.success) {
+            return res.status(400).json({
+                error: {
+                    code: "invalid_sort_query",
+                },
+            })
+        }
+        if (!sanitizedQuery.select.success) {
+            return res.status(400).json({
+                error: {
+                    code: "invalid_select_query",
+                },
+            })
+        }
+        if (!sanitizedQuery.limit.success) {
+            return res.status(400).json({
+                error: {
+                    code: "invalid_limit_query",
+                },
+            })
+        }
+
         let filter
         if (permissionChecks === CHECK_USER_PERMISSIONS) {
             filter = {
@@ -193,7 +243,7 @@ const crud = (controller, permissionChecks = -1) => {
                             },
                         },
                     },
-                    req.query.filter || {},
+                    sanitizedQuery.filter.data || {},
                 ],
             }
         } else if (permissionChecks === CHECK_WORKSPACE_PERMISSIONS) {
@@ -213,21 +263,21 @@ const crud = (controller, permissionChecks = -1) => {
                             $eq: wsId,
                         },
                     },
-                    req.query.filter || {},
+                    sanitizedQuery.filter.data || {},
                 ],
             }
         } else {
-            filter = req.query.filter
+            filter = sanitizedQuery.filter.data
         }
 
         let objs
         try {
             objs = await controller.find(
                 filter,
-                parseFieldsArray(req.query.populate),
-                req.query.sort,
-                parseFieldsArray(req.query.select),
-                req.query.limit
+                sanitizedQuery.populate.data,
+                sanitizedQuery.sort.data,
+                sanitizedQuery.select.data,
+                sanitizedQuery.limit.data
             )
         } catch (e) {
             return handleError(e, res)

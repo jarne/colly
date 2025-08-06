@@ -6,15 +6,16 @@ import express from "express"
 
 import controller from "./../controller/tag.js"
 import crudRoutes, { CHECK_WORKSPACE_PERMISSIONS } from "./common/crud.js"
+import sanitizeSchemas from "./sanitize/tag.js"
 
 const router = express.Router({
     mergeParams: true,
 })
 
-const { create, update, del, find } = crudRoutes(
-    controller,
-    CHECK_WORKSPACE_PERMISSIONS
-)
+const { create, update, del, find } = crudRoutes(controller, {
+    permissionChecks: CHECK_WORKSPACE_PERMISSIONS,
+    sanitizeSchemas,
+})
 
 /**
  * Create new tag

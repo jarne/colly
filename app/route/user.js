@@ -6,10 +6,13 @@ import express from "express"
 
 import controller from "./../controller/user.js"
 import crudRoutes from "./common/crud.js"
+import sanitizeSchemas from "./sanitize/user.js"
 
 const router = express.Router()
 
-const { create, update, del, find } = crudRoutes(controller)
+const { create, update, del, find } = crudRoutes(controller, {
+    sanitizeSchemas,
+})
 
 /**
  * Create new user

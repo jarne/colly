@@ -175,7 +175,10 @@ const CreateWorkspaceModal = forwardRef(
             handleClose()
 
             loadWorkspaces({
-                populate: "members.user",
+                populate: {
+                    path: "members.user",
+                    select: "username",
+                },
             })
 
             if (createdId) {
@@ -197,7 +200,10 @@ const CreateWorkspaceModal = forwardRef(
             handleClose()
 
             loadWorkspaces({
-                populate: "members.user",
+                populate: {
+                    path: "members.user",
+                    select: "username",
+                },
             })
             navigate("/")
         }
