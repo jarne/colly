@@ -61,7 +61,7 @@ describe("auth router", () => {
                 })
 
             expect(res.status).to.eq(401)
-            expect(res.body.error).to.be.true
+            expect(res.body.error).to.be.an("object")
             expect(res.body.error.code).to.eq("invalid_credentials")
         })
 
@@ -75,7 +75,7 @@ describe("auth router", () => {
                 })
 
             expect(res.status).to.eq(401)
-            expect(res.body.error).to.be.true
+            expect(res.body.error).to.be.an("object")
             expect(res.body.error.code).to.eq("invalid_credentials")
         })
     })
