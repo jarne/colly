@@ -138,7 +138,7 @@ export const findWorkspaces = async (query, accessToken) => {
     const res = await resp.json()
 
     if (res.error) {
-        throw new Error(res.error_code)
+        throw new Error(res.error.code)
     }
 
     return res.data

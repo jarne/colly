@@ -148,7 +148,7 @@ export const findItems = async (query, workspace, accessToken) => {
     const res = await resp.json()
 
     if (res.error) {
-        throw new Error(res.error_code)
+        throw new Error(res.error.code)
     }
 
     return res.data
@@ -178,7 +178,7 @@ export const generatePreview = async (url, workspace, accessToken) => {
     const res = await resp.json()
 
     if (res.error) {
-        throw new Error(res.error_code)
+        throw new Error(res.error.code)
     }
 
     return res.meta

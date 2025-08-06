@@ -62,7 +62,7 @@ describe("auth router", () => {
 
             expect(res.status).to.eq(401)
             expect(res.body.error).to.be.true
-            expect(res.body.error_code).to.eq("invalid_credentials")
+            expect(res.body.error.code).to.eq("invalid_credentials")
         })
 
         it("should fail auth with non-existing user", async () => {
@@ -76,7 +76,7 @@ describe("auth router", () => {
 
             expect(res.status).to.eq(401)
             expect(res.body.error).to.be.true
-            expect(res.body.error_code).to.eq("invalid_credentials")
+            expect(res.body.error.code).to.eq("invalid_credentials")
         })
     })
 

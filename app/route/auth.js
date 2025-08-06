@@ -21,16 +21,18 @@ router.post("/login", (req, res) => {
         if (err) {
             logger.error("auth_internal_error", { error: err.message })
             return res.status(400).json({
-                error: true,
-                error_code: "internal_error",
+                error: {
+                    code: "internal_error",
+                },
             })
         }
 
         if (!user) {
             logger.warn("auth_user_not_found")
             return res.status(401).json({
-                error: true,
-                error_code: "invalid_credentials",
+                error: {
+                    code: "invalid_credentials",
+                },
             })
         }
 
@@ -40,8 +42,9 @@ router.post("/login", (req, res) => {
                     error: err.message,
                 })
                 return res.status(500).json({
-                    error: true,
-                    error_code: "internal_error",
+                    error: {
+                        code: "internal_error",
+                    },
                 })
             }
 
