@@ -31,7 +31,7 @@
     },
     "dependencies": {
         "@uidotdev/usehooks": "^2.4",
-        "@vitejs/plugin-react": "^4.3.4",
+        "@vitejs/plugin-react": "^5.0.0",
         "bootstrap": "^5.3",
         "bootstrap-icons": "^1.11",
         "qs": "^6.11.2",
