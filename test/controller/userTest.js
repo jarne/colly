@@ -10,6 +10,8 @@ import controller from "./../../app/controller/user.js"
 
 const User = mongoose.model("User")
 
+const TEST_PREFIX = "test-ctrl-user-"
+
 describe("user controller", () => {
     before(async () => {
         await connectDbAsync()
@@ -18,17 +20,17 @@ describe("user controller", () => {
     describe("#create", () => {
         it("should create a new user", async () => {
             const user = await controller.create({
-                username: "test-ctrl-user-everyday-joe42",
+                username: `${TEST_PREFIX}everyday-joe42`,
                 password: "5tr0ngP@ssw0rd!",
             })
 
             expect(user.id).to.be.not.null
-            expect(user.username).to.equal("test-ctrl-user-everyday-joe42")
+            expect(user.username).to.equal(`${TEST_PREFIX}everyday-joe42`)
         })
 
         it("should create an admin user", async () => {
             const user = await controller.create({
-                username: "test-ctrl-user-regular_jane23",
+                username: `${TEST_PREFIX}regular_jane23`,
                 password: "summer2023",
                 isAdmin: true,
             })
@@ -40,7 +42,7 @@ describe("user controller", () => {
         it("throws error with invalid username", async () => {
             try {
                 await controller.create({
-                    username: "test-ctrl-user-average _ user88 $!",
+                    username: `${TEST_PREFIX}average _ user88 $!`,
                     password: "letmein456",
                 })
             } catch (e) {
@@ -52,20 +54,20 @@ describe("user controller", () => {
     describe("#update", () => {
         it("should update a created user", async () => {
             const user = await controller.create({
-                username: "test-ctrl-user-plain-pete77",
+                username: `${TEST_PREFIX}plain-pete77`,
                 password: "iloveyou!",
             })
 
-            expect(user.username).to.equal("test-ctrl-user-plain-pete77")
+            expect(user.username).to.equal(`${TEST_PREFIX}plain-pete77`)
             expect(user.isAdmin).to.be.false
 
             const updatedUser = await controller.update(user.id, {
-                username: "test-ctrl-user-common.chris56",
+                username: `${TEST_PREFIX}common.chris56`,
                 isAdmin: true,
             })
 
             expect(updatedUser.username).to.equal(
-                "test-ctrl-user-common.chris56"
+                `${TEST_PREFIX}common.chris56`
             )
             expect(updatedUser.isAdmin).to.be.true
         })
@@ -73,7 +75,7 @@ describe("user controller", () => {
         it("throws error for non-existing user", async () => {
             try {
                 await controller.update("6675932d4f2094eb2ec739ad", {
-                    username: "test-ctrl-user-standard_sarah31",
+                    username: `${TEST_PREFIX}standard_sarah31`,
                     isAdmin: true,
                 })
             } catch (e) {
@@ -85,7 +87,7 @@ describe("user controller", () => {
     describe("#del", () => {
         it("should delete the new user", async () => {
             const user = await controller.create({
-                username: "test-ctrl-user-typical.tom99",
+                username: `${TEST_PREFIX}typical.tom99`,
                 password: "P@ssw0rd",
             })
 
@@ -106,7 +108,7 @@ describe("user controller", () => {
 
         it("should return created user list", async () => {
             await controller.create({
-                username: "test-ctrl-user-regular-rachel74",
+                username: `${TEST_PREFIX}regular-rachel74`,
                 password: "welcome2024",
             })
 
@@ -115,7 +117,7 @@ describe("user controller", () => {
             expect(
                 users.some(
                     (usrObj) =>
-                        usrObj.username === "test-ctrl-user-regular-rachel74"
+                        usrObj.username === `${TEST_PREFIX}regular-rachel74`
                 )
             ).to.be.true
         })

@@ -11,7 +11,9 @@ import user from "./../../app/controller/user.js"
 
 const User = mongoose.model("User")
 
-const CORRECT_USER = "test-route-auth-the_rockstar22"
+const TEST_PREFIX = "test-route-auth-"
+
+const CORRECT_USER = `${TEST_PREFIX}the_rockstar22`
 const CORRECT_PASSWORD = "C0mpl3xP@55"
 
 describe("auth router", () => {
@@ -70,7 +72,7 @@ describe("auth router", () => {
                 .post("/api/auth/login")
                 .set("Content-Type", "application/json")
                 .send({
-                    username: "test-route-auth-coding_ninja55",
+                    username: `${TEST_PREFIX}coding_ninja55`,
                     password: CORRECT_PASSWORD,
                 })
 
