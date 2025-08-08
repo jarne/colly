@@ -3,10 +3,12 @@
  * associated to a workspace
  */
 
-import Item from "./../model/item.js"
-import Tag from "./../model/tag.js"
-import Workspace from "./../model/workspace.js"
+import mongoose from "mongoose"
 import logger from "./../util/logger.js"
+
+const Item = mongoose.model("Item")
+const Tag = mongoose.model("Tag")
+const Workspace = mongoose.model("Workspace")
 
 export const associateItemsAndTags = async () => {
     const itemOwners = await Item.distinct("owner", {

@@ -2,10 +2,10 @@
  * Colly | item controller
  */
 
+import mongoose from "mongoose"
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner"
 import { GetObjectCommand } from "@aws-sdk/client-s3"
 
-import Item from "./../model/item.js"
 import crudController from "./common/crud.js"
 import workspace from "./workspace.js"
 import { getS3StorageKey } from "./itemPreview.js"
@@ -15,6 +15,7 @@ import { s3Client } from "./../util/s3Storage.js"
 const TYPE_LOGO = "logo"
 const TYPE_IMAGE = "image"
 
+const Item = mongoose.model("Item")
 const crud = crudController(Item)
 
 /**
