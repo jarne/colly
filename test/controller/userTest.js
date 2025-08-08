@@ -123,6 +123,19 @@ describe("user controller", () => {
         })
     })
 
+    describe("#generateToken", () => {
+        it("should generate a token for a user", async () => {
+            const user = await controller.create({
+                username: `${TEST_PREFIX}ordinary.oliver12`,
+                password: "soccer123",
+            })
+
+            const token = await controller.generateToken(user)
+
+            expect(token).to.be.a("string")
+        })
+    })
+
     afterEach(async () => {
         await User.findOneAndDelete({
             username: /^test-ctrl-user-.*/,
