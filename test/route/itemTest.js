@@ -115,7 +115,7 @@ describe("item router", () => {
     })
 
     describe("patch /api/workspace/:wsId/item/:id", () => {
-        it("should update the item", async () => {
+        it("should update an item", async () => {
             const created = await controller.create({
                 url: "https://example.com/lifestyle/eco/ecoeden",
                 name: `${TEST_PREFIX}EcoEden`,
@@ -174,7 +174,7 @@ describe("item router", () => {
     })
 
     describe("delete /api/workspace/:wsId/item/:id", () => {
-        it("should delete the created item", async () => {
+        it("should delete an item", async () => {
             const created = await controller.create({
                 url: "https://example.com/arts/crafty/canvas",
                 name: `${TEST_PREFIX}CraftyCanvas`,
@@ -209,6 +209,47 @@ describe("item router", () => {
 
             expect(res.status).to.eq(200)
             expect(res.body.data).to.be.an("array")
+        })
+    })
+
+    describe("post /api/workspace/:wsId/item/meta", () => {
+        it("should fetch the meta data of a web page", async () => {
+            const res = await request(app)
+                .post(`/api/workspace/${wsId}/item/meta`)
+                .set("Content-Type", "application/json")
+                .set("Authorization", `Bearer ${token}`)
+                .send({
+                    url: "http://127.0.0.1:3388/stellarvoyage/index.html",
+                })
+
+            expect(res.status).to.eq(200)
+            expect(res.body.meta.title).to.equal("StellarVoyage")
+            expect(res.body.meta.description).to.equal(
+                "Embark on a cosmic journey with StellarVoyage - your portal to the wonders of space exploration."
+            )
+        })
+    })
+
+    describe("post /api/workspace/:wsId/item/:id/updateMetaImage", () => {
+        it("should trigger a meta data update for an item", async () => {
+            const created = await controller.create({
+                url: "http://example.com/food/culinary/canvas",
+                name: `${TEST_PREFIX}CulinaryCanvas`,
+                description:
+                    "Discover a palette of flavors with mouthwatering recipes and culinary delights.",
+                workspace: wsId,
+                tags: [tid],
+            })
+
+            const res = await request(app)
+                .post(
+                    `/api/workspace/${wsId}/item/${created.id}/updateMetaImage`
+                )
+                .set("Content-Type", "application/json")
+                .set("Authorization", `Bearer ${token}`)
+                .send()
+
+            expect(res.status).to.eq(204)
         })
     })
 
