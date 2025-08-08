@@ -17,6 +17,7 @@ const TEST_PREFIX = "test-ctrl-tag-"
 
 describe("tag controller", () => {
     let userId
+    let wrongUserId
     let wsId
 
     before(async () => {
@@ -27,6 +28,11 @@ describe("tag controller", () => {
             password: "Qwerty12345!",
         })
         userId = createdUser.id
+        const wrongUser = await user.create({
+            username: `${TEST_PREFIX}gaming_master777`,
+            password: "Secure123$Password",
+        })
+        wrongUserId = wrongUser.id
         const createdWorkspace = await Workspace.create({
             name: `${TEST_PREFIX}EchoBin`,
             members: [
@@ -180,14 +186,10 @@ describe("tag controller", () => {
                 secondColor: "b0e0e6",
                 workspace: wsId,
             })
-            const wrongUser = await user.create({
-                username: `${TEST_PREFIX}gaming_master777`,
-                password: "Secure123$Password",
-            })
 
             const hasPermission = await controller.hasPermission(
                 tag.id,
-                wrongUser.id,
+                wrongUserId,
                 "read"
             )
 
@@ -214,5 +216,6 @@ describe("tag controller", () => {
     after(async () => {
         await Workspace.findByIdAndDelete(wsId)
         await User.findByIdAndDelete(userId)
+        await User.findByIdAndDelete(wrongUserId)
     })
 })
