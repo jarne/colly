@@ -66,7 +66,6 @@ describe("item router", () => {
         }
 
         if (mongoose.connection.readyState === 1) {
-            // eslint-disable-next-line no-extra-semi
             ;(async () => {
                 await prepare()
             })()
