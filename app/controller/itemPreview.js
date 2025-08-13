@@ -2,7 +2,6 @@
  * Colly | item preview controller
  */
 
-import mongoose from "mongoose"
 import metascraper from "metascraper"
 import mTitle from "metascraper-title"
 import mDescr from "metascraper-description"
@@ -12,6 +11,7 @@ import mImage from "metascraper-image"
 import { PutObjectCommand } from "@aws-sdk/client-s3"
 import { v4 as uuid } from "uuid"
 
+import Item from "./../model/item.js"
 import { parseImgAttribute } from "./../util/image.js"
 import { s3Client } from "./../util/s3Storage.js"
 import logger from "./../util/logger.js"
@@ -22,7 +22,6 @@ const TYPE_IMAGE = "image"
 const STORAGE_FILE_EXT = "webp"
 const STORAGE_MIME_TYPE = "image/webp"
 
-const Item = mongoose.model("Item")
 const ms = metascraper([mTitle(), mDescr(), mLogo(), mFavicon(), mImage()])
 
 /**
