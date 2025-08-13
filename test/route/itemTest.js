@@ -20,9 +20,12 @@ const TEST_PREFIX = "test-route-item-"
 
 describe("item router", () => {
     let uid
+    let token
     let wsId
     let tid
-    let token
+
+    let readUid
+    let readToken
 
     let rogueUid
     let rogueToken
@@ -35,6 +38,13 @@ describe("item router", () => {
             })
             uid = createdUser.id
             token = user.generateToken(createdUser)
+
+            const createdReadUser = await user.create({
+                username: `${TEST_PREFIX}SolarFlareWizard`,
+                password: "Secur1tyIsK3y!",
+            })
+            readUid = createdReadUser.id
+            readToken = user.generateToken(createdReadUser)
 
             const createdRogueUser = await user.create({
                 username: `${TEST_PREFIX}MidnightSerenade`,
@@ -49,6 +59,10 @@ describe("item router", () => {
                     {
                         user: uid,
                         permissionLevel: "admin",
+                    },
+                    {
+                        user: readUid,
+                        permissionLevel: "read",
                     },
                 ],
             })
@@ -94,6 +108,22 @@ describe("item router", () => {
             const newItem = await controller.getById(res.body.id)
 
             expect(newItem.name).to.equal(`${TEST_PREFIX}GadgetGalaxy`)
+        })
+
+        it("should fail with a permission error in foreign workspace", async () => {
+            const res = await request(app)
+                .post(`/api/workspace/${wsId}/item`)
+                .set("Content-Type", "application/json")
+                .set("Authorization", `Bearer ${rogueToken}`)
+                .send({
+                    url: "http://example.com/lifestyle/pets/petpawradise",
+                    name: `${TEST_PREFIX}PetPawradise`,
+                    description:
+                        "Spoil your furry friends with pet care tips, adorable pet photos, and heartwarming stories.",
+                })
+
+            expect(res.status).to.eq(403)
+            expect(res.body.error.code).to.eq("insufficient_permission")
         })
 
         it("should fail with a permission error using foreign tags", async () => {
@@ -197,6 +227,26 @@ describe("item router", () => {
 
             expect(deletedItem).to.be.null
         })
+
+        it("should throw a permission error deleting an item with read-only permissions", async () => {
+            const created = await controller.create({
+                url: "https://example.com/arts/crafty/canvas",
+                name: `${TEST_PREFIX}CraftyCanvas`,
+                description:
+                    "Unleash your creativity with DIY craft ideas and artistic inspirations.",
+                workspace: wsId,
+                tags: [tid],
+            })
+
+            const res = await request(app)
+                .delete(`/api/workspace/${wsId}/item/${created.id}`)
+                .set("Content-Type", "application/json")
+                .set("Authorization", `Bearer ${readToken}`)
+                .send()
+
+            expect(res.status).to.eq(403)
+            expect(res.body.error.code).to.eq("insufficient_permission")
+        })
     })
 
     describe("get /api/workspace/:wsId/item", () => {
@@ -263,6 +313,7 @@ describe("item router", () => {
         await Tag.findByIdAndDelete(tid)
         await Workspace.findByIdAndDelete(wsId)
         await User.findByIdAndDelete(uid)
+        await User.findByIdAndDelete(readUid)
         await User.findByIdAndDelete(rogueUid)
     })
 })
