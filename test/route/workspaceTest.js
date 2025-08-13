@@ -48,6 +48,19 @@ describe("workspace router", () => {
         mongoose.connection.on("connected", prepare)
     })
 
+    describe("get /api/workspace", () => {
+        it("should list all workspaces", async () => {
+            const res = await request(app)
+                .get(`/api/workspace`)
+                .set("Content-Type", "application/json")
+                .set("Authorization", `Bearer ${token}`)
+                .send()
+
+            expect(res.status).to.eq(200)
+            expect(res.body.data).to.be.an("array")
+        })
+    })
+
     describe("get /api/workspace/userByUsername/:username", () => {
         it("should return a user ID by its username", async () => {
             const res = await request(app)

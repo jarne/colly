@@ -5,6 +5,7 @@
 import { expect } from "chai"
 import request from "supertest"
 import mongoose from "mongoose"
+import qs from "qs"
 
 import app from "./../../appInit.js"
 import controller from "./../../app/controller/item.js"
@@ -259,6 +260,62 @@ describe("item router", () => {
 
             expect(res.status).to.eq(200)
             expect(res.body.data).to.be.an("array")
+        })
+
+        it("should find an item using a tag and search filter and sort query", async () => {
+            const created = await controller.create({
+                url: "http://example.com/home/dreamy/dwellings",
+                name: `${TEST_PREFIX}DreamyDwellings`,
+                description:
+                    "Transform your living space into a sanctuary of style and comfort with home decor inspiration.",
+                workspace: wsId,
+                tags: [tid],
+            })
+
+            const query = {
+                filter: {
+                    tags: tid,
+                    $text: {
+                        $search: "inspiration",
+                    },
+                },
+                sort: "-updatedAt",
+                limit: 2,
+            }
+            const queryStr = qs.stringify(query, {
+                encode: false,
+            })
+
+            const res = await request(app)
+                .get(`/api/workspace/${wsId}/item?${queryStr}`)
+                .set("Content-Type", "application/json")
+                .set("Authorization", `Bearer ${token}`)
+                .send()
+
+            expect(res.status).to.eq(200)
+            expect(
+                res.body.data.some(
+                    (item) => item._id === created._id.toString()
+                )
+            ).to.be.true
+        })
+
+        it("should throw an error with unallowed populate query", async () => {
+            const query = {
+                populate: "workspace",
+            }
+            const queryStr = qs.stringify(query, {
+                encode: false,
+            })
+
+            const res = await request(app)
+                .get(`/api/workspace/${wsId}/item?${queryStr}`)
+                .set("Content-Type", "application/json")
+                .set("Authorization", `Bearer ${token}`)
+                .send()
+
+            expect(res.status).to.eq(400)
+            expect(res.body.error.code).to.eq("invalid_populate_query")
         })
     })
 
