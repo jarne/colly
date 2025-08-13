@@ -12,8 +12,9 @@ export const CHECK_WORKSPACE_PERMISSIONS = 2
 /**
  * Common CRUD routes
  * @param {object} controller Controller for model
- * @param {number} permissionChecks use workspace permission checks or user and owner relations for controller
- * @param {object} sanitizeSchemas schemas to sanitize query input in find operation
+ * @param {object} options CRUD router options
+ * @param {number} options.permissionChecks use workspace permission checks or user and owner relations for controller
+ * @param {object} options.sanitizeSchemas schemas to sanitize query input in find operation
  * @returns {Function} CRUD functions
  */
 const crud = (

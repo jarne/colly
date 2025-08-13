@@ -11,7 +11,9 @@ import user from "./../../app/controller/user.js"
 
 const User = mongoose.model("User")
 
-const ADMIN_USER = "test-route-user-tech_guru88"
+const TEST_PREFIX = "test-route-user-"
+
+const ADMIN_USER = `${TEST_PREFIX}tech_guru88`
 const ADMIN_PASSWORD = "Pr0t3ctYourD@t@"
 
 describe("user router", () => {
@@ -31,7 +33,6 @@ describe("user router", () => {
         }
 
         if (mongoose.connection.readyState === 1) {
-            // eslint-disable-next-line no-extra-semi
             ;(async () => {
                 await prepare()
             })()
@@ -47,7 +48,7 @@ describe("user router", () => {
                 .set("Content-Type", "application/json")
                 .set("Authorization", `Bearer ${token}`)
                 .send({
-                    username: "test-route-user-tmp-gaming_master777",
+                    username: `${TEST_PREFIX}tmp-gaming_master777`,
                     password: "C9b3rS3cur!ty",
                 })
 
@@ -57,7 +58,7 @@ describe("user router", () => {
             const newUser = await user.getById(res.body.id)
 
             expect(newUser.username).to.equal(
-                "test-route-user-tmp-gaming_master777"
+                `${TEST_PREFIX}tmp-gaming_master777`
             )
         })
     })
@@ -65,7 +66,7 @@ describe("user router", () => {
     describe("patch /api/user/:id", () => {
         it("should update the user", async () => {
             const created = await user.create({
-                username: "test-route-user-tmp-happy_camper42",
+                username: `${TEST_PREFIX}tmp-happy_camper42`,
                 password: "Secur1tyIsK3y!",
             })
 
@@ -74,7 +75,7 @@ describe("user router", () => {
                 .set("Content-Type", "application/json")
                 .set("Authorization", `Bearer ${token}`)
                 .send({
-                    username: "test-route-user-tmp-art_enthusiast23",
+                    username: `${TEST_PREFIX}tmp-art_enthusiast23`,
                     isAdmin: true,
                 })
 
@@ -83,7 +84,7 @@ describe("user router", () => {
             const updatedUser = await user.getById(res.body.id)
 
             expect(updatedUser.username).to.equal(
-                "test-route-user-tmp-art_enthusiast23"
+                `${TEST_PREFIX}tmp-art_enthusiast23`
             )
             expect(updatedUser.isAdmin).to.be.true
         })
@@ -92,7 +93,7 @@ describe("user router", () => {
     describe("delete /api/user/:id", () => {
         it("should delete the created user", async () => {
             const created = await user.create({
-                username: "test-route-user-tmp-ThunderPanda23",
+                username: `${TEST_PREFIX}tmp-ThunderPanda23`,
                 password: "Hack3rPr00fP@ss",
             })
 

@@ -17,6 +17,7 @@ const TEST_PREFIX = "test-ctrl-tag-"
 
 describe("tag controller", () => {
     let userId
+    let wrongUserId
     let wsId
 
     before(async () => {
@@ -27,6 +28,11 @@ describe("tag controller", () => {
             password: "Qwerty12345!",
         })
         userId = createdUser.id
+        const wrongUser = await user.create({
+            username: `${TEST_PREFIX}gaming_master777`,
+            password: "Secure123$Password",
+        })
+        wrongUserId = wrongUser.id
         const createdWorkspace = await Workspace.create({
             name: `${TEST_PREFIX}EchoBin`,
             members: [
@@ -155,6 +161,52 @@ describe("tag controller", () => {
         })
     })
 
+    describe("#hasPermission", () => {
+        it("should return true for valid permission", async () => {
+            const tag = await controller.create({
+                name: `${TEST_PREFIX}healthy-eating-habits`,
+                firstColor: "0000ff",
+                secondColor: "ff00ff",
+                workspace: wsId,
+            })
+
+            const hasPermission = await controller.hasPermission(
+                tag.id,
+                userId,
+                "admin"
+            )
+
+            expect(hasPermission).to.be.true
+        })
+
+        it("should return false for invalid permission", async () => {
+            const tag = await controller.create({
+                name: `${TEST_PREFIX}coding-best-practices`,
+                firstColor: "556b2f",
+                secondColor: "b0e0e6",
+                workspace: wsId,
+            })
+
+            const hasPermission = await controller.hasPermission(
+                tag.id,
+                wrongUserId,
+                "read"
+            )
+
+            expect(hasPermission).to.be.false
+        })
+
+        it("should return false for non-existing tag", async () => {
+            const hasPermission = await controller.hasPermission(
+                "68931a72227b1575f186cad1",
+                userId,
+                "admin"
+            )
+
+            expect(hasPermission).to.be.false
+        })
+    })
+
     afterEach(async () => {
         await Tag.findOneAndDelete({
             name: /^test-ctrl-tag-.*/,
@@ -164,5 +216,6 @@ describe("tag controller", () => {
     after(async () => {
         await Workspace.findByIdAndDelete(wsId)
         await User.findByIdAndDelete(userId)
+        await User.findByIdAndDelete(wrongUserId)
     })
 })

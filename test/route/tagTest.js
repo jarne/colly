@@ -45,7 +45,6 @@ describe("tag router", () => {
         }
 
         if (mongoose.connection.readyState === 1) {
-            // eslint-disable-next-line no-extra-semi
             ;(async () => {
                 await prepare()
             })()
@@ -72,6 +71,43 @@ describe("tag router", () => {
             const newTag = await controller.getById(res.body.id)
 
             expect(newTag.name).to.equal(`${TEST_PREFIX}cosmic-adventures`)
+        })
+
+        it("should throw a duplicate error with duplicate tag name", async () => {
+            await controller.create({
+                name: `${TEST_PREFIX}photography-tips-tricks`,
+                firstColor: "556b2f",
+                secondColor: "b0e0e6",
+                workspace: wsId,
+            })
+
+            const res = await request(app)
+                .post(`/api/workspace/${wsId}/tag`)
+                .set("Content-Type", "application/json")
+                .set("Authorization", `Bearer ${token}`)
+                .send({
+                    name: `${TEST_PREFIX}photography-tips-tricks`,
+                    firstColor: "ff1493",
+                    secondColor: "00ced1",
+                })
+
+            expect(res.status).to.eq(400)
+            expect(res.body.error.code).to.eq("duplicate_entry")
+        })
+
+        it("should throw a validation error with invalid color", async () => {
+            const res = await request(app)
+                .post(`/api/workspace/${wsId}/tag`)
+                .set("Content-Type", "application/json")
+                .set("Authorization", `Bearer ${token}`)
+                .send({
+                    name: `${TEST_PREFIX}beginner-yoga-poses`,
+                    firstColor: "ff7fXX",
+                    secondColor: "ff4f4f",
+                })
+
+            expect(res.status).to.eq(400)
+            expect(res.body.error.code).to.eq("validation_error")
         })
     })
 

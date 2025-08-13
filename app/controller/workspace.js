@@ -2,9 +2,11 @@
  * Colly | workspace controller
  */
 
+import mongoose from "mongoose"
 import crudController from "./common/crud.js"
-import Workspace from "./../model/workspace.js"
 import logger from "./../util/logger.js"
+
+const Workspace = mongoose.model("Workspace")
 
 const crud = crudController(Workspace)
 
