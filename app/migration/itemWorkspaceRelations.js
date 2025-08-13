@@ -23,7 +23,7 @@ export const associateItemsAndTags = async () => {
     const ownerWorkspaceMap = {}
     for (const ownerId of allOwnerIds) {
         const workspace = await Workspace.create({
-            name: `Default Workspace`,
+            name: "Default Workspace",
             members: [
                 {
                     user: ownerId,
