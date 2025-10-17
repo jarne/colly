@@ -12,8 +12,9 @@ import { useCurrentInput } from "./../context/CurrentInputProvider"
 import { updateMetaImage } from "./../../logic/api/item"
 
 import "./ItemCard.css"
+import Pin from "../pin/Pin"
 
-function ItemCard({ item, createItemModalRef }) {
+function ItemCard({ item, createItemModalRef, handleItemPinClick }) {
     const prefersColorScheme = usePrefersColorScheme()
     const isDarkMode = prefersColorScheme === "dark"
 
@@ -61,6 +62,7 @@ function ItemCard({ item, createItemModalRef }) {
 
     return (
         <div className="card">
+            <div className="pin-icon" onClick={() => handleItemPinClick(item)}><Pin isPinned={item.isPinned} /></div>
             {item.imageUrl && (
                 <img
                     src={item.imageUrl}
