@@ -18,8 +18,9 @@ import PreferencesModal from "./../component/modal/PreferencesModal"
 import { useUserAuth } from "./../component/context/UserAuthProvider"
 import { useAppData } from "./../component/context/DataProvider"
 import { useCurrentInput } from "./../component/context/CurrentInputProvider"
-
+import { updateItem } from "../logic/api/item"
 import "./Dashboard.css"
+import { toast } from "react-toastify"
 
 function Dashboard() {
     const navigate = useNavigate()
@@ -73,6 +74,31 @@ function Dashboard() {
             navigate("/login")
         }
     }
+    const handleItemPinClick = async (item) => {
+
+        try {
+            await updateItem(
+                item._id,
+                {
+                    url: item.url,
+                    name: item.name,
+                    description: item.description,
+                    tags: item.tags,
+                    isPinned: !item.isPinned
+                },
+                workspace,
+                accessToken
+            )
+        } catch (ex) {
+            toast.error(ex.message)
+
+            return
+        }
+        toast.success(`Item ${!item.isPinned ? "pinned" : "unpinned"}!`);
+
+        // Reload items so the list re-renders
+        await triggerItemLoad();
+    }
 
     useEffect(() => {
         setWorkspace(wsId)
@@ -98,15 +124,17 @@ function Dashboard() {
                 />
                 <ResponsiveMasonry className="w-100 m-3 main-cards-view">
                     <Masonry gutter="16px">
-                        {items.map((item) => {
-                            return (
+                        {items
+                            .slice() // make a copy to avoid mutating original array
+                            .sort((a, b) => (b.isPinned === true) - (a.isPinned === true)) // pinned first
+                            .map((item) => (
                                 <ItemCard
                                     key={item._id}
                                     item={item}
                                     createItemModalRef={createItemModalRef}
+                                    handleItemPinClick={handleItemPinClick}
                                 />
-                            )
-                        })}
+                            ))}
                     </Masonry>
                 </ResponsiveMasonry>
             </main>
