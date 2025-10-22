@@ -7,12 +7,12 @@ import { toast } from "react-toastify"
 import usePrefersColorScheme from "use-prefers-color-scheme"
 
 import TagList from "./../tag/TagList"
+import Pin from "./../pin/Pin"
 import { useUserAuth } from "./../context/UserAuthProvider"
 import { useCurrentInput } from "./../context/CurrentInputProvider"
 import { updateMetaImage } from "./../../logic/api/item"
 
 import "./ItemCard.css"
-import Pin from "../pin/Pin"
 
 function ItemCard({ item, createItemModalRef, handleItemPinClick }) {
     const prefersColorScheme = usePrefersColorScheme()
