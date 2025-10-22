@@ -5,6 +5,7 @@
 import { useEffect, useRef } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
+import { toast } from "react-toastify"
 
 import Navbar from "./../component/nav/Navbar"
 import TagsSidebar from "./../component/tag/TagsSidebar"
@@ -18,9 +19,9 @@ import PreferencesModal from "./../component/modal/PreferencesModal"
 import { useUserAuth } from "./../component/context/UserAuthProvider"
 import { useAppData } from "./../component/context/DataProvider"
 import { useCurrentInput } from "./../component/context/CurrentInputProvider"
-import { updateItem } from "../logic/api/item"
+import { updateItem } from "./../logic/api/item"
+
 import "./Dashboard.css"
-import { toast } from "react-toastify"
 
 function Dashboard() {
     const navigate = useNavigate()
@@ -68,7 +69,7 @@ function Dashboard() {
         try {
             await loadItems({
                 filter,
-                sort: sortValue,
+                sort: `-isPinned ${sortValue}`,
             })
         } catch {
             navigate("/login")
@@ -123,21 +124,14 @@ function Dashboard() {
                 />
                 <ResponsiveMasonry className="w-100 m-3 main-cards-view">
                     <Masonry gutter="16px">
-                        {items
-                            .slice() // make a copy to avoid mutating original array
-                            .sort(
-                                (a, b) =>
-                                    (b.isPinned === true) -
-                                    (a.isPinned === true)
-                            ) // pinned first
-                            .map((item) => (
-                                <ItemCard
-                                    key={item._id}
-                                    item={item}
-                                    createItemModalRef={createItemModalRef}
-                                    handleItemPinClick={handleItemPinClick}
-                                />
-                            ))}
+                        {items.map((item) => (
+                            <ItemCard
+                                key={item._id}
+                                item={item}
+                                createItemModalRef={createItemModalRef}
+                                handleItemPinClick={handleItemPinClick}
+                            />
+                        ))}
                     </Masonry>
                 </ResponsiveMasonry>
             </main>
