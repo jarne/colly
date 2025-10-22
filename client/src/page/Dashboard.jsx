@@ -5,7 +5,6 @@
 import { useEffect, useRef } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
-import { toast } from "react-toastify"
 
 import Navbar from "./../component/nav/Navbar"
 import TagsSidebar from "./../component/tag/TagsSidebar"
@@ -19,7 +18,6 @@ import PreferencesModal from "./../component/modal/PreferencesModal"
 import { useUserAuth } from "./../component/context/UserAuthProvider"
 import { useAppData } from "./../component/context/DataProvider"
 import { useCurrentInput } from "./../component/context/CurrentInputProvider"
-import { updateItem } from "./../logic/api/item"
 
 import "./Dashboard.css"
 
@@ -75,30 +73,6 @@ function Dashboard() {
             navigate("/login")
         }
     }
-    const handleItemPinClick = async (item) => {
-        try {
-            await updateItem(
-                item._id,
-                {
-                    url: item.url,
-                    name: item.name,
-                    description: item.description,
-                    tags: item.tags,
-                    isPinned: !item.isPinned,
-                },
-                workspace,
-                accessToken
-            )
-        } catch (ex) {
-            toast.error(ex.message)
-
-            return
-        }
-        toast.success(`Item ${!item.isPinned ? "pinned" : "unpinned"}!`)
-
-        // Reload items so the list re-renders
-        await triggerItemLoad()
-    }
 
     useEffect(() => {
         setWorkspace(wsId)
@@ -129,7 +103,7 @@ function Dashboard() {
                                 key={item._id}
                                 item={item}
                                 createItemModalRef={createItemModalRef}
-                                handleItemPinClick={handleItemPinClick}
+                                triggerItemLoad={triggerItemLoad}
                             />
                         ))}
                     </Masonry>
