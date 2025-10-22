@@ -62,7 +62,9 @@ function ItemCard({ item, createItemModalRef, handleItemPinClick }) {
 
     return (
         <div className="card">
-            <div className="pin-icon" onClick={() => handleItemPinClick(item)}><Pin isPinned={item.isPinned} /></div>
+            <div className="pin-icon" onClick={() => handleItemPinClick(item)}>
+                <Pin isPinned={item.isPinned} />
+            </div>
             {item.imageUrl && (
                 <img
                     src={item.imageUrl}

@@ -35,7 +35,7 @@ const ItemSchema = new Schema(
                 ref: "Tag",
             },
         ],
-        isPinned:{
+        isPinned: {
             type: Boolean,
             default: false,
         },

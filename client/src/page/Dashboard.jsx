@@ -75,7 +75,6 @@ function Dashboard() {
         }
     }
     const handleItemPinClick = async (item) => {
-
         try {
             await updateItem(
                 item._id,
@@ -84,7 +83,7 @@ function Dashboard() {
                     name: item.name,
                     description: item.description,
                     tags: item.tags,
-                    isPinned: !item.isPinned
+                    isPinned: !item.isPinned,
                 },
                 workspace,
                 accessToken
@@ -94,10 +93,10 @@ function Dashboard() {
 
             return
         }
-        toast.success(`Item ${!item.isPinned ? "pinned" : "unpinned"}!`);
+        toast.success(`Item ${!item.isPinned ? "pinned" : "unpinned"}!`)
 
         // Reload items so the list re-renders
-        await triggerItemLoad();
+        await triggerItemLoad()
     }
 
     useEffect(() => {
@@ -126,7 +125,11 @@ function Dashboard() {
                     <Masonry gutter="16px">
                         {items
                             .slice() // make a copy to avoid mutating original array
-                            .sort((a, b) => (b.isPinned === true) - (a.isPinned === true)) // pinned first
+                            .sort(
+                                (a, b) =>
+                                    (b.isPinned === true) -
+                                    (a.isPinned === true)
+                            ) // pinned first
                             .map((item) => (
                                 <ItemCard
                                     key={item._id}
