@@ -67,7 +67,7 @@ function Dashboard() {
         try {
             await loadItems({
                 filter,
-                sort: sortValue,
+                sort: `-isPinned ${sortValue}`,
             })
         } catch {
             navigate("/login")
@@ -98,15 +98,14 @@ function Dashboard() {
                 />
                 <ResponsiveMasonry className="w-100 m-3 main-cards-view">
                     <Masonry gutter="16px">
-                        {items.map((item) => {
-                            return (
-                                <ItemCard
-                                    key={item._id}
-                                    item={item}
-                                    createItemModalRef={createItemModalRef}
-                                />
-                            )
-                        })}
+                        {items.map((item) => (
+                            <ItemCard
+                                key={item._id}
+                                item={item}
+                                createItemModalRef={createItemModalRef}
+                                triggerItemLoad={triggerItemLoad}
+                            />
+                        ))}
                     </Masonry>
                 </ResponsiveMasonry>
             </main>

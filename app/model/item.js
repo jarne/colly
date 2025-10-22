@@ -35,6 +35,10 @@ const ItemSchema = new Schema(
                 ref: "Tag",
             },
         ],
+        isPinned: {
+            type: Boolean,
+            default: false,
+        },
         workspace: {
             type: Schema.Types.ObjectId,
             ref: "Workspace",

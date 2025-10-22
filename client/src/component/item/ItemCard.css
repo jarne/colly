@@ -43,3 +43,9 @@
 .card-description {
     font-size: 0.935rem;
 }
+
+.pin-icon {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+}

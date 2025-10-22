@@ -7,13 +7,14 @@ import { toast } from "react-toastify"
 import usePrefersColorScheme from "use-prefers-color-scheme"
 
 import TagList from "./../tag/TagList"
+import Pin from "./../pin/Pin"
 import { useUserAuth } from "./../context/UserAuthProvider"
 import { useCurrentInput } from "./../context/CurrentInputProvider"
-import { updateMetaImage } from "./../../logic/api/item"
+import { updateItem, updateMetaImage } from "./../../logic/api/item"
 
 import "./ItemCard.css"
 
-function ItemCard({ item, createItemModalRef }) {
+function ItemCard({ item, createItemModalRef, triggerItemLoad }) {
     const prefersColorScheme = usePrefersColorScheme()
     const isDarkMode = prefersColorScheme === "dark"
 
@@ -43,6 +44,25 @@ function ItemCard({ item, createItemModalRef }) {
         createItemModalRef.current.setEditId(itemId)
         createItemModalRef.current.open()
     }
+    const handleItemPinClick = async (item) => {
+        try {
+            await updateItem(
+                item._id,
+                {
+                    isPinned: !item.isPinned,
+                },
+                workspace,
+                accessToken
+            )
+        } catch (ex) {
+            toast.error(ex.message)
+
+            return
+        }
+        toast.success(`Item ${!item.isPinned ? "pinned" : "unpinned"}!`)
+
+        triggerItemLoad()
+    }
     const handleItemUpdateMetaImageClick = async (e, itemId) => {
         e.preventDefault()
 
@@ -61,6 +81,9 @@ function ItemCard({ item, createItemModalRef }) {
 
     return (
         <div className="card">
+            <div className="pin-icon" onClick={() => handleItemPinClick(item)}>
+                <Pin isPinned={item.isPinned} />
+            </div>
             {item.imageUrl && (
                 <img
                     src={item.imageUrl}
