@@ -1284,23 +1284,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@keyvhq/core@npm:2.1.7":
-  version: 2.1.7
-  resolution: "@keyvhq/core@npm:2.1.7"
+"@keyvhq/core@npm:2.1.11":
+  version: 2.1.11
+  resolution: "@keyvhq/core@npm:2.1.11"
   dependencies:
     json-buffer: "npm:~3.0.1"
-  checksum: 10c0/fbc8590ae3cccc8ef19b21b7a2f5be0c8aa26281c3121648cb4eea876699c8cd401b3e1b6f3e16a5c3b14753b6591c7024b0dcebe0451f9ec6f227bcba47ce50
+  checksum: 10c0/f40106a7268a36adda3817c232fea2f627d196598a43d43aed7d1bdcf76c8956fef5f2d97dc7c38711d1546686670fefbec6c01c3ddf7bf56d7b3e990496d3e9
   languageName: node
   linkType: hard
 
-"@keyvhq/memoize@npm:~2.1.9":
-  version: 2.1.9
-  resolution: "@keyvhq/memoize@npm:2.1.9"
+"@keyvhq/memoize@npm:~2.1.11":
+  version: 2.1.11
+  resolution: "@keyvhq/memoize@npm:2.1.11"
   dependencies:
-    "@keyvhq/core": "npm:2.1.7"
+    "@keyvhq/core": "npm:2.1.11"
     mimic-fn: "npm:~3.0.0"
     null-prototype-object: "npm:~1.0.0"
-  checksum: 10c0/a09fde530164c28b48fba2bb58e485039d7af98f11a4b8832075c1b326f3f31f1e927c635dc93fd5cfe5eb4133ee99c9eac8820487ba693b59360fdecfe4bdac
+  checksum: 10c0/c39e28f8a71ac84e47290ff040f82d258dc74a582a0a318a373d11de71484155111ca55494d32a42552ee26e9a4b65a7e82ad665869e0b398e1e3e263efb1e30
   languageName: node
   linkType: hard
 
@@ -5250,14 +5250,14 @@ __metadata:
   linkType: hard
 
 "metascraper-logo-favicon@npm:^5.43.6":
-  version: 5.49.2
-  resolution: "metascraper-logo-favicon@npm:5.49.2"
+  version: 5.49.5
+  resolution: "metascraper-logo-favicon@npm:5.49.5"
   dependencies:
-    "@keyvhq/memoize": "npm:~2.1.9"
-    "@metascraper/helpers": "npm:5.49.2"
+    "@keyvhq/memoize": "npm:~2.1.11"
+    "@metascraper/helpers": "npm:5.49.5"
     lodash: "npm:~4.17.21"
-    reachable-url: "npm:~1.8.2"
-  checksum: 10c0/3b92f93b731382e7a73b865d13abece534e50e5bf0443316470c867aad5299578884f465e082d0002619c4b03f3f1c1cee8002ff30564d666de1ebc36c1b964a
+    reachable-url: "npm:~1.8.3"
+  checksum: 10c0/f0c415eb74baa178bdc3c6f21101a23287a44ca432ab025521730a8aa480cfef9b0ac49d1ed062b8ccde77e1a6c43f2ccf7e7f9c93dc7a38a843c46dc62e9cb4
   languageName: node
   linkType: hard
 
@@ -6394,13 +6394,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"reachable-url@npm:~1.8.2":
-  version: 1.8.2
-  resolution: "reachable-url@npm:1.8.2"
+"reachable-url@npm:~1.8.3":
+  version: 1.8.3
+  resolution: "reachable-url@npm:1.8.3"
   dependencies:
     got: "npm:~11.8.0"
     p-reflect: "npm:~2.1.0"
-  checksum: 10c0/95dae617d854389511f796f35d41ed8c9123d22649845130ff22cea92ab40b37e095f5e2e54e730a7ab1540311a3a538413430b8544a5692711c22cbfcda1fe4
+  checksum: 10c0/3d19b92a98789ec878573d0e1a8ac365081c7bf2f7ea5fcdb406955b5937161b4cf4e3a7991fc98aa75d6381524994f98af87a9777b2ef2308eb6be13a1834a8
   languageName: node
   linkType: hard
 
