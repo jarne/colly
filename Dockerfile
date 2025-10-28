@@ -3,7 +3,7 @@
 # created in: 2024 by: @jarne
 
 # Begin with Node.js LTS container image
-FROM node:22
+FROM node:24
 
 # Create and switch to app source folder
 WORKDIR /app
