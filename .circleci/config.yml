@@ -16,7 +16,7 @@ jobs:
                   S3_ACCESS_KEY: super-root
                   S3_ACCESS_SECRET: super-secret-123
                   S3_BUCKET: colly-test
-            - image: mongo:8.0
+            - image: mongo:8.2
             - image: minio/minio:RELEASE.2024-02-17T01-15-57Z
               entrypoint: sh
               command: -c "mkdir -p /data/colly-test && minio server /data"
