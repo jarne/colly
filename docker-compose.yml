@@ -4,12 +4,12 @@
 
 services:
     mongo:
-        image: mongo:8
+        image: mongo:8.2
         volumes:
             - mongo-data:/data/db
         restart: always
     minio:
-        image: minio/minio:RELEASE.2025-03-12T18-04-18Z
+        image: minio/minio:RELEASE.2025-09-07T16-13-09Z
         entrypoint: sh
         command: -c "mkdir -p /data/colly && /usr/bin/minio server /data"
         environment:
