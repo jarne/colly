@@ -5,6 +5,7 @@
 import passport from "passport"
 
 import authRoutes from "./route/auth.js"
+import healthRoutes from "./route/health.js"
 import userRoutes from "./route/user.js"
 import workspaceRoutes from "./route/workspace.js"
 import clientRoutes from "./route/client.js"
@@ -16,6 +17,7 @@ import clientRoutes from "./route/client.js"
  */
 export const registerRoutes = (app) => {
     app.use("/api/auth", authRoutes)
+    app.use("/api/health", healthRoutes)
     app.use(
         "/api/user",
         passport.authenticate("jwt_admin", { session: false }),
