@@ -26,6 +26,7 @@ services:
             - mongo
             - minio
         environment:
+            NODE_ENV: production
             MONGO_HOST: mongo
             MONGO_DB: colly
             JWT_SECRET: ${JWT_SECRET}

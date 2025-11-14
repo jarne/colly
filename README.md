@@ -89,18 +89,19 @@ yarn run build
 
 The following environment variables need be set:
 
-| Env variable          | Default Value | Description                                           |
-| --------------------- | ------------- | ----------------------------------------------------- |
-| `MONGO_HOST`          |               | Hostname of MongoDB                                   |
-| `MONGO_PORT`          | `27017`       | Port of MongoDB                                       |
-| `MONGO_DB`            |               | MongoDB database name                                 |
-| `JWT_SECRET`          |               | Random secret for JWT                                 |
-| `S3_ENDPOINT`         |               | Hostname for S3-compatible endpoint for image storage |
-| `S3_REGION`           |               | S3 region to use                                      |
-| `S3_ACCESS_KEY`       |               | Access key ID for S3 endpoint                         |
-| `S3_ACCESS_SECRET`    |               | Secret access key for S3 endpoint                     |
-| `S3_BUCKET`           |               | Name of the S3 bucket                                 |
-| `S3_FORCE_PATH_STYLE` | `false`       | Force path style URLs for S3 objects                  |
+| Env variable          | Default Value | Description                                                   |
+| --------------------- | ------------- | ------------------------------------------------------------- |
+| `NODE_ENV`            | `development` | Set to deployment environment (`production` or `development`) |
+| `MONGO_HOST`          |               | Hostname of MongoDB                                           |
+| `MONGO_PORT`          | `27017`       | Port of MongoDB                                               |
+| `MONGO_DB`            |               | MongoDB database name                                         |
+| `JWT_SECRET`          |               | Random secret for JWT                                         |
+| `S3_ENDPOINT`         |               | Hostname for S3-compatible endpoint for image storage         |
+| `S3_REGION`           |               | S3 region to use                                              |
+| `S3_ACCESS_KEY`       |               | Access key ID for S3 endpoint                                 |
+| `S3_ACCESS_SECRET`    |               | Secret access key for S3 endpoint                             |
+| `S3_BUCKET`           |               | Name of the S3 bucket                                         |
+| `S3_FORCE_PATH_STYLE` | `false`       | Force path style URLs for S3 objects                          |
 
 In addition, the following _optional_ environment variables can be set:
 
