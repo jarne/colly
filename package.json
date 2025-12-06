@@ -47,7 +47,7 @@
         "metascraper-logo": "^5.43.4",
         "metascraper-logo-favicon": "^5.43.6",
         "metascraper-title": "^5.43.4",
-        "mongoose": "^8.1",
+        "mongoose": "^9.0.0",
         "passport": "^0.7",
         "passport-jwt": "^4.0",
         "passport-local": "^1.0",
