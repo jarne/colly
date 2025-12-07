@@ -5237,14 +5237,14 @@ __metadata:
   linkType: hard
 
 "metascraper-logo-favicon@npm:^5.43.6":
-  version: 5.49.5
-  resolution: "metascraper-logo-favicon@npm:5.49.5"
+  version: 5.49.7
+  resolution: "metascraper-logo-favicon@npm:5.49.7"
   dependencies:
     "@keyvhq/memoize": "npm:~2.1.11"
-    "@metascraper/helpers": "npm:5.49.5"
+    "@metascraper/helpers": "npm:5.49.7"
     lodash: "npm:~4.17.21"
     reachable-url: "npm:~1.8.3"
-  checksum: 10c0/f0c415eb74baa178bdc3c6f21101a23287a44ca432ab025521730a8aa480cfef9b0ac49d1ed062b8ccde77e1a6c43f2ccf7e7f9c93dc7a38a843c46dc62e9cb4
+  checksum: 10c0/0d6e34489eab94417918bcdff4d4ead5260c65aa11ab4d33d3958b66d2107b1666fc28952eabe917de6369aeaa2b207247bdbcfe35f2b682fee4c248f1d830e5
   languageName: node
   linkType: hard
 
