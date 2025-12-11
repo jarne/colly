@@ -2306,8 +2306,8 @@ __metadata:
   linkType: hard
 
 "eslint-plugin-jsdoc@npm:^61.0.0":
-  version: 61.4.2
-  resolution: "eslint-plugin-jsdoc@npm:61.4.2"
+  version: 61.5.0
+  resolution: "eslint-plugin-jsdoc@npm:61.5.0"
   dependencies:
     "@es-joy/jsdoccomment": "npm:~0.76.0"
     "@es-joy/resolve.exports": "npm:1.2.0"
@@ -2325,7 +2325,7 @@ __metadata:
     to-valid-identifier: "npm:^1.0.0"
   peerDependencies:
     eslint: ^7.0.0 || ^8.0.0 || ^9.0.0
-  checksum: 10c0/e7385cd9daf43cf34d41cb490602c1c5310c2435422b5023bbb44772101dabf8892a1822556d5678219db2cc930ab33cebf6a4900c4743306d840d9886126e5b
+  checksum: 10c0/fabb04f6efe58a167a0839d3c05676a76080c6e91d98a269fa768c1bfd835aa0ded5822d400da2874216177044d2d227ebe241d73e923f3fe1c08bafd19cfd3d
   languageName: node
   linkType: hard
 
@@ -4279,8 +4279,8 @@ __metadata:
   linkType: hard
 
 "sass@npm:^1.70":
-  version: 1.95.0
-  resolution: "sass@npm:1.95.0"
+  version: 1.96.0
+  resolution: "sass@npm:1.96.0"
   dependencies:
     "@parcel/watcher": "npm:^2.4.1"
     chokidar: "npm:^4.0.0"
@@ -4291,7 +4291,7 @@ __metadata:
       optional: true
   bin:
     sass: sass.js
-  checksum: 10c0/5f4093eb6fe569d65fbf30baf1fdd36b499ebc90a2f36fedf64aea2f5a72889a9df34cc96cd7cb640a10156708c9b8894b6f89953f26b57b44b96731e9c27fb5
+  checksum: 10c0/a932054bcee6935757417af6072d31b65ce3557798a53351b3e1369d7f06e24b0ec211e1617bdaaee998b429a44bf0f52acd240fd47f88422d5bc241eeb71672
   languageName: node
   linkType: hard
 
