@@ -3,7 +3,7 @@
  */
 
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router"
 import usePrefersColorScheme from "use-prefers-color-scheme"
 
 import { useAppData } from "./../context/DataProvider"

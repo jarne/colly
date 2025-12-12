@@ -2,7 +2,7 @@
  * Colly | main app file
  */
 
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router"
 import { ToastContainer } from "react-toastify"
 import usePrefersColorScheme from "use-prefers-color-scheme"
 

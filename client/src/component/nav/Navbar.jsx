@@ -3,7 +3,7 @@
  */
 
 import { useEffect } from "react"
-import { useNavigate, Link } from "react-router-dom"
+import { useNavigate, Link } from "react-router"
 import usePrefersColorScheme from "use-prefers-color-scheme"
 import OverlayTrigger from "react-bootstrap/OverlayTrigger"
 import Popover from "react-bootstrap/Popover"

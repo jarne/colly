@@ -3,7 +3,7 @@
  */
 
 import { useEffect, useRef } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router"
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 
 import Navbar from "./../component/nav/Navbar"

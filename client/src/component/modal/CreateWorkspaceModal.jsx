@@ -3,7 +3,7 @@
  */
 
 import { useState, useImperativeHandle, forwardRef } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router"
 import Modal from "react-bootstrap/Modal"
 import { toast } from "react-toastify"
 
