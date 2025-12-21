@@ -75,14 +75,14 @@ sudo docker compose up
 Alternative deployment methods are to use the [Docker](./Dockerfile) image or deploy the
 Node.js application directly on the operating system.
 
-When deploying without the Docker file, keep in mind to install Node.js and required dependencies using Yarn:
+When deploying without the Docker file, keep in mind to install Node.js and required dependencies using pnpm:
 
 ```
-yarn install
+pnpm install
 
 cd client
-yarn install
-yarn run build
+pnpm install
+pnpm run build
 ```
 
 ### Environment variables
@@ -125,35 +125,35 @@ The back-end of the application inside the main folder is written in JavaScript 
 As dependencies, a MongoDB database for storing the data and an S3-compatible object storage, such as [RustFS](https://github.com/rustfs/rustfs), for storing
 image meta data such as website icons and banners, are required.
 
-Using the following command, the back-end can be started for development: `yarn run dev`
+Using the following command, the back-end can be started for development: `pnpm run dev`
 
 Unit tests inside the [test](./test) folder are using Mocha and Chai.
 The following checks should be run before commiting code to execute unit tests, ESLint and format the code according
 to the defined code style:
 
 ```sh
-yarn run test
-yarn run lint
-yarn run format
+pnpm run test
+pnpm run lint
+pnpm run format
 ```
 
 #### Test data
 
 There are several tool scripts and a test dataset for development and testing, placed in the [test-data](./test-data) folder.
 
-Create first user: `yarn node userInit.js`  
-Run web server to serve test websites: `yarn run dev:test-data`  
-Insert test data into database: `yarn node insertTestData.js`
+Create first user: `pnpm run init:user`  
+Run web server to serve test websites: `pnpm run dev:test-data`  
+Insert test data into database: `pnpm run test:insert-test-data`
 
 ### Front-end
 
 The front-end inside the `client` folder is written in JavaScript and is based on React, Vite and Bootstrap for styles.
 
-Run development server: `yarn run dev`  
-Create build: `yarn run build`  
-Run ESLint: `yarn run lint`
+Run development server: `pnpm run dev`  
+Create build: `pnpm run build`  
+Run ESLint: `pnpm run lint`
 
-Code style formatting is configured in the parent folder, so if you run `yarn run format` in the main folder,
+Code style formatting is configured in the parent folder, so if you run `pnpm run format` in the main folder,
 it will format both the back-end and front-end.
 
 ## 🙋‍ Contribution

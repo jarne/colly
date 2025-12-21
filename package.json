@@ -28,10 +28,12 @@
         "dev:test-data": "node testDataServer.js",
         "test": "mocha --recursive --parallel --require test/fixtures.js",
         "test:ci": "mocha --recursive --exit --require test/fixtures.js --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results/mocha/junit.xml",
-        "test:coverage": "c8 --all -x client -x .yarn --reporter html yarn test",
+        "test:coverage": "c8 --all -x client --reporter html pnpm run test",
+        "test:insert-test-data": "node insertTestData.js",
         "lint": "eslint app",
         "lint:ci": "eslint --format junit --output-file ./lint-results/eslint/junit.xml app",
-        "format": "prettier --write \"**/*.{js,jsx,json,html,css,scss,yml,md}\""
+        "format": "prettier --write \"**/*.{js,jsx,json,html,css,scss,yml,md}\"",
+        "init:user": "node userInit.js"
     },
     "dependencies": {
         "@aws-sdk/client-s3": "^3.511.0",

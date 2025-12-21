@@ -3,7 +3,7 @@
 # Commands to execute when starting Colly Docker container
 
 # Run initial user creation check script
-yarn node userInit.js
+pnpm run init:user
 
 # Run Node.js application
-yarn start
+pnpm run start
