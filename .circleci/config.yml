@@ -28,20 +28,20 @@ jobs:
             # Checkout branch
             - checkout
 
-            # Install Yarn dependencies
+            # Install dependencies
             - restore_cache:
-                  key: yarn-{{ checksum "yarn.lock" }}
-            - run: yarn install
+                  key: pnpm-{{ checksum "pnpm-lock.yaml" }}
+            - run: CI=true pnpm install --frozen-lockfile
             - save_cache:
-                  key: yarn-{{ checksum "yarn.lock" }}
+                  key: pnpm-{{ checksum "pnpm-lock.yaml" }}
                   paths:
                       - node_modules
 
             # Run tests with Mocha
-            - run: yarn test:ci
+            - run: pnpm run test:ci
 
             # Collect test coverage with c8
-            - run: yarn test:coverage
+            - run: pnpm run test:coverage
 
             # Save test results
             - store_test_results:
@@ -57,17 +57,17 @@ jobs:
             # Checkout branch
             - checkout
 
-            # Install Yarn dependencies
+            # Install dependencies
             - restore_cache:
-                  key: yarn-{{ checksum "yarn.lock" }}
-            - run: yarn install
+                  key: pnpm-{{ checksum "pnpm-lock.yaml" }}
+            - run: CI=true pnpm install --frozen-lockfile
             - save_cache:
-                  key: yarn-{{ checksum "yarn.lock" }}
+                  key: pnpm-{{ checksum "pnpm-lock.yaml" }}
                   paths:
                       - node_modules
 
             # Run ESLint
-            - run: yarn lint:ci
+            - run: pnpm run lint:ci
 
             # Save lint results
             - store_test_results:
@@ -81,17 +81,17 @@ jobs:
             - checkout:
                   path: ~/project
 
-            # Install client Yarn dependencies
+            # Install client dependencies
             - restore_cache:
-                  key: yarn-client-{{ checksum "yarn.lock" }}
-            - run: yarn install
+                  key: pnpm-client-{{ checksum "pnpm-lock.yaml" }}
+            - run: CI=true pnpm install --frozen-lockfile
             - save_cache:
-                  key: yarn-client-{{ checksum "yarn.lock" }}
+                  key: pnpm-client-{{ checksum "pnpm-lock.yaml" }}
                   paths:
                       - node_modules
 
             # Run ESLint
-            - run: yarn lint:ci
+            - run: pnpm run lint:ci
 
             # Save lint results
             - store_test_results:

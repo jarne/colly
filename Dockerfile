@@ -5,6 +5,9 @@
 # Begin with Node.js LTS container image
 FROM node:24
 
+# Enable Pnpm
+RUN corepack enable pnpm
+
 # Create and switch to app source folder
 WORKDIR /app
 
@@ -20,15 +23,15 @@ USER node
 # Switch to app source folder
 WORKDIR /app
 
-# Install dependecies with Yarn
-RUN yarn install --immutable
+# Install dependecies
+RUN CI=true pnpm install --frozen-lockfile
 
 # Go to static client source folder
 WORKDIR /app/client
 
-# Install dependecies with Yarn and build client
-RUN yarn install --immutable
-RUN yarn build
+# Install dependecies and build client
+RUN CI=true pnpm install --frozen-lockfile
+RUN pnpm run build
 
 # Switch back to app source folder
 WORKDIR /app
