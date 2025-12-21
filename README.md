@@ -122,7 +122,7 @@ Colly is based on a back-end and front-end part.
 ### Back-end
 
 The back-end of the application inside the main folder is written in JavaScript using Node.js and the Express framework.
-As dependencies, a MongoDB database for storing the data and an S3-compatible object storage, such as MinIO, for storing
+As dependencies, a MongoDB database for storing the data and an S3-compatible object storage, such as [RustFS](https://github.com/rustfs/rustfs), for storing
 image meta data such as website icons and banners, are required.
 
 Using the following command, the back-end can be started for development: `yarn run dev`

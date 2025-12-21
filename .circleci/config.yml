@@ -16,13 +16,14 @@ jobs:
                   S3_ACCESS_KEY: super-root
                   S3_ACCESS_SECRET: super-secret-123
                   S3_BUCKET: colly-test
+                  S3_FORCE_PATH_STYLE: "true"
             - image: mongo:8.2
-            - image: minio/minio:RELEASE.2024-02-17T01-15-57Z
+            - image: rustfs/rustfs:1.0.0-alpha.76
               entrypoint: sh
-              command: -c "mkdir -p /data/colly-test && minio server /data"
+              command: -c "mkdir -p /data/colly && rustfs"
               environment:
-                  MINIO_ROOT_USER: super-root
-                  MINIO_ROOT_PASSWORD: super-secret-123
+                  RUSTFS_ACCESS_KEY: super-root
+                  RUSTFS_SECRET_KEY: super-secret-123
         steps:
             # Checkout branch
             - checkout
