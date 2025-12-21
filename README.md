@@ -35,11 +35,11 @@ Say goodbye to scattered bookmarks and hello to a more organized, accessible, an
 
 ### Screenshots
 
-<img src=".github/.media/screenshot-login.png" alt="Screenshot of Colly login page">
-
 <img src=".github/.media/screenshot-dashboard.png" alt="Colly item dashboard">
 
 <img src=".github/.media/screenshot-item-edit.png" alt="Item edit view">
+
+<img src=".github/.media/screenshot-login.png" alt="Screenshot of Colly login page">
 
 ## 🖥 Usage
 
