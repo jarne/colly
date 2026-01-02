@@ -37,7 +37,7 @@ importers:
         version: 5.49.15
       metascraper-image:
         specifier: ^5.43.4
-        version: 5.49.7
+        version: 5.49.15
       metascraper-logo:
         specifier: ^5.43.4
         version: 5.49.7
@@ -1328,8 +1328,8 @@ packages:
     resolution: {integrity: sha512-u/O3vwbptzhMs3L1fQE82ZSLHQQfto5gyZzwteVIEyeaY5Fc7R4dapF/BvRoSYFeqfBk4m0V1Vafq5Pjv25wvA==}
     engines: {node: '>= 6'}
 
-  cssstyle@5.3.5:
-    resolution: {integrity: sha512-GlsEptulso7Jg0VaOZ8BXQi3AkYM5BOJKEO/rjMidSCq70FkIC5y0eawrCXeYzxgt3OCf4Ls+eoxN+/05vN0Ag==}
+  cssstyle@5.3.6:
+    resolution: {integrity: sha512-legscpSpgSAeGEe0TNcai97DKt9Vd9AsAdOL7Uoetb52Ar/8eJm3LIa39qpv8wWzLFlNG4vVvppQM+teaMPj3A==}
     engines: {node: '>=20'}
 
   data-uri-to-buffer@5.0.1:
@@ -2034,8 +2034,8 @@ packages:
     resolution: {integrity: sha512-+oUt4HG9eV4gKNvQ/WAXTKWZoO34VSAnRT/7dP+Qz80uY6EoYINMmZd+9liwE6aOInx7pfjcARm4Ok/37h/lDQ==}
     engines: {node: '>= 16'}
 
-  metascraper-image@5.49.7:
-    resolution: {integrity: sha512-Wyg8bmWov0+TLIgsnycuvlhIJ3MgLUqVITlDwz/cPeiBv5hg8zLrqDiTzAg64FRPxQlp4+MyVjTELzGnVZsKYQ==}
+  metascraper-image@5.49.15:
+    resolution: {integrity: sha512-ZEoyvPvA4sOZhztwIU8gvsizd1bOnP8ni35en+y1lECijqtL4RmBNhS7aECLlD1SkF9EuJZE7e1xXf0uiYyw4Q==}
     engines: {node: '>= 16'}
 
   metascraper-logo-favicon@5.49.7:
@@ -4574,11 +4574,12 @@ snapshots:
 
   css-what@6.2.2: {}
 
-  cssstyle@5.3.5:
+  cssstyle@5.3.6:
     dependencies:
       '@asamuzakjp/css-color': 4.1.1
       '@csstools/css-syntax-patches-for-csstree': 1.0.22
       css-tree: 3.1.0
+      lru-cache: 11.2.4
 
   data-uri-to-buffer@5.0.1: {}
 
@@ -5173,7 +5174,7 @@ snapshots:
     dependencies:
       '@acemir/cssom': 0.9.30
       '@asamuzakjp/dom-selector': 6.7.6
-      cssstyle: 5.3.5
+      cssstyle: 5.3.6
       data-urls: 6.0.0
       decimal.js: 10.6.0
       html-encoding-sniffer: 4.0.0
@@ -5332,9 +5333,9 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  metascraper-image@5.49.7:
+  metascraper-image@5.49.15:
     dependencies:
-      '@metascraper/helpers': 5.49.7
+      '@metascraper/helpers': 5.49.15
     transitivePeerDependencies:
       - bufferutil
       - canvas
