@@ -40,7 +40,7 @@ importers:
         version: 5.49.15
       metascraper-logo:
         specifier: ^5.43.4
-        version: 5.49.7
+        version: 5.49.15
       metascraper-logo-favicon:
         specifier: ^5.43.6
         version: 5.49.7
@@ -2042,8 +2042,8 @@ packages:
     resolution: {integrity: sha512-EIZ73s5Pf/ZE04kpkUxMYkAulENXTuj2hZq4QEKI941z6dakRmR8C+LBCnyfQFAX/RXKWaT3dzfZhlPRsilsUQ==}
     engines: {node: '>= 16'}
 
-  metascraper-logo@5.49.7:
-    resolution: {integrity: sha512-YTwulz6eQb5AESXladiXtgh49xse15LrVnsiVbcjXrjI18jiTnUXc6FkbEfumx1o5Pn1R+gojTHg0/j5N0SUzQ==}
+  metascraper-logo@5.49.15:
+    resolution: {integrity: sha512-TPjLFdme2sfTxREVZzQATqe7XmO5UgagnP+bLyIFFB3VCLbS6oChMJHYChVGdfBk/SStQLEg+QwwmrMcQMNj2w==}
     engines: {node: '>= 16'}
 
   metascraper-title@5.49.7:
@@ -5354,9 +5354,9 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  metascraper-logo@5.49.7:
+  metascraper-logo@5.49.15:
     dependencies:
-      '@metascraper/helpers': 5.49.7
+      '@metascraper/helpers': 5.49.15
       lodash: 4.17.21
     transitivePeerDependencies:
       - bufferutil
