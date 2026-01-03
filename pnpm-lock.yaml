@@ -46,7 +46,7 @@ importers:
         version: 5.49.15
       metascraper-title:
         specifier: ^5.43.4
-        version: 5.49.7
+        version: 5.49.15
       mongoose:
         specifier: ^9.0.0
         version: 9.0.2(snappy@7.3.3)(socks@2.8.7)
@@ -592,10 +592,6 @@ packages:
 
   '@metascraper/helpers@5.49.15':
     resolution: {integrity: sha512-abdAJT8ZDJlZv6CZFlDRNXM02FtF+xcwqit++GGjvPDkQYChp3tyzETwQ/n2Lr0DrXNmjQEr/eYVX194zB472A==}
-    engines: {node: '>= 16'}
-
-  '@metascraper/helpers@5.49.7':
-    resolution: {integrity: sha512-WNEv8QfeG7zwcagcc+vdn2dFkR1Uq1BfqJZhoJQgrJQnxQzqtzEDTQOH7JwEb2unThOEYDoHfA1gS7RpKp+tcQ==}
     engines: {node: '>= 16'}
 
   '@mongodb-js/saslprep@1.4.4':
@@ -2046,8 +2042,8 @@ packages:
     resolution: {integrity: sha512-TPjLFdme2sfTxREVZzQATqe7XmO5UgagnP+bLyIFFB3VCLbS6oChMJHYChVGdfBk/SStQLEg+QwwmrMcQMNj2w==}
     engines: {node: '>= 16'}
 
-  metascraper-title@5.49.7:
-    resolution: {integrity: sha512-CCtEvEnVrWRNOZrte5tfJDxupii9qlZmBCNYGD1I1tJvZ4MMu1IHrGd/onKT0vv+lL6Uz+gylSj6uXIZOstxfQ==}
+  metascraper-title@5.49.15:
+    resolution: {integrity: sha512-eDCehWBw2g9PFAUQnEKMX/tREKweCUSCbM33B5cKQhalNVaJ1XfVqndUgZ3j1940VbKF8shcQOCtXmGpTZCSqw==}
     engines: {node: '>= 16'}
 
   metascraper@5.49.15:
@@ -3730,38 +3726,6 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@metascraper/helpers@5.49.7':
-    dependencies:
-      audio-extensions: 0.0.0
-      chrono-node: 2.9.0
-      condense-whitespace: 2.0.0
-      data-uri-utils: 1.0.9
-      debug-logfmt: 1.4.7
-      entities: 6.0.1
-      file-extension: 4.0.5
-      has-values: 2.0.1
-      image-extensions: 1.1.0
-      is-relative-url: 3.0.0
-      is-uri: 1.2.12
-      iso-639-3: 2.2.0
-      isostring: 0.0.1
-      jsdom: 27.2.0
-      lodash: 4.17.21
-      memoize-one: 6.0.0
-      microsoft-capitalize: 1.0.5
-      mime: 3.0.0
-      normalize-url: 6.1.0
-      re2: 1.22.3
-      smartquotes: 2.3.2
-      tldts: 7.0.19
-      url-regex-safe: 4.0.0(re2@1.22.3)
-      video-extensions: 1.2.0
-    transitivePeerDependencies:
-      - bufferutil
-      - canvas
-      - supports-color
-      - utf-8-validate
-
   '@mongodb-js/saslprep@1.4.4':
     dependencies:
       sparse-bitfield: 3.0.3
@@ -5364,9 +5328,9 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  metascraper-title@5.49.7:
+  metascraper-title@5.49.15:
     dependencies:
-      '@metascraper/helpers': 5.49.7
+      '@metascraper/helpers': 5.49.15
     transitivePeerDependencies:
       - bufferutil
       - canvas
