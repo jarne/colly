@@ -43,7 +43,7 @@ importers:
         version: 5.49.15
       metascraper-logo-favicon:
         specifier: ^5.43.6
-        version: 5.49.7
+        version: 5.49.15
       metascraper-title:
         specifier: ^5.43.4
         version: 5.49.7
@@ -2038,8 +2038,8 @@ packages:
     resolution: {integrity: sha512-ZEoyvPvA4sOZhztwIU8gvsizd1bOnP8ni35en+y1lECijqtL4RmBNhS7aECLlD1SkF9EuJZE7e1xXf0uiYyw4Q==}
     engines: {node: '>= 16'}
 
-  metascraper-logo-favicon@5.49.7:
-    resolution: {integrity: sha512-EIZ73s5Pf/ZE04kpkUxMYkAulENXTuj2hZq4QEKI941z6dakRmR8C+LBCnyfQFAX/RXKWaT3dzfZhlPRsilsUQ==}
+  metascraper-logo-favicon@5.49.15:
+    resolution: {integrity: sha512-C5kykBu8M/SRbWq8aoWwf/jUxKOI85NeYefuYiLJ3vQv4fezaP97ONEMZyNBwQvKu1k67Z161/Y/MYPa6GG72Q==}
     engines: {node: '>= 16'}
 
   metascraper-logo@5.49.15:
@@ -2816,8 +2816,8 @@ packages:
     resolution: {integrity: sha512-VwddBukDzu71offAQR975unBIGqfKZpM+8ZX6ySk8nYhVoo5CYaZyzt3YBvYtRtO+aoGlqxPg/B87NGVZ/fu6g==}
     engines: {node: '>=12'}
 
-  webidl-conversions@8.0.0:
-    resolution: {integrity: sha512-n4W4YFyz5JzOfQeA8oN7dUYpR+MBP3PIUsn2jLjWXwK5ASUzt0Jc/A5sAUZoCYFJRGF0FBKJ+1JjN43rNdsQzA==}
+  webidl-conversions@8.0.1:
+    resolution: {integrity: sha512-BMhLD/Sw+GbJC21C/UgyaZX41nPt8bUTg+jWyDeg7e7YN4xOM05YPSIXceACnXVtqyEw/LMClUQMtMZ+PGGpqQ==}
     engines: {node: '>=20'}
 
   whatwg-encoding@3.1.1:
@@ -5186,7 +5186,7 @@ snapshots:
       symbol-tree: 3.2.4
       tough-cookie: 6.0.0
       w3c-xmlserializer: 5.0.0
-      webidl-conversions: 8.0.0
+      webidl-conversions: 8.0.1
       whatwg-encoding: 3.1.1
       whatwg-mimetype: 4.0.0
       whatwg-url: 15.1.0
@@ -5342,10 +5342,10 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  metascraper-logo-favicon@5.49.7:
+  metascraper-logo-favicon@5.49.15:
     dependencies:
       '@keyvhq/memoize': 2.1.11
-      '@metascraper/helpers': 5.49.7
+      '@metascraper/helpers': 5.49.15
       lodash: 4.17.21
       reachable-url: 1.8.3
     transitivePeerDependencies:
@@ -6191,7 +6191,7 @@ snapshots:
 
   webidl-conversions@7.0.0: {}
 
-  webidl-conversions@8.0.0: {}
+  webidl-conversions@8.0.1: {}
 
   whatwg-encoding@3.1.1:
     dependencies:
@@ -6207,7 +6207,7 @@ snapshots:
   whatwg-url@15.1.0:
     dependencies:
       tr46: 6.0.0
-      webidl-conversions: 8.0.0
+      webidl-conversions: 8.0.1
 
   which@2.0.2:
     dependencies:
