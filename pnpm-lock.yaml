@@ -49,7 +49,7 @@ importers:
         version: 5.49.15
       mongoose:
         specifier: ^9.0.0
-        version: 9.1.1(snappy@7.3.3)(socks@2.8.7)
+        version: 9.1.2(snappy@7.3.3)(socks@2.8.7)
       passport:
         specifier: ^0.7
         version: 0.7.0
@@ -2185,8 +2185,8 @@ packages:
       socks:
         optional: true
 
-  mongoose@9.1.1:
-    resolution: {integrity: sha512-/CgKSAmjzgIj4o1FyWZIpQ2rmUQlhalwWd4l/Ht3XUVWscHRHev1TIwKz1ADNC5tHHyOQEaUDkEh0jI91c4Ydw==}
+  mongoose@9.1.2:
+    resolution: {integrity: sha512-EdxZ/l+wLIPymy/ODxulg13CaUPpt8RenGmuoNAuRhA5Dgk/QERkUm3U0wOEbAi6ULG08bGDo9sy2tKX0KwxIg==}
     engines: {node: '>=20.19.0'}
 
   morgan@1.10.1:
@@ -5478,7 +5478,7 @@ snapshots:
       snappy: 7.3.3
       socks: 2.8.7
 
-  mongoose@9.1.1(snappy@7.3.3)(socks@2.8.7):
+  mongoose@9.1.2(snappy@7.3.3)(socks@2.8.7):
     dependencies:
       kareem: 3.0.0
       mongodb: 7.0.0(snappy@7.3.3)(socks@2.8.7)
