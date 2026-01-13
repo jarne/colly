@@ -67,7 +67,7 @@
         "cors": "^2.8",
         "eslint": "^9.23.0",
         "eslint-formatter-junit": "^9.0.0",
-        "eslint-plugin-jsdoc": "^61.0.0",
+        "eslint-plugin-jsdoc": "^62.0.0",
         "globals": "^17.0.0",
         "mocha": "^11.0.0",
         "mocha-junit-reporter": "^2.2",
