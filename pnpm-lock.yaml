@@ -49,7 +49,7 @@ importers:
         version: 5.49.15
       mongoose:
         specifier: ^9.0.0
-        version: 9.1.4(snappy@7.3.3)(socks@2.8.7)
+        version: 9.1.5(snappy@7.3.3)(socks@2.8.7)
       passport:
         specifier: ^0.7
         version: 0.7.0
@@ -598,8 +598,8 @@ packages:
     resolution: {integrity: sha512-abdAJT8ZDJlZv6CZFlDRNXM02FtF+xcwqit++GGjvPDkQYChp3tyzETwQ/n2Lr0DrXNmjQEr/eYVX194zB472A==}
     engines: {node: '>= 16'}
 
-  '@mongodb-js/saslprep@1.4.4':
-    resolution: {integrity: sha512-p7X/ytJDIdwUfFL/CLOhKgdfJe1Fa8uw9seJYvdOmnP9JBWGWHW69HkOixXS6Wy9yvGf1MbhcS6lVmrhy4jm2g==}
+  '@mongodb-js/saslprep@1.4.5':
+    resolution: {integrity: sha512-k64Lbyb7ycCSXHSLzxVdb2xsKGPMvYZfCICXvDsI8Z65CeWQzTEKS4YmGbnqw+U9RBvLPTsB6UCmwkgsDTGWIw==}
 
   '@napi-rs/snappy-android-arm-eabi@7.3.3':
     resolution: {integrity: sha512-d4vUFFzNBvazGfB/KU8MnEax6itTIgRWXodPdZDnWKHy9HwVBndpCiedQDcSNHcZNYV36rx034rpn7SAuTL2NA==}
@@ -1141,8 +1141,8 @@ packages:
   browser-stdout@1.3.1:
     resolution: {integrity: sha512-qhAVI1+Av2X7qelOfAIYwXONood6XlZE/fXaBSmW/T5SzLAmCgzi+eiWE7fUvbHaeNBQH13UftjpXxsfLkMpgw==}
 
-  bson@7.0.0:
-    resolution: {integrity: sha512-Kwc6Wh4lQ5OmkqqKhYGKIuELXl+EPYSCObVE6bWsp1T/cGkOCBN0I8wF/T44BiuhHyNi1mmKVPXk60d41xZ7kw==}
+  bson@7.1.1:
+    resolution: {integrity: sha512-TtJgBB+QyOlWjrbM+8bRgH84VM/xrDjyBFgSgGrfZF4xvt6gbEDtcswm27Tn9F9TWsjQybxT8b8VpCP/oJK4Dw==}
     engines: {node: '>=20.19.0'}
 
   btoa@1.2.1:
@@ -2197,8 +2197,8 @@ packages:
       socks:
         optional: true
 
-  mongoose@9.1.4:
-    resolution: {integrity: sha512-V8JIyoWKWW+R2COlOsh6gaYw9TvczSiP/cN3Yuk1pv7ws5VNFAy5GPrK8jfz9tVYovmqdWOJRurMjL4ilYn9wA==}
+  mongoose@9.1.5:
+    resolution: {integrity: sha512-N6gypEO+wLmZp8kCYNQmrEWxVMT0KhyHvVttBZoKA/1ngY7aUsBjqHzCPtDgz+i8JAnqMOiEKmuJIDEQu1b9Dw==}
     engines: {node: '>=20.19.0'}
 
   morgan@1.10.1:
@@ -3749,7 +3749,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@mongodb-js/saslprep@1.4.4':
+  '@mongodb-js/saslprep@1.4.5':
     dependencies:
       sparse-bitfield: 3.0.3
 
@@ -4356,7 +4356,7 @@ snapshots:
 
   browser-stdout@1.3.1: {}
 
-  bson@7.0.0: {}
+  bson@7.1.1: {}
 
   btoa@1.2.1: {}
 
@@ -5496,14 +5496,14 @@ snapshots:
 
   mongodb@7.0.0(snappy@7.3.3)(socks@2.8.7):
     dependencies:
-      '@mongodb-js/saslprep': 1.4.4
-      bson: 7.0.0
+      '@mongodb-js/saslprep': 1.4.5
+      bson: 7.1.1
       mongodb-connection-string-url: 7.0.0
     optionalDependencies:
       snappy: 7.3.3
       socks: 2.8.7
 
-  mongoose@9.1.4(snappy@7.3.3)(socks@2.8.7):
+  mongoose@9.1.5(snappy@7.3.3)(socks@2.8.7):
     dependencies:
       kareem: 3.0.0
       mongodb: 7.0.0(snappy@7.3.3)(socks@2.8.7)
