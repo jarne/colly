@@ -37,7 +37,7 @@ importers:
         version: 5.49.17(@noble/hashes@1.8.0)
       metascraper-image:
         specifier: ^5.43.4
-        version: 5.49.15
+        version: 5.49.19(@noble/hashes@1.8.0)
       metascraper-logo:
         specifier: ^5.43.4
         version: 5.49.15
@@ -624,6 +624,10 @@ packages:
 
   '@metascraper/helpers@5.49.17':
     resolution: {integrity: sha512-/VBgpbF+RhRytfwaOByYCPNHOFXLxNdUKlzrH/SxzrjYr/SvXKigQe+1TeiP3w3ZBjp0mHifh0dHspW0yGev4Q==}
+    engines: {node: '>= 16'}
+
+  '@metascraper/helpers@5.49.19':
+    resolution: {integrity: sha512-3e6Xj0IA9ZheoAsIM1XPoz5U35eqxGSTEOHjjMzrugnILUyeurU0NXbEd0fJswBnSt1+gH3vZvmapSEh0tykow==}
     engines: {node: '>= 16'}
 
   '@mongodb-js/saslprep@1.4.5':
@@ -2126,8 +2130,8 @@ packages:
     resolution: {integrity: sha512-qIdTgjHcIFpgRCsojvYlSLT/BuPSyxdopm5Qgtfvui8cpqSSajiH2PnrIlFERRfq0eGqvtQn8X5djhcIN9bYQw==}
     engines: {node: '>= 16'}
 
-  metascraper-image@5.49.15:
-    resolution: {integrity: sha512-ZEoyvPvA4sOZhztwIU8gvsizd1bOnP8ni35en+y1lECijqtL4RmBNhS7aECLlD1SkF9EuJZE7e1xXf0uiYyw4Q==}
+  metascraper-image@5.49.19:
+    resolution: {integrity: sha512-CoxS5jdal7faemhTuz/RHDqXsBpyI/k/A6uphLW4O6INAEKK07vGZaFyZxSk6tfPhcEv6hZg9as7jaAlCWb2Jw==}
     engines: {node: '>= 16'}
 
   metascraper-logo-favicon@5.49.15:
@@ -3945,6 +3949,39 @@ snapshots:
       - supports-color
       - utf-8-validate
 
+  '@metascraper/helpers@5.49.19(@noble/hashes@1.8.0)':
+    dependencies:
+      audio-extensions: 0.0.0
+      chrono-node: 2.9.0
+      condense-whitespace: 2.0.0
+      data-uri-utils: 1.0.9
+      debug-logfmt: 1.4.7
+      entities: 7.0.1
+      file-extension: 4.0.5
+      has-values: 2.0.1
+      image-extensions: 1.1.0
+      is-relative-url: 3.0.0
+      is-uri: 1.2.12
+      iso-639-3: 2.2.0
+      isostring: 0.0.1
+      jsdom: 27.4.0(@noble/hashes@1.8.0)
+      lodash: 4.17.23
+      memoize-one: 6.0.0
+      microsoft-capitalize: 1.0.6
+      mime: 3.0.0
+      normalize-url: 6.1.0
+      re2: 1.23.0
+      smartquotes: 2.3.2
+      tldts: 7.0.19
+      url-regex-safe: 4.0.0(re2@1.23.0)
+      video-extensions: 1.2.0
+    transitivePeerDependencies:
+      - '@noble/hashes'
+      - bufferutil
+      - canvas
+      - supports-color
+      - utf-8-validate
+
   '@mongodb-js/saslprep@1.4.5':
     dependencies:
       sparse-bitfield: 3.0.3
@@ -5631,10 +5668,11 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  metascraper-image@5.49.15:
+  metascraper-image@5.49.19(@noble/hashes@1.8.0):
     dependencies:
-      '@metascraper/helpers': 5.49.15
+      '@metascraper/helpers': 5.49.19(@noble/hashes@1.8.0)
     transitivePeerDependencies:
+      - '@noble/hashes'
       - bufferutil
       - canvas
       - supports-color
