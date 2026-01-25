@@ -31,7 +31,7 @@ importers:
         version: 9.0.3
       metascraper:
         specifier: ^5.43.4
-        version: 5.49.17(@noble/hashes@1.8.0)
+        version: 5.49.19(@noble/hashes@1.8.0)
       metascraper-description:
         specifier: ^5.43.4
         version: 5.49.17(@noble/hashes@1.8.0)
@@ -2146,8 +2146,8 @@ packages:
     resolution: {integrity: sha512-eDCehWBw2g9PFAUQnEKMX/tREKweCUSCbM33B5cKQhalNVaJ1XfVqndUgZ3j1940VbKF8shcQOCtXmGpTZCSqw==}
     engines: {node: '>= 16'}
 
-  metascraper@5.49.17:
-    resolution: {integrity: sha512-nnunCDV9BWiAyUr96Y4mtgV7QQy7MrAoqVOWPZXtk5wA6NaqD4Po+SjBbAdlIA9xh61y5FuFOEwonw48gMavCg==}
+  metascraper@5.49.19:
+    resolution: {integrity: sha512-czYDb2wztksc7oQbWIzHXdoHaqVJmv31dT4N06u9LcJ/6jNFRWq/7lUPDl0bv6ptEuvSURRNoFUnavp+4HwoOw==}
     engines: {node: '>= 16'}
 
   methods@1.1.2:
@@ -2888,8 +2888,8 @@ packages:
   undici-types@7.16.0:
     resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
 
-  undici@7.19.0:
-    resolution: {integrity: sha512-Heho1hJD81YChi+uS2RkSjcVO+EQLmLSyUlHyp7Y/wFbxQaGb4WXVKD073JytrjXJVkSZVzoE2MCSOKugFGtOQ==}
+  undici@7.19.1:
+    resolution: {integrity: sha512-Gpq0iNm5M6cQWlyHQv9MV+uOj1jWk7LpkoE5vSp/7zjb4zMdAcUD+VL5y0nH4p9EbUklq00eVIIX/XcDHzu5xg==}
     engines: {node: '>=20.18.1'}
 
   unique-filename@4.0.0:
@@ -4711,7 +4711,7 @@ snapshots:
       parse5: 7.3.0
       parse5-htmlparser2-tree-adapter: 7.1.0
       parse5-parser-stream: 7.1.2
-      undici: 7.19.0
+      undici: 7.19.1
       whatwg-mimetype: 4.0.0
 
   chokidar@3.6.0:
@@ -5709,9 +5709,9 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  metascraper@5.49.17(@noble/hashes@1.8.0):
+  metascraper@5.49.19(@noble/hashes@1.8.0):
     dependencies:
-      '@metascraper/helpers': 5.49.17(@noble/hashes@1.8.0)
+      '@metascraper/helpers': 5.49.19(@noble/hashes@1.8.0)
       cheerio: 1.1.2
       debug-logfmt: 1.4.7
       whoops: 5.0.7
@@ -6540,7 +6540,7 @@ snapshots:
 
   undici-types@7.16.0: {}
 
-  undici@7.19.0: {}
+  undici@7.19.1: {}
 
   unique-filename@4.0.0:
     dependencies:
