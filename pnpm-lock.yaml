@@ -34,7 +34,7 @@ importers:
         version: 5.49.19(@noble/hashes@1.8.0)
       metascraper-description:
         specifier: ^5.43.4
-        version: 5.49.17(@noble/hashes@1.8.0)
+        version: 5.49.19(@noble/hashes@1.8.0)
       metascraper-image:
         specifier: ^5.43.4
         version: 5.49.19(@noble/hashes@1.8.0)
@@ -620,10 +620,6 @@ packages:
 
   '@metascraper/helpers@5.49.15':
     resolution: {integrity: sha512-abdAJT8ZDJlZv6CZFlDRNXM02FtF+xcwqit++GGjvPDkQYChp3tyzETwQ/n2Lr0DrXNmjQEr/eYVX194zB472A==}
-    engines: {node: '>= 16'}
-
-  '@metascraper/helpers@5.49.17':
-    resolution: {integrity: sha512-/VBgpbF+RhRytfwaOByYCPNHOFXLxNdUKlzrH/SxzrjYr/SvXKigQe+1TeiP3w3ZBjp0mHifh0dHspW0yGev4Q==}
     engines: {node: '>= 16'}
 
   '@metascraper/helpers@5.49.19':
@@ -2126,8 +2122,8 @@ packages:
     resolution: {integrity: sha512-Snk314V5ayFLhp3fkUREub6WtjBfPdCPY1Ln8/8munuLuiYhsABgBVWsozAG+MWMbVEvcdcpbi9R7ww22l9Q3g==}
     engines: {node: '>=18'}
 
-  metascraper-description@5.49.17:
-    resolution: {integrity: sha512-qIdTgjHcIFpgRCsojvYlSLT/BuPSyxdopm5Qgtfvui8cpqSSajiH2PnrIlFERRfq0eGqvtQn8X5djhcIN9bYQw==}
+  metascraper-description@5.49.19:
+    resolution: {integrity: sha512-KEGZOloH4tK9hZR3gz87UkHSpOn7VTdlgaJUdbN51KM1r3RBXOGPnztsJcy1VaZg/w4aZ2kfGYYyMjPy1LFiow==}
     engines: {node: '>= 16'}
 
   metascraper-image@5.49.19:
@@ -2584,8 +2580,8 @@ packages:
   re2@1.22.3:
     resolution: {integrity: sha512-002aE82U91DiaUA16U6vbiJusvPXn1OWiQukOxJkVUTXbzrSuQbFNHYKcGw8QK/uifRCfjl2Hd/vXYDanKkmaQ==}
 
-  re2@1.23.0:
-    resolution: {integrity: sha512-mT7+/Lz+Akjm/C/X6PiaHihcJL92TNNXai/C4c/dfBbhtwMm1uKEEoA2Lz/FF6aBFfQzg5mAyv4BGjM4q44QwQ==}
+  re2@1.23.1:
+    resolution: {integrity: sha512-S5UHlgjCp84BGyciTQgSxcQJD4H51l4iNk8drGWQCWAYDr71C4lHEf+DxmAoLoGRwEYzOcV7v4LSXrx0hFc/pQ==}
 
   reachable-url@1.8.3:
     resolution: {integrity: sha512-qQnVOlFlTHBgFmOC5siHh17fcR9Zu7eNIBO95bJw3+Ln90raTY45h5mmHVmkKsukbA5z6ds/Me631VuQKAf2cw==}
@@ -3917,38 +3913,6 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@metascraper/helpers@5.49.17(@noble/hashes@1.8.0)':
-    dependencies:
-      audio-extensions: 0.0.0
-      chrono-node: 2.9.0
-      condense-whitespace: 2.0.0
-      data-uri-utils: 1.0.9
-      debug-logfmt: 1.4.7
-      entities: 7.0.1
-      file-extension: 4.0.5
-      has-values: 2.0.1
-      image-extensions: 1.1.0
-      is-relative-url: 3.0.0
-      is-uri: 1.2.12
-      iso-639-3: 2.2.0
-      isostring: 0.0.1
-      jsdom: 27.4.0(@noble/hashes@1.8.0)
-      lodash: 4.17.23
-      memoize-one: 6.0.0
-      microsoft-capitalize: 1.0.6
-      mime: 3.0.0
-      re2: 1.23.0
-      smartquotes: 2.3.2
-      tldts: 7.0.19
-      url-regex-safe: 4.0.0(re2@1.23.0)
-      video-extensions: 1.2.0
-    transitivePeerDependencies:
-      - '@noble/hashes'
-      - bufferutil
-      - canvas
-      - supports-color
-      - utf-8-validate
-
   '@metascraper/helpers@5.49.19(@noble/hashes@1.8.0)':
     dependencies:
       audio-extensions: 0.0.0
@@ -3970,10 +3934,10 @@ snapshots:
       microsoft-capitalize: 1.0.6
       mime: 3.0.0
       normalize-url: 6.1.0
-      re2: 1.23.0
+      re2: 1.23.1
       smartquotes: 2.3.2
       tldts: 7.0.19
-      url-regex-safe: 4.0.0(re2@1.23.0)
+      url-regex-safe: 4.0.0(re2@1.23.1)
       video-extensions: 1.2.0
     transitivePeerDependencies:
       - '@noble/hashes'
@@ -5658,9 +5622,9 @@ snapshots:
 
   merge-descriptors@2.0.0: {}
 
-  metascraper-description@5.49.17(@noble/hashes@1.8.0):
+  metascraper-description@5.49.19(@noble/hashes@1.8.0):
     dependencies:
-      '@metascraper/helpers': 5.49.17(@noble/hashes@1.8.0)
+      '@metascraper/helpers': 5.49.19(@noble/hashes@1.8.0)
     transitivePeerDependencies:
       - '@noble/hashes'
       - bufferutil
@@ -6161,7 +6125,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  re2@1.23.0:
+  re2@1.23.1:
     dependencies:
       install-artifact-from-github: 1.4.0
       nan: 2.24.0
@@ -6573,12 +6537,12 @@ snapshots:
     optionalDependencies:
       re2: 1.22.3
 
-  url-regex-safe@4.0.0(re2@1.23.0):
+  url-regex-safe@4.0.0(re2@1.23.1):
     dependencies:
       ip-regex: 4.3.0
       tlds: 1.261.0
     optionalDependencies:
-      re2: 1.23.0
+      re2: 1.23.1
 
   util-deprecate@1.0.2: {}
 
