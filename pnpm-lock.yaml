@@ -40,7 +40,7 @@ importers:
         version: 5.49.19(@noble/hashes@1.8.0)
       metascraper-logo:
         specifier: ^5.43.4
-        version: 5.49.15
+        version: 5.49.19(@noble/hashes@1.8.0)
       metascraper-logo-favicon:
         specifier: ^5.43.6
         version: 5.49.15
@@ -368,9 +368,8 @@ packages:
     resolution: {integrity: sha512-qBcx6zYlhleiFfdtzkRgwNC7VVoAwfK76Vmsw5t+PbvtdknO9StgRk7ROvq9so1iqbdW4uLIDAsXRsTfUrIoOw==}
     engines: {node: '>=18'}
 
-  '@csstools/css-syntax-patches-for-csstree@1.0.25':
-    resolution: {integrity: sha512-g0Kw9W3vjx5BEBAF8c5Fm2NcB/Fs8jJXh85aXqwEXiL+tqtOut07TWgyaGzAAfTM+gKckrrncyeGEZPcaRgm2Q==}
-    engines: {node: '>=18'}
+  '@csstools/css-syntax-patches-for-csstree@1.0.26':
+    resolution: {integrity: sha512-6boXK0KkzT5u5xOgF6TKB+CLq9SOpEGmkZw0g5n9/7yg85wab3UzSxB8TxhLJ31L4SGJ6BCFRw/iftTha1CJXA==}
 
   '@csstools/css-tokenizer@3.0.4':
     resolution: {integrity: sha512-Vd/9EVDiu6PPJt9yAh6roZP6El1xHrdvIVGjyBsHR0RYwNHgL7FJPyIIW4fANJNG6FtyZfvlRPpFI4ZM/lubvw==}
@@ -2106,6 +2105,10 @@ packages:
     resolution: {integrity: sha512-B5Y16Jr9LB9dHVkh6ZevG+vAbOsNOYCX+sXvFWFu7B3Iz5mijW3zdbMyhsh8ANd2mSWBYdJgnqi+mL7/LrOPYg==}
     engines: {node: 20 || >=22}
 
+  lru-cache@11.2.5:
+    resolution: {integrity: sha512-vFrFJkWtJvJnD5hg+hJvVE8Lh/TcMzKnTgCWmtBipwI5yLX/iX+5UB2tfuyODF5E7k9xEzMdYgGqaSb1c0c5Yw==}
+    engines: {node: 20 || >=22}
+
   make-dir@4.0.0:
     resolution: {integrity: sha512-hXdUTZYIVOt1Ex//jAQi+wTZZpUpwBj/0QsOzqegb3rGMMeJiSEu5xLHnYfBrRV4RH2+OCSOO95Is/7x1WJ4bw==}
     engines: {node: '>=10'}
@@ -2154,8 +2157,8 @@ packages:
     resolution: {integrity: sha512-C5kykBu8M/SRbWq8aoWwf/jUxKOI85NeYefuYiLJ3vQv4fezaP97ONEMZyNBwQvKu1k67Z161/Y/MYPa6GG72Q==}
     engines: {node: '>= 16'}
 
-  metascraper-logo@5.49.15:
-    resolution: {integrity: sha512-TPjLFdme2sfTxREVZzQATqe7XmO5UgagnP+bLyIFFB3VCLbS6oChMJHYChVGdfBk/SStQLEg+QwwmrMcQMNj2w==}
+  metascraper-logo@5.49.19:
+    resolution: {integrity: sha512-eAZ50ntxXfpEvmGnhAEnvunDewzkAHu3+QHdiTuB8gmnN8/pz0fP/3aTPWUpgKq6JE23GPGbyJJSk9drpesPIA==}
     engines: {node: '>= 16'}
 
   metascraper-title@5.49.15:
@@ -2333,6 +2336,9 @@ packages:
 
   nan@2.24.0:
     resolution: {integrity: sha512-Vpf9qnVW1RaDkoNKFUvfxqAbtI8ncb8OJlqZ9wwpXzWPEsvsB1nvdUi6oYrHIkQ1Y/tMDnr1h4nczS0VB9Xykg==}
+
+  nan@2.25.0:
+    resolution: {integrity: sha512-0M90Ag7Xn5KMLLZ7zliPWP3rT90P6PN+IzVFS0VqmnPktBk3700xUVv8Ikm9EUaUE5SDWdp/BIxdENzVznpm1g==}
 
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
@@ -3127,7 +3133,7 @@ snapshots:
       '@csstools/css-color-parser': 3.1.0(@csstools/css-parser-algorithms@3.0.5(@csstools/css-tokenizer@3.0.4))(@csstools/css-tokenizer@3.0.4)
       '@csstools/css-parser-algorithms': 3.0.5(@csstools/css-tokenizer@3.0.4)
       '@csstools/css-tokenizer': 3.0.4
-      lru-cache: 11.2.4
+      lru-cache: 11.2.5
 
   '@asamuzakjp/dom-selector@6.7.6':
     dependencies:
@@ -3135,7 +3141,7 @@ snapshots:
       bidi-js: 1.0.3
       css-tree: 3.1.0
       is-potential-custom-element-name: 1.0.1
-      lru-cache: 11.2.4
+      lru-cache: 11.2.5
 
   '@asamuzakjp/nwsapi@2.3.9': {}
 
@@ -3714,7 +3720,7 @@ snapshots:
 
   '@csstools/css-syntax-patches-for-csstree@1.0.22': {}
 
-  '@csstools/css-syntax-patches-for-csstree@1.0.25': {}
+  '@csstools/css-syntax-patches-for-csstree@1.0.26': {}
 
   '@csstools/css-tokenizer@3.0.4': {}
 
@@ -4098,7 +4104,7 @@ snapshots:
       agent-base: 7.1.4
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.6
-      lru-cache: 11.2.4
+      lru-cache: 11.2.5
       socks-proxy-agent: 8.0.5
     transitivePeerDependencies:
       - supports-color
@@ -4679,7 +4685,7 @@ snapshots:
       '@npmcli/fs': 5.0.0
       fs-minipass: 3.0.3
       glob: 13.0.0
-      lru-cache: 11.2.4
+      lru-cache: 11.2.5
       minipass: 7.1.2
       minipass-collect: 2.0.1
       minipass-flush: 1.0.5
@@ -4866,9 +4872,9 @@ snapshots:
   cssstyle@5.3.7:
     dependencies:
       '@asamuzakjp/css-color': 4.1.1
-      '@csstools/css-syntax-patches-for-csstree': 1.0.25
+      '@csstools/css-syntax-patches-for-csstree': 1.0.26
       css-tree: 3.1.0
-      lru-cache: 11.2.4
+      lru-cache: 11.2.5
 
   data-uri-to-buffer@5.0.1: {}
 
@@ -5636,6 +5642,8 @@ snapshots:
 
   lru-cache@11.2.4: {}
 
+  lru-cache@11.2.5: {}
+
   make-dir@4.0.0:
     dependencies:
       semver: 7.7.3
@@ -5722,11 +5730,12 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  metascraper-logo@5.49.15:
+  metascraper-logo@5.49.19(@noble/hashes@1.8.0):
     dependencies:
-      '@metascraper/helpers': 5.49.15
-      lodash: 4.17.21
+      '@metascraper/helpers': 5.49.19(@noble/hashes@1.8.0)
+      lodash: 4.17.23
     transitivePeerDependencies:
+      - '@noble/hashes'
       - bufferutil
       - canvas
       - supports-color
@@ -5924,6 +5933,8 @@ snapshots:
 
   nan@2.24.0: {}
 
+  nan@2.25.0: {}
+
   natural-compare@1.4.0: {}
 
   negotiator@1.0.0: {}
@@ -6105,7 +6116,7 @@ snapshots:
 
   path-scurry@2.0.1:
     dependencies:
-      lru-cache: 11.2.4
+      lru-cache: 11.2.5
       minipass: 7.1.2
 
   path-to-regexp@8.3.0: {}
@@ -6196,7 +6207,7 @@ snapshots:
   re2@1.23.1:
     dependencies:
       install-artifact-from-github: 1.4.0
-      nan: 2.24.0
+      nan: 2.25.0
       node-gyp: 12.1.0
     transitivePeerDependencies:
       - supports-color
