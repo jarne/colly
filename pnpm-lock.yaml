@@ -46,7 +46,7 @@ importers:
         version: 5.49.15
       metascraper-title:
         specifier: ^5.43.4
-        version: 5.49.15
+        version: 5.49.19(@noble/hashes@1.8.0)
       mongoose:
         specifier: ^9.0.0
         version: 9.1.5(snappy@7.3.3)(socks@2.8.7)
@@ -2161,8 +2161,8 @@ packages:
     resolution: {integrity: sha512-eAZ50ntxXfpEvmGnhAEnvunDewzkAHu3+QHdiTuB8gmnN8/pz0fP/3aTPWUpgKq6JE23GPGbyJJSk9drpesPIA==}
     engines: {node: '>= 16'}
 
-  metascraper-title@5.49.15:
-    resolution: {integrity: sha512-eDCehWBw2g9PFAUQnEKMX/tREKweCUSCbM33B5cKQhalNVaJ1XfVqndUgZ3j1940VbKF8shcQOCtXmGpTZCSqw==}
+  metascraper-title@5.49.19:
+    resolution: {integrity: sha512-uL3Y/4ybBgMotSo33FSo0ZN564/x30L/QJXGUsaNYa5TRN1UTxjdY+Fskk9C5dvYQE1he2hxZxH3TcPtu/MW3Q==}
     engines: {node: '>= 16'}
 
   metascraper@5.49.19:
@@ -5741,10 +5741,11 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  metascraper-title@5.49.15:
+  metascraper-title@5.49.19(@noble/hashes@1.8.0):
     dependencies:
-      '@metascraper/helpers': 5.49.15
+      '@metascraper/helpers': 5.49.19(@noble/hashes@1.8.0)
     transitivePeerDependencies:
+      - '@noble/hashes'
       - bufferutil
       - canvas
       - supports-color
