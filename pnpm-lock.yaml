@@ -34,7 +34,7 @@ importers:
         version: 5.49.21(@noble/hashes@1.8.0)
       metascraper-description:
         specifier: ^5.43.4
-        version: 5.49.19(@noble/hashes@1.8.0)
+        version: 5.49.21(@noble/hashes@1.8.0)
       metascraper-image:
         specifier: ^5.43.4
         version: 5.49.19(@noble/hashes@1.8.0)
@@ -2120,8 +2120,8 @@ packages:
     resolution: {integrity: sha512-Snk314V5ayFLhp3fkUREub6WtjBfPdCPY1Ln8/8munuLuiYhsABgBVWsozAG+MWMbVEvcdcpbi9R7ww22l9Q3g==}
     engines: {node: '>=18'}
 
-  metascraper-description@5.49.19:
-    resolution: {integrity: sha512-KEGZOloH4tK9hZR3gz87UkHSpOn7VTdlgaJUdbN51KM1r3RBXOGPnztsJcy1VaZg/w4aZ2kfGYYyMjPy1LFiow==}
+  metascraper-description@5.49.21:
+    resolution: {integrity: sha512-ynN1/Gwdf66EcG7ryb8NBrDfMo54BrQy1E8KB+EdMTlkm+19x/t5CAAR1Xxq70Iz46pX92H2+aHwPjCVBe8iig==}
     engines: {node: '>= 16'}
 
   metascraper-image@5.49.19:
@@ -2555,6 +2555,9 @@ packages:
 
   re2@1.23.1:
     resolution: {integrity: sha512-S5UHlgjCp84BGyciTQgSxcQJD4H51l4iNk8drGWQCWAYDr71C4lHEf+DxmAoLoGRwEYzOcV7v4LSXrx0hFc/pQ==}
+
+  re2@1.23.2:
+    resolution: {integrity: sha512-ds5iwbnfsmyiNDtuljBNAva54O4jhR77jL5bSM73NnsWQHkYoGWuePiZTrt6O3xXAHtrB/fviNQsPGRei6031w==}
 
   reachable-url@1.8.3:
     resolution: {integrity: sha512-qQnVOlFlTHBgFmOC5siHh17fcR9Zu7eNIBO95bJw3+Ln90raTY45h5mmHVmkKsukbA5z6ds/Me631VuQKAf2cw==}
@@ -3919,10 +3922,10 @@ snapshots:
       microsoft-capitalize: 1.0.6
       mime: 3.0.0
       normalize-url: 6.1.0
-      re2: 1.23.1
+      re2: 1.23.2
       smartquotes: 2.3.2
       tldts: 7.0.19
-      url-regex-safe: 4.0.0(re2@1.23.1)
+      url-regex-safe: 4.0.0(re2@1.23.2)
       video-extensions: 1.2.0
     transitivePeerDependencies:
       - '@noble/hashes'
@@ -5521,9 +5524,9 @@ snapshots:
 
   merge-descriptors@2.0.0: {}
 
-  metascraper-description@5.49.19(@noble/hashes@1.8.0):
+  metascraper-description@5.49.21(@noble/hashes@1.8.0):
     dependencies:
-      '@metascraper/helpers': 5.49.19(@noble/hashes@1.8.0)
+      '@metascraper/helpers': 5.49.21(@noble/hashes@1.8.0)
     transitivePeerDependencies:
       - '@noble/hashes'
       - bufferutil
@@ -5996,6 +5999,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  re2@1.23.2:
+    dependencies:
+      install-artifact-from-github: 1.4.0
+      nan: 2.25.0
+      node-gyp: 12.2.0
+    transitivePeerDependencies:
+      - supports-color
+
   reachable-url@1.8.3:
     dependencies:
       got: 11.8.6
@@ -6379,6 +6390,13 @@ snapshots:
       tlds: 1.261.0
     optionalDependencies:
       re2: 1.23.1
+
+  url-regex-safe@4.0.0(re2@1.23.2):
+    dependencies:
+      ip-regex: 4.3.0
+      tlds: 1.261.0
+    optionalDependencies:
+      re2: 1.23.2
 
   util-deprecate@1.0.2: {}
 
