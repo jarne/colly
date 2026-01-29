@@ -46,7 +46,7 @@ importers:
         version: 5.49.21(@noble/hashes@1.8.0)
       metascraper-title:
         specifier: ^5.43.4
-        version: 5.49.19(@noble/hashes@1.8.0)
+        version: 5.49.21(@noble/hashes@1.8.0)
       mongoose:
         specifier: ^9.0.0
         version: 9.1.5(snappy@7.3.3)(socks@2.8.7)
@@ -645,10 +645,6 @@ packages:
   '@kikobeats/time-span@1.0.11':
     resolution: {integrity: sha512-S+msolgD9aPVoJ+ZomVD0WSKm+qJBKvJimzwq8dMvlGKbIPsAyEWhHHdSRuQT3g2VpDIctvbi9nU++kN/VPZaw==}
     engines: {node: '>= 18'}
-
-  '@metascraper/helpers@5.49.19':
-    resolution: {integrity: sha512-3e6Xj0IA9ZheoAsIM1XPoz5U35eqxGSTEOHjjMzrugnILUyeurU0NXbEd0fJswBnSt1+gH3vZvmapSEh0tykow==}
-    engines: {node: '>= 16'}
 
   '@metascraper/helpers@5.49.21':
     resolution: {integrity: sha512-42Gg149DE1hvB07sdNwIkPawj6eEv9x6WajAhiV3BdkM8tg8Cm7nozonlZcALeWiMoUxBaO8Ye1O5W4pWeQC6A==}
@@ -2136,8 +2132,8 @@ packages:
     resolution: {integrity: sha512-NXbscDD7YPp5RP+unbccm71R/ssVvMOJ+GqSVqWCPc3+c4Qa7LlU5o7t1QO/NQwTskRYD2nJBHacBIiKXISJBg==}
     engines: {node: '>= 16'}
 
-  metascraper-title@5.49.19:
-    resolution: {integrity: sha512-uL3Y/4ybBgMotSo33FSo0ZN564/x30L/QJXGUsaNYa5TRN1UTxjdY+Fskk9C5dvYQE1he2hxZxH3TcPtu/MW3Q==}
+  metascraper-title@5.49.21:
+    resolution: {integrity: sha512-fHceDgDHN5D1QVz8wV5L9igveZgf7qqUcC5nV6/7laWiCqp9VBbsPbqxoE3HGjWlcDyMB+aXF92ryU5qpnOKqg==}
     engines: {node: '>= 16'}
 
   metascraper@5.49.21:
@@ -2552,9 +2548,6 @@ packages:
   raw-body@3.0.2:
     resolution: {integrity: sha512-K5zQjDllxWkf7Z5xJdV0/B0WTNqx6vxG70zJE4N0kBs4LovmEYWJzQGxC9bS9RAKu3bgM40lrd5zoLJ12MQ5BA==}
     engines: {node: '>= 0.10'}
-
-  re2@1.23.1:
-    resolution: {integrity: sha512-S5UHlgjCp84BGyciTQgSxcQJD4H51l4iNk8drGWQCWAYDr71C4lHEf+DxmAoLoGRwEYzOcV7v4LSXrx0hFc/pQ==}
 
   re2@1.23.2:
     resolution: {integrity: sha512-ds5iwbnfsmyiNDtuljBNAva54O4jhR77jL5bSM73NnsWQHkYoGWuePiZTrt6O3xXAHtrB/fviNQsPGRei6031w==}
@@ -3866,39 +3859,6 @@ snapshots:
       null-prototype-object: 1.0.0
 
   '@kikobeats/time-span@1.0.11': {}
-
-  '@metascraper/helpers@5.49.19(@noble/hashes@1.8.0)':
-    dependencies:
-      audio-extensions: 0.0.0
-      chrono-node: 2.9.0
-      condense-whitespace: 2.0.0
-      data-uri-utils: 1.0.9
-      debug-logfmt: 1.4.7
-      entities: 7.0.1
-      file-extension: 4.0.5
-      has-values: 2.0.1
-      image-extensions: 1.1.0
-      is-relative-url: 3.0.0
-      is-uri: 1.2.12
-      iso-639-3: 2.2.0
-      isostring: 0.0.1
-      jsdom: 27.4.0(@noble/hashes@1.8.0)
-      lodash: 4.17.23
-      memoize-one: 6.0.0
-      microsoft-capitalize: 1.0.6
-      mime: 3.0.0
-      normalize-url: 6.1.0
-      re2: 1.23.1
-      smartquotes: 2.3.2
-      tldts: 7.0.19
-      url-regex-safe: 4.0.0(re2@1.23.1)
-      video-extensions: 1.2.0
-    transitivePeerDependencies:
-      - '@noble/hashes'
-      - bufferutil
-      - canvas
-      - supports-color
-      - utf-8-validate
 
   '@metascraper/helpers@5.49.21(@noble/hashes@1.8.0)':
     dependencies:
@@ -5568,9 +5528,9 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  metascraper-title@5.49.19(@noble/hashes@1.8.0):
+  metascraper-title@5.49.21(@noble/hashes@1.8.0):
     dependencies:
-      '@metascraper/helpers': 5.49.19(@noble/hashes@1.8.0)
+      '@metascraper/helpers': 5.49.21(@noble/hashes@1.8.0)
     transitivePeerDependencies:
       - '@noble/hashes'
       - bufferutil
@@ -5991,14 +5951,6 @@ snapshots:
       iconv-lite: 0.7.1
       unpipe: 1.0.0
 
-  re2@1.23.1:
-    dependencies:
-      install-artifact-from-github: 1.4.0
-      nan: 2.25.0
-      node-gyp: 12.2.0
-    transitivePeerDependencies:
-      - supports-color
-
   re2@1.23.2:
     dependencies:
       install-artifact-from-github: 1.4.0
@@ -6383,13 +6335,6 @@ snapshots:
       punycode: 2.3.1
 
   url-polyfill@1.1.14: {}
-
-  url-regex-safe@4.0.0(re2@1.23.1):
-    dependencies:
-      ip-regex: 4.3.0
-      tlds: 1.261.0
-    optionalDependencies:
-      re2: 1.23.1
 
   url-regex-safe@4.0.0(re2@1.23.2):
     dependencies:
