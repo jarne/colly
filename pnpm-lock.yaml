@@ -43,7 +43,7 @@ importers:
         version: 5.49.21(@noble/hashes@1.8.0)
       metascraper-logo-favicon:
         specifier: ^5.43.6
-        version: 5.49.19(@noble/hashes@1.8.0)
+        version: 5.49.21(@noble/hashes@1.8.0)
       metascraper-title:
         specifier: ^5.43.4
         version: 5.49.19(@noble/hashes@1.8.0)
@@ -1063,8 +1063,8 @@ packages:
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
 
-  '@types/http-cache-semantics@4.0.4':
-    resolution: {integrity: sha512-1m0bIFVc7eJWyve9S0RnuRgcQqF/Xd5QsUZAZeQFr1Q3/p9JWoQQEqmVy+DPTNpGXwhgIetAoYF8JSc33q29QA==}
+  '@types/http-cache-semantics@4.2.0':
+    resolution: {integrity: sha512-L3LgimLHXtGkWikKnsPg0/VFx9OGZaC+eN1u4r+OB1XRqH3meBIAVC2zr1WdMH+RHmnRkqliQAOHNJ/E0j/e0Q==}
 
   '@types/istanbul-lib-coverage@2.0.6':
     resolution: {integrity: sha512-2QF/t/auWm0lsy8XtKVPG19v3sSOQlJe/YHZgfjb/KBBHOGSV+J2q/S671rcq9uTBrLAXmZpqJiaQbMT+zNU1w==}
@@ -1075,11 +1075,11 @@ packages:
   '@types/keyv@3.1.4':
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
 
-  '@types/node@25.0.10':
-    resolution: {integrity: sha512-zWW5KPngR/yvakJgGOmZ5vTBemDoSqF3AcV/LrO5u5wTWyEAVVh+IT39G4gtyAkh3CtTZs8aX/yRM82OfzHJRg==}
-
   '@types/node@25.0.3':
     resolution: {integrity: sha512-W609buLVRVmeW693xKfzHeIV6nJGGz98uCPfeXI1ELMLXVeKYZ9m15fAMSaUPBHYLGFsVRcMmSCksQOrZV9BYA==}
+
+  '@types/node@25.1.0':
+    resolution: {integrity: sha512-t7frlewr6+cbx+9Ohpl0NOTKXZNV9xHRmNOvql47BFJKcEG1CxtxlPEEe+gR9uhVWM4DwhnvTF110mIL4yP9RA==}
 
   '@types/responselike@1.0.3':
     resolution: {integrity: sha512-H/+L+UkTV33uf49PH5pCAUBVPNj2nDBXTN+qS1dOwyyg24l3CcicicCA7ca+HMvJBZcFgl5r8e+RR6elsb4Lyw==}
@@ -2128,8 +2128,8 @@ packages:
     resolution: {integrity: sha512-t4DSyCKMEh19TBHyui71aIuRHQvBuYURmATmtBLX4oWKmngRtusVJ2spIlRvlRF7f80bXRihPyknFue3O1amHA==}
     engines: {node: '>= 16'}
 
-  metascraper-logo-favicon@5.49.19:
-    resolution: {integrity: sha512-u847hRAIGaeEPyrCoQjGFNfaBoove6YnSwjtGDbWt30Kh7e+v5yfgfCsgJB2VwylD9btKeBdfnNa4uDr66q9jw==}
+  metascraper-logo-favicon@5.49.21:
+    resolution: {integrity: sha512-0bD/q1jyhXs3RAWLb/xetOroc7DZgzEEYTIsYMyQ3AB9V2+oqTOnwWkqiM86+VxOqG70dc4YqU7g5mpXnXXVpA==}
     engines: {node: '>= 16'}
 
   metascraper-logo@5.49.21:
@@ -4405,14 +4405,14 @@ snapshots:
 
   '@types/cacheable-request@6.0.3':
     dependencies:
-      '@types/http-cache-semantics': 4.0.4
+      '@types/http-cache-semantics': 4.2.0
       '@types/keyv': 3.1.4
-      '@types/node': 25.0.10
+      '@types/node': 25.1.0
       '@types/responselike': 1.0.3
 
   '@types/estree@1.0.8': {}
 
-  '@types/http-cache-semantics@4.0.4': {}
+  '@types/http-cache-semantics@4.2.0': {}
 
   '@types/istanbul-lib-coverage@2.0.6': {}
 
@@ -4420,19 +4420,19 @@ snapshots:
 
   '@types/keyv@3.1.4':
     dependencies:
-      '@types/node': 25.0.10
-
-  '@types/node@25.0.10':
-    dependencies:
-      undici-types: 7.16.0
+      '@types/node': 25.1.0
 
   '@types/node@25.0.3':
     dependencies:
       undici-types: 7.16.0
 
+  '@types/node@25.1.0':
+    dependencies:
+      undici-types: 7.16.0
+
   '@types/responselike@1.0.3':
     dependencies:
-      '@types/node': 25.0.10
+      '@types/node': 25.1.0
 
   '@types/triple-beam@1.3.5': {}
 
@@ -5544,10 +5544,10 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  metascraper-logo-favicon@5.49.19(@noble/hashes@1.8.0):
+  metascraper-logo-favicon@5.49.21(@noble/hashes@1.8.0):
     dependencies:
       '@keyvhq/memoize': 2.1.11
-      '@metascraper/helpers': 5.49.19(@noble/hashes@1.8.0)
+      '@metascraper/helpers': 5.49.21(@noble/hashes@1.8.0)
       lodash: 4.17.23
       reachable-url: 1.8.3
     transitivePeerDependencies:
