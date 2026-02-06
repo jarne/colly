@@ -10,7 +10,7 @@ import Popover from "react-bootstrap/Popover"
 import { toast } from "react-toastify"
 
 import { useUserAuth } from "./../../component/context/UserAuthProvider"
-import { useCurrentInput } from "./../../component/context/CurrentInputProvider"
+import { useCurrentInput } from "../context/CurrentInputProvider"
 import { getMe, logout } from "./../../logic/api/auth"
 import ItemSearch from "./ItemSearch"
 import SortSelect from "./SortSelect"

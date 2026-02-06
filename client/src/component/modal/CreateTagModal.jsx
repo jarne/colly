@@ -10,7 +10,7 @@ import { toast } from "react-toastify"
 
 import { useUserAuth } from "./../context/UserAuthProvider"
 import { useAppData } from "./../context/DataProvider"
-import { useCurrentInput } from "./../context/CurrentInputProvider"
+import { useCurrentInput } from "../context/CurrentInputProvider"
 import { createTag, updateTag, deleteTag } from "./../../logic/api/tag"
 import { generateGradientColors } from "./../../util/ColorGenerator"
 

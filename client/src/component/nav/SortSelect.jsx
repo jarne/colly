@@ -2,7 +2,7 @@
  * Colly | sort order select field
  */
 
-import { useCurrentInput } from "./../../component/context/CurrentInputProvider"
+import { useCurrentInput } from "../context/CurrentInputProvider"
 
 function SortSelect() {
     const { sortValue, setSortValue } = useCurrentInput()

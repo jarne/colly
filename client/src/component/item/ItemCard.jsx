@@ -9,7 +9,7 @@ import usePrefersColorScheme from "use-prefers-color-scheme"
 import TagList from "./../tag/TagList"
 import Pin from "./../pin/Pin"
 import { useUserAuth } from "./../context/UserAuthProvider"
-import { useCurrentInput } from "./../context/CurrentInputProvider"
+import { useCurrentInput } from "../context/CurrentInputProvider"
 import { updateItem, updateMetaImage } from "./../../logic/api/item"
 
 import "./ItemCard.css"

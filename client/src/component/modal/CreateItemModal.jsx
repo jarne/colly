@@ -10,7 +10,7 @@ import TagList from "./../tag/TagList"
 
 import { useUserAuth } from "./../context/UserAuthProvider"
 import { useAppData } from "./../context/DataProvider"
-import { useCurrentInput } from "./../context/CurrentInputProvider"
+import { useCurrentInput } from "../context/CurrentInputProvider"
 import {
     createItem,
     updateItem,

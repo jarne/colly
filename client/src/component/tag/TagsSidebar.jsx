@@ -7,7 +7,7 @@ import { useNavigate } from "react-router"
 import usePrefersColorScheme from "use-prefers-color-scheme"
 
 import { useAppData } from "./../context/DataProvider"
-import { useCurrentInput } from "./../context/CurrentInputProvider"
+import { useCurrentInput } from "../context/CurrentInputProvider"
 
 import "./TagsSidebar.css"
 

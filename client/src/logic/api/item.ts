@@ -22,7 +22,7 @@ type Item = {
     updatedAt: string
 }
 
-type ItemRes = {
+export type ItemRes = {
     _id: string
 } & Item
 

@@ -17,7 +17,7 @@ import PreferencesModal from "./../component/modal/PreferencesModal"
 
 import { useUserAuth } from "./../component/context/UserAuthProvider"
 import { useAppData } from "./../component/context/DataProvider"
-import { useCurrentInput } from "./../component/context/CurrentInputProvider"
+import { useCurrentInput } from "../component/context/CurrentInputProvider"
 
 import "./Dashboard.css"
 

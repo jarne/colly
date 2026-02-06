@@ -17,7 +17,7 @@ type Workspace = {
     members: WorkspaceMember[]
 }
 
-type WorkspaceRes = {
+export type WorkspaceRes = {
     _id: string
 } & Workspace
 
