@@ -5,7 +5,7 @@
 import mongoose from "mongoose"
 import validator from "validator"
 
-import { trySaveImageMetadata } from "./../controller/itemPreview.js"
+import { trySaveImageMetadata } from "../controller/itemPreview.js"
 
 const Schema = mongoose.Schema
 

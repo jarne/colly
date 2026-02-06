@@ -8,10 +8,10 @@ import cors from "cors"
 import morgan from "morgan"
 import "dotenv/config"
 
-import { connectDb } from "./app/init.js"
-import { runMigrations } from "./app/migration/migrations.js"
-import { registerRoutes } from "./app/routes.js"
-import logger from "./app/util/logger.js"
+import { connectDb } from "./init.js"
+import { runMigrations } from "./migration/migrations.js"
+import { registerRoutes } from "./routes.js"
+import logger from "./util/logger.js"
 
 /* Express initialization */
 

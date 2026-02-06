@@ -23,10 +23,10 @@
         "url": "https://github.com/jarne/colly.git"
     },
     "scripts": {
-        "dev": "tsx watch --ignore client app.js",
+        "dev": "tsx watch src/index.ts",
         "dev:test-data": "node testDataServer.js",
         "build": "tsc",
-        "start": "node dist/app.js",
+        "start": "node dist/index.js",
         "test": "mocha --recursive --parallel --require test/fixtures.js",
         "test:ci": "mocha --recursive --exit --require test/fixtures.js --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results/mocha/junit.xml",
         "test:coverage": "c8 --all -x client --reporter html pnpm run test",

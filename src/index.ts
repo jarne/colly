@@ -3,7 +3,7 @@
  */
 
 import app from "./appInit.js"
-import logger from "./app/util/logger.js"
+import logger from "./util/logger.js"
 
 /* Server listen */
 

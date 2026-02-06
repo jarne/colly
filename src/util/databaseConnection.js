@@ -6,10 +6,10 @@ import mongoose from "mongoose"
 
 import logger from "./logger.js"
 
-import "./../model/user.js"
-import "./../model/workspace.js"
-import "./../model/tag.js"
-import "./../model/item.js"
+import "../model/user.js"
+import "../model/workspace.js"
+import "../model/tag.js"
+import "../model/item.js"
 
 export const connect = async () => {
     try {
