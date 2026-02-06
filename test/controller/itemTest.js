@@ -5,10 +5,10 @@
 import { expect } from "chai"
 import mongoose from "mongoose"
 
-import { connectDbAsync } from "./../../app/init.js"
-import controller from "./../../app/controller/item.js"
-import user from "./../../app/controller/user.js"
-import tag from "./../../app/controller/tag.js"
+import { connectDbAsync } from "./../../src/init.js"
+import controller from "./../../src/controller/item.js"
+import user from "./../../src/controller/user.js"
+import tag from "./../../src/controller/tag.js"
 
 const Item = mongoose.model("Item")
 const User = mongoose.model("User")
