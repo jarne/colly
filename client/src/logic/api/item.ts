@@ -3,17 +3,45 @@
  */
 
 import qs from "qs"
-
 import InternalAPI from "./../../util/InternalAPI"
+import type { TagRes } from "./tag"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
+
+type Item = {
+    url: string
+    name: string
+    description: string
+    tags: TagRes[] | string[]
+    isPinned: boolean
+    workspace: string
+    logo: string
+    logoUrl: string
+    image: string
+    imageUrl: string
+    createdAt: string
+    updatedAt: string
+}
+
+type ItemRes = {
+    _id: string
+} & Item
+
+type MetadataPreview = {
+    title: string
+    description: string
+}
 
 /**
  * Create item
- * @param {object} item item object
+ * @param {Item} item item object
  * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
  */
-export const createItem = async (item, workspace, accessToken) => {
+export const createItem = async (
+    item: Item,
+    workspace: string,
+    accessToken: string
+) => {
     let res
     try {
         const resp = await fetch(
@@ -51,11 +79,16 @@ export const createItem = async (item, workspace, accessToken) => {
 /**
  * Update item
  * @param {string} id item ID
- * @param {object} item item object
+ * @param {Item} item item object
  * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
  */
-export const updateItem = async (id, item, workspace, accessToken) => {
+export const updateItem = async (
+    id: string,
+    item: Item,
+    workspace: string,
+    accessToken: string
+) => {
     let res
     try {
         const resp = await fetch(
@@ -94,7 +127,11 @@ export const updateItem = async (id, item, workspace, accessToken) => {
  * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
  */
-export const deleteItem = async (id, workspace, accessToken) => {
+export const deleteItem = async (
+    id: string,
+    workspace: string,
+    accessToken: string
+) => {
     let res
     try {
         const resp = await fetch(
@@ -129,9 +166,13 @@ export const deleteItem = async (id, workspace, accessToken) => {
  * @param {object} query Query parameters
  * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
- * @returns {Array} item objects
+ * @returns {Promise<ItemRes[]>} item objects
  */
-export const findItems = async (query, workspace, accessToken) => {
+export const findItems = async (
+    query: object,
+    workspace: string,
+    accessToken: string
+): Promise<ItemRes[]> => {
     const queryStr = qs.stringify(query, {
         encode: false,
     })
@@ -159,9 +200,13 @@ export const findItems = async (query, workspace, accessToken) => {
  * @param {string} url item URL
  * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
- * @returns {object} metadata preview info (page title and description)
+ * @returns {Promise<MetadataPreview>} metadata preview info (page title and description)
  */
-export const generatePreview = async (url, workspace, accessToken) => {
+export const generatePreview = async (
+    url: string,
+    workspace: string,
+    accessToken: string
+): Promise<MetadataPreview> => {
     const resp = await fetch(
         `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/item/meta`,
         {
@@ -190,7 +235,11 @@ export const generatePreview = async (url, workspace, accessToken) => {
  * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
  */
-export const updateMetaImage = async (id, workspace, accessToken) => {
+export const updateMetaImage = async (
+    id: string,
+    workspace: string,
+    accessToken: string
+) => {
     let res
     try {
         const resp = await fetch(

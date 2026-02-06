@@ -7,13 +7,28 @@ import qs from "qs"
 import InternalAPI from "./../../util/InternalAPI"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
 
+type Tag = {
+    name: string
+    firstColor: string
+    secondColor: string
+    workspace: string
+}
+
+export type TagRes = {
+    _id: string
+} & Tag
+
 /**
  * Create tag
- * @param {object} tag tag object
+ * @param {Tag} tag tag object
  * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
  */
-export const createTag = async (tag, workspace, accessToken) => {
+export const createTag = async (
+    tag: Tag,
+    workspace: string,
+    accessToken: string
+) => {
     let res
     try {
         const resp = await fetch(
@@ -51,11 +66,16 @@ export const createTag = async (tag, workspace, accessToken) => {
 /**
  * Update tag
  * @param {string} id tag ID
- * @param {object} tag tag object
+ * @param {Tag} tag tag object
  * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
  */
-export const updateTag = async (id, tag, workspace, accessToken) => {
+export const updateTag = async (
+    id: string,
+    tag: Tag,
+    workspace: string,
+    accessToken: string
+) => {
     let res
     try {
         const resp = await fetch(
@@ -94,7 +114,11 @@ export const updateTag = async (id, tag, workspace, accessToken) => {
  * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
  */
-export const deleteTag = async (id, workspace, accessToken) => {
+export const deleteTag = async (
+    id: string,
+    workspace: string,
+    accessToken: string
+) => {
     let res
     try {
         const resp = await fetch(
@@ -129,9 +153,13 @@ export const deleteTag = async (id, workspace, accessToken) => {
  * @param {object} query Query parameters
  * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
- * @returns {Array} tag objects
+ * @returns {Promise<TagRes[]>} tag objects
  */
-export const findTags = async (query, workspace, accessToken) => {
+export const findTags = async (
+    query: object,
+    workspace: string,
+    accessToken: string
+): Promise<TagRes[]> => {
     const queryStr = qs.stringify(query, {
         encode: false,
     })
