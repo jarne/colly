@@ -113,26 +113,28 @@ const CreateTagModal = forwardRef(function CreateTagModal(props, ref) {
         e.preventDefault()
 
         try {
-            editId
-                ? await updateTag(
-                      editId,
-                      {
-                          name: tagName,
-                          firstColor: colFirst.slice(1),
-                          secondColor: colSec.slice(1),
-                      },
-                      workspace,
-                      accessToken
-                  )
-                : await createTag(
-                      {
-                          name: tagName,
-                          firstColor: colFirst.slice(1),
-                          secondColor: colSec.slice(1),
-                      },
-                      workspace,
-                      accessToken
-                  )
+            if (editId) {
+                await updateTag(
+                    editId,
+                    {
+                        name: tagName,
+                        firstColor: colFirst.slice(1),
+                        secondColor: colSec.slice(1),
+                    },
+                    workspace,
+                    accessToken
+                )
+            } else {
+                await createTag(
+                    {
+                        name: tagName,
+                        firstColor: colFirst.slice(1),
+                        secondColor: colSec.slice(1),
+                    },
+                    workspace,
+                    accessToken
+                )
+            }
         } catch (ex) {
             toast.error(ex.message)
 

@@ -177,28 +177,30 @@ const CreateItemModal = forwardRef(function CreateItemModal(props, ref) {
         e.preventDefault()
 
         try {
-            editId
-                ? await updateItem(
-                      editId,
-                      {
-                          url: itemUrl,
-                          name: itemName,
-                          description: itemDescription,
-                          tags: itemTags,
-                      },
-                      workspace,
-                      accessToken
-                  )
-                : await createItem(
-                      {
-                          url: itemUrl,
-                          name: itemName,
-                          description: itemDescription,
-                          tags: itemTags,
-                      },
-                      workspace,
-                      accessToken
-                  )
+            if (editId) {
+                await updateItem(
+                    editId,
+                    {
+                        url: itemUrl,
+                        name: itemName,
+                        description: itemDescription,
+                        tags: itemTags,
+                    },
+                    workspace,
+                    accessToken
+                )
+            } else {
+                await createItem(
+                    {
+                        url: itemUrl,
+                        name: itemName,
+                        description: itemDescription,
+                        tags: itemTags,
+                    },
+                    workspace,
+                    accessToken
+                )
+            }
         } catch (ex) {
             toast.error(ex.message)
 

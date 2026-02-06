@@ -75,24 +75,26 @@ const CreateUserModal = forwardRef(function CreateUserModal(props, ref) {
         e.preventDefault()
 
         try {
-            editId
-                ? await updateUser(
-                      editId,
-                      {
-                          username: username,
-                          password: password,
-                          isAdmin: isAdmin,
-                      },
-                      accessToken
-                  )
-                : await createUser(
-                      {
-                          username: username,
-                          password: password,
-                          isAdmin: isAdmin,
-                      },
-                      accessToken
-                  )
+            if (editId) {
+                await updateUser(
+                    editId,
+                    {
+                        username: username,
+                        password: password,
+                        isAdmin: isAdmin,
+                    },
+                    accessToken
+                )
+            } else {
+                await createUser(
+                    {
+                        username: username,
+                        password: password,
+                        isAdmin: isAdmin,
+                    },
+                    accessToken
+                )
+            }
         } catch (ex) {
             toast.error(ex.message)
 
