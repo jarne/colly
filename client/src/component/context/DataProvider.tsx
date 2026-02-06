@@ -14,16 +14,16 @@ import { useUserAuth } from "./UserAuthProvider"
 type AppDataContextType = {
     workspaces: WorkspaceRes[]
     setWorkspaces: (workspaces: WorkspaceRes[]) => void
-    loadWorkspaces: (query: object) => Promise<WorkspaceRes[] | undefined>
+    loadWorkspaces: (query?: object) => Promise<WorkspaceRes[] | undefined>
     tags: TagRes[]
     setTags: (tags: TagRes[]) => void
-    loadTags: (query: object) => Promise<TagRes[] | undefined>
+    loadTags: (query?: object) => Promise<TagRes[] | undefined>
     items: ItemRes[]
     setItems: (items: ItemRes[]) => void
-    loadItems: (query: object) => Promise<ItemRes[] | undefined>
+    loadItems: (query?: object) => Promise<ItemRes[] | undefined>
     users: UserRes[]
     setUsers: (users: UserRes[]) => void
-    loadUsers: (query: object) => Promise<UserRes[] | undefined>
+    loadUsers: (query?: object) => Promise<UserRes[] | undefined>
 }
 
 const AppDataContext = createContext<AppDataContextType | null>(null)
@@ -37,7 +37,7 @@ const AppDataProvider = (props: object) => {
     const { accessToken } = useUserAuth()
     const { workspace } = useCurrentInput()
 
-    const loadWorkspaces = async (query: object) => {
+    const loadWorkspaces = async (query: object = {}) => {
         let workspaces
         try {
             workspaces = await findWorkspaces(query, accessToken)
@@ -53,7 +53,7 @@ const AppDataProvider = (props: object) => {
         return workspaces
     }
 
-    const loadTags = async (query: object) => {
+    const loadTags = async (query: object = {}) => {
         let tags
         try {
             tags = await findTags(query, workspace, accessToken)
@@ -69,7 +69,7 @@ const AppDataProvider = (props: object) => {
         return tags
     }
 
-    const loadItems = async (query: object) => {
+    const loadItems = async (query: object = {}) => {
         let items
         try {
             items = await findItems(query, workspace, accessToken)
@@ -85,7 +85,7 @@ const AppDataProvider = (props: object) => {
         return items
     }
 
-    const loadUsers = async (query: object) => {
+    const loadUsers = async (query: object = {}) => {
         let users
         try {
             users = await findUsers(query, accessToken)

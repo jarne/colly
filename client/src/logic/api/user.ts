@@ -3,9 +3,9 @@
  */
 
 import qs from "qs"
-
 import InternalAPI from "./../../util/InternalAPI"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
+import { checkRequestSuccessful } from "./util/requestHelper"
 
 type PublicUser = {
     username: string
@@ -18,14 +18,14 @@ type User = {
 
 export type UserRes = {
     _id: string
-} & User
+} & PublicUser
 
 /**
  * Create user
- * @param {User} user user object
+ * @param {Partial<User>} user user object
  * @param {string} accessToken API access token
  */
-export const createUser = async (user: User, accessToken: string) => {
+export const createUser = async (user: Partial<User>, accessToken: string) => {
     let res
     try {
         const resp = await fetch(InternalAPI.API_ENDPOINT + "/user", {
@@ -56,12 +56,12 @@ export const createUser = async (user: User, accessToken: string) => {
 /**
  * Update user
  * @param {string} id user ID
- * @param {User} user user object
+ * @param {Partial<User>} user user object
  * @param {string} accessToken API access token
  */
 export const updateUser = async (
     id: string,
-    user: User,
+    user: Partial<User>,
     accessToken: string
 ) => {
     if (user.password === "") {
@@ -141,6 +141,7 @@ export const findUsers = async (
             Authorization: `Bearer ${accessToken}`,
         },
     })
+    checkRequestSuccessful(resp)
     const res = await resp.json()
 
     if (res.error) {

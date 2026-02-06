@@ -2,26 +2,43 @@
  * Colly | item card
  */
 
+import { type MouseEvent, type RefObject } from "react"
 import Dropdown from "react-bootstrap/Dropdown"
 import { toast } from "react-toastify"
 import usePrefersColorScheme from "use-prefers-color-scheme"
-
-import TagList from "./../tag/TagList"
-import Pin from "./../pin/Pin"
-import { useUserAuth } from "./../context/UserAuthProvider"
 import { useCurrentInput } from "../context/CurrentInputProvider"
+import type { ItemRes } from "./../../logic/api/item"
 import { updateItem, updateMetaImage } from "./../../logic/api/item"
+import type { TagRes } from "./../../logic/api/tag"
+import { useUserAuth } from "./../context/UserAuthProvider"
+import Pin from "./../pin/Pin"
+import TagList from "./../tag/TagList"
 
 import "./ItemCard.css"
 
-function ItemCard({ item, createItemModalRef, triggerItemLoad }) {
+type EditModalHandle = {
+    open: () => void
+    setEditId: (id: string) => void
+}
+
+type ItemCardProps = {
+    item: ItemRes
+    createItemModalRef: RefObject<EditModalHandle | null>
+    triggerItemLoad: () => Promise<void>
+}
+
+function ItemCard({
+    item,
+    createItemModalRef,
+    triggerItemLoad,
+}: ItemCardProps) {
     const prefersColorScheme = usePrefersColorScheme()
     const isDarkMode = prefersColorScheme === "dark"
 
     const { accessToken } = useUserAuth()
     const { isEditMode, workspace } = useCurrentInput()
 
-    const formatUrlText = (url) => {
+    const formatUrlText = (url: string) => {
         const parts = url.split("/")
 
         if (parts.length < 3) {
@@ -31,20 +48,26 @@ function ItemCard({ item, createItemModalRef, triggerItemLoad }) {
         return parts[2]
     }
 
-    const handleItemLinkClick = (e, itemId) => {
+    const handleItemLinkClick = (
+        e: MouseEvent<HTMLAnchorElement>,
+        itemId: string
+    ) => {
         if (!isEditMode) {
             return
         }
 
         handleItemEditClick(e, itemId)
     }
-    const handleItemEditClick = (e, itemId) => {
+    const handleItemEditClick = (
+        e: MouseEvent<HTMLElement>,
+        itemId: string
+    ) => {
         e.preventDefault()
 
-        createItemModalRef.current.setEditId(itemId)
-        createItemModalRef.current.open()
+        createItemModalRef.current?.setEditId(itemId)
+        createItemModalRef.current?.open()
     }
-    const handleItemPinClick = async (item) => {
+    const handleItemPinClick = async (item: ItemRes) => {
         try {
             await updateItem(
                 item._id,
@@ -55,7 +78,7 @@ function ItemCard({ item, createItemModalRef, triggerItemLoad }) {
                 accessToken
             )
         } catch (ex) {
-            toast.error(ex.message)
+            if (ex instanceof Error) toast.error(ex.message)
 
             return
         }
@@ -63,13 +86,16 @@ function ItemCard({ item, createItemModalRef, triggerItemLoad }) {
 
         triggerItemLoad()
     }
-    const handleItemUpdateMetaImageClick = async (e, itemId) => {
+    const handleItemUpdateMetaImageClick = async (
+        e: MouseEvent<HTMLElement>,
+        itemId: string
+    ) => {
         e.preventDefault()
 
         try {
             await updateMetaImage(itemId, workspace, accessToken)
         } catch (ex) {
-            toast.error(ex.message)
+            if (ex instanceof Error) toast.error(ex.message)
 
             return
         }
@@ -158,7 +184,9 @@ function ItemCard({ item, createItemModalRef, triggerItemLoad }) {
                     </Dropdown>
                 </div>
                 <p className="card-text card-description">{item.description}</p>
-                {item.tags.length > 0 && <TagList tags={item.tags} />}
+                {item.tags.length > 0 && (
+                    <TagList tags={item.tags as TagRes[]} />
+                )}
             </div>
         </div>
     )

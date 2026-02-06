@@ -21,6 +21,15 @@ import { useCurrentInput } from "../component/context/CurrentInputProvider"
 
 import "./Dashboard.css"
 
+type EditModalHandle = {
+    open: () => void
+    setEditId: (id: string) => void
+}
+
+type CreateModalHandle = {
+    open: () => void
+}
+
 function Dashboard() {
     const navigate = useNavigate()
     const { wsId, tagId } = useParams()
@@ -30,10 +39,10 @@ function Dashboard() {
     const { workspace, setWorkspace, setSelectedTag, searchStr, sortValue } =
         useCurrentInput()
 
-    const createWorkspaceModalRef = useRef()
-    const createTagModalRef = useRef()
-    const createItemModalRef = useRef()
-    const preferencesModalRef = useRef()
+    const createWorkspaceModalRef = useRef<EditModalHandle | null>(null)
+    const createTagModalRef = useRef<EditModalHandle | null>(null)
+    const createItemModalRef = useRef<EditModalHandle | null>(null)
+    const preferencesModalRef = useRef<CreateModalHandle | null>(null)
 
     const checkWorkspaceActive = () => {
         if (wsId) {
@@ -48,12 +57,12 @@ function Dashboard() {
         navigate(`/workspace/${firstWorkspace._id}`)
     }
 
-    const triggerItemLoad = async () => {
+    const triggerItemLoad = async (): Promise<void> => {
         if (!workspace) {
             return
         }
 
-        let filter = {}
+        const filter: Record<string, unknown> = {}
 
         if (tagId) {
             filter.tags = tagId
@@ -75,8 +84,8 @@ function Dashboard() {
     }
 
     useEffect(() => {
-        setWorkspace(wsId)
-        setSelectedTag(tagId)
+        if (wsId !== undefined) setWorkspace(wsId)
+        if (tagId !== undefined) setSelectedTag(tagId)
 
         checkWorkspaceActive()
         triggerItemLoad()

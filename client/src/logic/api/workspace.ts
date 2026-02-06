@@ -6,9 +6,10 @@ import qs from "qs"
 import InternalAPI from "./../../util/InternalAPI"
 import type { UserRes } from "./user"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
+import { checkRequestSuccessful } from "./util/requestHelper"
 
-type WorkspaceMember = {
-    user: UserRes | string
+export type WorkspaceMember = {
+    user: Omit<UserRes, "isAdmin">
     permissionLevel: string
 }
 
@@ -23,12 +24,12 @@ export type WorkspaceRes = {
 
 /**
  * Create workspace
- * @param {Workspace} workspace workspace object
+ * @param {Partial<Workspace>} workspace workspace object
  * @param {string} accessToken API access token
  * @returns {Promise<string>} created workspace ID
  */
 export const createWorkspace = async (
-    workspace: Workspace,
+    workspace: Partial<Workspace>,
     accessToken: string
 ): Promise<string> => {
     let res
@@ -61,12 +62,12 @@ export const createWorkspace = async (
 /**
  * Update workspace
  * @param {string} id workspace ID
- * @param {Workspace} workspace workspace object
+ * @param {Partial<Workspace>} workspace workspace object
  * @param {string} accessToken API access token
  */
 export const updateWorkspace = async (
     id: string,
-    workspace: Workspace,
+    workspace: Partial<Workspace>,
     accessToken: string
 ) => {
     let res
@@ -159,6 +160,7 @@ export const findWorkspaces = async (
             },
         }
     )
+    checkRequestSuccessful(resp)
     const res = await resp.json()
 
     if (res.error) {
@@ -169,15 +171,15 @@ export const findWorkspaces = async (
 }
 
 /**
- * Get user ID by its username
+ * Get user object by its username
  * @param {string} username username
  * @param {string} accessToken API access token
- * @returns {Promise<UserRes[]>} id of user object matching the username
+ * @returns {Promise<UserRes>} user object matching the username
  */
 export const getUserByUsername = async (
     username: string,
     accessToken: string
-): Promise<UserRes[]> => {
+): Promise<UserRes> => {
     const resp = await fetch(
         `${InternalAPI.API_ENDPOINT}/workspace/userByUsername/${username}`,
         {

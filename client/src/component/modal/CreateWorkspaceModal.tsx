@@ -1,0 +1,395 @@
+/**
+ * Colly | workspace create view component
+ */
+
+import {
+    forwardRef,
+    useImperativeHandle,
+    useState,
+    type ChangeEvent,
+    type MouseEvent,
+    type SubmitEvent,
+} from "react"
+import Modal from "react-bootstrap/Modal"
+import { useNavigate } from "react-router"
+import { toast } from "react-toastify"
+import type { UserRes } from "./../../logic/api/user"
+import {
+    createWorkspace,
+    deleteWorkspace,
+    getUserByUsername,
+    updateWorkspace,
+    type WorkspaceMember,
+} from "./../../logic/api/workspace"
+import { useAppData } from "./../context/DataProvider"
+import { useUserAuth } from "./../context/UserAuthProvider"
+
+type CreateWorkspaceModalHandle = {
+    open: () => void
+    setEditId: (id: string) => void
+}
+
+type CreateWorkspaceModalProps = object
+
+const CreateWorkspaceModal = forwardRef<
+    CreateWorkspaceModalHandle,
+    CreateWorkspaceModalProps
+>(function CreateWorkspaceModal(_props, ref) {
+    const DEFAULT_EMPTY = ""
+    const DEFAULT_PERM_LEVEL = "read"
+
+    const navigate = useNavigate()
+    const { accessToken, userId, displayName } = useUserAuth()
+    const { workspaces, loadWorkspaces } = useAppData()
+
+    const DEFAULT_MEMBERS = [
+        {
+            user: {
+                _id: userId,
+                username: displayName,
+            },
+            permissionLevel: "admin",
+        },
+    ]
+
+    const [show, setShow] = useState(false)
+
+    const [editId, setEditId] = useState<string | null>(null)
+
+    const [wsName, setWsName] = useState(DEFAULT_EMPTY)
+    const [members, setMembers] = useState<WorkspaceMember[]>(DEFAULT_MEMBERS)
+
+    const [addUsername, setAddUsername] = useState(DEFAULT_EMPTY)
+    const [addPerm, setAddPerm] = useState(DEFAULT_PERM_LEVEL)
+
+    useImperativeHandle(ref, () => ({
+        open() {
+            handleShow()
+        },
+        setEditId(id: string) {
+            setEditId(id)
+            loadEditInput(id)
+        },
+    }))
+
+    const resetInput = () => {
+        setEditId(null)
+        setWsName(DEFAULT_EMPTY)
+        setMembers(DEFAULT_MEMBERS)
+        setAddUsername(DEFAULT_EMPTY)
+        setAddPerm(DEFAULT_PERM_LEVEL)
+    }
+    const loadEditInput = (id: string) => {
+        for (const ws of workspaces) {
+            if (ws._id === id) {
+                setWsName(ws.name)
+                setMembers(ws.members as WorkspaceMember[])
+            }
+        }
+    }
+
+    const handleShow = () => {
+        setShow(true)
+    }
+    const handleClose = () => {
+        setShow(false)
+
+        resetInput()
+    }
+
+    const handleWsNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setWsName(e.target.value)
+    }
+    const handleMemberPermLevelChange = (
+        e: ChangeEvent<HTMLSelectElement>,
+        uid: string
+    ) => {
+        const changedMembers = members.map((member) => {
+            if (member.user._id === uid) {
+                return {
+                    ...member,
+                    permissionLevel: e.target.value,
+                }
+            }
+
+            return member
+        })
+        setMembers(changedMembers)
+    }
+    const handleAddUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setAddUsername(e.target.value)
+    }
+    const handleAddPermChange = (e: ChangeEvent<HTMLSelectElement>) => {
+        setAddPerm(e.target.value)
+    }
+
+    const handleMemberRemoveClick = (uid: string) => {
+        const changedMembers = members.filter((member) => {
+            return member.user._id !== uid
+        })
+        setMembers(changedMembers)
+    }
+    const handleMemberAddClick = async () => {
+        if (addUsername === "") {
+            toast.error("Username cannot be empty!")
+            return
+        }
+
+        const duplicate = members.some((member) => {
+            return member.user.username === addUsername
+        })
+        if (duplicate) {
+            toast.error("User is already a member of the workspace!")
+            return
+        }
+
+        let userData: UserRes
+        try {
+            userData = await getUserByUsername(addUsername, accessToken)
+        } catch (ex) {
+            if (ex instanceof Error) toast.error(ex.message)
+            return
+        }
+
+        const newMember = {
+            user: {
+                _id: (userData as UserRes)._id,
+                username: addUsername,
+            },
+            permissionLevel: addPerm,
+        }
+        setMembers([...members, newMember])
+
+        setAddUsername(DEFAULT_EMPTY)
+        setAddPerm(DEFAULT_PERM_LEVEL)
+    }
+
+    const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
+        e.preventDefault()
+
+        let createdId: string | undefined
+        try {
+            if (editId) {
+                await updateWorkspace(
+                    editId,
+                    {
+                        name: wsName,
+                        members,
+                    },
+                    accessToken
+                )
+            } else {
+                createdId = await createWorkspace(
+                    {
+                        name: wsName,
+                        members,
+                    },
+                    accessToken
+                )
+            }
+        } catch (ex) {
+            if (ex instanceof Error) toast.error(ex.message)
+            return
+        }
+
+        toast.success(
+            editId
+                ? "Workspace has been updated!"
+                : `Workspace "${wsName}" has been created!`
+        )
+        handleClose()
+
+        loadWorkspaces({
+            populate: {
+                path: "members.user",
+                select: "username",
+            },
+        })
+
+        if (createdId) {
+            navigate(`/workspace/${createdId}`)
+        }
+    }
+    const handleDelete = async (e: MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault()
+
+        if (editId === null) {
+            return
+        }
+
+        try {
+            await deleteWorkspace(editId, accessToken)
+        } catch (ex) {
+            if (ex instanceof Error) toast.error(ex.message)
+            return
+        }
+
+        toast.success("Workspace has been deleted!")
+        handleClose()
+
+        loadWorkspaces({
+            populate: {
+                path: "members.user",
+                select: "username",
+            },
+        })
+        navigate("/")
+    }
+
+    return (
+        <Modal show={show} onHide={handleClose}>
+            <div className="modal-header">
+                <h1 className="modal-title fs-5" id="createWorkspaceModalLabel">
+                    {editId ? `Edit workspace` : "Create new workspace"}
+                </h1>
+                <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                    onClick={handleClose}
+                ></button>
+            </div>
+            <form onSubmit={handleSubmit}>
+                <div className="modal-body">
+                    <div className="mb-3">
+                        <label htmlFor="wsNameInput" className="form-label">
+                            Workspace name
+                        </label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="wsNameInput"
+                            placeholder="My workspace"
+                            value={wsName}
+                            onChange={handleWsNameChange}
+                            autoFocus
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <label
+                            htmlFor="tagColorsSection"
+                            className="form-label"
+                        >
+                            Members
+                        </label>
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">User</th>
+                                    <th scope="col">Permission level</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {members.map((member) => (
+                                    <tr key={member.user._id}>
+                                        <th scope="row">
+                                            {member.user.username}
+                                        </th>
+                                        <td>
+                                            <select
+                                                className="form-select"
+                                                aria-label="Permission level select"
+                                                value={member.permissionLevel}
+                                                onChange={(e) => {
+                                                    handleMemberPermLevelChange(
+                                                        e,
+                                                        member.user._id
+                                                    )
+                                                }}
+                                            >
+                                                <option value="read">
+                                                    Read
+                                                </option>
+                                                <option value="write">
+                                                    Write
+                                                </option>
+                                                <option value="admin">
+                                                    Admin
+                                                </option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <button
+                                                type="button"
+                                                className="btn btn-link"
+                                                onClick={() => {
+                                                    handleMemberRemoveClick(
+                                                        member.user._id
+                                                    )
+                                                }}
+                                            >
+                                                Remove
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))}
+                                <tr>
+                                    <th scope="row">
+                                        <input
+                                            className="form-control"
+                                            type="text"
+                                            value={addUsername}
+                                            onChange={handleAddUsernameChange}
+                                            placeholder="Username"
+                                            aria-label="New user username"
+                                        />
+                                    </th>
+                                    <td>
+                                        <select
+                                            className="form-select"
+                                            aria-label="Permission level select"
+                                            value={addPerm}
+                                            onChange={handleAddPermChange}
+                                        >
+                                            <option value="read">Read</option>
+                                            <option value="write">Write</option>
+                                            <option value="admin">Admin</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <button
+                                            type="button"
+                                            className="btn btn-link"
+                                            onClick={handleMemberAddClick}
+                                        >
+                                            Add
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div
+                    className={`modal-footer${editId ? " d-flex justify-content-between" : ""}`}
+                >
+                    {editId && (
+                        <button
+                            type="button"
+                            className="btn btn-dark"
+                            onClick={handleDelete}
+                        >
+                            Delete
+                        </button>
+                    )}
+                    <div>
+                        <button
+                            type="button"
+                            className="btn btn-light me-2"
+                            onClick={handleClose}
+                        >
+                            Cancel
+                        </button>
+                        <button type="submit" className="btn btn-secondary">
+                            {editId ? "Edit" : "Create"}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </Modal>
+    )
+})
+
+export default CreateWorkspaceModal

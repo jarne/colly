@@ -12,13 +12,9 @@ type UserInfo = {
     isAdmin: boolean
 }
 
-type LoginRes = {
+export type LoginRes = {
     user: UserInfo
     token: string
-}
-
-type MeRes = {
-    user: UserInfo
 }
 
 /**
@@ -79,9 +75,9 @@ export const logout = async (accessToken: string) => {
 /**
  * Get information about current user
  * @param {string} accessToken API access token
- * @returns {Promise<MeRes>} user information
+ * @returns {Promise<UserInfo>} user information
  */
-export const getMe = async (accessToken: string): Promise<MeRes> => {
+export const getMe = async (accessToken: string): Promise<UserInfo> => {
     const resp = await fetch(`${InternalAPI.API_ENDPOINT}/auth/me`, {
         method: "GET",
         headers: {

@@ -6,12 +6,14 @@ import qs from "qs"
 
 import InternalAPI from "./../../util/InternalAPI"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
+import { checkRequestSuccessful } from "./util/requestHelper"
 
 type Tag = {
     name: string
     firstColor: string
     secondColor: string
     workspace: string
+    lastUsed: Date
 }
 
 export type TagRes = {
@@ -20,12 +22,12 @@ export type TagRes = {
 
 /**
  * Create tag
- * @param {Tag} tag tag object
+ * @param {Partial<Tag>} tag tag object
  * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
  */
 export const createTag = async (
-    tag: Tag,
+    tag: Partial<Tag>,
     workspace: string,
     accessToken: string
 ) => {
@@ -66,13 +68,13 @@ export const createTag = async (
 /**
  * Update tag
  * @param {string} id tag ID
- * @param {Tag} tag tag object
+ * @param {Partial<Tag>} tag tag object
  * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
  */
 export const updateTag = async (
     id: string,
-    tag: Tag,
+    tag: Partial<Tag>,
     workspace: string,
     accessToken: string
 ) => {
@@ -173,6 +175,7 @@ export const findTags = async (
             },
         }
     )
+    checkRequestSuccessful(resp)
     const res = await resp.json()
 
     if (res.error) {

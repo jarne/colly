@@ -69,6 +69,9 @@ importers:
       '@types/react-dom':
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.13)
+      '@types/react-responsive-masonry':
+        specifier: ^2.7.0
+        version: 2.7.0
       eslint:
         specifier: ^9.23.0
         version: 9.39.2
@@ -722,6 +725,9 @@ packages:
     resolution: {integrity: sha512-jp2L/eY6fn+KgVVQAOqYItbF0VY/YApe5Mz2F0aykSO8gx31bYCZyvSeYxCHKvzHG5eZjc+zyaS5BrBWya2+kQ==}
     peerDependencies:
       '@types/react': ^19.2.0
+
+  '@types/react-responsive-masonry@2.7.0':
+    resolution: {integrity: sha512-eMOxLcmPo3M8IDcTCmgK/luxjlJiqK1glZr15iM0+DYhL0QFlJvnNEgjhyOBGFlXsjlnLbcz1/M3/Q3fSeU1sQ==}
 
   '@types/react-transition-group@4.4.12':
     resolution: {integrity: sha512-8TV6R3h2j7a91c+1DXdJi3Syo69zzIZbz7Lg5tORM5LEJG7X/E6a1V3drRyBRZq7/utz7A+c4OgYLiLcYGHG6w==}
@@ -2446,6 +2452,10 @@ snapshots:
   '@types/qs@6.14.0': {}
 
   '@types/react-dom@19.2.3(@types/react@19.2.13)':
+    dependencies:
+      '@types/react': 19.2.13
+
+  '@types/react-responsive-masonry@2.7.0':
     dependencies:
       '@types/react': 19.2.13
 

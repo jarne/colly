@@ -2,12 +2,13 @@
  * Colly | sort order select field
  */
 
+import { type ChangeEvent } from "react"
 import { useCurrentInput } from "../context/CurrentInputProvider"
 
 function SortSelect() {
     const { sortValue, setSortValue } = useCurrentInput()
 
-    const handlSortValueChange = (e) => {
+    const handlSortValueChange = (e: ChangeEvent<HTMLSelectElement>) => {
         setSortValue(e.target.value)
     }
 

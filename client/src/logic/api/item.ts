@@ -6,6 +6,7 @@ import qs from "qs"
 import InternalAPI from "./../../util/InternalAPI"
 import type { TagRes } from "./tag"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
+import { checkRequestSuccessful } from "./util/requestHelper"
 
 type Item = {
     url: string
@@ -33,12 +34,12 @@ type MetadataPreview = {
 
 /**
  * Create item
- * @param {Item} item item object
+ * @param {Partial<Item>} item item object
  * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
  */
 export const createItem = async (
-    item: Item,
+    item: Partial<Item>,
     workspace: string,
     accessToken: string
 ) => {
@@ -79,13 +80,13 @@ export const createItem = async (
 /**
  * Update item
  * @param {string} id item ID
- * @param {Item} item item object
+ * @param {Partial<Item>} item item object
  * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
  */
 export const updateItem = async (
     id: string,
-    item: Item,
+    item: Partial<Item>,
     workspace: string,
     accessToken: string
 ) => {
@@ -186,6 +187,7 @@ export const findItems = async (
             },
         }
     )
+    checkRequestSuccessful(resp)
     const res = await resp.json()
 
     if (res.error) {

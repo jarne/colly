@@ -2,16 +2,19 @@
  * Colly | admin panel
  */
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, type MouseEvent } from "react"
 import { useNavigate } from "react-router"
 import { toast } from "react-toastify"
-
-import Navbar from "./../component/nav/Navbar"
-import CreateUserModal from "./../component/modal/admin/CreateUserModal"
-
-import { useUserAuth } from "./../component/context/UserAuthProvider"
 import { useAppData } from "./../component/context/DataProvider"
+import { useUserAuth } from "./../component/context/UserAuthProvider"
+import CreateUserModal from "./../component/modal/admin/CreateUserModal"
+import Navbar from "./../component/nav/Navbar"
 import { deleteUser } from "./../logic/api/user"
+
+type CreateUserModalHandle = {
+    open: () => void
+    setEditId: (id: string) => void
+}
 
 function Admin() {
     const navigate = useNavigate()
@@ -19,26 +22,32 @@ function Admin() {
     const { accessToken } = useUserAuth()
     const { users, loadUsers } = useAppData()
 
-    const createUserModalRef = useRef()
+    const createUserModalRef = useRef<CreateUserModalHandle | null>(null)
 
-    const handleCreateUser = (e) => {
+    const handleCreateUser = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
 
-        createUserModalRef.current.open()
+        createUserModalRef.current?.open()
     }
-    const handleEditUser = (e, userId) => {
+    const handleEditUser = (
+        e: MouseEvent<HTMLButtonElement>,
+        userId: string
+    ) => {
         e.preventDefault()
 
-        createUserModalRef.current.setEditId(userId)
-        createUserModalRef.current.open()
+        createUserModalRef.current?.setEditId(userId)
+        createUserModalRef.current?.open()
     }
-    const handleDeleteUser = async (e, userId) => {
+    const handleDeleteUser = async (
+        e: MouseEvent<HTMLButtonElement>,
+        userId: string
+    ) => {
         e.preventDefault()
 
         try {
             await deleteUser(userId, accessToken)
         } catch (ex) {
-            toast.error(ex.message)
+            if (ex instanceof Error) toast.error(ex.message)
 
             return
         }
@@ -47,7 +56,7 @@ function Admin() {
         loadUsers()
     }
 
-    const triggerUserLoad = async () => {
+    const triggerUserLoad = async (): Promise<void> => {
         try {
             await loadUsers()
         } catch {

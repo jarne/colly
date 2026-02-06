@@ -2,12 +2,16 @@
  * Colly | item search field
  */
 
-import { useState } from "react"
+import { useState, type ChangeEvent, type SubmitEvent } from "react"
 
-function ItemSearch({ setSearchStr }) {
+type ItemSearchProps = {
+    setSearchStr: (value: string) => void
+}
+
+function ItemSearch({ setSearchStr }: ItemSearchProps) {
     const [tmpSearchStr, setTmpSearchStr] = useState("")
 
-    const handleTmpSearchStrChange = (e) => {
+    const handleTmpSearchStrChange = (e: ChangeEvent<HTMLInputElement>) => {
         setTmpSearchStr(e.target.value)
     }
     const handleTmpSearchStrBlur = () => {
@@ -16,7 +20,7 @@ function ItemSearch({ setSearchStr }) {
         }
     }
 
-    const handleSearchSubmit = (e) => {
+    const handleSearchSubmit = (e: SubmitEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         setSearchStr(tmpSearchStr)

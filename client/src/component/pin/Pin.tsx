@@ -2,7 +2,11 @@
  * Colly | item pin icon
  */
 
-export default function Pin({ isPinned }) {
+type PinProps = {
+    isPinned: boolean
+}
+
+export default function Pin({ isPinned }: PinProps) {
     return isPinned ? (
         <i
             className="bi bi-pin-angle-fill"

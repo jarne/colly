@@ -2,10 +2,18 @@
  * Colly | tag badge
  */
 
+import type { TagRes } from "./../../logic/api/tag"
+import { type MouseEvent } from "react"
+
 import "./TagBadge.css"
 
-function TagBadge({ tag, clickAction }) {
-    const handleClick = (e) => {
+type TagBadgeProps = {
+    tag: TagRes
+    clickAction?: (tag: TagRes) => void
+}
+
+function TagBadge({ tag, clickAction }: TagBadgeProps) {
+    const handleClick = (e: MouseEvent<HTMLSpanElement>) => {
         e.preventDefault()
 
         if (clickAction === undefined) {
