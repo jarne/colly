@@ -3,16 +3,29 @@
  */
 
 import qs from "qs"
-
 import InternalAPI from "./../../util/InternalAPI"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
+import { checkRequestSuccessful } from "./util/requestHelper"
+
+type PublicUser = {
+    username: string
+    isAdmin: boolean
+}
+
+type User = {
+    password?: string
+} & PublicUser
+
+export type UserRes = {
+    _id: string
+} & PublicUser
 
 /**
  * Create user
- * @param {object} user user object
+ * @param {Partial<User>} user user object
  * @param {string} accessToken API access token
  */
-export const createUser = async (user, accessToken) => {
+export const createUser = async (user: Partial<User>, accessToken: string) => {
     let res
     try {
         const resp = await fetch(InternalAPI.API_ENDPOINT + "/user", {
@@ -43,10 +56,14 @@ export const createUser = async (user, accessToken) => {
 /**
  * Update user
  * @param {string} id user ID
- * @param {object} user user object
+ * @param {Partial<User>} user user object
  * @param {string} accessToken API access token
  */
-export const updateUser = async (id, user, accessToken) => {
+export const updateUser = async (
+    id: string,
+    user: Partial<User>,
+    accessToken: string
+) => {
     if (user.password === "") {
         user.password = undefined
     }
@@ -81,7 +98,7 @@ export const updateUser = async (id, user, accessToken) => {
  * @param {string} id user ID
  * @param {string} accessToken API access token
  */
-export const deleteUser = async (id, accessToken) => {
+export const deleteUser = async (id: string, accessToken: string) => {
     let res
     try {
         const resp = await fetch(`${InternalAPI.API_ENDPOINT}/user/${id}`, {
@@ -108,9 +125,12 @@ export const deleteUser = async (id, accessToken) => {
  * Find users
  * @param {object} query find query
  * @param {string} accessToken API access token
- * @returns {Array} user objects
+ * @returns {Promise<UserRes[]>} user objects
  */
-export const findUsers = async (query, accessToken) => {
+export const findUsers = async (
+    query: object,
+    accessToken: string
+): Promise<UserRes[]> => {
     const queryStr = qs.stringify(query, {
         encode: false,
     })
@@ -121,6 +141,7 @@ export const findUsers = async (query, accessToken) => {
             Authorization: `Bearer ${accessToken}`,
         },
     })
+    checkRequestSuccessful(resp)
     const res = await resp.json()
 
     if (res.error) {

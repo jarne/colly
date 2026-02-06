@@ -2,7 +2,7 @@
  * Colly | app navigation bar
  */
 
-import { useEffect } from "react"
+import { useEffect, type MouseEvent, type RefObject } from "react"
 import { useNavigate, Link } from "react-router"
 import usePrefersColorScheme from "use-prefers-color-scheme"
 import OverlayTrigger from "react-bootstrap/OverlayTrigger"
@@ -10,7 +10,7 @@ import Popover from "react-bootstrap/Popover"
 import { toast } from "react-toastify"
 
 import { useUserAuth } from "./../../component/context/UserAuthProvider"
-import { useCurrentInput } from "./../../component/context/CurrentInputProvider"
+import { useCurrentInput } from "../context/CurrentInputProvider"
 import { getMe, logout } from "./../../logic/api/auth"
 import ItemSearch from "./ItemSearch"
 import SortSelect from "./SortSelect"
@@ -18,12 +18,24 @@ import collyLogoImg from "./../../asset/colly-logo.png"
 
 import "./Navbar.css"
 
+type ModalHandle = {
+    open: () => void
+    setEditId?: (id: string) => void
+}
+
+type NavbarProps = {
+    createWorkspaceModalRef?: RefObject<ModalHandle | null>
+    createTagModalRef?: RefObject<ModalHandle | null>
+    createItemModalRef?: RefObject<ModalHandle | null>
+    preferencesModalRef?: RefObject<ModalHandle | null>
+}
+
 function Navbar({
     createWorkspaceModalRef,
     createTagModalRef,
     createItemModalRef,
     preferencesModalRef,
-}) {
+}: NavbarProps) {
     const navigate = useNavigate()
 
     const prefersColorScheme = usePrefersColorScheme()
@@ -69,36 +81,36 @@ function Navbar({
             return
         }
 
-        setAccessToken(null)
-        setUserId(null)
+        setAccessToken("")
+        setUserId("")
         setDisplayName("...")
         setIsAdmin(false)
 
         navigate("/login")
     }
 
-    const handleCreateWorkspace = (e) => {
+    const handleCreateWorkspace = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
 
-        createWorkspaceModalRef.current.open()
+        createWorkspaceModalRef?.current?.open()
     }
-    const handleCreateTag = (e) => {
+    const handleCreateTag = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
 
-        createTagModalRef.current.open()
+        createTagModalRef?.current?.open()
     }
-    const handleCreateItem = (e) => {
+    const handleCreateItem = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
 
-        createItemModalRef.current.open()
+        createItemModalRef?.current?.open()
     }
-    const handlePreferences = (e) => {
+    const handlePreferences = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
 
-        preferencesModalRef.current.open()
+        preferencesModalRef?.current?.open()
     }
 
-    const handleLogoutClick = (e) => {
+    const handleLogoutClick = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
 
         doLogout()

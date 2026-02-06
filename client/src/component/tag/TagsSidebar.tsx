@@ -2,16 +2,32 @@
  * Colly | tags sidebar component
  */
 
-import { useEffect, useState } from "react"
+import {
+    useEffect,
+    useState,
+    type ChangeEvent,
+    type MouseEvent,
+    type RefObject,
+} from "react"
 import { useNavigate } from "react-router"
 import usePrefersColorScheme from "use-prefers-color-scheme"
-
+import { useCurrentInput } from "../context/CurrentInputProvider"
 import { useAppData } from "./../context/DataProvider"
-import { useCurrentInput } from "./../context/CurrentInputProvider"
 
 import "./TagsSidebar.css"
 
-function TagsSidebar(props) {
+type EditModalHandle = {
+    open: () => void
+    setEditId: (id: string) => void
+}
+
+type TagsSidebarProps = {
+    createWorkspaceModalRef: RefObject<EditModalHandle | null>
+    createTagModalRef: RefObject<EditModalHandle | null>
+    activeTag?: string
+}
+
+function TagsSidebar(props: TagsSidebarProps) {
     const navigate = useNavigate()
 
     const prefersColorScheme = usePrefersColorScheme()
@@ -24,7 +40,7 @@ function TagsSidebar(props) {
 
     const [isCollapsed, setIsCollapsed] = useState(isMobile)
 
-    const triggerDataLoad = async () => {
+    const triggerDataLoad = async (): Promise<void> => {
         try {
             const res = await loadWorkspaces({
                 populate: {
@@ -32,8 +48,8 @@ function TagsSidebar(props) {
                     select: "username",
                 },
             })
-            if (res.length < 1) {
-                props.createWorkspaceModalRef.current.open()
+            if (res !== undefined && res.length < 1) {
+                props.createWorkspaceModalRef.current?.open()
 
                 return
             }
@@ -50,7 +66,7 @@ function TagsSidebar(props) {
         triggerDataLoad()
     }, [workspace])
 
-    const handlWorkspaceChange = (e) => {
+    const handlWorkspaceChange = (e: ChangeEvent<HTMLSelectElement>) => {
         navigate(`/workspace/${e.target.value}`)
     }
     const handleEditModeChange = () => {
@@ -60,27 +76,27 @@ function TagsSidebar(props) {
         setIsCollapsed(!isCollapsed)
     }
 
-    const handleTagClick = (e, tagId) => {
+    const handleTagClick = (e: MouseEvent<HTMLDivElement>, tagId: string) => {
         e.preventDefault()
 
         if (isEditMode) {
-            props.createTagModalRef.current.setEditId(tagId)
-            props.createTagModalRef.current.open()
+            props.createTagModalRef.current?.setEditId(tagId)
+            props.createTagModalRef.current?.open()
 
             return
         }
 
         navigate(`/workspace/${workspace}/tag/${tagId}`)
     }
-    const handleWorkspaceClick = (e) => {
+    const handleWorkspaceClick = (e: MouseEvent<HTMLSelectElement>) => {
         if (!isEditMode) {
             return
         }
 
         e.preventDefault()
 
-        props.createWorkspaceModalRef.current.setEditId(workspace)
-        props.createWorkspaceModalRef.current.open()
+        props.createWorkspaceModalRef.current?.setEditId(workspace)
+        props.createWorkspaceModalRef.current?.open()
     }
 
     return (

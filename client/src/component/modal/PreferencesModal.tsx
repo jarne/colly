@@ -1,15 +1,29 @@
 /**
- * Colly | user create view component
+ * Colly | user preferences component
  */
 
-import { useState, useImperativeHandle, forwardRef } from "react"
+import {
+    forwardRef,
+    useImperativeHandle,
+    useState,
+    type ChangeEvent,
+    type SubmitEvent,
+} from "react"
 import Modal from "react-bootstrap/Modal"
 import { toast } from "react-toastify"
-
-import { useUserAuth } from "./../context/UserAuthProvider"
 import { changePassword } from "./../../logic/api/auth"
+import { useUserAuth } from "./../context/UserAuthProvider"
 
-const PreferencesModal = forwardRef(function PreferencesModal(props, ref) {
+type PreferencesModalHandle = {
+    open: () => void
+}
+
+type PreferencesModalProps = object
+
+const PreferencesModal = forwardRef<
+    PreferencesModalHandle,
+    PreferencesModalProps
+>(function PreferencesModal(_props, ref) {
     const DEFAULT_EMPTY = ""
 
     const { accessToken } = useUserAuth()
@@ -40,20 +54,20 @@ const PreferencesModal = forwardRef(function PreferencesModal(props, ref) {
         resetInput()
     }
 
-    const handleExistingPasswordChange = (e) => {
+    const handleExistingPasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
         setExistingPassword(e.target.value)
     }
-    const handleNewPasswordChange = (e) => {
+    const handleNewPasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
         setNewPassword(e.target.value)
     }
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         try {
             await changePassword(existingPassword, newPassword, accessToken)
         } catch (ex) {
-            toast.error(ex.message)
+            if (ex instanceof Error) toast.error(ex.message)
 
             return
         }

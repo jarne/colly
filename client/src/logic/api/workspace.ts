@@ -3,17 +3,35 @@
  */
 
 import qs from "qs"
-
 import InternalAPI from "./../../util/InternalAPI"
+import type { UserRes } from "./user"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
+import { checkRequestSuccessful } from "./util/requestHelper"
+
+export type WorkspaceMember = {
+    user: Omit<UserRes, "isAdmin">
+    permissionLevel: string
+}
+
+type Workspace = {
+    name: string
+    members: WorkspaceMember[]
+}
+
+export type WorkspaceRes = {
+    _id: string
+} & Workspace
 
 /**
  * Create workspace
- * @param {object} workspace workspace object
+ * @param {Partial<Workspace>} workspace workspace object
  * @param {string} accessToken API access token
- * @returns {string} created workspace ID
+ * @returns {Promise<string>} created workspace ID
  */
-export const createWorkspace = async (workspace, accessToken) => {
+export const createWorkspace = async (
+    workspace: Partial<Workspace>,
+    accessToken: string
+): Promise<string> => {
     let res
     try {
         const resp = await fetch(`${InternalAPI.API_ENDPOINT}/workspace`, {
@@ -44,10 +62,14 @@ export const createWorkspace = async (workspace, accessToken) => {
 /**
  * Update workspace
  * @param {string} id workspace ID
- * @param {object} workspace workspace object
+ * @param {Partial<Workspace>} workspace workspace object
  * @param {string} accessToken API access token
  */
-export const updateWorkspace = async (id, workspace, accessToken) => {
+export const updateWorkspace = async (
+    id: string,
+    workspace: Partial<Workspace>,
+    accessToken: string
+) => {
     let res
     try {
         const resp = await fetch(
@@ -85,7 +107,7 @@ export const updateWorkspace = async (id, workspace, accessToken) => {
  * @param {string} id workspace ID
  * @param {string} accessToken API access token
  */
-export const deleteWorkspace = async (id, accessToken) => {
+export const deleteWorkspace = async (id: string, accessToken: string) => {
     let res
     try {
         const resp = await fetch(
@@ -119,9 +141,12 @@ export const deleteWorkspace = async (id, accessToken) => {
  * Find workspaces
  * @param {object} query Query parameters
  * @param {string} accessToken API access token
- * @returns {Array} workspace objects
+ * @returns {Promise<WorkspaceRes[]>} workspace objects
  */
-export const findWorkspaces = async (query, accessToken) => {
+export const findWorkspaces = async (
+    query: object,
+    accessToken: string
+): Promise<WorkspaceRes[]> => {
     const queryStr = qs.stringify(query, {
         encode: false,
     })
@@ -135,6 +160,7 @@ export const findWorkspaces = async (query, accessToken) => {
             },
         }
     )
+    checkRequestSuccessful(resp)
     const res = await resp.json()
 
     if (res.error) {
@@ -145,12 +171,15 @@ export const findWorkspaces = async (query, accessToken) => {
 }
 
 /**
- * Get user ID by its username
+ * Get user object by its username
  * @param {string} username username
  * @param {string} accessToken API access token
- * @returns {Array} workspace objects
+ * @returns {Promise<UserRes>} user object matching the username
  */
-export const getUserByUsername = async (username, accessToken) => {
+export const getUserByUsername = async (
+    username: string,
+    accessToken: string
+): Promise<UserRes> => {
     const resp = await fetch(
         `${InternalAPI.API_ENDPOINT}/workspace/userByUsername/${username}`,
         {

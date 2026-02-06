@@ -1,30 +1,47 @@
 /**
- * Colly | collection item API logic
+ * Colly | tag API logic
  */
 
 import qs from "qs"
 
 import InternalAPI from "./../../util/InternalAPI"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
+import { checkRequestSuccessful } from "./util/requestHelper"
+
+type Tag = {
+    name: string
+    firstColor: string
+    secondColor: string
+    workspace: string
+    lastUsed: Date
+}
+
+export type TagRes = {
+    _id: string
+} & Tag
 
 /**
- * Create item
- * @param {object} item item object
+ * Create tag
+ * @param {Partial<Tag>} tag tag object
  * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
  */
-export const createItem = async (item, workspace, accessToken) => {
+export const createTag = async (
+    tag: Partial<Tag>,
+    workspace: string,
+    accessToken: string
+) => {
     let res
     try {
         const resp = await fetch(
-            `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/item`,
+            `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/tag`,
             {
                 method: "POST",
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(item),
+                body: JSON.stringify(tag),
             }
         )
         res = await resp.json()
@@ -37,10 +54,10 @@ export const createItem = async (item, workspace, accessToken) => {
             case "validation_error":
                 throw new Error(generateValidationErrorMessage(res.error))
             case "duplicate_entry":
-                throw new Error("An item with this name already exists!")
+                throw new Error("A tag with this name already exists!")
             case "insufficient_permission":
                 throw new Error(
-                    "You do not have permission to create items in this workspace!"
+                    "You do not have permission to create tags in this workspace!"
                 )
             default:
                 throw new Error("Unknown error!")
@@ -49,24 +66,29 @@ export const createItem = async (item, workspace, accessToken) => {
 }
 
 /**
- * Update item
- * @param {string} id item ID
- * @param {object} item item object
+ * Update tag
+ * @param {string} id tag ID
+ * @param {Partial<Tag>} tag tag object
  * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
  */
-export const updateItem = async (id, item, workspace, accessToken) => {
+export const updateTag = async (
+    id: string,
+    tag: Partial<Tag>,
+    workspace: string,
+    accessToken: string
+) => {
     let res
     try {
         const resp = await fetch(
-            `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/item/${id}`,
+            `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/tag/${id}`,
             {
                 method: "PATCH",
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(item),
+                body: JSON.stringify(tag),
             }
         )
         res = await resp.json()
@@ -80,7 +102,7 @@ export const updateItem = async (id, item, workspace, accessToken) => {
                 throw new Error(generateValidationErrorMessage(res.error))
             case "insufficient_permission":
                 throw new Error(
-                    "You do not have permission to update this item!"
+                    "You do not have permission to update this tag!"
                 )
             default:
                 throw new Error("Unknown error!")
@@ -89,16 +111,20 @@ export const updateItem = async (id, item, workspace, accessToken) => {
 }
 
 /**
- * Delete item
- * @param {string} id item ID
+ * Delete tag
+ * @param {string} id tag ID
  * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
  */
-export const deleteItem = async (id, workspace, accessToken) => {
+export const deleteTag = async (
+    id: string,
+    workspace: string,
+    accessToken: string
+) => {
     let res
     try {
         const resp = await fetch(
-            `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/item/${id}`,
+            `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/tag/${id}`,
             {
                 method: "DELETE",
                 headers: {
@@ -116,7 +142,7 @@ export const deleteItem = async (id, workspace, accessToken) => {
         switch (res.error.code) {
             case "insufficient_permission":
                 throw new Error(
-                    "You do not have permission to delete this item!"
+                    "You do not have permission to delete this tag!"
                 )
             default:
                 throw new Error("Unknown error!")
@@ -125,19 +151,23 @@ export const deleteItem = async (id, workspace, accessToken) => {
 }
 
 /**
- * Find items
+ * Find tags
  * @param {object} query Query parameters
  * @param {string} workspace workspace ID
  * @param {string} accessToken API access token
- * @returns {Array} item objects
+ * @returns {Promise<TagRes[]>} tag objects
  */
-export const findItems = async (query, workspace, accessToken) => {
+export const findTags = async (
+    query: object,
+    workspace: string,
+    accessToken: string
+): Promise<TagRes[]> => {
     const queryStr = qs.stringify(query, {
         encode: false,
     })
 
     const resp = await fetch(
-        `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/item?${queryStr}`,
+        `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/tag?${queryStr}`,
         {
             method: "GET",
             headers: {
@@ -145,6 +175,7 @@ export const findItems = async (query, workspace, accessToken) => {
             },
         }
     )
+    checkRequestSuccessful(resp)
     const res = await resp.json()
 
     if (res.error) {
@@ -152,71 +183,4 @@ export const findItems = async (query, workspace, accessToken) => {
     }
 
     return res.data
-}
-
-/**
- * Get metadata preview of an item URL
- * @param {string} url item URL
- * @param {string} workspace workspace ID
- * @param {string} accessToken API access token
- * @returns {object} metadata preview info (page title and description)
- */
-export const generatePreview = async (url, workspace, accessToken) => {
-    const resp = await fetch(
-        `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/item/meta`,
-        {
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                url,
-            }),
-        }
-    )
-    const res = await resp.json()
-
-    if (res.error) {
-        throw new Error(res.error.code)
-    }
-
-    return res.meta
-}
-
-/**
- * Trigger meta data image update of an item
- * @param {string} id item ID
- * @param {string} workspace workspace ID
- * @param {string} accessToken API access token
- */
-export const updateMetaImage = async (id, workspace, accessToken) => {
-    let res
-    try {
-        const resp = await fetch(
-            `${InternalAPI.API_ENDPOINT}/workspace/${workspace}/item/${id}/updateMetaImage`,
-            {
-                method: "POST",
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            }
-        )
-        if (resp.status !== 204) {
-            res = await resp.json()
-        }
-    } catch {
-        throw new Error("Error while communicating with the server!")
-    }
-
-    if (res && res.error) {
-        switch (res.error.code) {
-            case "insufficient_permission":
-                throw new Error(
-                    "You do not have permission to update the meta image of this item!"
-                )
-            default:
-                throw new Error("Unknown error!")
-        }
-    }
 }

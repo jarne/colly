@@ -4,9 +4,9 @@
 
 /**
  * Check if response of fetch request was successful
- * @param {object} resp fetch response
+ * @param {Response} resp fetch response
  */
-export const checkRequestSuccessful = (resp) => {
+export const checkRequestSuccessful = (resp: Response) => {
     if (!resp.ok) {
         switch (resp.status) {
             case 401:

@@ -32,7 +32,7 @@
         "test:insert-test-data": "node insertTestData.js",
         "lint": "eslint app",
         "lint:ci": "eslint --format junit --output-file ./lint-results/eslint/junit.xml app",
-        "format": "prettier --write \"**/*.{js,jsx,json,html,css,scss,yml,md}\"",
+        "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,html,css,scss,yml,md}\"",
         "init:user": "node userInit.js"
     },
     "dependencies": {

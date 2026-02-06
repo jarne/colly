@@ -2,15 +2,14 @@
  * Colly | login page
  */
 
-import { useState } from "react"
+import { useState, type ChangeEvent, type SubmitEvent } from "react"
 import { useNavigate } from "react-router"
 import { toast } from "react-toastify"
-
-import { login } from "./../logic/api/auth"
 import { useUserAuth } from "./../component/context/UserAuthProvider"
+import { login, type LoginRes } from "./../logic/api/auth"
 
-import loginBackgroundImg from "./../asset/login-background.jpg"
 import collyLogoImg from "./../asset/colly-logo.png"
+import loginBackgroundImg from "./../asset/login-background.jpg"
 
 import "./Login.css"
 
@@ -22,14 +21,14 @@ function Login() {
     const { setAccessToken, setUserId, setDisplayName, setIsAdmin } =
         useUserAuth()
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        let data
+        let data: LoginRes
         try {
             data = await login(username, password)
         } catch (e) {
-            toast.error(e.message)
+            if (e instanceof Error) toast.error(e.message)
 
             return
         }
@@ -66,7 +65,9 @@ function Login() {
                                 className="form-control custom-form-control-lg"
                                 id="loginUsername"
                                 value={username}
-                                onChange={(e) => setUsername(e.target.value)}
+                                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                                    setUsername(e.target.value)
+                                }
                                 placeholder="Username"
                                 autoFocus
                             />
@@ -83,7 +84,9 @@ function Login() {
                                 className="form-control custom-form-control-lg"
                                 id="loginPassword"
                                 value={password}
-                                onChange={(e) => setPassword(e.target.value)}
+                                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                                    setPassword(e.target.value)
+                                }
                                 placeholder="Password"
                             />
                         </div>

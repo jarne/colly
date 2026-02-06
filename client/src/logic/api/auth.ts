@@ -6,13 +6,27 @@ import InternalAPI from "./../../util/InternalAPI"
 import { checkRequestSuccessful } from "./util/requestHelper"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
 
+type UserInfo = {
+    id: string
+    username: string
+    isAdmin: boolean
+}
+
+export type LoginRes = {
+    user: UserInfo
+    token: string
+}
+
 /**
  * Log-in at the back-end
  * @param {string} username username
  * @param {string} password password
- * @returns {object} user information
+ * @returns {Promise<LoginRes>} auth and user information
  */
-export const login = async (username, password) => {
+export const login = async (
+    username: string,
+    password: string
+): Promise<LoginRes> => {
     let res
     try {
         const resp = await fetch(InternalAPI.API_ENDPOINT + "/auth/login", {
@@ -48,7 +62,7 @@ export const login = async (username, password) => {
  * Log-out the current user session
  * @param {string} accessToken API access token
  */
-export const logout = async (accessToken) => {
+export const logout = async (accessToken: string) => {
     const resp = await fetch(`${InternalAPI.API_ENDPOINT}/auth/logout`, {
         method: "POST",
         headers: {
@@ -61,9 +75,9 @@ export const logout = async (accessToken) => {
 /**
  * Get information about current user
  * @param {string} accessToken API access token
- * @returns {object} user information
+ * @returns {Promise<UserInfo>} user information
  */
-export const getMe = async (accessToken) => {
+export const getMe = async (accessToken: string): Promise<UserInfo> => {
     const resp = await fetch(`${InternalAPI.API_ENDPOINT}/auth/me`, {
         method: "GET",
         headers: {
@@ -86,9 +100,9 @@ export const getMe = async (accessToken) => {
  * @param {string} accessToken API access token
  */
 export const changePassword = async (
-    existingPassword,
-    newPassword,
-    accessToken
+    existingPassword: string,
+    newPassword: string,
+    accessToken: string
 ) => {
     let res
     try {
