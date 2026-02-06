@@ -17,7 +17,7 @@
         "name": "Jarne",
         "url": "https://github.com/jarne"
     },
-    "main": "app.js",
+    "main": "src/index.ts",
     "repository": {
         "type": "git",
         "url": "https://github.com/jarne/colly.git"
@@ -31,8 +31,8 @@
         "test:ci": "mocha --recursive --exit --require test/fixtures.js --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results/mocha/junit.xml",
         "test:coverage": "c8 --all -x client --reporter html pnpm run test",
         "test:insert-test-data": "node insertTestData.js",
-        "lint": "eslint app",
-        "lint:ci": "eslint --format junit --output-file ./lint-results/eslint/junit.xml app",
+        "lint": "eslint src",
+        "lint:ci": "eslint --format junit --output-file ./lint-results/eslint/junit.xml src",
         "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,html,css,scss,yml,md}\"",
         "init:user": "node userInit.js"
     },
