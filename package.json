@@ -23,9 +23,10 @@
         "url": "https://github.com/jarne/colly.git"
     },
     "scripts": {
-        "start": "node app.js",
-        "dev": "nodemon -i client app.js",
+        "dev": "tsx watch --ignore client app.js",
         "dev:test-data": "node testDataServer.js",
+        "build": "tsc",
+        "start": "node dist/app.js",
         "test": "mocha --recursive --parallel --require test/fixtures.js",
         "test:ci": "mocha --recursive --exit --require test/fixtures.js --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results/mocha/junit.xml",
         "test:coverage": "c8 --all -x client --reporter html pnpm run test",
@@ -62,6 +63,7 @@
     },
     "devDependencies": {
         "@eslint/js": "^9.24.0",
+        "@types/node": "^25.2.1",
         "c8": "^10.0.0",
         "chai": "^6.0.0",
         "cors": "^2.8",
@@ -75,7 +77,10 @@
         "nodemon": "^3.0",
         "prettier": "^3.2",
         "qs": "^6.14.0",
-        "supertest": "^7.0.0"
+        "supertest": "^7.0.0",
+        "tsx": "^4.21.0",
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.54.0"
     },
     "type": "module",
     "packageManager": "pnpm@10.28.2+sha512.41872f037ad22f7348e3b1debbaf7e867cfd448f2726d9cf74c08f19507c31d2c8e7a11525b983febc2df640b5438dee6023ebb1f84ed43cc2d654d2bc326264"
