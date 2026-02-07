@@ -122,10 +122,10 @@ const find = async (
 
 /**
  * Generate JWT token for user
- * @param {UserDocType} user User
+ * @param {Express.User} user User
  * @returns {string} JWT token
  */
-const generateToken = (user: UserDocType): string => {
+const generateToken = (user: Express.User): string => {
     return jwt.sign(
         {
             id: user.id,
