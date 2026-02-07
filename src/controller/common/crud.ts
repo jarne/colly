@@ -21,6 +21,17 @@ export type CrudControllerType<S, D> = {
     ) => Promise<D[]>
 }
 
+export interface CrudControllerWithPermissionsType<
+    S,
+    D,
+> extends CrudControllerType<S, D> {
+    hasPermission: (
+        itemId: string,
+        userId: string,
+        action: string
+    ) => Promise<boolean>
+}
+
 const DEFAULT_RESULT_LIMIT = 100
 
 /**

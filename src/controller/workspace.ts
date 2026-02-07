@@ -3,9 +3,9 @@
  */
 
 import mongoose from "mongoose"
-import crudController from "./common/crud.js"
-import logger from "../util/logger.js"
 import type { WorkspaceDocType, WorkspaceType } from "../model/workspace.js"
+import logger from "../util/logger.js"
+import crudController from "./common/crud.js"
 
 const Workspace = mongoose.model("Workspace")
 

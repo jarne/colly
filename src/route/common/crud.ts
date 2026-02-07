@@ -2,8 +2,41 @@
  * Colly | CRUD router
  */
 
-import { handleError } from "./../../routes.js"
-import workspace from "./../../controller/workspace.js"
+import type { Request, Response } from "express"
+import type {
+    CrudControllerType,
+    CrudControllerWithPermissionsType,
+} from "../../controller/common/crud.js"
+import workspace from "../../controller/workspace.js"
+import { handleError } from "../../routes.js"
+import type { ZodType } from "zod"
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+type ControllerParamType =
+    | CrudControllerType<any, any>
+    | CrudControllerWithPermissionsType<any, any>
+
+type OptionsParamType = {
+    // use workspace permission checks or user and owner relations for controller
+    permissionChecks: number
+    // schemas to sanitize query input in find operation
+    sanitizeSchemas: {
+        filterSchema: ZodType<any>
+        populateSchema: ZodType<any>
+        sortSchema: ZodType<any>
+        selectSchema: ZodType<any>
+        limitSchema: ZodType<any>
+    }
+}
+/* eslint-enable @typescript-eslint/no-explicit-any */
+
+type CrudRouterType = {
+    create: (req: Request, res: Response) => Promise<Response>
+    update: (req: Request, res: Response) => Promise<Response>
+    del: (req: Request, res: Response) => Promise<Response>
+    getById: (req: Request, res: Response) => Promise<Response>
+    find: (req: Request, res: Response) => Promise<Response>
+}
 
 export const NO_PERMISSION_CHECKS = 0
 export const CHECK_USER_PERMISSIONS = 1
@@ -11,23 +44,24 @@ export const CHECK_WORKSPACE_PERMISSIONS = 2
 
 /**
  * Common CRUD routes
- * @param {object} controller Controller for model
- * @param {object} options CRUD router options
- * @param {number} options.permissionChecks use workspace permission checks or user and owner relations for controller
- * @param {object} options.sanitizeSchemas schemas to sanitize query input in find operation
- * @returns {Function} CRUD functions
+ * @param {ControllerParamType} controller Controller for model
+ * @param {OptionsParamType} options CRUD router options
+ * @returns {CrudRouterType} CRUD functions
  */
 const crud = (
-    controller,
-    { permissionChecks = NO_PERMISSION_CHECKS, sanitizeSchemas } = {}
-) => {
+    controller: ControllerParamType,
+    {
+        permissionChecks = NO_PERMISSION_CHECKS,
+        sanitizeSchemas,
+    }: OptionsParamType
+): CrudRouterType => {
     /**
      * Create operation
-     * @param {object} req Request
-     * @param {object} res Result
-     * @returns {object} Result
+     * @param {Request} req Request
+     * @param {Response} res Result
+     * @returns {Promise<Response>} Result
      */
-    const create = async (req, res) => {
+    const create = async (req: Request, res: Response): Promise<Response> => {
         const data = req.body
         if (req.params.wsId) {
             data.workspace = req.params.wsId
@@ -38,7 +72,7 @@ const crud = (
             if (data.workspace) {
                 permCheck = await workspace.hasPermission(
                     data.workspace.toString(),
-                    req.user.id,
+                    req.user!.id,
                     "write"
                 )
             }
@@ -65,28 +99,37 @@ const crud = (
 
     /**
      * Update operation
-     * @param {object} req Request
-     * @param {object} res Result
-     * @returns {object} Result
+     * @param {Request} req Request
+     * @param {Response} res Result
+     * @returns {Promise<Response>} Result
      */
-    const update = async (req, res) => {
+    const update = async (req: Request, res: Response): Promise<Response> => {
         const id = req.params.id
+        if (typeof id !== "string") {
+            return res.status(400).json({
+                error: {
+                    code: "parameters_missing",
+                },
+            })
+        }
 
-        if (
-            permissionChecks === CHECK_WORKSPACE_PERMISSIONS ||
-            permissionChecks === CHECK_USER_PERMISSIONS
-        ) {
-            const permCheck = await controller.hasPermission(
-                id,
-                req.user.id,
-                "write"
-            )
-            if (!permCheck) {
-                return res.status(403).json({
-                    error: {
-                        code: "insufficient_permission",
-                    },
-                })
+        if ("hasPermission" in controller) {
+            if (
+                permissionChecks === CHECK_WORKSPACE_PERMISSIONS ||
+                permissionChecks === CHECK_USER_PERMISSIONS
+            ) {
+                const permCheck = await controller.hasPermission(
+                    id,
+                    req.user!.id,
+                    "write"
+                )
+                if (!permCheck) {
+                    return res.status(403).json({
+                        error: {
+                            code: "insufficient_permission",
+                        },
+                    })
+                }
             }
         }
 
@@ -104,28 +147,37 @@ const crud = (
 
     /**
      * Delete operation
-     * @param {object} req Request
-     * @param {object} res Result
-     * @returns {object} Result
+     * @param {Request} req Request
+     * @param {Response} res Result
+     * @returns {Promise<Response>} Result
      */
-    const del = async (req, res) => {
+    const del = async (req: Request, res: Response): Promise<Response> => {
         const id = req.params.id
+        if (typeof id !== "string") {
+            return res.status(400).json({
+                error: {
+                    code: "parameters_missing",
+                },
+            })
+        }
 
-        if (
-            permissionChecks === CHECK_WORKSPACE_PERMISSIONS ||
-            permissionChecks === CHECK_USER_PERMISSIONS
-        ) {
-            const permCheck = await controller.hasPermission(
-                id,
-                req.user.id,
-                "write"
-            )
-            if (!permCheck) {
-                return res.status(403).json({
-                    error: {
-                        code: "insufficient_permission",
-                    },
-                })
+        if ("hasPermission" in controller) {
+            if (
+                permissionChecks === CHECK_WORKSPACE_PERMISSIONS ||
+                permissionChecks === CHECK_USER_PERMISSIONS
+            ) {
+                const permCheck = await controller.hasPermission(
+                    id,
+                    req.user!.id,
+                    "write"
+                )
+                if (!permCheck) {
+                    return res.status(403).json({
+                        error: {
+                            code: "insufficient_permission",
+                        },
+                    })
+                }
             }
         }
 
@@ -142,28 +194,37 @@ const crud = (
 
     /**
      * Get operation
-     * @param {object} req Request
-     * @param {object} res Result
-     * @returns {object} Result
+     * @param {Request} req Request
+     * @param {Response} res Result
+     * @returns {Promise<Response>} Result
      */
-    const getById = async (req, res) => {
+    const getById = async (req: Request, res: Response): Promise<Response> => {
         const id = req.params.id
+        if (typeof id !== "string") {
+            return res.status(400).json({
+                error: {
+                    code: "parameters_missing",
+                },
+            })
+        }
 
-        if (
-            permissionChecks === CHECK_WORKSPACE_PERMISSIONS ||
-            permissionChecks === CHECK_USER_PERMISSIONS
-        ) {
-            const permCheck = await controller.hasPermission(
-                id,
-                req.user.id,
-                "read"
-            )
-            if (!permCheck) {
-                return res.status(403).json({
-                    error: {
-                        code: "insufficient_permission",
-                    },
-                })
+        if ("hasPermission" in controller) {
+            if (
+                permissionChecks === CHECK_WORKSPACE_PERMISSIONS ||
+                permissionChecks === CHECK_USER_PERMISSIONS
+            ) {
+                const permCheck = await controller.hasPermission(
+                    id,
+                    req.user!.id,
+                    "read"
+                )
+                if (!permCheck) {
+                    return res.status(403).json({
+                        error: {
+                            code: "insufficient_permission",
+                        },
+                    })
+                }
             }
         }
 
@@ -179,11 +240,11 @@ const crud = (
 
     /**
      * Find operation
-     * @param {object} req Request
-     * @param {object} res Result
-     * @returns {object} Result
+     * @param {Request} req Request
+     * @param {Response} res Result
+     * @returns {Promise<Response>} Result
      */
-    const find = async (req, res) => {
+    const find = async (req: Request, res: Response): Promise<Response> => {
         const sanitizedQuery = {
             filter: sanitizeSchemas.filterSchema.safeParse(req.query.filter),
             populate: sanitizeSchemas.populateSchema.safeParse(
@@ -246,7 +307,7 @@ const crud = (
                     {
                         members: {
                             $elemMatch: {
-                                user: req.user.id,
+                                user: req.user!.id,
                                 permissionLevel: {
                                     $in: ["admin", "write", "read"],
                                 },

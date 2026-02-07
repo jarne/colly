@@ -2,17 +2,20 @@
  * Colly | item routes
  */
 
-import express from "express"
-
-import controller from "./../controller/item.js"
-import tag from "./../controller/tag.js"
-import { getBasicMetadata } from "./../controller/itemPreview.js"
+import type { Request, Response } from "express"
+import express, { Router } from "express"
+import controller from "../controller/item.js"
+import {
+    getBasicMetadata,
+    trySaveImageMetadata,
+} from "../controller/itemPreview.js"
+import tag from "../controller/tag.js"
+import type { ItemType } from "../model/item.js"
+import { handleError } from "../routes.js"
 import crudRoutes, { CHECK_WORKSPACE_PERMISSIONS } from "./common/crud.js"
 import sanitizeSchemas from "./sanitize/item.js"
-import { handleError } from "./../routes.js"
-import { trySaveImageMetadata } from "./../controller/itemPreview.js"
 
-const router = express.Router({
+const router: Router = express.Router({
     mergeParams: true,
 })
 
@@ -23,17 +26,24 @@ const { create, update, del, find } = crudRoutes(controller, {
 
 /**
  * Check if the user has permission for all used tags of an item
- * @param {object} itemData item object
+ * @param {ItemType} itemData item object
  * @param {string} userId user ID
- * @returns {boolean} permission for all tags used
+ * @returns {Promise<boolean> } permission for all tags used
  */
-const checkTagPermissions = async (itemData, userId) => {
+const checkTagPermissions = async (
+    itemData: ItemType,
+    userId: string
+): Promise<boolean> => {
     if (itemData.tags === undefined) {
         return true
     }
 
     for (const tagId of itemData.tags) {
-        const tagPermCheck = await tag.hasPermission(tagId, userId, "read")
+        const tagPermCheck = await tag.hasPermission(
+            tagId.toString(),
+            userId,
+            "read"
+        )
 
         if (!tagPermCheck) {
             return false
@@ -46,10 +56,10 @@ const checkTagPermissions = async (itemData, userId) => {
 /**
  * Create new item
  */
-router.post("/", async (req, res) => {
+router.post("/", async (req: Request, res: Response) => {
     const data = req.body
 
-    const tagPermCheck = await checkTagPermissions(data, req.user.id)
+    const tagPermCheck = await checkTagPermissions(data, req.user!.id)
     if (!tagPermCheck) {
         return res.status(403).json({
             error: {
@@ -65,7 +75,7 @@ router.post("/", async (req, res) => {
  * Update item
  */
 router.patch("/:id", async (req, res) => {
-    const tagPermCheck = await checkTagPermissions(req.body, req.user.id)
+    const tagPermCheck = await checkTagPermissions(req.body, req.user!.id)
 
     if (!tagPermCheck) {
         return res.status(403).json({
@@ -112,7 +122,7 @@ router.post("/meta", async (req, res) => {
 router.post("/:id/updateMetaImage", async (req, res) => {
     const id = req.params.id
 
-    const permCheck = await controller.hasPermission(id, req.user.id, "write")
+    const permCheck = await controller.hasPermission(id, req.user!.id, "write")
 
     if (!permCheck) {
         return res.status(403).json({

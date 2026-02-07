@@ -2,17 +2,17 @@
  * Colly | workspace routes
  */
 
-import express from "express"
-
-import tagRoutes from "./tag.js"
-import itemRoutes from "./item.js"
-import controller from "./../controller/workspace.js"
-import userController from "./../controller/user.js"
+import type { Request, Response } from "express"
+import express, { Router } from "express"
+import userController from "../controller/user.js"
+import controller from "../controller/workspace.js"
+import { handleError } from "../routes.js"
 import crudRoutes, { CHECK_USER_PERMISSIONS } from "./common/crud.js"
+import itemRoutes from "./item.js"
 import sanitizeSchemas from "./sanitize/workspace.js"
-import { handleError } from "./../routes.js"
+import tagRoutes from "./tag.js"
 
-const router = express.Router()
+const router: Router = express.Router()
 
 const { create, update, del, find } = crudRoutes(controller, {
     permissionChecks: CHECK_USER_PERMISSIONS,
@@ -42,7 +42,7 @@ router.get("/", find)
 /**
  * Get user ID by its username
  */
-router.get("/userByUsername/:username", async (req, res) => {
+router.get("/userByUsername/:username", async (req: Request, res: Response) => {
     const username = req.params.username
 
     let users

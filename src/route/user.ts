@@ -2,15 +2,16 @@
  * Colly | user routes
  */
 
-import express from "express"
+import express, { Router } from "express"
 
-import controller from "./../controller/user.js"
-import crudRoutes from "./common/crud.js"
+import controller from "../controller/user.js"
+import crudRoutes, { NO_PERMISSION_CHECKS } from "./common/crud.js"
 import sanitizeSchemas from "./sanitize/user.js"
 
-const router = express.Router()
+const router: Router = express.Router()
 
 const { create, update, del, find } = crudRoutes(controller, {
+    permissionChecks: NO_PERMISSION_CHECKS,
     sanitizeSchemas,
 })
 
