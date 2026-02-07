@@ -19,6 +19,6 @@ export const connectDb = () => {
 /**
  * Establish connection to database (async)
  */
-export const connectDbAsync = async () => {
+export const connectDbAsync = async (): Promise<void> => {
     await connect()
 }

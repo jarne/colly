@@ -2,12 +2,12 @@
  * Colly | main app file
  */
 
-import express from "express"
 import cookieParser from "cookie-parser"
 import cors from "cors"
-import morgan from "morgan"
 import "dotenv/config"
-
+import type { Express } from "express"
+import express from "express"
+import morgan from "morgan"
 import { connectDb } from "./init.js"
 import { runMigrations } from "./migration/migrations.js"
 import { registerRoutes } from "./routes.js"
@@ -15,7 +15,7 @@ import logger from "./util/logger.js"
 
 /* Express initialization */
 
-let app = express()
+let app: Express = express()
 
 app.set("query parser", "extended")
 
