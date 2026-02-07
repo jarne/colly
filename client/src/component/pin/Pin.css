@@ -1,0 +1,8 @@
+/**
+ * Colly | item pin styles
+ */
+
+.item-pin {
+    mix-blend-mode: difference;
+    color: white;
+}
