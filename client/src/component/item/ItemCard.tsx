@@ -11,8 +11,8 @@ import type { ItemRes } from "./../../logic/api/item"
 import { updateItem, updateMetaImage } from "./../../logic/api/item"
 import type { TagRes } from "./../../logic/api/tag"
 import { useUserAuth } from "./../context/UserAuthProvider"
-import Pin from "./../pin/Pin"
 import TagList from "./../tag/TagList"
+import Pin from "./Pin"
 
 import "./ItemCard.css"
 
