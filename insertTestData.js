@@ -5,8 +5,8 @@
 import mongoose from "mongoose"
 import { promises as fs } from "fs"
 
-import { connectDbAsync } from "./src/init.js"
-import { trySaveImageMetadata } from "./src/controller/itemPreview.js"
+import { connectDbAsync } from "./dist/init.js"
+import { trySaveImageMetadata } from "./dist/controller/itemPreview.js"
 
 const User = mongoose.model("User")
 const Workspace = mongoose.model("Workspace")
