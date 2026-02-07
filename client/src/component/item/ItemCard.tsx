@@ -172,6 +172,11 @@ function ItemCard({
                             >
                                 Edit
                             </Dropdown.Item>
+                            <Dropdown.Item
+                                onClick={() => handleItemPinClick(item)}
+                            >
+                                {item.isPinned ? "Unpin" : "Pin"}
+                            </Dropdown.Item>
                             <Dropdown.Divider />
                             <Dropdown.Item
                                 onClick={(e) => {
