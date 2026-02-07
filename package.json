@@ -61,11 +61,11 @@
         "zod": "^4.0.15"
     },
     "devDependencies": {
-        "@eslint/js": "^9.24.0",
+        "@eslint/js": "^10.0.0",
         "c8": "^10.0.0",
         "chai": "^6.0.0",
         "cors": "^2.8",
-        "eslint": "^9.23.0",
+        "eslint": "^10.0.0",
         "eslint-formatter-junit": "^9.0.0",
         "eslint-plugin-jsdoc": "^62.0.0",
         "globals": "^17.0.0",
