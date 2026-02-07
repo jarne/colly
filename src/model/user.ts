@@ -2,8 +2,8 @@
  * Colly | user DB model
  */
 
-import mongoose from "mongoose"
 import bcrypt from "bcrypt"
+import mongoose, { type HydratedDocument, type InferSchemaType } from "mongoose"
 
 const Schema = mongoose.Schema
 
@@ -47,5 +47,8 @@ UserSchema.methods.checkPassword = async function (
 ): Promise<boolean> {
     return await bcrypt.compare(password, this.password)
 }
+
+export type UserType = InferSchemaType<typeof UserSchema>
+export type UserDocType = HydratedDocument<UserType>
 
 export default mongoose.model("User", UserSchema)

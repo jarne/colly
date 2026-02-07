@@ -2,24 +2,24 @@
  * Colly | user controller
  */
 
-import mongoose from "mongoose"
 import jwt from "jsonwebtoken"
-
+import mongoose, { type SortOrder, type UpdateQuery } from "mongoose"
+import type { UserDocType, UserType } from "../model/user.js"
+import logger from "./../util/logger.js"
 import crudController from "./common/crud.js"
 import NotFoundError from "./exception/notFoundError.js"
-import logger from "./../util/logger.js"
 
 const User = mongoose.model("User")
-const crud = crudController(User)
+const crud = crudController<UserType, UserDocType>(User)
 
 /**
  * Create user
- * @param {object} data User data
- * @returns {object} Created user
+ * @param {UserType} data User data
+ * @returns {Promise<UserDocType>} Created user
  */
-const create = async (data) => {
+const create = async (data: UserType): Promise<UserDocType> => {
     const password = data.password
-    delete data.password
+    data.password = "" // set to invalid value, password is set separately with hashing
 
     const usr = new User(data)
     await usr.setPassword(password)
@@ -30,9 +30,11 @@ const create = async (data) => {
 
         return saved
     } catch (e) {
-        logger.error("user_create_error", {
-            error: e.message,
-        })
+        if (e instanceof Error) {
+            logger.error("user_create_error", {
+                error: e.message,
+            })
+        }
 
         throw e
     }
@@ -41,10 +43,13 @@ const create = async (data) => {
 /**
  * Update user
  * @param {string} id User ID
- * @param {object} data User data
- * @returns {object} Updated user
+ * @param {UpdateQuery<UserType>} data User data
+ * @returns {Promise<UserDocType>} Updated user
  */
-const update = async (id, data) => {
+const update = async (
+    id: string,
+    data: UpdateQuery<UserType>
+): Promise<UserDocType> => {
     let password = null
     if (Object.hasOwn(data, "password")) {
         password = data.password
@@ -58,7 +63,7 @@ const update = async (id, data) => {
         })
 
         if (updated === null) {
-            throw new NotFoundError()
+            throw new NotFoundError("user with specified ID does not exist")
         }
 
         if (password !== null) {
@@ -69,10 +74,12 @@ const update = async (id, data) => {
         logger.verbose("user_updated", { id: updated.id })
         return updated
     } catch (e) {
-        logger.error("user_update_error", {
-            id,
-            error: e.message,
-        })
+        if (e instanceof Error) {
+            logger.error("user_update_error", {
+                id,
+                error: e.message,
+            })
+        }
 
         throw e
     }
@@ -81,19 +88,19 @@ const update = async (id, data) => {
 /**
  * Find users
  * @param {object} filter Filter
- * @param {Array} populate Fields to populate
+ * @param {string[]} populate Fields to populate
  * @param {object} sort Sorting
- * @param {Array} select Fields to select
- * @param {number} limit Limit amount of results
- * @returns {object[]} Found users
+ * @param {string[]} select Fields to select
+ * @param {limit?} limit Limit amount of results
+ * @returns {Promise<UserDocType[]>} Found users
  */
 const find = async (
-    filter = {},
-    populate = [],
-    sort = {},
-    select = [],
-    limit
-) => {
+    filter: object = {},
+    populate: string[] = [],
+    sort: Record<string, SortOrder> = {},
+    select: string[] = [],
+    limit?: number
+): Promise<UserDocType[]> => {
     try {
         return await crud.find(
             filter,
@@ -103,9 +110,11 @@ const find = async (
             limit
         )
     } catch (e) {
-        logger.error("user_list_error", {
-            error: e.message,
-        })
+        if (e instanceof Error) {
+            logger.error("user_list_error", {
+                error: e.message,
+            })
+        }
 
         throw e
     }
@@ -113,19 +122,19 @@ const find = async (
 
 /**
  * Generate JWT token for user
- * @param {object} user User
+ * @param {UserDocType} user User
  * @returns {string} JWT token
  */
-const generateToken = (user) => {
+const generateToken = (user: UserDocType): string => {
     return jwt.sign(
         {
             id: user.id,
             username: user.username,
             isAdmin: user.isAdmin,
         },
-        process.env.JWT_SECRET,
+        process.env.JWT_SECRET!,
         {
-            expiresIn: `${process.env.EXPIRES_IN_SEC || 86400}s`,
+            expiresIn: `${Number(process.env.EXPIRES_IN_SEC!) || 86400}s`,
         }
     )
 }

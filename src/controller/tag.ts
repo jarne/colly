@@ -3,30 +3,36 @@
  */
 
 import mongoose from "mongoose"
-
+import type { TagDocType, TagType } from "../model/tag.js"
+import logger from "../util/logger.js"
 import crudController from "./common/crud.js"
 import workspace from "./workspace.js"
-import logger from "./../util/logger.js"
 
 const Tag = mongoose.model("Tag")
-const crud = crudController(Tag)
+const crud = crudController<TagType, TagDocType>(Tag)
 
 /**
  * Check if a user has permission to access a tag
  * @param {string} tagId Tag ID
  * @param {string} userId User ID
  * @param {string} action action to perform (write or read level)
- * @returns {boolean} access allowed
+ * @returns {Promise<boolean>} access allowed
  */
-const hasPermission = async (tagId, userId, action) => {
+const hasPermission = async (
+    tagId: string,
+    userId: string,
+    action: string
+): Promise<boolean> => {
     let tag
     try {
         tag = await Tag.findById(tagId)
     } catch (e) {
-        logger.error("tag_get_error", {
-            id: tagId,
-            error: e.message,
-        })
+        if (e instanceof Error) {
+            logger.error("tag_get_error", {
+                id: tagId,
+                error: e.message,
+            })
+        }
 
         throw e
     }

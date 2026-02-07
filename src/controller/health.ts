@@ -4,11 +4,15 @@
 
 import mongoose from "mongoose"
 
+type ServiceHealthType = {
+    database: "ok" | "error"
+}
+
 /**
  * Check health of services
- * @returns {object} service health
+ * @returns {ServiceHealthType} service health
  */
-const checkServiceStatus = () => {
+const checkServiceStatus = (): ServiceHealthType => {
     const dbStatus = checkDatabaseStatus()
 
     return {
@@ -20,7 +24,7 @@ const checkServiceStatus = () => {
  * Check database connection status
  * @returns {boolean} is database connection healthy
  */
-const checkDatabaseStatus = () => {
+const checkDatabaseStatus = (): boolean => {
     return mongoose.connection.readyState === 1
 }
 

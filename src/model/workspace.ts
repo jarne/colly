@@ -2,7 +2,7 @@
  * Colly | workspace model
  */
 
-import mongoose from "mongoose"
+import mongoose, { type InferSchemaType } from "mongoose"
 
 import Item from "./item.js"
 import Tag from "./tag.js"
@@ -77,5 +77,8 @@ WorkspaceSchema.pre("findOneAndDelete", async function () {
         await Tag.deleteMany({ workspace: ws._id })
     }
 })
+
+export type WorkspaceType = InferSchemaType<typeof WorkspaceSchema>
+export type WorkspaceDocType = mongoose.HydratedDocument<WorkspaceType>
 
 export default mongoose.model("Workspace", WorkspaceSchema)

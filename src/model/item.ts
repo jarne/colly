@@ -2,9 +2,8 @@
  * Colly | collection item DB model
  */
 
-import mongoose from "mongoose"
+import mongoose, { type InferSchemaType } from "mongoose"
 import validator from "validator"
-
 import { trySaveImageMetadata } from "../controller/itemPreview.js"
 
 const Schema = mongoose.Schema
@@ -75,5 +74,8 @@ ItemSchema.post("save", function (item) {
         trySaveImageMetadata(item.id)
     }
 })
+
+export type ItemType = InferSchemaType<typeof ItemSchema>
+export type ItemDocType = mongoose.HydratedDocument<ItemType>
 
 export default mongoose.model("Item", ItemSchema)

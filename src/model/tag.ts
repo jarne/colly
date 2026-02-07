@@ -2,7 +2,7 @@
  * Colly | tag DB model
  */
 
-import mongoose from "mongoose"
+import mongoose, { type InferSchemaType } from "mongoose"
 import validator from "validator"
 
 const Schema = mongoose.Schema
@@ -48,5 +48,8 @@ const TagSchema = new Schema({
         type: Date,
     },
 })
+
+export type TagType = InferSchemaType<typeof TagSchema>
+export type TagDocType = mongoose.HydratedDocument<TagType>
 
 export default mongoose.model("Tag", TagSchema)
