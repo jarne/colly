@@ -16,8 +16,8 @@ import logger from "../util/logger.js"
 import { s3Client } from "../util/s3Storage.js"
 
 type BasicMetadataType = {
-    title: string
-    description: string
+    title: string | null
+    description: string | null
 }
 
 type S3StorageReferencesType = {
@@ -153,8 +153,8 @@ export const getBasicMetadata = async (
     }
 
     return {
-        title: meta.title || "",
-        description: meta.description || "",
+        title: meta.title || null,
+        description: meta.description || null,
     }
 }
 
