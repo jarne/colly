@@ -100,7 +100,11 @@ describe("item router", () => {
                     name: `${TEST_PREFIX}GadgetGalaxy`,
                     description:
                         "Explore the latest gadgets and tech innovations in one cosmic destination.",
-                    tags: [tid],
+                    tags: [
+                        {
+                            _id: tid,
+                        },
+                    ],
                 })
 
             expect(res.status).to.eq(200)
@@ -137,7 +141,11 @@ describe("item router", () => {
                     name: `${TEST_PREFIX}CulinaryCrafters`,
                     description:
                         "CulinaryCrafters offers recipes, tutorials, and chef tips for food enthusiasts.",
-                    tags: [tid],
+                    tags: [
+                        {
+                            _id: tid,
+                        },
+                    ],
                 })
 
             expect(res.status).to.eq(403)
