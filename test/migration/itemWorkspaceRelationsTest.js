@@ -5,12 +5,12 @@
 import { expect } from "chai"
 import mongoose from "mongoose"
 
-import { connectDbAsync } from "./../../src/init.js"
-import { associateItemsAndTags } from "./../../src/migration/itemWorkspaceRelations.js"
-import tag from "./../../src/controller/tag.js"
-import item from "./../../src/controller/item.js"
-import user from "./../../src/controller/user.js"
-import workspace from "./../../src/controller/workspace.js"
+import { connectDbAsync } from "./../../dist/init.js"
+import { associateItemsAndTags } from "./../../dist/migration/itemWorkspaceRelations.js"
+import tag from "./../../dist/controller/tag.js"
+import item from "./../../dist/controller/item.js"
+import user from "./../../dist/controller/user.js"
+import workspace from "./../../dist/controller/workspace.js"
 
 const User = mongoose.model("User")
 const Workspace = mongoose.model("Workspace")

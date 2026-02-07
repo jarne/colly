@@ -5,13 +5,13 @@
 import { expect } from "chai"
 import mongoose from "mongoose"
 
-import { connectDbAsync } from "./../../src/init.js"
+import { connectDbAsync } from "./../../dist/init.js"
 import {
     getBasicMetadata,
     saveImageMetadata,
-} from "./../../src/controller/itemPreview.js"
-import item from "./../../src/controller/item.js"
-import user from "./../../src/controller/user.js"
+} from "./../../dist/controller/itemPreview.js"
+import item from "./../../dist/controller/item.js"
+import user from "./../../dist/controller/user.js"
 
 const Item = mongoose.model("Item")
 const User = mongoose.model("User")

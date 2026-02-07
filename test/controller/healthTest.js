@@ -4,8 +4,8 @@
 
 import { expect } from "chai"
 
-import { connectDbAsync } from "./../../src/init.js"
-import controller from "./../../src/controller/health.js"
+import { connectDbAsync } from "./../../dist/init.js"
+import controller from "./../../dist/controller/health.js"
 
 describe("health controller", () => {
     before(async () => {

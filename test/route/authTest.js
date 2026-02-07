@@ -6,8 +6,8 @@ import { expect } from "chai"
 import request from "supertest"
 import mongoose from "mongoose"
 
-import app from "./../../src/appInit.js"
-import user from "./../../src/controller/user.js"
+import app from "./../../dist/appInit.js"
+import user from "./../../dist/controller/user.js"
 
 const User = mongoose.model("User")
 

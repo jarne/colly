@@ -7,10 +7,10 @@ import request from "supertest"
 import mongoose from "mongoose"
 import qs from "qs"
 
-import app from "./../../src/appInit.js"
-import controller from "./../../src/controller/item.js"
-import user from "./../../src/controller/user.js"
-import tag from "./../../src/controller/tag.js"
+import app from "./../../dist/appInit.js"
+import controller from "./../../dist/controller/item.js"
+import user from "./../../dist/controller/user.js"
+import tag from "./../../dist/controller/tag.js"
 
 const Item = mongoose.model("Item")
 const User = mongoose.model("User")

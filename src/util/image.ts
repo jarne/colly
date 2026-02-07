@@ -51,7 +51,7 @@ const parseFromDataUrl = (data: string): Buffer => {
     const encodedImg = data.split(DATA_URL_DETECTOR).pop()
 
     if (encodedImg === undefined) {
-        throw new InvalidImageTypeError("invalid base64 image format")
+        throw new UnknownImageFormatError("invalid base64 image format")
     }
 
     return Buffer.from(encodedImg, "base64")
@@ -84,7 +84,7 @@ export const parseImgAttribute = async (
         dimensions.width = 512
         dimensions.height = 256
     } else {
-        throw new InvalidImageTypeError()
+        throw new InvalidImageTypeError("unsupported image type")
     }
 
     let buf
