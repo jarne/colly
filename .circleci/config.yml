@@ -37,6 +37,9 @@ jobs:
                   paths:
                       - node_modules
 
+            # Compile TypeScript code
+            - run: pnpm run build
+
             # Run tests with Mocha
             - run: pnpm run test:ci
 
