@@ -26,7 +26,9 @@ const UserSchema = new Schema({
     },
 })
 
-UserSchema.methods.setPassword = async function (password) {
+UserSchema.methods.setPassword = async function (
+    password: string
+): Promise<void> {
     if (password.length < 8) {
         this.invalidate(
             "password",
@@ -40,7 +42,9 @@ UserSchema.methods.setPassword = async function (password) {
     this.password = await bcrypt.hash(password, 10)
 }
 
-UserSchema.methods.checkPassword = async function (password) {
+UserSchema.methods.checkPassword = async function (
+    password: string
+): Promise<boolean> {
     return await bcrypt.compare(password, this.password)
 }
 

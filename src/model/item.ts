@@ -16,7 +16,8 @@ const ItemSchema = new Schema(
             lowercase: true,
             required: [true, "is required"],
             validate: {
-                validator: validator.isURL,
+                validator: (v) =>
+                    validator.isURL(v, { require_protocol: true }),
                 message: "invalid url",
             },
             index: true,

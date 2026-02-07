@@ -7,6 +7,11 @@ import mongoose from "mongoose"
 import Item from "./item.js"
 import Tag from "./tag.js"
 
+type WorkspaceMember = {
+    user: mongoose.Types.ObjectId
+    permissionLevel: string
+}
+
 const Schema = mongoose.Schema
 
 const WorkspaceSchema = new Schema({
@@ -33,27 +38,33 @@ const WorkspaceSchema = new Schema({
 /**
  * Validate to not allow duplicate users as members of the workspace
  */
-WorkspaceSchema.path("members").validate((members) => {
-    const seen = new Set()
+WorkspaceSchema.path("members").validate(
+    (members: WorkspaceMember[]): boolean => {
+        const seen = new Set()
 
-    for (const member of members) {
-        const uid = member.user.toString()
+        for (const member of members) {
+            const uid = member.user.toString()
 
-        if (seen.has(uid)) {
-            return false
+            if (seen.has(uid)) {
+                return false
+            }
+            seen.add(uid)
         }
-        seen.add(uid)
-    }
 
-    return true
-}, "duplicate members in workspace")
+        return true
+    },
+    "duplicate members in workspace"
+)
 
 /**
  * Validate workspace to have at least one admin member
  */
-WorkspaceSchema.path("members").validate((members) => {
-    return members.some((member) => member.permissionLevel === "admin")
-}, "at least one admin member is required")
+WorkspaceSchema.path("members").validate(
+    (members: WorkspaceMember[]): boolean => {
+        return members.some((member) => member.permissionLevel === "admin")
+    },
+    "at least one admin member is required"
+)
 
 /**
  * Delete items and tags associated to workspace when deleting it
