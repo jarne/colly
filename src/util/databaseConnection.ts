@@ -21,6 +21,8 @@ export const connect = async () => {
 
         logger.info("db_connected")
     } catch (e) {
-        logger.error("db_connection_failed", e.message)
+        if (e instanceof Error) {
+            logger.error("db_connection_failed", e.message)
+        }
     }
 }

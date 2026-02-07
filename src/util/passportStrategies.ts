@@ -2,14 +2,15 @@
  * Colly | Passport.js strategies
  */
 
-import passport from "passport"
-import { Strategy as LocalStrategy } from "passport-local"
-import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt"
+import type { Request } from "express"
 import mongoose from "mongoose"
+import passport from "passport"
+import { ExtractJwt, Strategy as JwtStrategy } from "passport-jwt"
+import { Strategy as LocalStrategy } from "passport-local"
 
 const User = mongoose.model("User")
 
-const getJwt = (req) => {
+const getJwt = (req: Request) => {
     return req.cookies.token || ExtractJwt.fromAuthHeaderAsBearerToken()(req)
 }
 
@@ -42,7 +43,7 @@ passport.use(
     new JwtStrategy(
         {
             jwtFromRequest: getJwt,
-            secretOrKey: process.env.JWT_SECRET,
+            secretOrKey: process.env.JWT_SECRET!,
         },
         (jwtPayload, done) => {
             if (jwtPayload.id) {
@@ -59,7 +60,7 @@ passport.use(
     new JwtStrategy(
         {
             jwtFromRequest: getJwt,
-            secretOrKey: process.env.JWT_SECRET,
+            secretOrKey: process.env.JWT_SECRET!,
         },
         async (jwtPayload, done) => {
             let user

@@ -3,8 +3,8 @@
  */
 
 class InvalidImageTypeError extends Error {
-    constructor(msg) {
-        super(msg)
+    constructor(message: string) {
+        super(message)
 
         this.name = "InvalidImageTypeError"
     }
