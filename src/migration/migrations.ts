@@ -4,6 +4,6 @@
 
 import { associateItemsAndTags } from "./itemWorkspaceRelations.js"
 
-export const runMigrations = async () => {
+export const runMigrations = async (): Promise<void> => {
     await associateItemsAndTags()
 }

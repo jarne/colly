@@ -4,13 +4,13 @@
  */
 
 import mongoose from "mongoose"
-import logger from "./../util/logger.js"
+import logger from "../util/logger.js"
 
 const Item = mongoose.model("Item")
 const Tag = mongoose.model("Tag")
 const Workspace = mongoose.model("Workspace")
 
-export const associateItemsAndTags = async () => {
+export const associateItemsAndTags = async (): Promise<void> => {
     const itemOwners = await Item.distinct("owner", {
         owner: { $exists: true },
     })
@@ -20,7 +20,7 @@ export const associateItemsAndTags = async () => {
     )
 
     // create a default workspace for each owner
-    const ownerWorkspaceMap = {}
+    const ownerWorkspaceMap: Record<string, mongoose.Types.ObjectId> = {}
     for (const ownerId of allOwnerIds) {
         const workspace = await Workspace.create({
             name: "Default Workspace",
