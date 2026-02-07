@@ -23,8 +23,9 @@ USER node
 # Switch to app source folder
 WORKDIR /app
 
-# Install dependecies
+# Install dependecies and build back-end
 RUN CI=true pnpm install --frozen-lockfile
+RUN pnpm run build
 
 # Go to static client source folder
 WORKDIR /app/client

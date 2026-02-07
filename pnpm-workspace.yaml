@@ -1,5 +1,6 @@
 onlyBuiltDependencies:
   - bcrypt
+  - esbuild
   - protobufjs
   - re2
   - sharp

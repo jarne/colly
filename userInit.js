@@ -5,9 +5,9 @@
 import mongoose from "mongoose"
 import "dotenv/config"
 
-import { connectDbAsync } from "./app/init.js"
-import logger from "./app/util/logger.js"
-import controller from "./app/controller/user.js"
+import { connectDbAsync } from "./dist/init.js"
+import logger from "./dist/util/logger.js"
+import controller from "./dist/controller/user.js"
 
 const initialUser = process.env.INITIAL_ADMIN_USERNAME
 const initialPassword = process.env.INITIAL_ADMIN_PASSWORD

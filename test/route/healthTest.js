@@ -5,8 +5,8 @@
 import { expect } from "chai"
 import request from "supertest"
 
-import { connectDbAsync } from "./../../app/init.js"
-import app from "./../../appInit.js"
+import { connectDbAsync } from "./../../dist/init.js"
+import app from "./../../dist/appInit.js"
 
 describe("health router", () => {
     before(async () => {

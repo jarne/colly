@@ -7,10 +7,10 @@ import request from "supertest"
 import mongoose from "mongoose"
 import qs from "qs"
 
-import app from "./../../appInit.js"
-import controller from "./../../app/controller/item.js"
-import user from "./../../app/controller/user.js"
-import tag from "./../../app/controller/tag.js"
+import app from "./../../dist/appInit.js"
+import controller from "./../../dist/controller/item.js"
+import user from "./../../dist/controller/user.js"
+import tag from "./../../dist/controller/tag.js"
 
 const Item = mongoose.model("Item")
 const User = mongoose.model("User")
@@ -100,7 +100,11 @@ describe("item router", () => {
                     name: `${TEST_PREFIX}GadgetGalaxy`,
                     description:
                         "Explore the latest gadgets and tech innovations in one cosmic destination.",
-                    tags: [tid],
+                    tags: [
+                        {
+                            _id: tid,
+                        },
+                    ],
                 })
 
             expect(res.status).to.eq(200)
@@ -137,7 +141,11 @@ describe("item router", () => {
                     name: `${TEST_PREFIX}CulinaryCrafters`,
                     description:
                         "CulinaryCrafters offers recipes, tutorials, and chef tips for food enthusiasts.",
-                    tags: [tid],
+                    tags: [
+                        {
+                            _id: tid,
+                        },
+                    ],
                 })
 
             expect(res.status).to.eq(403)

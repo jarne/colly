@@ -79,6 +79,7 @@ When deploying without the Docker file, keep in mind to install Node.js and requ
 
 ```
 pnpm install
+pnpm run build
 
 cd client
 pnpm install
@@ -121,7 +122,7 @@ Colly is based on a back-end and front-end part.
 
 ### Back-end
 
-The back-end of the application inside the main folder is written in JavaScript using Node.js and the Express framework.
+The back-end of the application inside the main folder is written in TypeScript using Node.js and the Express framework.
 As dependencies, a MongoDB database for storing the data and an S3-compatible object storage, such as [RustFS](https://github.com/rustfs/rustfs), for storing
 image meta data such as website icons and banners, are required.
 
@@ -132,7 +133,9 @@ The following checks should be run before commiting code to execute unit tests, 
 to the defined code style:
 
 ```sh
+pnpm run build
 pnpm run test
+
 pnpm run lint
 pnpm run format
 ```
@@ -147,7 +150,7 @@ Insert test data into database: `pnpm run test:insert-test-data`
 
 ### Front-end
 
-The front-end inside the `client` folder is written in JavaScript and is based on React, Vite and Bootstrap for styles.
+The front-end inside the `client` folder is written in TypeScript and is based on React, Vite and Bootstrap for styles.
 
 Run development server: `pnpm run dev`  
 Create build: `pnpm run build`  
