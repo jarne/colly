@@ -170,11 +170,19 @@ function ItemCard({
                                     handleItemEditClick(e, item._id)
                                 }}
                             >
+                                <i
+                                    className="bi bi-pencil me-1"
+                                    aria-label=""
+                                ></i>{" "}
                                 Edit
                             </Dropdown.Item>
                             <Dropdown.Item
                                 onClick={() => handleItemPinClick(item)}
                             >
+                                <i
+                                    className={`bi ${item.isPinned ? "bi-pin-angle-fill" : "bi-pin-angle"} me-1`}
+                                    aria-label=""
+                                ></i>{" "}
                                 {item.isPinned ? "Unpin" : "Pin"}
                             </Dropdown.Item>
                             <Dropdown.Divider />
@@ -183,6 +191,10 @@ function ItemCard({
                                     handleItemUpdateMetaImageClick(e, item._id)
                                 }}
                             >
+                                <i
+                                    className="bi bi-images me-1"
+                                    aria-label=""
+                                ></i>{" "}
                                 Re-crawl image
                             </Dropdown.Item>
                         </Dropdown.Menu>
