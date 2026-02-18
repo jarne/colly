@@ -34,7 +34,7 @@ importers:
         version: 5.49.24(@noble/hashes@1.8.0)
       metascraper-description:
         specifier: ^5.43.4
-        version: 5.49.21(@noble/hashes@1.8.0)
+        version: 5.49.24(@noble/hashes@1.8.0)
       metascraper-image:
         specifier: ^5.43.4
         version: 5.49.21(@noble/hashes@1.8.0)
@@ -2442,8 +2442,8 @@ packages:
     resolution: {integrity: sha512-Snk314V5ayFLhp3fkUREub6WtjBfPdCPY1Ln8/8munuLuiYhsABgBVWsozAG+MWMbVEvcdcpbi9R7ww22l9Q3g==}
     engines: {node: '>=18'}
 
-  metascraper-description@5.49.21:
-    resolution: {integrity: sha512-ynN1/Gwdf66EcG7ryb8NBrDfMo54BrQy1E8KB+EdMTlkm+19x/t5CAAR1Xxq70Iz46pX92H2+aHwPjCVBe8iig==}
+  metascraper-description@5.49.24:
+    resolution: {integrity: sha512-qqxynBReQ2v+y7bde82pNRW5kZkrI5YbfpksMif3lISivnOzYt2la2DhkhwIslZzQj3p7bVfKEShdkXH6/b+0A==}
     engines: {node: '>= 16'}
 
   metascraper-image@5.49.21:
@@ -6135,9 +6135,9 @@ snapshots:
 
   merge-descriptors@2.0.0: {}
 
-  metascraper-description@5.49.21(@noble/hashes@1.8.0):
+  metascraper-description@5.49.24(@noble/hashes@1.8.0):
     dependencies:
-      '@metascraper/helpers': 5.49.21(@noble/hashes@1.8.0)
+      '@metascraper/helpers': 5.49.24(@noble/hashes@1.8.0)
     transitivePeerDependencies:
       - '@noble/hashes'
       - bufferutil
