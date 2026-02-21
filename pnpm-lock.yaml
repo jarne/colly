@@ -46,7 +46,7 @@ importers:
         version: 5.49.24(@noble/hashes@1.8.0)
       metascraper-title:
         specifier: ^5.43.4
-        version: 5.49.21(@noble/hashes@1.8.0)
+        version: 5.49.24(@noble/hashes@1.8.0)
       mongoose:
         specifier: ^9.0.0
         version: 9.2.1(snappy@7.3.3)(socks@2.8.7)
@@ -824,10 +824,6 @@ packages:
   '@kikobeats/time-span@1.0.11':
     resolution: {integrity: sha512-S+msolgD9aPVoJ+ZomVD0WSKm+qJBKvJimzwq8dMvlGKbIPsAyEWhHHdSRuQT3g2VpDIctvbi9nU++kN/VPZaw==}
     engines: {node: '>= 18'}
-
-  '@metascraper/helpers@5.49.21':
-    resolution: {integrity: sha512-42Gg149DE1hvB07sdNwIkPawj6eEv9x6WajAhiV3BdkM8tg8Cm7nozonlZcALeWiMoUxBaO8Ye1O5W4pWeQC6A==}
-    engines: {node: '>= 16'}
 
   '@metascraper/helpers@5.49.24':
     resolution: {integrity: sha512-nQFpxeTCtb4Y5TBwar3X3APtUydFim9YwEDRyHMoeQ0/dcvPnx63ac9jPDuH1BDaqm84yD3bsLArBmxdnoCseQ==}
@@ -2450,8 +2446,8 @@ packages:
     resolution: {integrity: sha512-q3I2eVwD1Xb3jtR2HWzxnhCMUj4QMgHdbu9b5iRWq0/7uxOWiuVxQ9pp7lBqmlrsvYT9qZB7qN1r8qc2/k4mQw==}
     engines: {node: '>= 16'}
 
-  metascraper-title@5.49.21:
-    resolution: {integrity: sha512-fHceDgDHN5D1QVz8wV5L9igveZgf7qqUcC5nV6/7laWiCqp9VBbsPbqxoE3HGjWlcDyMB+aXF92ryU5qpnOKqg==}
+  metascraper-title@5.49.24:
+    resolution: {integrity: sha512-8y4HJwUSQW04XNd7XuEJNAKj1TRUFD4U84dglCViBHejgluFMzm+HaJ3ARiSV9tgGHf8+KcrWuWi3aYT97jMyg==}
     engines: {node: '>= 16'}
 
   metascraper@5.49.24:
@@ -2867,9 +2863,6 @@ packages:
     resolution: {integrity: sha512-K5zQjDllxWkf7Z5xJdV0/B0WTNqx6vxG70zJE4N0kBs4LovmEYWJzQGxC9bS9RAKu3bgM40lrd5zoLJ12MQ5BA==}
     engines: {node: '>= 0.10'}
 
-  re2@1.23.2:
-    resolution: {integrity: sha512-ds5iwbnfsmyiNDtuljBNAva54O4jhR77jL5bSM73NnsWQHkYoGWuePiZTrt6O3xXAHtrB/fviNQsPGRei6031w==}
-
   re2@1.23.3:
     resolution: {integrity: sha512-5jh686rmj/8dYpBo72XYgwzgG8Y9HNDATYZ1x01gqZ6FvXVUP33VZ0+6GLCeavaNywz3OkXBU8iNX7LjiuisPg==}
 
@@ -3117,15 +3110,8 @@ packages:
     resolution: {integrity: sha512-QXqwfEl9ddlGBaRFXIvNKK6OhipSiLXuRuLJX5DErz0o0Q0rYxulWLdFryTkV5PkdZct5iMInwYEGe/eR++1AA==}
     hasBin: true
 
-  tldts-core@7.0.19:
-    resolution: {integrity: sha512-lJX2dEWx0SGH4O6p+7FPwYmJ/bu1JbcGJ8RLaG9b7liIgZ85itUVEPbMtWRVrde/0fnDPEPHW10ZsKW3kVsE9A==}
-
   tldts-core@7.0.23:
     resolution: {integrity: sha512-0g9vrtDQLrNIiCj22HSe9d4mLVG3g5ph5DZ8zCKBr4OtrspmNB6ss7hVyzArAeE88ceZocIEGkyW1Ime7fxPtQ==}
-
-  tldts@7.0.19:
-    resolution: {integrity: sha512-8PWx8tvC4jDB39BQw1m4x8y5MH1BcQ5xHeL2n7UVFulMPH/3Q0uiamahFJ3lXA0zO2SUyRXuVVbWSDmstlt9YA==}
-    hasBin: true
 
   tldts@7.0.23:
     resolution: {integrity: sha512-ASdhgQIBSay0R/eXggAkQ53G4nTJqTXqC2kbaBbdDwM7SkjyZyO0OaaN1/FH7U/yCeqOHDwFO5j8+Os/IS1dXw==}
@@ -4252,40 +4238,6 @@ snapshots:
       null-prototype-object: 1.2.5
 
   '@kikobeats/time-span@1.0.11': {}
-
-  '@metascraper/helpers@5.49.21(@noble/hashes@1.8.0)':
-    dependencies:
-      audio-extensions: 0.0.0
-      chrono-node: 2.9.0
-      condense-whitespace: 2.0.0
-      data-uri-utils: 1.0.9
-      debug-logfmt: 1.4.7
-      entities: 7.0.1
-      file-extension: 4.0.5
-      has-values: 2.0.1
-      image-extensions: 1.1.0
-      is-relative-url: 3.0.0
-      is-uri: 1.2.12
-      iso-639-3: 2.2.0
-      isostring: 0.0.1
-      jsdom: 27.4.0(@noble/hashes@1.8.0)
-      jsonrepair: 3.13.2
-      lodash: 4.17.23
-      memoize-one: 6.0.0
-      microsoft-capitalize: 1.0.6
-      mime: 3.0.0
-      normalize-url: 6.1.0
-      re2: 1.23.2
-      smartquotes: 2.3.2
-      tldts: 7.0.19
-      url-regex-safe: 4.0.0(re2@1.23.2)
-      video-extensions: 1.2.0
-    transitivePeerDependencies:
-      - '@noble/hashes'
-      - bufferutil
-      - canvas
-      - supports-color
-      - utf-8-validate
 
   '@metascraper/helpers@5.49.24(@noble/hashes@1.8.0)':
     dependencies:
@@ -6163,9 +6115,9 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  metascraper-title@5.49.21(@noble/hashes@1.8.0):
+  metascraper-title@5.49.24(@noble/hashes@1.8.0):
     dependencies:
-      '@metascraper/helpers': 5.49.21(@noble/hashes@1.8.0)
+      '@metascraper/helpers': 5.49.24(@noble/hashes@1.8.0)
     transitivePeerDependencies:
       - '@noble/hashes'
       - bufferutil
@@ -6586,14 +6538,6 @@ snapshots:
       iconv-lite: 0.7.1
       unpipe: 1.0.0
 
-  re2@1.23.2:
-    dependencies:
-      install-artifact-from-github: 1.4.0
-      nan: 2.25.0
-      node-gyp: 12.2.0
-    transitivePeerDependencies:
-      - supports-color
-
   re2@1.23.3:
     dependencies:
       install-artifact-from-github: 1.4.0
@@ -6916,13 +6860,7 @@ snapshots:
 
   tlds@1.261.0: {}
 
-  tldts-core@7.0.19: {}
-
   tldts-core@7.0.23: {}
-
-  tldts@7.0.19:
-    dependencies:
-      tldts-core: 7.0.19
 
   tldts@7.0.23:
     dependencies:
@@ -7012,13 +6950,6 @@ snapshots:
       punycode: 2.3.1
 
   url-polyfill@1.1.14: {}
-
-  url-regex-safe@4.0.0(re2@1.23.2):
-    dependencies:
-      ip-regex: 4.3.0
-      tlds: 1.261.0
-    optionalDependencies:
-      re2: 1.23.2
 
   url-regex-safe@4.0.0(re2@1.23.3):
     dependencies:
