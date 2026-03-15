@@ -9,6 +9,39 @@ checksums:
     common/close: 2c2e22f8424a1031de89063bd0022e16
     common/loading: 82b4ea7ed1439094d7c4be13aaba9a66
     common/errors/logoutFailed: ca0e1b37b2c1ff30983b4e74e4b4288d
+    login/title: d3272e371483f59766366d6bf75cb497
+    login/logoAlt: da44d5e92e4b09c500f04c8dc4de120f
+    login/usernameLabel: 2ee65bc2dd2f12cf2672f95b2a054bf8
+    login/usernamePlaceholder: 2ee65bc2dd2f12cf2672f95b2a054bf8
+    login/passwordLabel: 223a61cf906ab9c40d22612c588dff48
+    login/passwordPlaceholder: 223a61cf906ab9c40d22612c588dff48
+    login/submit: f4f219abeb5a465ecb1c7efaf50246de
+    admin/title: fe42f97809c24d700d3912c8d02ed452
+    admin/createUser: e1860f28356632238cd5938ecbad783c
+    admin/deleted: 2b2a00f3832bc7ebbd90d5b8443ee97d
+    admin/userActions: af17d84a359aa06a408f34b246a069d9
+    admin/table/username: b22f1bf369cd97e8de26f32e09b3b486
+    admin/table/admin: 90eb20f1400db82ab874744e47836dc6
+    admin/table/action: c92af0bdf1698b0d10cf5b28d2ad4945
+    errors/api/unknown: f10a96173c4b89644adc5e6712330707
+    errors/api/serverCommunication: 3407389014c45219bc51a7937b5d37ea
+    errors/api/validation: b93155c50334ecb32412c9c912f5d4c1
+    errors/api/auth/loginServer: 20beb19a86b2fbc042d596a010130485
+    errors/api/auth/invalidCredentials: 8784e8d9ec4dcc880c16a1586ac014e8
+    errors/api/auth/existingPasswordIncorrect: 5c467357643c6b0d9f38fe30395475ac
+    errors/api/item/duplicate: db37b03146094a6db6348c3dd384ced9
+    errors/api/item/createPermission: 500f74d689f7615c7083d21c7a2ed9b3
+    errors/api/item/updatePermission: f92a8bfcbc76d4429f1af3ceec7cb187
+    errors/api/item/deletePermission: 089bd48985efc26541c484a39c5525f5
+    errors/api/item/metaImagePermission: c3c0405411cb26221f19e68911be9f4a
+    errors/api/tag/duplicate: db53eba40045474bafc80658608d0527
+    errors/api/tag/createPermission: 06c62722215d292ce0b11662feb22d6a
+    errors/api/tag/updatePermission: c8da951f0037c98537913e8c096d8c6d
+    errors/api/tag/deletePermission: 79ea2d29d2aad3f3f30df4a8181eeccf
+    errors/api/user/duplicate: db0037efc888785f95612b44a18148b3
+    errors/api/workspace/updatePermission: 6c877aba5197e68edb04af821670ec65
+    errors/api/workspace/deletePermission: b20a4c7588154cb9c95edebeb4eda28a
+    errors/api/workspace/usernameNotFound: e74e5bfb0601cb3eb243a89cc38ccdf9
     navbar/add: 87c4a663507f2bcbbf79934af8164e13
     navbar/search: 49dd6c21604b5e8d4153ff1aff2177e1
     navbar/searchPlaceholder: 49dd6c21604b5e8d4153ff1aff2177e1
@@ -69,12 +102,12 @@ checksums:
     modal/workspace/nameLabel: 855614bbf862fd6a9f6a3e76943f92d4
     modal/workspace/namePlaceholder: b2fc052f7cd059b93450f65e034e7456
     modal/workspace/membersLabel: 0932e80cba1e3e0a7f52bb67ff31da32
-    modal/workspace/permissionSelect: a5289dacc6c2ef401591625a43951d48
+    modal/workspace/permissionSelect: f7b13047f13b74e8002447b20391520b
     modal/workspace/removeButton: dba2fe5fe9f83f8078c687f28cba4b52
     modal/workspace/usernamePlaceholder: 2ee65bc2dd2f12cf2672f95b2a054bf8
     modal/workspace/newUserUsername: d8fc404d6f978f50a173c77cc2ce42a9
     modal/workspace/table/user: 61073457a5c3901084b557d065f876be
-    modal/workspace/table/permissionLevel: 69eb9f18d5ad6beae7fb7493e9bce73d
+    modal/workspace/table/permissionLevel: 53743bbb6ca938f5b893552e839d067f
     modal/workspace/table/action: c92af0bdf1698b0d10cf5b28d2ad4945
     modal/workspace/permission/read: 2494ca23d10e5b6381eb271aceeb5270
     modal/workspace/permission/write: 0c8cd5e85bbf4a4ef271c6df37736df3

@@ -1,0 +1,183 @@
+{
+    "common": {
+        "add": "Hinzufügen",
+        "cancel": "Abbrechen",
+        "create": "Erstellen",
+        "edit": "Bearbeiten",
+        "delete": "Löschen",
+        "close": "Schließen",
+        "loading": "Wird geladen...",
+        "errors": {
+            "logoutFailed": "Abmelden auf dem Server fehlgeschlagen!"
+        }
+    },
+    "login": {
+        "title": "Colly",
+        "logoAlt": "Colly-Logo",
+        "usernameLabel": "Benutzername",
+        "usernamePlaceholder": "Benutzername",
+        "passwordLabel": "Passwort",
+        "passwordPlaceholder": "Passwort",
+        "submit": "Anmelden"
+    },
+    "admin": {
+        "title": "Benutzer",
+        "createUser": "Benutzer erstellen",
+        "deleted": "Benutzer wurde gelöscht!",
+        "userActions": "Benutzeraktionen",
+        "table": {
+            "username": "Benutzername",
+            "admin": "Admin",
+            "action": "Aktion"
+        }
+    },
+    "errors": {
+        "api": {
+            "unknown": "Unbekannter Fehler!",
+            "serverCommunication": "Fehler bei der Kommunikation mit dem Server!",
+            "validation": "Ungültige Eingabe: {{details}}!",
+            "auth": {
+                "loginServer": "Fehler bei der Kommunikation mit dem Anmeldeserver!",
+                "invalidCredentials": "Ungültiger Benutzername oder Passwort!",
+                "existingPasswordIncorrect": "Das eingegebene aktuelle Passwort ist falsch!"
+            },
+            "item": {
+                "duplicate": "Ein Element mit diesem Namen existiert bereits!",
+                "createPermission": "Sie haben keine Berechtigung, Elemente in diesem Arbeitsbereich zu erstellen!",
+                "updatePermission": "Sie haben keine Berechtigung, dieses Element zu aktualisieren!",
+                "deletePermission": "Sie haben keine Berechtigung, dieses Element zu löschen!",
+                "metaImagePermission": "Sie haben keine Berechtigung, das Meta‑Bild dieses Elements zu aktualisieren!"
+            },
+            "tag": {
+                "duplicate": "Ein Tag mit diesem Namen existiert bereits!",
+                "createPermission": "Sie haben keine Berechtigung, Tags in diesem Arbeitsbereich zu erstellen!",
+                "updatePermission": "Sie haben keine Berechtigung, diesen Tag zu aktualisieren!",
+                "deletePermission": "Sie haben keine Berechtigung, diesen Tag zu löschen!"
+            },
+            "user": {
+                "duplicate": "Benutzername ist bereits vergeben!"
+            },
+            "workspace": {
+                "updatePermission": "Sie haben keine Berechtigung, diesen Arbeitsbereich zu aktualisieren!",
+                "deletePermission": "Sie haben keine Berechtigung, diesen Arbeitsbereich zu löschen!",
+                "usernameNotFound": "Kein Benutzer mit diesem Benutzernamen gefunden!"
+            }
+        }
+    },
+    "navbar": {
+        "add": "Hinzufügen",
+        "search": "Suchen",
+        "searchPlaceholder": "Suchen",
+        "searchButton": "Suchen",
+        "preferences": "Einstellungen",
+        "adminPanel": "Admin‑Bereich",
+        "logout": "Abmelden",
+        "addMenu": {
+            "item": "Element",
+            "tag": "Tag",
+            "workspace": "Arbeitsbereich"
+        },
+        "sort": {
+            "label": "Sortieren:",
+            "updated": "Aktualisiert",
+            "updatedOldest": "Aktualisiert (älteste zuerst)",
+            "created": "Erstellt",
+            "createdOldest": "Erstellt (älteste zuerst)",
+            "title": "Titel",
+            "titleDesc": "Titel (absteigend)"
+        }
+    },
+    "item": {
+        "pinned": "Element angeheftet!",
+        "unpinned": "Element losgelöst!",
+        "recrawlRequested": "Neuscan für Metadaten‑Bild des Elements wurde angefordert!",
+        "actions": "Elementaktionen",
+        "pin": "Anheften",
+        "unpin": "Loslösen",
+        "recrawlImage": "Bild neu durchsuchen",
+        "pinAria": "Angepinnt (Element loslösen)",
+        "unpinAria": "Losgelöst (Element anheften)"
+    },
+    "tag": {
+        "selectWorkspace": "Arbeitsbereich auswählen",
+        "editMode": "Bearbeitungsmodus",
+        "expandSidebar": "Seitenleiste erweitern",
+        "collapseSidebar": "Seitenleiste einziehen"
+    },
+    "modal": {
+        "item": {
+            "updated": "Element wurde aktualisiert!",
+            "created": "Element \"{{name}}\" wurde erstellt!",
+            "deleted": "Element wurde gelöscht!",
+            "editTitle": "Element bearbeiten",
+            "createTitle": "Neues Element erstellen",
+            "urlLabel": "Element‑URL",
+            "urlPlaceholder": "https://example.com/page-123",
+            "editManually": "Manuell bearbeiten",
+            "helpText": "Fügen Sie eine URL ein oder klicken Sie hier, um Informationen manuell hinzuzufügen",
+            "nameLabel": "Elementname",
+            "namePlaceholder": "Mein tolles Element",
+            "descriptionLabel": "Elementbeschreibung",
+            "descriptionPlaceholder": "Fügen Sie einen Text hinzu, um Ihr Element zu beschreiben",
+            "tagsLabel": "Zugehörige Tags",
+            "tagSearchPlaceholder": "Nach Tags suchen"
+        },
+        "tag": {
+            "updated": "Tag wurde aktualisiert!",
+            "created": "Tag \"{{name}}\" wurde erstellt!",
+            "deleted": "Tag wurde gelöscht!",
+            "editTitle": "Tag bearbeiten",
+            "createTitle": "Neuen Tag erstellen",
+            "nameLabel": "Tag‑Name",
+            "namePlaceholder": "tag-name-123",
+            "colorLabel": "Farbe"
+        },
+        "workspace": {
+            "updated": "Arbeitsbereich wurde aktualisiert!",
+            "created": "Arbeitsbereich \"{{name}}\" wurde erstellt!",
+            "deleted": "Arbeitsbereich wurde gelöscht!",
+            "editTitle": "Arbeitsbereich bearbeiten",
+            "createTitle": "Neuen Arbeitsbereich erstellen",
+            "nameLabel": "Arbeitsbereichsname",
+            "namePlaceholder": "Mein Arbeitsbereich",
+            "membersLabel": "Mitglieder",
+            "permissionSelect": "Berechtigungsrolle auswählen",
+            "removeButton": "Entfernen",
+            "usernamePlaceholder": "Benutzername",
+            "newUserUsername": "Benutzername des neuen Benutzers",
+            "table": {
+                "user": "Benutzer",
+                "permissionLevel": "Rolle",
+                "action": "Aktion"
+            },
+            "permission": {
+                "read": "Lesen",
+                "write": "Schreiben",
+                "admin": "Administrator"
+            },
+            "errors": {
+                "emptyUsername": "Benutzername darf nicht leer sein!",
+                "duplicateMember": "Benutzer ist bereits Mitglied des Arbeitsbereichs!"
+            }
+        },
+        "preferences": {
+            "title": "Benutzereinstellungen",
+            "currentPasswordLabel": "Aktuelles Passwort",
+            "newPasswordLabel": "Neues Passwort",
+            "submitButton": "Passwort ändern",
+            "changedPassword": "Passwort wurde geändert!"
+        },
+        "admin": {
+            "user": {
+                "updated": "Benutzer wurde aktualisiert!",
+                "created": "Benutzer \"{{username}}\" wurde erstellt!",
+                "editTitle": "Benutzer bearbeiten",
+                "createTitle": "Neuen Benutzer erstellen",
+                "usernameLabel": "Benutzername",
+                "usernamePlaceholder": "user123",
+                "passwordLabel": "Temporäres Passwort",
+                "adminCheckbox": "Administrator‑Benutzer"
+            }
+        }
+    }
+}

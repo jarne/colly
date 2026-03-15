@@ -141,13 +141,13 @@
             "nameLabel": "Workspace name",
             "namePlaceholder": "My workspace",
             "membersLabel": "Members",
-            "permissionSelect": "Permission level select",
+            "permissionSelect": "Permission role select",
             "removeButton": "Remove",
             "usernamePlaceholder": "Username",
             "newUserUsername": "New user username",
             "table": {
                 "user": "User",
-                "permissionLevel": "Permission level",
+                "permissionLevel": "Role",
                 "action": "Action"
             },
             "permission": {
