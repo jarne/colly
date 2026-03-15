@@ -1,0 +1,183 @@
+{
+    "common": {
+        "add": "Agregar",
+        "cancel": "Cancelar",
+        "create": "Crear",
+        "edit": "Editar",
+        "delete": "Eliminar",
+        "close": "Cerrar",
+        "loading": "Cargando...",
+        "errors": {
+            "logoutFailed": "¡Error al cerrar sesión en el servidor!"
+        }
+    },
+    "login": {
+        "title": "Colly",
+        "logoAlt": "Logotipo de Colly",
+        "usernameLabel": "Nombre de usuario",
+        "usernamePlaceholder": "Nombre de usuario",
+        "passwordLabel": "Contraseña",
+        "passwordPlaceholder": "Contraseña",
+        "submit": "Iniciar sesión"
+    },
+    "admin": {
+        "title": "Usuarios",
+        "createUser": "Crear usuario",
+        "deleted": "¡El usuario ha sido eliminado!",
+        "userActions": "Acciones de usuario",
+        "table": {
+            "username": "Nombre de usuario",
+            "admin": "Administrador",
+            "action": "Acción"
+        }
+    },
+    "errors": {
+        "api": {
+            "unknown": "¡Error desconocido!",
+            "serverCommunication": "¡Error al comunicarse con el servidor!",
+            "validation": "¡Entrada no válida: {{details}}!",
+            "auth": {
+                "loginServer": "¡Error al comunicarse con el servidor de inicio de sesión!",
+                "invalidCredentials": "¡Nombre de usuario o contraseña inválidos!",
+                "existingPasswordIncorrect": "¡La contraseña actual ingresada es incorrecta!"
+            },
+            "item": {
+                "duplicate": "¡Ya existe un elemento con este nombre!",
+                "createPermission": "¡No tienes permiso para crear elementos en este espacio de trabajo!",
+                "updatePermission": "¡No tienes permiso para actualizar este elemento!",
+                "deletePermission": "¡No tienes permiso para eliminar este elemento!",
+                "metaImagePermission": "¡No tienes permiso para actualizar la imagen meta de este elemento!"
+            },
+            "tag": {
+                "duplicate": "¡Ya existe una etiqueta con este nombre!",
+                "createPermission": "¡No tienes permiso para crear etiquetas en este espacio de trabajo!",
+                "updatePermission": "¡No tienes permiso para actualizar esta etiqueta!",
+                "deletePermission": "¡No tienes permiso para eliminar esta etiqueta!"
+            },
+            "user": {
+                "duplicate": "¡El nombre de usuario ya está en uso!"
+            },
+            "workspace": {
+                "updatePermission": "¡No tienes permiso para actualizar este espacio de trabajo!",
+                "deletePermission": "¡No tienes permiso para eliminar este espacio de trabajo!",
+                "usernameNotFound": "¡No se encontró ningún usuario con ese nombre!"
+            }
+        }
+    },
+    "navbar": {
+        "add": "Agregar",
+        "search": "Buscar",
+        "searchPlaceholder": "Buscar",
+        "searchButton": "Buscar",
+        "preferences": "Preferencias",
+        "adminPanel": "Panel de administración",
+        "logout": "Cerrar sesión",
+        "addMenu": {
+            "item": "Elemento de colección",
+            "tag": "Etiqueta",
+            "workspace": "Espacio de trabajo"
+        },
+        "sort": {
+            "label": "Ordenar:",
+            "updated": "Actualizado",
+            "updatedOldest": "Actualizado (más antiguo primero)",
+            "created": "Creado",
+            "createdOldest": "Creado (más antiguo primero)",
+            "title": "Título",
+            "titleDesc": "Título (desc)"
+        }
+    },
+    "item": {
+        "pinned": "¡Elemento fijado!",
+        "unpinned": "¡Elemento desafijado!",
+        "recrawlRequested": "¡Se ha solicitado volver a rastrear la imagen de metadatos del elemento!",
+        "actions": "Acciones del elemento",
+        "pin": "Fijar",
+        "unpin": "Desfijar",
+        "recrawlImage": "Volver a rastrear imagen",
+        "pinAria": "Fijado (desfijar elemento)",
+        "unpinAria": "Desfijado (fijar elemento)"
+    },
+    "tag": {
+        "selectWorkspace": "Seleccionar espacio de trabajo",
+        "editMode": "Modo de edición",
+        "expandSidebar": "Expandir barra lateral",
+        "collapseSidebar": "Contraer barra lateral"
+    },
+    "modal": {
+        "item": {
+            "updated": "¡El elemento ha sido actualizado!",
+            "created": "¡El elemento \"{{name}}\" ha sido creado!",
+            "deleted": "¡El elemento ha sido eliminado!",
+            "editTitle": "Editar elemento",
+            "createTitle": "Crear nuevo elemento",
+            "urlLabel": "URL del elemento",
+            "urlPlaceholder": "https://example.com/page-123",
+            "editManually": "Editar manualmente",
+            "helpText": "Pegue una URL o haga clic aquí para añadir información manualmente",
+            "nameLabel": "Nombre del elemento",
+            "namePlaceholder": "Mi elemento genial",
+            "descriptionLabel": "Descripción del elemento",
+            "descriptionPlaceholder": "Añada un texto para describir su elemento",
+            "tagsLabel": "Etiquetas asignadas",
+            "tagSearchPlaceholder": "Buscar etiquetas"
+        },
+        "tag": {
+            "updated": "¡La etiqueta ha sido actualizada!",
+            "created": "¡La etiqueta \"{{name}}\" ha sido creada!",
+            "deleted": "¡La etiqueta ha sido eliminada!",
+            "editTitle": "Editar etiqueta",
+            "createTitle": "Crear nueva etiqueta",
+            "nameLabel": "Nombre de la etiqueta",
+            "namePlaceholder": "etiqueta-nombre-123",
+            "colorLabel": "Color"
+        },
+        "workspace": {
+            "updated": "¡El espacio de trabajo ha sido actualizado!",
+            "created": "¡El espacio de trabajo \"{{name}}\" ha sido creado!",
+            "deleted": "¡El espacio de trabajo ha sido eliminado!",
+            "editTitle": "Editar espacio de trabajo",
+            "createTitle": "Crear nuevo espacio de trabajo",
+            "nameLabel": "Nombre del espacio de trabajo",
+            "namePlaceholder": "Mi espacio de trabajo",
+            "membersLabel": "Miembros",
+            "permissionSelect": "Seleccionar rol de permiso",
+            "removeButton": "Eliminar",
+            "usernamePlaceholder": "Nombre de usuario",
+            "newUserUsername": "Nombre de usuario del nuevo usuario",
+            "table": {
+                "user": "Usuario",
+                "permissionLevel": "Rol",
+                "action": "Acción"
+            },
+            "permission": {
+                "read": "Lectura",
+                "write": "Escritura",
+                "admin": "Administrador"
+            },
+            "errors": {
+                "emptyUsername": "¡El nombre de usuario no puede estar vacío!",
+                "duplicateMember": "¡El usuario ya es miembro del espacio de trabajo!"
+            }
+        },
+        "preferences": {
+            "title": "Preferencias del usuario",
+            "currentPasswordLabel": "Contraseña actual",
+            "newPasswordLabel": "Nueva contraseña",
+            "submitButton": "Cambiar contraseña",
+            "changedPassword": "¡La contraseña ha sido cambiada!"
+        },
+        "admin": {
+            "user": {
+                "updated": "¡El usuario ha sido actualizado!",
+                "created": "¡El usuario \"{{username}}\" ha sido creado!",
+                "editTitle": "Editar usuario",
+                "createTitle": "Crear nuevo usuario",
+                "usernameLabel": "Nombre de usuario",
+                "usernamePlaceholder": "usuario123",
+                "passwordLabel": "Contraseña temporal",
+                "adminCheckbox": "Usuario administrador"
+            }
+        }
+    }
+}

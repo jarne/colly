@@ -1,0 +1,183 @@
+{
+    "common": {
+        "add": "添加",
+        "cancel": "取消",
+        "create": "创建",
+        "edit": "编辑",
+        "delete": "删除",
+        "close": "关闭",
+        "loading": "加载中…",
+        "errors": {
+            "logoutFailed": "服务器登出失败！"
+        }
+    },
+    "login": {
+        "title": "Colly",
+        "logoAlt": "Colly 徽标",
+        "usernameLabel": "用户名",
+        "usernamePlaceholder": "用户名",
+        "passwordLabel": "密码",
+        "passwordPlaceholder": "密码",
+        "submit": "登录"
+    },
+    "admin": {
+        "title": "用户",
+        "createUser": "创建用户",
+        "deleted": "用户已删除！",
+        "userActions": "用户操作",
+        "table": {
+            "username": "用户名",
+            "admin": "管理员",
+            "action": "操作"
+        }
+    },
+    "errors": {
+        "api": {
+            "unknown": "未知错误！",
+            "serverCommunication": "与服务器通信时出错！",
+            "validation": "输入无效：{{details}}！",
+            "auth": {
+                "loginServer": "与登录服务器通信时出错！",
+                "invalidCredentials": "用户名或密码错误！",
+                "existingPasswordIncorrect": "当前密码错误！"
+            },
+            "item": {
+                "duplicate": "该名称的项目已存在！",
+                "createPermission": "您没有创建此工作区项目的权限！",
+                "updatePermission": "您没有更新此项目的权限！",
+                "deletePermission": "您没有删除此项目的权限！",
+                "metaImagePermission": "您没有更新此项目元图像的权限！"
+            },
+            "tag": {
+                "duplicate": "该名称的标签已存在！",
+                "createPermission": "您没有在此工作区创建标签的权限！",
+                "updatePermission": "您没有更新此标签的权限！",
+                "deletePermission": "您没有删除此标签的权限！"
+            },
+            "user": {
+                "duplicate": "用户名已被使用！"
+            },
+            "workspace": {
+                "updatePermission": "您没有更新此工作区的权限！",
+                "deletePermission": "您没有删除此工作区的权限！",
+                "usernameNotFound": "未找到该用户名的用户！"
+            }
+        }
+    },
+    "navbar": {
+        "add": "添加",
+        "search": "搜索",
+        "searchPlaceholder": "搜索",
+        "searchButton": "搜索",
+        "preferences": "偏好设置",
+        "adminPanel": "管理面板",
+        "logout": "退出登录",
+        "addMenu": {
+            "item": "收藏项",
+            "tag": "标签",
+            "workspace": "工作区"
+        },
+        "sort": {
+            "label": "排序：",
+            "updated": "最近更新",
+            "updatedOldest": "最近更新（最旧在前）",
+            "created": "最近创建",
+            "createdOldest": "最近创建（最旧在前）",
+            "title": "标题",
+            "titleDesc": "标题（降序）"
+        }
+    },
+    "item": {
+        "pinned": "项目已置顶！",
+        "unpinned": "项目已取消置顶！",
+        "recrawlRequested": "已请求重新抓取项目元数据图片！",
+        "actions": "项目操作",
+        "pin": "置顶",
+        "unpin": "取消置顶",
+        "recrawlImage": "重新抓取图片",
+        "pinAria": "已置顶（取消置顶）",
+        "unpinAria": "已取消置顶（置顶）"
+    },
+    "tag": {
+        "selectWorkspace": "选择工作区",
+        "editMode": "编辑模式",
+        "expandSidebar": "展开侧栏",
+        "collapseSidebar": "收起侧栏"
+    },
+    "modal": {
+        "item": {
+            "updated": "项目已更新！",
+            "created": "项目“{{name}}”已创建！",
+            "deleted": "项目已删除！",
+            "editTitle": "编辑项目",
+            "createTitle": "创建新项目",
+            "urlLabel": "项目 URL",
+            "urlPlaceholder": "https://example.com/page-123",
+            "editManually": "手动编辑",
+            "helpText": "粘贴 URL 或点击此处手动添加信息",
+            "nameLabel": "项目名称",
+            "namePlaceholder": "我的酷项目",
+            "descriptionLabel": "项目描述",
+            "descriptionPlaceholder": "添加文本来描述您的项目",
+            "tagsLabel": "已分配标签",
+            "tagSearchPlaceholder": "搜索标签"
+        },
+        "tag": {
+            "updated": "标签已更新！",
+            "created": "标签“{{name}}”已创建！",
+            "deleted": "标签已删除！",
+            "editTitle": "编辑标签",
+            "createTitle": "创建新标签",
+            "nameLabel": "标签名称",
+            "namePlaceholder": "tag-name-123",
+            "colorLabel": "颜色"
+        },
+        "workspace": {
+            "updated": "工作区已更新！",
+            "created": "工作区“{{name}}”已创建！",
+            "deleted": "工作区已删除！",
+            "editTitle": "编辑工作区",
+            "createTitle": "创建新工作区",
+            "nameLabel": "工作区名称",
+            "namePlaceholder": "我的工作区",
+            "membersLabel": "成员",
+            "permissionSelect": "权限角色选择",
+            "removeButton": "移除",
+            "usernamePlaceholder": "用户名",
+            "newUserUsername": "新用户用户名",
+            "table": {
+                "user": "用户",
+                "permissionLevel": "角色",
+                "action": "操作"
+            },
+            "permission": {
+                "read": "读取",
+                "write": "写入",
+                "admin": "管理员"
+            },
+            "errors": {
+                "emptyUsername": "用户名不能为空！",
+                "duplicateMember": "用户已是该工作区成员！"
+            }
+        },
+        "preferences": {
+            "title": "用户偏好设置",
+            "currentPasswordLabel": "当前密码",
+            "newPasswordLabel": "新密码",
+            "submitButton": "更改密码",
+            "changedPassword": "密码已更改！"
+        },
+        "admin": {
+            "user": {
+                "updated": "用户已更新！",
+                "created": "用户“{{username}}”已创建！",
+                "editTitle": "编辑用户",
+                "createTitle": "创建新用户",
+                "usernameLabel": "用户名",
+                "usernamePlaceholder": "user123",
+                "passwordLabel": "临时密码",
+                "adminCheckbox": "管理员用户"
+            }
+        }
+    }
+}
