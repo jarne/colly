@@ -11,6 +11,59 @@
             "logoutFailed": "Log-out on server failed!"
         }
     },
+    "login": {
+        "title": "Colly",
+        "logoAlt": "Colly logo",
+        "usernameLabel": "Username",
+        "usernamePlaceholder": "Username",
+        "passwordLabel": "Password",
+        "passwordPlaceholder": "Password",
+        "submit": "Login"
+    },
+    "admin": {
+        "title": "Users",
+        "createUser": "Create user",
+        "deleted": "User has been deleted!",
+        "userActions": "User actions",
+        "table": {
+            "username": "User name",
+            "admin": "Admin",
+            "action": "Action"
+        }
+    },
+    "errors": {
+        "api": {
+            "unknown": "Unknown error!",
+            "serverCommunication": "Error while communicating with the server!",
+            "validation": "Invalid input: {{details}}!",
+            "auth": {
+                "loginServer": "Error while communicating with the login server!",
+                "invalidCredentials": "Invalid username or password!",
+                "existingPasswordIncorrect": "Entered current password is incorrect!"
+            },
+            "item": {
+                "duplicate": "An item with this name already exists!",
+                "createPermission": "You do not have permission to create items in this workspace!",
+                "updatePermission": "You do not have permission to update this item!",
+                "deletePermission": "You do not have permission to delete this item!",
+                "metaImagePermission": "You do not have permission to update the meta image of this item!"
+            },
+            "tag": {
+                "duplicate": "A tag with this name already exists!",
+                "createPermission": "You do not have permission to create tags in this workspace!",
+                "updatePermission": "You do not have permission to update this tag!",
+                "deletePermission": "You do not have permission to delete this tag!"
+            },
+            "user": {
+                "duplicate": "User name is already in use!"
+            },
+            "workspace": {
+                "updatePermission": "You do not have permission to update this workspace!",
+                "deletePermission": "You do not have permission to delete this workspace!",
+                "usernameNotFound": "No user found with this username!"
+            }
+        }
+    },
     "navbar": {
         "add": "Add",
         "search": "Search",

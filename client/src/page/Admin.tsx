@@ -3,6 +3,7 @@
  */
 
 import { useEffect, useRef, type MouseEvent } from "react"
+import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router"
 import { toast } from "react-toastify"
 import { useAppData } from "./../component/context/DataProvider"
@@ -18,6 +19,7 @@ type CreateUserModalHandle = {
 
 function Admin() {
     const navigate = useNavigate()
+    const { t } = useTranslation()
 
     const { accessToken } = useUserAuth()
     const { users, loadUsers } = useAppData()
@@ -52,7 +54,7 @@ function Admin() {
             return
         }
 
-        toast.success(`User has been deleted!`)
+        toast.success(t("admin.deleted"))
         loadUsers()
     }
 
@@ -72,21 +74,21 @@ function Admin() {
         <>
             <Navbar />
             <main className="container mt-3">
-                <h2>Users</h2>
+                <h2>{t("admin.title")}</h2>
                 <p>
                     <button
                         className="btn btn-secondary"
                         onClick={handleCreateUser}
                     >
-                        Create user
+                        {t("admin.createUser")}
                     </button>
                 </p>
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">User name</th>
-                            <th scope="col">Admin</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">{t("admin.table.username")}</th>
+                            <th scope="col">{t("admin.table.admin")}</th>
+                            <th scope="col">{t("admin.table.action")}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -105,7 +107,7 @@ function Admin() {
                                         <div
                                             className="btn-group"
                                             role="group"
-                                            aria-label="User actions"
+                                            aria-label={t("admin.userActions")}
                                         >
                                             <button
                                                 className="btn btn-primary btn-sm"
@@ -113,7 +115,7 @@ function Admin() {
                                                     handleEditUser(e, user._id)
                                                 }}
                                             >
-                                                Edit
+                                                {t("common.edit")}
                                             </button>
                                             <button
                                                 className="btn btn-secondary btn-sm"
@@ -124,7 +126,7 @@ function Admin() {
                                                     )
                                                 }}
                                             >
-                                                Delete
+                                                {t("common.delete")}
                                             </button>
                                         </div>
                                     </td>
