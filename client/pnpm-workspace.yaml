@@ -1,3 +1,5 @@
 onlyBuiltDependencies:
+  - '@openrouter/sdk'
   - '@parcel/watcher'
   - esbuild
+  - sharp

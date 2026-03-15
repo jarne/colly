@@ -2,6 +2,8 @@
  * Colly | API error code handling logic
  */
 
+import i18n from "./../../../util/i18n"
+
 type ValidationError = {
     code: string
     fields: FieldValidationError[]
@@ -24,5 +26,7 @@ export const generateValidationErrorMessage = (
         return `${field.name}: ${field.message}`
     })
 
-    return `Invalid input: ${valMsgs.join(", ")}!`
+    return i18n.t("errors.api.validation", {
+        details: valMsgs.join(", "),
+    })
 }

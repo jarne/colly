@@ -3,6 +3,7 @@
  */
 
 import qs from "qs"
+import i18n from "./../../util/i18n"
 import InternalAPI from "./../../util/InternalAPI"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
 import { checkRequestSuccessful } from "./util/requestHelper"
@@ -38,7 +39,7 @@ export const createUser = async (user: Partial<User>, accessToken: string) => {
         })
         res = await resp.json()
     } catch {
-        throw new Error("Error while communicating with the server!")
+        throw new Error(i18n.t("errors.api.serverCommunication"))
     }
 
     if (res.error) {
@@ -46,9 +47,9 @@ export const createUser = async (user: Partial<User>, accessToken: string) => {
             case "validation_error":
                 throw new Error(generateValidationErrorMessage(res.error))
             case "duplicate_entry":
-                throw new Error("User name is already in use!")
+                throw new Error(i18n.t("errors.api.user.duplicate"))
             default:
-                throw new Error("Unknown error!")
+                throw new Error(i18n.t("errors.api.unknown"))
         }
     }
 }
@@ -80,7 +81,7 @@ export const updateUser = async (
         })
         res = await resp.json()
     } catch {
-        throw new Error("Error while communicating with the server!")
+        throw new Error(i18n.t("errors.api.serverCommunication"))
     }
 
     if (res.error) {
@@ -88,7 +89,7 @@ export const updateUser = async (
             case "validation_error":
                 throw new Error(generateValidationErrorMessage(res.error))
             default:
-                throw new Error("Unknown error!")
+                throw new Error(i18n.t("errors.api.unknown"))
         }
     }
 }
@@ -110,13 +111,13 @@ export const deleteUser = async (id: string, accessToken: string) => {
         })
         res = await resp.json()
     } catch {
-        throw new Error("Error while communicating with the server!")
+        throw new Error(i18n.t("errors.api.serverCommunication"))
     }
 
     if (res.error) {
         switch (res.error.code) {
             default:
-                throw new Error("Unknown error!")
+                throw new Error(i18n.t("errors.api.unknown"))
         }
     }
 }

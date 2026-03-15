@@ -2,6 +2,7 @@
  * Colly | auth API logic
  */
 
+import i18n from "./../../util/i18n"
 import InternalAPI from "./../../util/InternalAPI"
 import { checkRequestSuccessful } from "./util/requestHelper"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
@@ -41,7 +42,7 @@ export const login = async (
         })
         res = await resp.json()
     } catch {
-        throw new Error("Error while communicating with the login server!")
+        throw new Error(i18n.t("errors.api.auth.loginServer"))
     }
 
     if (res.error) {
@@ -49,9 +50,9 @@ export const login = async (
             case "validation_error":
                 throw new Error(generateValidationErrorMessage(res.error))
             case "invalid_credentials":
-                throw new Error("Invalid username or password!")
+                throw new Error(i18n.t("errors.api.auth.invalidCredentials"))
             default:
-                throw new Error("Unknown error!")
+                throw new Error(i18n.t("errors.api.unknown"))
         }
     }
 
@@ -124,7 +125,7 @@ export const changePassword = async (
             res = await resp.json()
         }
     } catch {
-        throw new Error("Error while communicating with the server!")
+        throw new Error(i18n.t("errors.api.serverCommunication"))
     }
 
     if (res && res.error) {
@@ -132,9 +133,11 @@ export const changePassword = async (
             case "validation_error":
                 throw new Error(generateValidationErrorMessage(res.error))
             case "existing_password_incorrect":
-                throw new Error("Entered current password is incorrect!")
+                throw new Error(
+                    i18n.t("errors.api.auth.existingPasswordIncorrect")
+                )
             default:
-                throw new Error("Unknown error!")
+                throw new Error(i18n.t("errors.api.unknown"))
         }
     }
 }

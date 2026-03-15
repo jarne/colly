@@ -3,6 +3,7 @@
  */
 
 import qs from "qs"
+import i18n from "./../../util/i18n"
 import InternalAPI from "./../../util/InternalAPI"
 import type { UserRes } from "./user"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
@@ -44,7 +45,7 @@ export const createWorkspace = async (
         })
         res = await resp.json()
     } catch {
-        throw new Error("Error while communicating with the server!")
+        throw new Error(i18n.t("errors.api.serverCommunication"))
     }
 
     if (res.error) {
@@ -52,7 +53,7 @@ export const createWorkspace = async (
             case "validation_error":
                 throw new Error(generateValidationErrorMessage(res.error))
             default:
-                throw new Error("Unknown error!")
+                throw new Error(i18n.t("errors.api.unknown"))
         }
     }
 
@@ -85,7 +86,7 @@ export const updateWorkspace = async (
         )
         res = await resp.json()
     } catch {
-        throw new Error("Error while communicating with the server!")
+        throw new Error(i18n.t("errors.api.serverCommunication"))
     }
 
     if (res.error) {
@@ -93,11 +94,9 @@ export const updateWorkspace = async (
             case "validation_error":
                 throw new Error(generateValidationErrorMessage(res.error))
             case "insufficient_permission":
-                throw new Error(
-                    "You do not have permission to update this workspace!"
-                )
+                throw new Error(i18n.t("errors.api.workspace.updatePermission"))
             default:
-                throw new Error("Unknown error!")
+                throw new Error(i18n.t("errors.api.unknown"))
         }
     }
 }
@@ -122,17 +121,15 @@ export const deleteWorkspace = async (id: string, accessToken: string) => {
         )
         res = await resp.json()
     } catch {
-        throw new Error("Error while communicating with the server!")
+        throw new Error(i18n.t("errors.api.serverCommunication"))
     }
 
     if (res.error) {
         switch (res.error.code) {
             case "insufficient_permission":
-                throw new Error(
-                    "You do not have permission to delete this workspace!"
-                )
+                throw new Error(i18n.t("errors.api.workspace.deletePermission"))
             default:
-                throw new Error("Unknown error!")
+                throw new Error(i18n.t("errors.api.unknown"))
         }
     }
 }
@@ -194,9 +191,9 @@ export const getUserByUsername = async (
     if (res.error) {
         switch (res.error.code) {
             case "username_not_found":
-                throw new Error("No user found with this username!")
+                throw new Error(i18n.t("errors.api.workspace.usernameNotFound"))
             default:
-                throw new Error("Unknown error!")
+                throw new Error(i18n.t("errors.api.unknown"))
         }
     }
 

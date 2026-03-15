@@ -8,6 +8,7 @@ import usePrefersColorScheme from "use-prefers-color-scheme"
 import OverlayTrigger from "react-bootstrap/OverlayTrigger"
 import Popover from "react-bootstrap/Popover"
 import { toast } from "react-toastify"
+import { useTranslation } from "react-i18next"
 
 import { useUserAuth } from "./../../component/context/UserAuthProvider"
 import { useCurrentInput } from "../context/CurrentInputProvider"
@@ -37,6 +38,7 @@ function Navbar({
     preferencesModalRef,
 }: NavbarProps) {
     const navigate = useNavigate()
+    const { t } = useTranslation()
 
     const prefersColorScheme = usePrefersColorScheme()
     const isDarkMode = prefersColorScheme === "dark"
@@ -77,7 +79,7 @@ function Navbar({
         try {
             await logout(accessToken)
         } catch {
-            toast.error("Log-out on server failed!")
+            toast.error(t("common.errors.logoutFailed"))
             return
         }
 
@@ -175,7 +177,7 @@ function Navbar({
                                                     className="bi bi-search"
                                                     aria-hidden="true"
                                                 ></i>{" "}
-                                                Search
+                                                {t("navbar.search")}
                                             </a>
                                         </li>
                                     </OverlayTrigger>
@@ -189,7 +191,7 @@ function Navbar({
                                                 className="bi bi-plus-lg"
                                                 aria-hidden="true"
                                             ></i>{" "}
-                                            Add
+                                            {t("navbar.add")}
                                         </button>
                                         <ul className="dropdown-menu dropdown-menu-end position-absolute">
                                             <li>
@@ -197,7 +199,7 @@ function Navbar({
                                                     className="dropdown-item"
                                                     onClick={handleCreateItem}
                                                 >
-                                                    Collection item
+                                                    {t("navbar.addMenu.item")}
                                                 </button>
                                             </li>
                                             <li>
@@ -205,7 +207,7 @@ function Navbar({
                                                     className="dropdown-item"
                                                     onClick={handleCreateTag}
                                                 >
-                                                    Tag
+                                                    {t("navbar.addMenu.tag")}
                                                 </button>
                                             </li>
                                             <li>
@@ -215,7 +217,9 @@ function Navbar({
                                                         handleCreateWorkspace
                                                     }
                                                 >
-                                                    Workspace
+                                                    {t(
+                                                        "navbar.addMenu.workspace"
+                                                    )}
                                                 </button>
                                             </li>
                                         </ul>
@@ -236,7 +240,7 @@ function Navbar({
                                         className="dropdown-item"
                                         onClick={handlePreferences}
                                     >
-                                        Preferences
+                                        {t("navbar.preferences")}
                                     </button>
                                 </li>
                                 {isAdmin && (
@@ -245,7 +249,7 @@ function Navbar({
                                             className="dropdown-item"
                                             to="/admin"
                                         >
-                                            Admin panel
+                                            {t("navbar.adminPanel")}
                                         </Link>
                                     </li>
                                 )}
@@ -254,7 +258,7 @@ function Navbar({
                                         className="dropdown-item"
                                         onClick={handleLogoutClick}
                                     >
-                                        Logout
+                                        {t("navbar.logout")}
                                     </button>
                                 </li>
                             </ul>

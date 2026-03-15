@@ -10,6 +10,7 @@ import {
     type RefObject,
 } from "react"
 import { useNavigate } from "react-router"
+import { useTranslation } from "react-i18next"
 import usePrefersColorScheme from "use-prefers-color-scheme"
 import { useCurrentInput } from "../context/CurrentInputProvider"
 import { useAppData } from "./../context/DataProvider"
@@ -29,6 +30,7 @@ type TagsSidebarProps = {
 
 function TagsSidebar(props: TagsSidebarProps) {
     const navigate = useNavigate()
+    const { t } = useTranslation()
 
     const prefersColorScheme = usePrefersColorScheme()
     const isDarkMode = prefersColorScheme === "dark"
@@ -132,7 +134,7 @@ function TagsSidebar(props: TagsSidebarProps) {
                         <div className="mb-1">
                             <select
                                 className="form-select"
-                                aria-label="Select workspace"
+                                aria-label={t("tag.selectWorkspace")}
                                 value={workspace}
                                 onChange={handlWorkspaceChange}
                                 onClick={handleWorkspaceClick}
@@ -159,7 +161,7 @@ function TagsSidebar(props: TagsSidebarProps) {
                                 className="form-check-label"
                                 htmlFor="editModeCheck"
                             >
-                                Edit mode
+                                {t("tag.editMode")}
                             </label>
                         </div>
                     </>
@@ -168,7 +170,9 @@ function TagsSidebar(props: TagsSidebarProps) {
                     <button
                         onClick={handleCollapsedChange}
                         aria-label={
-                            isCollapsed ? "Expand sidebar" : "Collapse sidebar"
+                            isCollapsed
+                                ? t("tag.expandSidebar")
+                                : t("tag.collapseSidebar")
                         }
                         aria-expanded={!isCollapsed}
                         aria-controls="tagsSidebar"

@@ -12,6 +12,7 @@ import { CurrentInputProvider } from "./context/CurrentInputProvider"
 import Login from "./../page/Login"
 import Dashboard from "./../page/Dashboard"
 import Admin from "./../page/Admin"
+import "./../util/i18n"
 
 import "./../util/CustomBootstrap.scss"
 import "bootstrap/dist/js/bootstrap.bundle"

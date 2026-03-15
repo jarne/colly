@@ -3,6 +3,7 @@
  */
 
 import qs from "qs"
+import i18n from "./../../util/i18n"
 import InternalAPI from "./../../util/InternalAPI"
 import type { TagRes } from "./tag"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
@@ -58,7 +59,7 @@ export const createItem = async (
         )
         res = await resp.json()
     } catch {
-        throw new Error("Error while communicating with the server!")
+        throw new Error(i18n.t("errors.api.serverCommunication"))
     }
 
     if (res.error) {
@@ -66,13 +67,11 @@ export const createItem = async (
             case "validation_error":
                 throw new Error(generateValidationErrorMessage(res.error))
             case "duplicate_entry":
-                throw new Error("An item with this name already exists!")
+                throw new Error(i18n.t("errors.api.item.duplicate"))
             case "insufficient_permission":
-                throw new Error(
-                    "You do not have permission to create items in this workspace!"
-                )
+                throw new Error(i18n.t("errors.api.item.createPermission"))
             default:
-                throw new Error("Unknown error!")
+                throw new Error(i18n.t("errors.api.unknown"))
         }
     }
 }
@@ -105,7 +104,7 @@ export const updateItem = async (
         )
         res = await resp.json()
     } catch {
-        throw new Error("Error while communicating with the server!")
+        throw new Error(i18n.t("errors.api.serverCommunication"))
     }
 
     if (res.error) {
@@ -113,11 +112,9 @@ export const updateItem = async (
             case "validation_error":
                 throw new Error(generateValidationErrorMessage(res.error))
             case "insufficient_permission":
-                throw new Error(
-                    "You do not have permission to update this item!"
-                )
+                throw new Error(i18n.t("errors.api.item.updatePermission"))
             default:
-                throw new Error("Unknown error!")
+                throw new Error(i18n.t("errors.api.unknown"))
         }
     }
 }
@@ -147,17 +144,15 @@ export const deleteItem = async (
         )
         res = await resp.json()
     } catch {
-        throw new Error("Error while communicating with the server!")
+        throw new Error(i18n.t("errors.api.serverCommunication"))
     }
 
     if (res.error) {
         switch (res.error.code) {
             case "insufficient_permission":
-                throw new Error(
-                    "You do not have permission to delete this item!"
-                )
+                throw new Error(i18n.t("errors.api.item.deletePermission"))
             default:
-                throw new Error("Unknown error!")
+                throw new Error(i18n.t("errors.api.unknown"))
         }
     }
 }
@@ -257,17 +252,15 @@ export const updateMetaImage = async (
             res = await resp.json()
         }
     } catch {
-        throw new Error("Error while communicating with the server!")
+        throw new Error(i18n.t("errors.api.serverCommunication"))
     }
 
     if (res && res.error) {
         switch (res.error.code) {
             case "insufficient_permission":
-                throw new Error(
-                    "You do not have permission to update the meta image of this item!"
-                )
+                throw new Error(i18n.t("errors.api.item.metaImagePermission"))
             default:
-                throw new Error("Unknown error!")
+                throw new Error(i18n.t("errors.api.unknown"))
         }
     }
 }

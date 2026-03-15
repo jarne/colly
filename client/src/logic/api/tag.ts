@@ -3,6 +3,7 @@
  */
 
 import qs from "qs"
+import i18n from "./../../util/i18n"
 
 import InternalAPI from "./../../util/InternalAPI"
 import { generateValidationErrorMessage } from "./util/errorCodeHandling"
@@ -46,7 +47,7 @@ export const createTag = async (
         )
         res = await resp.json()
     } catch {
-        throw new Error("Error while communicating with the server!")
+        throw new Error(i18n.t("errors.api.serverCommunication"))
     }
 
     if (res.error) {
@@ -54,13 +55,11 @@ export const createTag = async (
             case "validation_error":
                 throw new Error(generateValidationErrorMessage(res.error))
             case "duplicate_entry":
-                throw new Error("A tag with this name already exists!")
+                throw new Error(i18n.t("errors.api.tag.duplicate"))
             case "insufficient_permission":
-                throw new Error(
-                    "You do not have permission to create tags in this workspace!"
-                )
+                throw new Error(i18n.t("errors.api.tag.createPermission"))
             default:
-                throw new Error("Unknown error!")
+                throw new Error(i18n.t("errors.api.unknown"))
         }
     }
 }
@@ -93,7 +92,7 @@ export const updateTag = async (
         )
         res = await resp.json()
     } catch {
-        throw new Error("Error while communicating with the server!")
+        throw new Error(i18n.t("errors.api.serverCommunication"))
     }
 
     if (res.error) {
@@ -101,11 +100,9 @@ export const updateTag = async (
             case "validation_error":
                 throw new Error(generateValidationErrorMessage(res.error))
             case "insufficient_permission":
-                throw new Error(
-                    "You do not have permission to update this tag!"
-                )
+                throw new Error(i18n.t("errors.api.tag.updatePermission"))
             default:
-                throw new Error("Unknown error!")
+                throw new Error(i18n.t("errors.api.unknown"))
         }
     }
 }
@@ -135,17 +132,15 @@ export const deleteTag = async (
         )
         res = await resp.json()
     } catch {
-        throw new Error("Error while communicating with the server!")
+        throw new Error(i18n.t("errors.api.serverCommunication"))
     }
 
     if (res.error) {
         switch (res.error.code) {
             case "insufficient_permission":
-                throw new Error(
-                    "You do not have permission to delete this tag!"
-                )
+                throw new Error(i18n.t("errors.api.tag.deletePermission"))
             default:
-                throw new Error("Unknown error!")
+                throw new Error(i18n.t("errors.api.unknown"))
         }
     }
 }

@@ -3,12 +3,15 @@
  */
 
 import { useState, type ChangeEvent, type SubmitEvent } from "react"
+import { useTranslation } from "react-i18next"
 
 type ItemSearchProps = {
     setSearchStr: (value: string) => void
 }
 
 function ItemSearch({ setSearchStr }: ItemSearchProps) {
+    const { t } = useTranslation()
+
     const [tmpSearchStr, setTmpSearchStr] = useState("")
 
     const handleTmpSearchStrChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -36,14 +39,14 @@ function ItemSearch({ setSearchStr }: ItemSearchProps) {
                 type="search"
                 className="form-control me-2"
                 id="tagNameInput"
-                placeholder="Search"
-                aria-label="Search"
+                placeholder={t("navbar.searchPlaceholder")}
+                aria-label={t("navbar.search")}
                 value={tmpSearchStr}
                 onChange={handleTmpSearchStrChange}
                 onBlur={handleTmpSearchStrBlur}
             />
             <button type="submit" className="btn btn-outline-primary">
-                Search
+                {t("navbar.searchButton")}
             </button>
         </form>
     )

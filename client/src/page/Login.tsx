@@ -3,6 +3,7 @@
  */
 
 import { useState, type ChangeEvent, type SubmitEvent } from "react"
+import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router"
 import { toast } from "react-toastify"
 import { useUserAuth } from "./../component/context/UserAuthProvider"
@@ -18,6 +19,7 @@ function Login() {
     const [password, setPassword] = useState("")
 
     const navigate = useNavigate()
+    const { t } = useTranslation()
     const { setAccessToken, setUserId, setDisplayName, setIsAdmin } =
         useUserAuth()
 
@@ -47,18 +49,18 @@ function Login() {
                 <div className="login-content">
                     <img
                         src={collyLogoImg}
-                        alt="Colly logo"
+                        alt={t("login.logoAlt")}
                         className="login-logo"
                         loading="lazy"
                     />
-                    <h1>Colly</h1>
+                    <h1>{t("login.title")}</h1>
                     <form onSubmit={handleSubmit} className="mt-4">
                         <div className="mb-3">
                             <label
                                 htmlFor="loginUsername"
                                 className="form-label"
                             >
-                                Username
+                                {t("login.usernameLabel")}
                             </label>
                             <input
                                 type="text"
@@ -68,7 +70,7 @@ function Login() {
                                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                                     setUsername(e.target.value)
                                 }
-                                placeholder="Username"
+                                placeholder={t("login.usernamePlaceholder")}
                                 autoFocus
                             />
                         </div>
@@ -77,7 +79,7 @@ function Login() {
                                 htmlFor="loginPassword"
                                 className="form-label"
                             >
-                                Password
+                                {t("login.passwordLabel")}
                             </label>
                             <input
                                 type="password"
@@ -87,14 +89,14 @@ function Login() {
                                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                                     setPassword(e.target.value)
                                 }
-                                placeholder="Password"
+                                placeholder={t("login.passwordPlaceholder")}
                             />
                         </div>
                         <button
                             type="submit"
                             className="btn btn-outline-secondary btn-lg mt-2"
                         >
-                            Login
+                            {t("login.submit")}
                         </button>
                     </form>
                 </div>
