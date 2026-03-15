@@ -10,6 +10,7 @@ import {
     type SubmitEvent,
 } from "react"
 import Modal from "react-bootstrap/Modal"
+import { useTranslation } from "react-i18next"
 import { toast } from "react-toastify"
 import { changePassword } from "./../../logic/api/auth"
 import { useUserAuth } from "./../context/UserAuthProvider"
@@ -26,6 +27,7 @@ const PreferencesModal = forwardRef<
 >(function PreferencesModal(_props, ref) {
     const DEFAULT_EMPTY = ""
 
+    const { t } = useTranslation()
     const { accessToken } = useUserAuth()
 
     const [show, setShow] = useState(false)
@@ -72,7 +74,7 @@ const PreferencesModal = forwardRef<
             return
         }
 
-        toast.success("Password has been changed!")
+        toast.success(t("modal.preferences.changedPassword"))
         handleClose()
     }
 
@@ -80,13 +82,13 @@ const PreferencesModal = forwardRef<
         <Modal show={show} onHide={handleClose}>
             <div className="modal-header">
                 <h1 className="modal-title fs-5" id="preferencesModalLabel">
-                    User preferences
+                    {t("modal.preferences.title")}
                 </h1>
                 <button
                     type="button"
                     className="btn-close"
                     data-bs-dismiss="modal"
-                    aria-label="Close"
+                    aria-label={t("common.close")}
                     onClick={handleClose}
                 ></button>
             </div>
@@ -97,7 +99,7 @@ const PreferencesModal = forwardRef<
                             htmlFor="existingPasswordInput"
                             className="form-label"
                         >
-                            Current password
+                            {t("modal.preferences.currentPasswordLabel")}
                         </label>
                         <input
                             type="password"
@@ -112,7 +114,7 @@ const PreferencesModal = forwardRef<
                             htmlFor="newPasswordInput"
                             className="form-label"
                         >
-                            New password
+                            {t("modal.preferences.newPasswordLabel")}
                         </label>
                         <input
                             type="password"
@@ -129,10 +131,10 @@ const PreferencesModal = forwardRef<
                         className="btn btn-light"
                         onClick={handleClose}
                     >
-                        Cancel
+                        {t("common.cancel")}
                     </button>
                     <button type="submit" className="btn btn-secondary">
-                        Change password
+                        {t("modal.preferences.submitButton")}
                     </button>
                 </div>
             </form>

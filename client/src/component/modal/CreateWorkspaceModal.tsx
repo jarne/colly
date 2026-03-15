@@ -11,6 +11,7 @@ import {
     type SubmitEvent,
 } from "react"
 import Modal from "react-bootstrap/Modal"
+import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router"
 import { toast } from "react-toastify"
 import type { UserRes } from "./../../logic/api/user"
@@ -39,6 +40,7 @@ const CreateWorkspaceModal = forwardRef<
     const DEFAULT_PERM_LEVEL = "read"
 
     const navigate = useNavigate()
+    const { t } = useTranslation()
     const { accessToken, userId, displayName } = useUserAuth()
     const { workspaces, loadWorkspaces } = useAppData()
 
@@ -131,7 +133,7 @@ const CreateWorkspaceModal = forwardRef<
     }
     const handleMemberAddClick = async () => {
         if (addUsername === "") {
-            toast.error("Username cannot be empty!")
+            toast.error(t("modal.workspace.errors.emptyUsername"))
             return
         }
 
@@ -139,7 +141,7 @@ const CreateWorkspaceModal = forwardRef<
             return member.user.username === addUsername
         })
         if (duplicate) {
-            toast.error("User is already a member of the workspace!")
+            toast.error(t("modal.workspace.errors.duplicateMember"))
             return
         }
 
@@ -194,8 +196,8 @@ const CreateWorkspaceModal = forwardRef<
 
         toast.success(
             editId
-                ? "Workspace has been updated!"
-                : `Workspace "${wsName}" has been created!`
+                ? t("modal.workspace.updated")
+                : t("modal.workspace.created", { name: wsName })
         )
         handleClose()
 
@@ -224,7 +226,7 @@ const CreateWorkspaceModal = forwardRef<
             return
         }
 
-        toast.success("Workspace has been deleted!")
+        toast.success(t("modal.workspace.deleted"))
         handleClose()
 
         loadWorkspaces({
@@ -240,13 +242,15 @@ const CreateWorkspaceModal = forwardRef<
         <Modal show={show} onHide={handleClose}>
             <div className="modal-header">
                 <h1 className="modal-title fs-5" id="createWorkspaceModalLabel">
-                    {editId ? `Edit workspace` : "Create new workspace"}
+                    {editId
+                        ? t("modal.workspace.editTitle")
+                        : t("modal.workspace.createTitle")}
                 </h1>
                 <button
                     type="button"
                     className="btn-close"
                     data-bs-dismiss="modal"
-                    aria-label="Close"
+                    aria-label={t("common.close")}
                     onClick={handleClose}
                 ></button>
             </div>
@@ -254,13 +258,13 @@ const CreateWorkspaceModal = forwardRef<
                 <div className="modal-body">
                     <div className="mb-3">
                         <label htmlFor="wsNameInput" className="form-label">
-                            Workspace name
+                            {t("modal.workspace.nameLabel")}
                         </label>
                         <input
                             type="text"
                             className="form-control"
                             id="wsNameInput"
-                            placeholder="My workspace"
+                            placeholder={t("modal.workspace.namePlaceholder")}
                             value={wsName}
                             onChange={handleWsNameChange}
                             autoFocus
@@ -271,14 +275,22 @@ const CreateWorkspaceModal = forwardRef<
                             htmlFor="tagColorsSection"
                             className="form-label"
                         >
-                            Members
+                            {t("modal.workspace.membersLabel")}
                         </label>
                         <table className="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">User</th>
-                                    <th scope="col">Permission level</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">
+                                        {t("modal.workspace.table.user")}
+                                    </th>
+                                    <th scope="col">
+                                        {t(
+                                            "modal.workspace.table.permissionLevel"
+                                        )}
+                                    </th>
+                                    <th scope="col">
+                                        {t("modal.workspace.table.action")}
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -290,7 +302,9 @@ const CreateWorkspaceModal = forwardRef<
                                         <td>
                                             <select
                                                 className="form-select"
-                                                aria-label="Permission level select"
+                                                aria-label={t(
+                                                    "modal.workspace.permissionSelect"
+                                                )}
                                                 value={member.permissionLevel}
                                                 onChange={(e) => {
                                                     handleMemberPermLevelChange(
@@ -300,13 +314,19 @@ const CreateWorkspaceModal = forwardRef<
                                                 }}
                                             >
                                                 <option value="read">
-                                                    Read
+                                                    {t(
+                                                        "modal.workspace.permission.read"
+                                                    )}
                                                 </option>
                                                 <option value="write">
-                                                    Write
+                                                    {t(
+                                                        "modal.workspace.permission.write"
+                                                    )}
                                                 </option>
                                                 <option value="admin">
-                                                    Admin
+                                                    {t(
+                                                        "modal.workspace.permission.admin"
+                                                    )}
                                                 </option>
                                             </select>
                                         </td>
@@ -320,7 +340,9 @@ const CreateWorkspaceModal = forwardRef<
                                                     )
                                                 }}
                                             >
-                                                Remove
+                                                {t(
+                                                    "modal.workspace.removeButton"
+                                                )}
                                             </button>
                                         </td>
                                     </tr>
@@ -332,20 +354,38 @@ const CreateWorkspaceModal = forwardRef<
                                             type="text"
                                             value={addUsername}
                                             onChange={handleAddUsernameChange}
-                                            placeholder="Username"
-                                            aria-label="New user username"
+                                            placeholder={t(
+                                                "modal.workspace.usernamePlaceholder"
+                                            )}
+                                            aria-label={t(
+                                                "modal.workspace.newUserUsername"
+                                            )}
                                         />
                                     </th>
                                     <td>
                                         <select
                                             className="form-select"
-                                            aria-label="Permission level select"
+                                            aria-label={t(
+                                                "modal.workspace.permissionSelect"
+                                            )}
                                             value={addPerm}
                                             onChange={handleAddPermChange}
                                         >
-                                            <option value="read">Read</option>
-                                            <option value="write">Write</option>
-                                            <option value="admin">Admin</option>
+                                            <option value="read">
+                                                {t(
+                                                    "modal.workspace.permission.read"
+                                                )}
+                                            </option>
+                                            <option value="write">
+                                                {t(
+                                                    "modal.workspace.permission.write"
+                                                )}
+                                            </option>
+                                            <option value="admin">
+                                                {t(
+                                                    "modal.workspace.permission.admin"
+                                                )}
+                                            </option>
                                         </select>
                                     </td>
                                     <td>
@@ -354,7 +394,7 @@ const CreateWorkspaceModal = forwardRef<
                                             className="btn btn-link"
                                             onClick={handleMemberAddClick}
                                         >
-                                            Add
+                                            {t("common.add")}
                                         </button>
                                     </td>
                                 </tr>
@@ -371,7 +411,7 @@ const CreateWorkspaceModal = forwardRef<
                             className="btn btn-dark"
                             onClick={handleDelete}
                         >
-                            Delete
+                            {t("common.delete")}
                         </button>
                     )}
                     <div>
@@ -380,10 +420,10 @@ const CreateWorkspaceModal = forwardRef<
                             className="btn btn-light me-2"
                             onClick={handleClose}
                         >
-                            Cancel
+                            {t("common.cancel")}
                         </button>
                         <button type="submit" className="btn btn-secondary">
-                            {editId ? "Edit" : "Create"}
+                            {editId ? t("common.edit") : t("common.create")}
                         </button>
                     </div>
                 </div>

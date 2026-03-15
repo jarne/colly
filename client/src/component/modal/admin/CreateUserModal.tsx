@@ -10,6 +10,7 @@ import {
     type SubmitEvent,
 } from "react"
 import Modal from "react-bootstrap/Modal"
+import { useTranslation } from "react-i18next"
 import { toast } from "react-toastify"
 
 import { useUserAuth } from "./../../context/UserAuthProvider"
@@ -28,6 +29,7 @@ const CreateUserModal = forwardRef<CreateUserModalHandle, CreateUserModalProps>(
         const DEFAULT_EMPTY = ""
         const DEFAULT_FALSE = false
 
+        const { t } = useTranslation()
         const { accessToken } = useUserAuth()
         const { users, loadUsers } = useAppData()
 
@@ -117,8 +119,8 @@ const CreateUserModal = forwardRef<CreateUserModalHandle, CreateUserModalProps>(
 
             toast.success(
                 editId
-                    ? "User has been updated!"
-                    : `User "${username}" has been created!`
+                    ? t("modal.admin.user.updated")
+                    : t("modal.admin.user.created", { username })
             )
             handleClose()
 
@@ -129,13 +131,15 @@ const CreateUserModal = forwardRef<CreateUserModalHandle, CreateUserModalProps>(
             <Modal show={show} onHide={handleClose}>
                 <div className="modal-header">
                     <h1 className="modal-title fs-5" id="createUserModalLabel">
-                        {editId ? `Edit user` : "Create new user"}
+                        {editId
+                            ? t("modal.admin.user.editTitle")
+                            : t("modal.admin.user.createTitle")}
                     </h1>
                     <button
                         type="button"
                         className="btn-close"
                         data-bs-dismiss="modal"
-                        aria-label="Close"
+                        aria-label={t("common.close")}
                         onClick={handleClose}
                     ></button>
                 </div>
@@ -146,13 +150,15 @@ const CreateUserModal = forwardRef<CreateUserModalHandle, CreateUserModalProps>(
                                 htmlFor="userNameInput"
                                 className="form-label"
                             >
-                                User name
+                                {t("modal.admin.user.usernameLabel")}
                             </label>
                             <input
                                 type="text"
                                 className="form-control"
                                 id="userNameInput"
-                                placeholder="user123"
+                                placeholder={t(
+                                    "modal.admin.user.usernamePlaceholder"
+                                )}
                                 value={username}
                                 onChange={handleUsernameChange}
                                 autoFocus
@@ -163,7 +169,7 @@ const CreateUserModal = forwardRef<CreateUserModalHandle, CreateUserModalProps>(
                                 htmlFor="passwordInput"
                                 className="form-label"
                             >
-                                Temporary password
+                                {t("modal.admin.user.passwordLabel")}
                             </label>
                             <input
                                 type="password"
@@ -185,7 +191,7 @@ const CreateUserModal = forwardRef<CreateUserModalHandle, CreateUserModalProps>(
                                 htmlFor="isAdminInput"
                                 className="form-check-label"
                             >
-                                Admin user
+                                {t("modal.admin.user.adminCheckbox")}
                             </label>
                         </div>
                     </div>
@@ -195,10 +201,10 @@ const CreateUserModal = forwardRef<CreateUserModalHandle, CreateUserModalProps>(
                             className="btn btn-light"
                             onClick={handleClose}
                         >
-                            Cancel
+                            {t("common.cancel")}
                         </button>
                         <button type="submit" className="btn btn-secondary">
-                            {editId ? "Edit" : "Create"}
+                            {editId ? t("common.edit") : t("common.create")}
                         </button>
                     </div>
                 </form>

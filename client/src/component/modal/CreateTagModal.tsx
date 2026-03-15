@@ -12,6 +12,7 @@ import {
     type SubmitEvent,
 } from "react"
 import Modal from "react-bootstrap/Modal"
+import { useTranslation } from "react-i18next"
 import { HexColorPicker } from "react-colorful"
 import { toast } from "react-toastify"
 import { useCurrentInput } from "../context/CurrentInputProvider"
@@ -37,6 +38,7 @@ const CreateTagModal = forwardRef<CreateTagModalHandle, CreateTagModalProps>(
         const DEFAULT_COL_FIRST = "#000000"
         const DEFAULT_COL_SEC = "#ffffff"
 
+        const { t } = useTranslation()
         const { accessToken } = useUserAuth()
         const { tags, loadTags } = useAppData()
         const { workspace } = useCurrentInput()
@@ -157,8 +159,8 @@ const CreateTagModal = forwardRef<CreateTagModalHandle, CreateTagModalProps>(
 
             toast.success(
                 editId
-                    ? "Tag has been updated!"
-                    : `Tag "${tagName}" has been created!`
+                    ? t("modal.tag.updated")
+                    : t("modal.tag.created", { name: tagName })
             )
             handleClose()
 
@@ -180,7 +182,7 @@ const CreateTagModal = forwardRef<CreateTagModalHandle, CreateTagModalProps>(
                 return
             }
 
-            toast.success("Tag has been deleted!")
+            toast.success(t("modal.tag.deleted"))
             handleClose()
 
             loadTags()
@@ -190,13 +192,15 @@ const CreateTagModal = forwardRef<CreateTagModalHandle, CreateTagModalProps>(
             <Modal show={show} onHide={handleClose}>
                 <div className="modal-header">
                     <h1 className="modal-title fs-5" id="createTagModalLabel">
-                        {editId ? `Edit tag` : "Create new tag"}
+                        {editId
+                            ? t("modal.tag.editTitle")
+                            : t("modal.tag.createTitle")}
                     </h1>
                     <button
                         type="button"
                         className="btn-close"
                         data-bs-dismiss="modal"
-                        aria-label="Close"
+                        aria-label={t("common.close")}
                         onClick={handleClose}
                     ></button>
                 </div>
@@ -207,13 +211,13 @@ const CreateTagModal = forwardRef<CreateTagModalHandle, CreateTagModalProps>(
                                 htmlFor="tagNameInput"
                                 className="form-label"
                             >
-                                Tag name
+                                {t("modal.tag.nameLabel")}
                             </label>
                             <input
                                 type="text"
                                 className="form-control"
                                 id="tagNameInput"
-                                placeholder="tag-name-123"
+                                placeholder={t("modal.tag.namePlaceholder")}
                                 value={tagName}
                                 onChange={handleTagNameChange}
                                 onBlur={handleTagNameBlur}
@@ -225,7 +229,7 @@ const CreateTagModal = forwardRef<CreateTagModalHandle, CreateTagModalProps>(
                                 htmlFor="tagColorsSection"
                                 className="form-label"
                             >
-                                Color
+                                {t("modal.tag.colorLabel")}
                             </label>
                             <div id="tagColorsSection">
                                 <div
@@ -270,7 +274,7 @@ const CreateTagModal = forwardRef<CreateTagModalHandle, CreateTagModalProps>(
                                 className="btn btn-dark"
                                 onClick={handleDelete}
                             >
-                                Delete
+                                {t("common.delete")}
                             </button>
                         )}
                         <div>
@@ -279,10 +283,10 @@ const CreateTagModal = forwardRef<CreateTagModalHandle, CreateTagModalProps>(
                                 className="btn btn-light me-2"
                                 onClick={handleClose}
                             >
-                                Cancel
+                                {t("common.cancel")}
                             </button>
                             <button type="submit" className="btn btn-secondary">
-                                {editId ? "Edit" : "Create"}
+                                {editId ? t("common.edit") : t("common.create")}
                             </button>
                         </div>
                     </div>

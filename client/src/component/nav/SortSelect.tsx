@@ -3,9 +3,11 @@
  */
 
 import { type ChangeEvent } from "react"
+import { useTranslation } from "react-i18next"
 import { useCurrentInput } from "../context/CurrentInputProvider"
 
 function SortSelect() {
+    const { t } = useTranslation()
     const { sortValue, setSortValue } = useCurrentInput()
 
     const handlSortValueChange = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -14,19 +16,23 @@ function SortSelect() {
 
     return (
         <div className="d-flex align-items-center me-3">
-            <span className="me-2">Sort: </span>
+            <span className="me-2">{t("navbar.sort.label")}</span>
             <select
                 id="sortSelect"
                 className="form-select"
                 value={sortValue}
                 onChange={handlSortValueChange}
             >
-                <option value="-updatedAt">Updated</option>
-                <option value="updatedAt">Updated (oldest first)</option>
-                <option value="-createdAt">Created</option>
-                <option value="createdAt">Created (oldest first)</option>
-                <option value="name">Title</option>
-                <option value="-name">Title (desc)</option>
+                <option value="-updatedAt">{t("navbar.sort.updated")}</option>
+                <option value="updatedAt">
+                    {t("navbar.sort.updatedOldest")}
+                </option>
+                <option value="-createdAt">{t("navbar.sort.created")}</option>
+                <option value="createdAt">
+                    {t("navbar.sort.createdOldest")}
+                </option>
+                <option value="name">{t("navbar.sort.title")}</option>
+                <option value="-name">{t("navbar.sort.titleDesc")}</option>
             </select>
         </div>
     )

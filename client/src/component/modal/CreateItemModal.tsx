@@ -12,6 +12,7 @@ import {
     type SubmitEvent,
 } from "react"
 import Modal from "react-bootstrap/Modal"
+import { useTranslation } from "react-i18next"
 import { toast } from "react-toastify"
 import { useCurrentInput } from "../context/CurrentInputProvider"
 import {
@@ -41,6 +42,7 @@ const CreateItemModal = forwardRef<CreateItemModalHandle, CreateItemModalProps>(
     function CreateItemModal(props, ref) {
         const MAX_FILTERED_TAGS = 5
 
+        const { t } = useTranslation()
         const { accessToken } = useUserAuth()
         const { items } = useAppData()
         const { workspace } = useCurrentInput()
@@ -234,8 +236,8 @@ const CreateItemModal = forwardRef<CreateItemModalHandle, CreateItemModalProps>(
 
             toast.success(
                 editId
-                    ? "Item has been updated!"
-                    : `Item "${itemName}" has been created!`
+                    ? t("modal.item.updated")
+                    : t("modal.item.created", { name: itemName })
             )
             handleClose()
 
@@ -257,7 +259,7 @@ const CreateItemModal = forwardRef<CreateItemModalHandle, CreateItemModalProps>(
                 return
             }
 
-            toast.success("Item has been deleted!")
+            toast.success(t("modal.item.deleted"))
             handleClose()
 
             await props.triggerItemLoad()
@@ -267,13 +269,15 @@ const CreateItemModal = forwardRef<CreateItemModalHandle, CreateItemModalProps>(
             <Modal show={show} onHide={handleClose}>
                 <div className="modal-header">
                     <h1 className="modal-title fs-5" id="createItemModalLabel">
-                        {editId ? `Edit item` : "Create new item"}
+                        {editId
+                            ? t("modal.item.editTitle")
+                            : t("modal.item.createTitle")}
                     </h1>
                     <button
                         type="button"
                         className="btn-close"
                         data-bs-dismiss="modal"
-                        aria-label="Close"
+                        aria-label={t("common.close")}
                         onClick={handleClose}
                     ></button>
                 </div>
@@ -284,14 +288,14 @@ const CreateItemModal = forwardRef<CreateItemModalHandle, CreateItemModalProps>(
                                 htmlFor="itemUrlInput"
                                 className="form-label"
                             >
-                                Item URL{" "}
+                                {t("modal.item.urlLabel")}{" "}
                                 {isFetchingMeta && (
                                     <div
                                         className="spinner-border spinner-border-sm ms-1"
                                         role="status"
                                     >
                                         <span className="visually-hidden">
-                                            Loading...
+                                            {t("common.loading")}
                                         </span>
                                     </div>
                                 )}
@@ -300,7 +304,7 @@ const CreateItemModal = forwardRef<CreateItemModalHandle, CreateItemModalProps>(
                                 type="url"
                                 className="form-control"
                                 id="itemUrlInput"
-                                placeholder="https://example.com/page-123"
+                                placeholder={t("modal.item.urlPlaceholder")}
                                 value={itemUrl}
                                 onChange={handleItemUrlChange}
                                 onBlur={handleItemUrlBlur}
@@ -320,11 +324,13 @@ const CreateItemModal = forwardRef<CreateItemModalHandle, CreateItemModalProps>(
                                         {itemName} • {itemDescription}
                                         <i
                                             className="bi bi-pencil-square ms-1"
-                                            aria-label="Edit manually"
+                                            aria-label={t(
+                                                "modal.item.editManually"
+                                            )}
                                         ></i>
                                     </>
                                 ) : (
-                                    "Paste an URL or click here to add information manually"
+                                    t("modal.item.helpText")
                                 )}
                             </a>
                         </div>
@@ -334,13 +340,15 @@ const CreateItemModal = forwardRef<CreateItemModalHandle, CreateItemModalProps>(
                                     htmlFor="itemNameInput"
                                     className="form-label"
                                 >
-                                    Item name
+                                    {t("modal.item.nameLabel")}
                                 </label>
                                 <input
                                     type="text"
                                     className="form-control"
                                     id="itemNameInput"
-                                    placeholder="My cool item"
+                                    placeholder={t(
+                                        "modal.item.namePlaceholder"
+                                    )}
                                     value={itemName}
                                     onChange={handleItemNameChange}
                                 />
@@ -350,13 +358,15 @@ const CreateItemModal = forwardRef<CreateItemModalHandle, CreateItemModalProps>(
                                     htmlFor="itemDescriptionInput"
                                     className="form-label"
                                 >
-                                    Item description
+                                    {t("modal.item.descriptionLabel")}
                                 </label>
                                 <input
                                     type="text"
                                     className="form-control"
                                     id="itemDescriptionInput"
-                                    placeholder="Add a text to describe your item"
+                                    placeholder={t(
+                                        "modal.item.descriptionPlaceholder"
+                                    )}
                                     value={itemDescription}
                                     onChange={handleItemDescriptionChange}
                                 />
@@ -367,7 +377,7 @@ const CreateItemModal = forwardRef<CreateItemModalHandle, CreateItemModalProps>(
                                 htmlFor="itemTagSearchInput"
                                 className="form-label"
                             >
-                                Associated tags
+                                {t("modal.item.tagsLabel")}
                             </label>
                             <div className="tag-association-space">
                                 <TagList
@@ -380,7 +390,9 @@ const CreateItemModal = forwardRef<CreateItemModalHandle, CreateItemModalProps>(
                                     type="text"
                                     className="form-control"
                                     id="itemTagSearchInput"
-                                    placeholder="Search for tags"
+                                    placeholder={t(
+                                        "modal.item.tagSearchPlaceholder"
+                                    )}
                                     value={tagSearchStr}
                                     onChange={handleTagSearchStrChange}
                                 />
@@ -402,7 +414,7 @@ const CreateItemModal = forwardRef<CreateItemModalHandle, CreateItemModalProps>(
                                 className="btn btn-dark"
                                 onClick={handleDelete}
                             >
-                                Delete
+                                {t("common.delete")}
                             </button>
                         )}
                         <div>
@@ -411,10 +423,10 @@ const CreateItemModal = forwardRef<CreateItemModalHandle, CreateItemModalProps>(
                                 className="btn btn-light me-2"
                                 onClick={handleClose}
                             >
-                                Cancel
+                                {t("common.cancel")}
                             </button>
                             <button type="submit" className="btn btn-secondary">
-                                {editId ? "Edit" : "Create"}
+                                {editId ? t("common.edit") : t("common.create")}
                             </button>
                         </div>
                     </div>

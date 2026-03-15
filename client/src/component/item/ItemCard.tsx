@@ -4,6 +4,7 @@
 
 import { type MouseEvent, type RefObject } from "react"
 import Dropdown from "react-bootstrap/Dropdown"
+import { useTranslation } from "react-i18next"
 import { toast } from "react-toastify"
 import usePrefersColorScheme from "use-prefers-color-scheme"
 import { useCurrentInput } from "../context/CurrentInputProvider"
@@ -32,6 +33,7 @@ function ItemCard({
     createItemModalRef,
     triggerItemLoad,
 }: ItemCardProps) {
+    const { t } = useTranslation()
     const prefersColorScheme = usePrefersColorScheme()
     const isDarkMode = prefersColorScheme === "dark"
 
@@ -82,7 +84,7 @@ function ItemCard({
 
             return
         }
-        toast.success(`Item ${!item.isPinned ? "pinned" : "unpinned"}!`)
+        toast.success(t(item.isPinned ? "item.unpinned" : "item.pinned"))
 
         triggerItemLoad()
     }
@@ -100,9 +102,7 @@ function ItemCard({
             return
         }
 
-        toast.success(
-            "Re-crawling for item meta data image has been requested!"
-        )
+        toast.success(t("item.recrawlRequested"))
     }
 
     return (
@@ -161,7 +161,7 @@ function ItemCard({
                         >
                             <i
                                 className="bi bi-three-dots"
-                                aria-label="Item actions"
+                                aria-label={t("item.actions")}
                             ></i>
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
@@ -174,7 +174,7 @@ function ItemCard({
                                     className="bi bi-pencil me-1"
                                     aria-label=""
                                 ></i>{" "}
-                                Edit
+                                {t("common.edit")}
                             </Dropdown.Item>
                             <Dropdown.Item
                                 onClick={() => handleItemPinClick(item)}
@@ -183,7 +183,9 @@ function ItemCard({
                                     className={`bi ${item.isPinned ? "bi-pin-angle-fill" : "bi-pin-angle"} me-1`}
                                     aria-label=""
                                 ></i>{" "}
-                                {item.isPinned ? "Unpin" : "Pin"}
+                                {item.isPinned
+                                    ? t("item.unpin")
+                                    : t("item.pin")}
                             </Dropdown.Item>
                             <Dropdown.Divider />
                             <Dropdown.Item
@@ -195,7 +197,7 @@ function ItemCard({
                                     className="bi bi-images me-1"
                                     aria-label=""
                                 ></i>{" "}
-                                Re-crawl image
+                                {t("item.recrawlImage")}
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>

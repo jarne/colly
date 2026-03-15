@@ -1,5 +1,130 @@
 {
+    "common": {
+        "add": "Add",
+        "cancel": "Cancel",
+        "create": "Create",
+        "edit": "Edit",
+        "delete": "Delete",
+        "close": "Close",
+        "loading": "Loading...",
+        "errors": {
+            "logoutFailed": "Log-out on server failed!"
+        }
+    },
     "navbar": {
-        "add": "Add"
+        "add": "Add",
+        "search": "Search",
+        "searchPlaceholder": "Search",
+        "searchButton": "Search",
+        "preferences": "Preferences",
+        "adminPanel": "Admin panel",
+        "logout": "Logout",
+        "addMenu": {
+            "item": "Collection item",
+            "tag": "Tag",
+            "workspace": "Workspace"
+        },
+        "sort": {
+            "label": "Sort:",
+            "updated": "Updated",
+            "updatedOldest": "Updated (oldest first)",
+            "created": "Created",
+            "createdOldest": "Created (oldest first)",
+            "title": "Title",
+            "titleDesc": "Title (desc)"
+        }
+    },
+    "item": {
+        "pinned": "Item pinned!",
+        "unpinned": "Item unpinned!",
+        "recrawlRequested": "Re-crawling for item meta data image has been requested!",
+        "actions": "Item actions",
+        "pin": "Pin",
+        "unpin": "Unpin",
+        "recrawlImage": "Re-crawl image",
+        "pinAria": "Pinned (unpin item)",
+        "unpinAria": "Unpinned (pin item)"
+    },
+    "tag": {
+        "selectWorkspace": "Select workspace",
+        "editMode": "Edit mode",
+        "expandSidebar": "Expand sidebar",
+        "collapseSidebar": "Collapse sidebar"
+    },
+    "modal": {
+        "item": {
+            "updated": "Item has been updated!",
+            "created": "Item \"{{name}}\" has been created!",
+            "deleted": "Item has been deleted!",
+            "editTitle": "Edit item",
+            "createTitle": "Create new item",
+            "urlLabel": "Item URL",
+            "urlPlaceholder": "https://example.com/page-123",
+            "editManually": "Edit manually",
+            "helpText": "Paste an URL or click here to add information manually",
+            "nameLabel": "Item name",
+            "namePlaceholder": "My cool item",
+            "descriptionLabel": "Item description",
+            "descriptionPlaceholder": "Add a text to describe your item",
+            "tagsLabel": "Associated tags",
+            "tagSearchPlaceholder": "Search for tags"
+        },
+        "tag": {
+            "updated": "Tag has been updated!",
+            "created": "Tag \"{{name}}\" has been created!",
+            "deleted": "Tag has been deleted!",
+            "editTitle": "Edit tag",
+            "createTitle": "Create new tag",
+            "nameLabel": "Tag name",
+            "namePlaceholder": "tag-name-123",
+            "colorLabel": "Color"
+        },
+        "workspace": {
+            "updated": "Workspace has been updated!",
+            "created": "Workspace \"{{name}}\" has been created!",
+            "deleted": "Workspace has been deleted!",
+            "editTitle": "Edit workspace",
+            "createTitle": "Create new workspace",
+            "nameLabel": "Workspace name",
+            "namePlaceholder": "My workspace",
+            "membersLabel": "Members",
+            "permissionSelect": "Permission level select",
+            "removeButton": "Remove",
+            "usernamePlaceholder": "Username",
+            "newUserUsername": "New user username",
+            "table": {
+                "user": "User",
+                "permissionLevel": "Permission level",
+                "action": "Action"
+            },
+            "permission": {
+                "read": "Read",
+                "write": "Write",
+                "admin": "Admin"
+            },
+            "errors": {
+                "emptyUsername": "Username cannot be empty!",
+                "duplicateMember": "User is already a member of the workspace!"
+            }
+        },
+        "preferences": {
+            "title": "User preferences",
+            "currentPasswordLabel": "Current password",
+            "newPasswordLabel": "New password",
+            "submitButton": "Change password",
+            "changedPassword": "Password has been changed!"
+        },
+        "admin": {
+            "user": {
+                "updated": "User has been updated!",
+                "created": "User \"{{username}}\" has been created!",
+                "editTitle": "Edit user",
+                "createTitle": "Create new user",
+                "usernameLabel": "User name",
+                "usernamePlaceholder": "user123",
+                "passwordLabel": "Temporary password",
+                "adminCheckbox": "Admin user"
+            }
+        }
     }
 }
