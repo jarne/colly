@@ -26,7 +26,8 @@
         "build": "vite build",
         "preview": "vite preview",
         "lint": "eslint src",
-        "lint:ci": "eslint --format junit --output-file ./lint-results/eslint/junit.xml src"
+        "lint:ci": "eslint --format junit --output-file ./lint-results/eslint/junit.xml src",
+        "translate": "lingo.dev run"
     },
     "dependencies": {
         "@uidotdev/usehooks": "^2.4",
@@ -61,6 +62,7 @@
         "eslint-plugin-jsdoc": "^62.0.0",
         "eslint-plugin-react": "^7.37.4",
         "globals": "^17.0.0",
+        "lingo.dev": "^0.133.2",
         "typescript": "^5.9.3",
         "typescript-eslint": "^8.54.0",
         "vite-plugin-eslint": "^1.8.1"
