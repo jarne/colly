@@ -37,7 +37,7 @@ importers:
         version: 5.49.25(@noble/hashes@1.8.0)
       metascraper-image:
         specifier: ^5.43.4
-        version: 5.49.24(@noble/hashes@1.8.0)
+        version: 5.49.25(@noble/hashes@1.8.0)
       metascraper-logo:
         specifier: ^5.43.4
         version: 5.49.24(@noble/hashes@1.8.0)
@@ -379,8 +379,13 @@ packages:
     peerDependencies:
       '@csstools/css-tokenizer': ^4.0.0
 
-  '@csstools/css-syntax-patches-for-csstree@1.1.0':
-    resolution: {integrity: sha512-H4tuz2nhWgNKLt1inYpoVCfbJbMwX/lQKp3g69rrrIMIYlFD9+zTykOKhNR8uGrAmbS/kT9n6hTFkmDkxLgeTA==}
+  '@csstools/css-syntax-patches-for-csstree@1.1.1':
+    resolution: {integrity: sha512-BvqN0AMWNAnLk9G8jnUT77D+mUbY/H2b3uDTvg2isJkHaOufUE2R3AOwxWo7VBQKT1lOdwdvorddo2B/lk64+w==}
+    peerDependencies:
+      css-tree: ^3.2.1
+    peerDependenciesMeta:
+      css-tree:
+        optional: true
 
   '@csstools/css-tokenizer@4.0.0':
     resolution: {integrity: sha512-QxULHAm7cNu72w97JUNCBFODFaXpbDg+dP8b/oWFAZ2MTRppA3U00Y2L1HqaS4J6yBqxwa/Y3nMBaxVKbB/NsA==}
@@ -2445,9 +2450,9 @@ packages:
     resolution: {integrity: sha512-SwxgzWq4Nsv5wg96PWbWXurEHdoQGtIOG7Mx5isZcN4TOkBRL+8B98x6MfBD91ro4lwSkFPy+vGEPQYGlyC6UQ==}
     engines: {node: '>= 22'}
 
-  metascraper-image@5.49.24:
-    resolution: {integrity: sha512-aaDml+bK1QVYmHlyH3N/5UVGxll0q7u2Dvo+ryNssqc6nBEzrrOWxtmK0Ycj8WKyVIcRueo4QP5VVo6sQTR4vA==}
-    engines: {node: '>= 16'}
+  metascraper-image@5.49.25:
+    resolution: {integrity: sha512-Ip/Euz+ghEchm7DfYR7ujGG/1l8slJ8sCqr6IAWuUARq2epsmGEIyGJfKmxMi1ksGsADtt/6lScng/Y5TERuMg==}
+    engines: {node: '>= 22'}
 
   metascraper-logo-favicon@5.49.24:
     resolution: {integrity: sha512-WhvDicFrpOwVaEHiGY+s+oHYpR8Pr+RJdPF6Hwv4Y5wsP11r4xBkBaxavmpqZN5lCO8pOVYk+1r1yTFn0HjFsA==}
@@ -3903,7 +3908,9 @@ snapshots:
     dependencies:
       '@csstools/css-tokenizer': 4.0.0
 
-  '@csstools/css-syntax-patches-for-csstree@1.1.0': {}
+  '@csstools/css-syntax-patches-for-csstree@1.1.1(css-tree@3.2.1)':
+    optionalDependencies:
+      css-tree: 3.2.1
 
   '@csstools/css-tokenizer@4.0.0': {}
 
@@ -5285,7 +5292,7 @@ snapshots:
   cssstyle@5.3.7:
     dependencies:
       '@asamuzakjp/css-color': 4.1.2
-      '@csstools/css-syntax-patches-for-csstree': 1.1.0
+      '@csstools/css-syntax-patches-for-csstree': 1.1.1(css-tree@3.2.1)
       css-tree: 3.2.1
       lru-cache: 11.2.7
 
@@ -6107,9 +6114,9 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  metascraper-image@5.49.24(@noble/hashes@1.8.0):
+  metascraper-image@5.49.25(@noble/hashes@1.8.0):
     dependencies:
-      '@metascraper/helpers': 5.49.24(@noble/hashes@1.8.0)
+      '@metascraper/helpers': 5.49.25(@noble/hashes@1.8.0)
     transitivePeerDependencies:
       - '@noble/hashes'
       - bufferutil
