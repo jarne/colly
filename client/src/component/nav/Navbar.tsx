@@ -8,6 +8,7 @@ import usePrefersColorScheme from "use-prefers-color-scheme"
 import OverlayTrigger from "react-bootstrap/OverlayTrigger"
 import Popover from "react-bootstrap/Popover"
 import { toast } from "react-toastify"
+import { useTranslation } from "react-i18next"
 
 import { useUserAuth } from "./../../component/context/UserAuthProvider"
 import { useCurrentInput } from "../context/CurrentInputProvider"
@@ -37,6 +38,7 @@ function Navbar({
     preferencesModalRef,
 }: NavbarProps) {
     const navigate = useNavigate()
+    const { t } = useTranslation()
 
     const prefersColorScheme = usePrefersColorScheme()
     const isDarkMode = prefersColorScheme === "dark"
@@ -189,7 +191,7 @@ function Navbar({
                                                 className="bi bi-plus-lg"
                                                 aria-hidden="true"
                                             ></i>{" "}
-                                            Add
+                                            {t("navbar.add")}
                                         </button>
                                         <ul className="dropdown-menu dropdown-menu-end position-absolute">
                                             <li>
