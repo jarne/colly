@@ -94,7 +94,7 @@
         "actions": "Elementaktionen",
         "pin": "Anheften",
         "unpin": "Loslösen",
-        "recrawlImage": "Bild neu durchsuchen",
+        "recrawlImage": "Cover neu abrufen",
         "pinAria": "Angepinnt (Element loslösen)",
         "unpinAria": "Losgelöst (Element anheften)"
     },
@@ -119,7 +119,7 @@
             "namePlaceholder": "Mein tolles Element",
             "descriptionLabel": "Elementbeschreibung",
             "descriptionPlaceholder": "Fügen Sie einen Text hinzu, um Ihr Element zu beschreiben",
-            "tagsLabel": "Zugehörige Tags",
+            "tagsLabel": "Zugeordnete Tags",
             "tagSearchPlaceholder": "Nach Tags suchen"
         },
         "tag": {

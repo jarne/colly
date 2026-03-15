@@ -84,7 +84,7 @@ checksums:
     modal/item/namePlaceholder: be66a773dd3dbd5f2b3ab3d95b638729
     modal/item/descriptionLabel: 1362147b9f2073b66a705336a6ff60bb
     modal/item/descriptionPlaceholder: 4c5cb1323d80dd61efc62939d2289055
-    modal/item/tagsLabel: f039da0d2f0b2619bf92ec316d87655b
+    modal/item/tagsLabel: bc617bf066b1e8a5c34713125d7388cf
     modal/item/tagSearchPlaceholder: 8ae5766ef13c8d56564b648dee293774
     modal/tag/updated: 7ee797c2e1e26bbe2f311d9d90fea22f
     modal/tag/created: c43c73afccaf289fa8dbe11315c17830

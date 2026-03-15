@@ -119,7 +119,7 @@
             "namePlaceholder": "My cool item",
             "descriptionLabel": "Item description",
             "descriptionPlaceholder": "Add a text to describe your item",
-            "tagsLabel": "Associated tags",
+            "tagsLabel": "Assigned tags",
             "tagSearchPlaceholder": "Search for tags"
         },
         "tag": {
