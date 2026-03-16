@@ -46,7 +46,7 @@ importers:
         version: 5.49.25(@noble/hashes@1.8.0)
       metascraper-title:
         specifier: ^5.43.4
-        version: 5.49.24(@noble/hashes@1.8.0)
+        version: 5.49.25(@noble/hashes@1.8.0)
       mongoose:
         specifier: ^9.0.0
         version: 9.3.0(snappy@7.3.3)(socks@2.8.7)
@@ -823,10 +823,6 @@ packages:
   '@kikobeats/time-span@1.0.11':
     resolution: {integrity: sha512-S+msolgD9aPVoJ+ZomVD0WSKm+qJBKvJimzwq8dMvlGKbIPsAyEWhHHdSRuQT3g2VpDIctvbi9nU++kN/VPZaw==}
     engines: {node: '>= 18'}
-
-  '@metascraper/helpers@5.49.24':
-    resolution: {integrity: sha512-nQFpxeTCtb4Y5TBwar3X3APtUydFim9YwEDRyHMoeQ0/dcvPnx63ac9jPDuH1BDaqm84yD3bsLArBmxdnoCseQ==}
-    engines: {node: '>= 16'}
 
   '@metascraper/helpers@5.49.25':
     resolution: {integrity: sha512-JnbSQ8j1eaRdCM1k2d9JvfbcJdxcCpEPw+75unisnLwI7JGbxhu2cm5jHl11mL/n4hfILxBmtewbX9Zg38tcvg==}
@@ -1714,10 +1710,6 @@ packages:
     resolution: {integrity: sha512-mCPSvjfpcFGJjJI5eurUTwsvFhqjiOwGoc+68waj0iI7wvaODVzj56hh0Xfd/6iwGf5aKR5FCfzupiJqhZwt+A==}
     engines: {node: '>= 14'}
 
-  data-uri-utils@1.0.9:
-    resolution: {integrity: sha512-oJNXjA6X7WpJHXVhy8ZWpiTSsigd6z64Mret1Aj8XcqDlWQSFPaAkvG0yCJnlsUmcTAWa9p0ENNWMBbxUckFFg==}
-    engines: {node: '>= 14'}
-
   data-urls@6.0.1:
     resolution: {integrity: sha512-euIQENZg6x8mj3fO6o9+fOW8MimUI4PpD/fZBhJfeioZVy9TUpM4UY7KjQNVZFlqwJ0UdzRDzkycB997HEq1BQ==}
     engines: {node: '>=20'}
@@ -2325,10 +2317,6 @@ packages:
   json-stable-stringify-without-jsonify@1.0.1:
     resolution: {integrity: sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==}
 
-  jsonrepair@3.13.2:
-    resolution: {integrity: sha512-Leuly0nbM4R+S5SVJk3VHfw1oxnlEK9KygdZvfUtEtTawNDyzB4qa1xWTmFt1aeoA7sXZkVTRuIixJ8bAvqVUg==}
-    hasBin: true
-
   jsonrepair@3.13.3:
     resolution: {integrity: sha512-BTznj0owIt2CBAH/LTo7+1I5pMvl1e1033LRl/HUowlZmJOIhzC0zbX5bxMngLkfT4WnzPP26QnW5wMr2g9tsQ==}
     hasBin: true
@@ -2462,9 +2450,9 @@ packages:
     resolution: {integrity: sha512-BBXqn0/7nJQBsr1k/w6mjV/k9lYtr7WEnUDQN040mMxSQd64lXio29Smupdu7+D2XS/kJMrksMA+k6ws9ithDQ==}
     engines: {node: '>= 22'}
 
-  metascraper-title@5.49.24:
-    resolution: {integrity: sha512-8y4HJwUSQW04XNd7XuEJNAKj1TRUFD4U84dglCViBHejgluFMzm+HaJ3ARiSV9tgGHf8+KcrWuWi3aYT97jMyg==}
-    engines: {node: '>= 16'}
+  metascraper-title@5.49.25:
+    resolution: {integrity: sha512-9MT0vB08VQO4YKJrB4DZcz/nSYTDS8qH7qafQitzzktvEexobC9Lj+ZgVZ85Oigex0FmlMW+EaoOzVEgGgx9ow==}
+    engines: {node: '>= 22'}
 
   metascraper@5.49.25:
     resolution: {integrity: sha512-fjNe37piap0OMU9728iggofFbpRh/MJiJ8KhYAO0r9mR4kF63SwfcjMXUI5y5F0+2pe5CvFETnJg5Evi7AelNA==}
@@ -3130,15 +3118,8 @@ packages:
     resolution: {integrity: sha512-QXqwfEl9ddlGBaRFXIvNKK6OhipSiLXuRuLJX5DErz0o0Q0rYxulWLdFryTkV5PkdZct5iMInwYEGe/eR++1AA==}
     hasBin: true
 
-  tldts-core@7.0.23:
-    resolution: {integrity: sha512-0g9vrtDQLrNIiCj22HSe9d4mLVG3g5ph5DZ8zCKBr4OtrspmNB6ss7hVyzArAeE88ceZocIEGkyW1Ime7fxPtQ==}
-
   tldts-core@7.0.25:
     resolution: {integrity: sha512-ZjCZK0rppSBu7rjHYDYsEaMOIbbT+nWF57hKkv4IUmZWBNrBWBOjIElc0mKRgLM8bm7x/BBlof6t2gi/Oq/Asw==}
-
-  tldts@7.0.23:
-    resolution: {integrity: sha512-ASdhgQIBSay0R/eXggAkQ53G4nTJqTXqC2kbaBbdDwM7SkjyZyO0OaaN1/FH7U/yCeqOHDwFO5j8+Os/IS1dXw==}
-    hasBin: true
 
   tldts@7.0.25:
     resolution: {integrity: sha512-keinCnPbwXEUG3ilrWQZU+CqcTTzHq9m2HhoUP2l7Xmi8l1LuijAXLpAJ5zRW+ifKTNscs4NdCkfkDCBYm352w==}
@@ -4226,40 +4207,6 @@ snapshots:
 
   '@kikobeats/time-span@1.0.11': {}
 
-  '@metascraper/helpers@5.49.24(@noble/hashes@1.8.0)':
-    dependencies:
-      audio-extensions: 0.0.0
-      chrono-node: 2.9.0
-      condense-whitespace: 2.0.0
-      data-uri-utils: 1.0.9
-      debug-logfmt: 1.4.8
-      entities: 7.0.1
-      file-extension: 4.0.5
-      has-values: 2.0.1
-      image-extensions: 1.1.0
-      is-relative-url: 3.0.0
-      is-uri: 1.2.12
-      iso-639-3: 2.2.0
-      isostring: 0.0.1
-      jsdom: 27.4.0(@noble/hashes@1.8.0)
-      jsonrepair: 3.13.2
-      lodash: 4.17.23
-      memoize-one: 6.0.0
-      microsoft-capitalize: 1.0.6
-      mime: 3.0.0
-      normalize-url: 6.1.0
-      re2: 1.23.3
-      smartquotes: 2.3.2
-      tldts: 7.0.23
-      url-regex-safe: 4.0.0(re2@1.23.3)
-      video-extensions: 1.2.0
-    transitivePeerDependencies:
-      - '@noble/hashes'
-      - bufferutil
-      - canvas
-      - supports-color
-      - utf-8-validate
-
   '@metascraper/helpers@5.49.25(@noble/hashes@1.8.0)':
     dependencies:
       audio-extensions: 0.0.0
@@ -5302,10 +5249,6 @@ snapshots:
     dependencies:
       data-uri-to-buffer: 5.0.1
 
-  data-uri-utils@1.0.9:
-    dependencies:
-      data-uri-to-buffer: 5.0.1
-
   data-urls@6.0.1:
     dependencies:
       whatwg-mimetype: 5.0.0
@@ -5979,8 +5922,6 @@ snapshots:
 
   json-stable-stringify-without-jsonify@1.0.1: {}
 
-  jsonrepair@3.13.2: {}
-
   jsonrepair@3.13.3: {}
 
   jsonwebtoken@9.0.3:
@@ -6148,9 +6089,9 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  metascraper-title@5.49.24(@noble/hashes@1.8.0):
+  metascraper-title@5.49.25(@noble/hashes@1.8.0):
     dependencies:
-      '@metascraper/helpers': 5.49.24(@noble/hashes@1.8.0)
+      '@metascraper/helpers': 5.49.25(@noble/hashes@1.8.0)
     transitivePeerDependencies:
       - '@noble/hashes'
       - bufferutil
@@ -6894,13 +6835,7 @@ snapshots:
 
   tlds@1.261.0: {}
 
-  tldts-core@7.0.23: {}
-
   tldts-core@7.0.25: {}
-
-  tldts@7.0.23:
-    dependencies:
-      tldts-core: 7.0.23
 
   tldts@7.0.25:
     dependencies:
