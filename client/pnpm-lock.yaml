@@ -101,7 +101,7 @@ importers:
         version: 17.4.0
       lingo.dev:
         specifier: ^0.133.2
-        version: 0.133.2(@types/node@25.5.0)(@types/react@19.2.14)(encoding@0.1.13)(next@15.3.8(@babel/core@7.29.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.98.0))
+        version: 0.133.3(@types/node@25.5.0)(@types/react@19.2.14)(encoding@0.1.13)(next@15.3.8(@babel/core@7.29.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.98.0))
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -2941,8 +2941,8 @@ packages:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
 
-  lingo.dev@0.133.2:
-    resolution: {integrity: sha512-tZGBLDjYoOTAead7snek2d/peLwxdCdlNcsMMO3jyarvqZd3w0MGY3Nu1/oXrUtSuo1kDTLJxmi0VfXbD/iS0A==}
+  lingo.dev@0.133.3:
+    resolution: {integrity: sha512-apffVxtqPLwEfTokYf1WQpgPWkiVmxFj4fetEha1rwrb13xlK976cWJAUUFN4aO2/6fkuyvEFvONT4yC+3lOQQ==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -4455,8 +4455,8 @@ snapshots:
 
   '@babel/generator@7.28.5':
     dependencies:
-      '@babel/parser': 7.29.0
-      '@babel/types': 7.29.0
+      '@babel/parser': 7.28.5
+      '@babel/types': 7.28.5
       '@jridgewell/gen-mapping': 0.3.13
       '@jridgewell/trace-mapping': 0.3.31
       jsesc: 3.1.0
@@ -4510,7 +4510,7 @@ snapshots:
 
   '@babel/parser@7.28.5':
     dependencies:
-      '@babel/types': 7.29.0
+      '@babel/types': 7.28.5
 
   '@babel/parser@7.29.0':
     dependencies:
@@ -4539,11 +4539,11 @@ snapshots:
   '@babel/traverse@7.28.5':
     dependencies:
       '@babel/code-frame': 7.29.0
-      '@babel/generator': 7.29.1
+      '@babel/generator': 7.28.5
       '@babel/helper-globals': 7.28.0
-      '@babel/parser': 7.29.0
+      '@babel/parser': 7.28.5
       '@babel/template': 7.28.6
-      '@babel/types': 7.29.0
+      '@babel/types': 7.28.5
       debug: 4.4.3
     transitivePeerDependencies:
       - supports-color
@@ -7253,7 +7253,7 @@ snapshots:
       prelude-ls: 1.2.1
       type-check: 0.4.0
 
-  lingo.dev@0.133.2(@types/node@25.5.0)(@types/react@19.2.14)(encoding@0.1.13)(next@15.3.8(@babel/core@7.29.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.98.0)):
+  lingo.dev@0.133.3(@types/node@25.5.0)(@types/react@19.2.14)(encoding@0.1.13)(next@15.3.8(@babel/core@7.29.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.98.0)):
     dependencies:
       '@ai-sdk/anthropic': 3.0.9(zod@4.1.12)
       '@ai-sdk/google': 3.0.6(zod@4.1.12)
