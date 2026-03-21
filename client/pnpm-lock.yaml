@@ -22,7 +22,7 @@ importers:
         version: 1.13.1
       i18next:
         specifier: ^25.8.18
-        version: 25.8.18(typescript@5.9.3)
+        version: 25.8.20(typescript@5.9.3)
       i18next-browser-languagedetector:
         specifier: ^8.2.1
         version: 8.2.1
@@ -46,7 +46,7 @@ importers:
         version: 19.2.4(react@19.2.4)
       react-i18next:
         specifier: ^16.5.8
-        version: 16.5.8(i18next@25.8.18(typescript@5.9.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3)
+        version: 16.5.8(i18next@25.8.20(typescript@5.9.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3)
       react-responsive-masonry:
         specifier: ^2.2.0
         version: 2.7.1
@@ -261,6 +261,10 @@ packages:
     resolution: {integrity: sha512-05WQkdpL9COIMz4LjTxGpPNCdlpyimKppYNoJ5Di5EUObifl8t4tuLuUBBZEpoLYOmfvIWrsp9fCl0HoPRVTdA==}
     engines: {node: '>=6.9.0'}
 
+  '@babel/runtime@7.29.2':
+    resolution: {integrity: sha512-JiDShH45zKHWyGe4ZNVRrCjBz8Nh9TMmZG1kh4QTK8hCBTWBi8Da+i7s1fJw7/lYpM4ccepSNfqzZ/QvABBi5g==}
+    engines: {node: '>=6.9.0'}
+
   '@babel/template@7.28.6':
     resolution: {integrity: sha512-YA6Ma2KsCdGb+WC6UpBVFJGXL58MDA6oyONbjyF/+5sBgxY/dwkhLogbMT2GXXyU84/IhRw/2D1Os1B/giz+BQ==}
     engines: {node: '>=6.9.0'}
@@ -339,8 +343,8 @@ packages:
   '@datocms/rest-client-utils@4.0.2':
     resolution: {integrity: sha512-aKg8bl9mHebWSnBgX1f3Y9hGkX0b+fHlEmhTvZ2JqzrVcu7RZjEWe612RFpyuTISv3hgIRbgmcE7KDfJe/WnfA==}
 
-  '@emnapi/runtime@1.9.0':
-    resolution: {integrity: sha512-QN75eB0IH2ywSpRpNddCRfQIhmJYBCJ1x5Lb3IscKAL8bMnVAKnRg8dCoXbHzVLLH7P38N2Z3mtulB7W0J0FKw==}
+  '@emnapi/runtime@1.9.1':
+    resolution: {integrity: sha512-VYi5+ZVLhpgK4hQ0TAjiQiZ6ol0oe4mBx7mVv7IflsiEp0OWoVsp/+f9Vc1hOhE0TtkORVrI1GvzyreqpgWtkA==}
 
   '@es-joy/jsdoccomment@0.84.0':
     resolution: {integrity: sha512-0xew1CxOam0gV5OMjh2KjFQZsKL2bByX1+q4j3E73MpYIdyUxcZb/xQct9ccUb+ve5KGUYbCUxyPnYB7RbuP+w==}
@@ -1796,8 +1800,8 @@ packages:
   caniuse-lite@1.0.30001778:
     resolution: {integrity: sha512-PN7uxFL+ExFJO61aVmP1aIEG4i9whQd4eoSCebav62UwDyp5OHh06zN4jqKSMePVgxHifCw1QJxdRkA1Pisekg==}
 
-  caniuse-lite@1.0.30001779:
-    resolution: {integrity: sha512-U5og2PN7V4DMgF50YPNtnZJGWVLFjjsN3zb6uMT5VGYIewieDj1upwfuVNXf4Kor+89c3iCRJnSzMD5LmTvsfA==}
+  caniuse-lite@1.0.30001780:
+    resolution: {integrity: sha512-llngX0E7nQci5BPJDqoZSbuZ5Bcs9F5db7EtgfwBerX9XGtkkiO4NwfDDIRzHTTwcYC8vC7bmeUEPGrKlR/TkQ==}
 
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -2571,8 +2575,8 @@ packages:
   i18next-http-backend@3.0.2:
     resolution: {integrity: sha512-PdlvPnvIp4E1sYi46Ik4tBYh/v/NbYfFFgTjkwFl0is8A18s7/bx9aXqsrOax9WUbeNS6mD2oix7Z0yGGf6m5g==}
 
-  i18next@25.8.18:
-    resolution: {integrity: sha512-lzY5X83BiL5AP77+9DydbrqkQHFN9hUzWGjqjLpPcp5ZOzuu1aSoKaU3xbBLSjWx9dAzW431y+d+aogxOZaKRA==}
+  i18next@25.8.20:
+    resolution: {integrity: sha512-xjo9+lbX/P1tQt3xpO2rfJiBppNfUnNIPKgCvNsTKsvTOCro1Qr/geXVg1N47j5ScOSaXAPq8ET93raK3Rr06A==}
     peerDependencies:
       typescript: ^5
     peerDependenciesMeta:
@@ -4534,6 +4538,8 @@ snapshots:
 
   '@babel/runtime@7.28.6': {}
 
+  '@babel/runtime@7.29.2': {}
+
   '@babel/template@7.28.6':
     dependencies:
       '@babel/code-frame': 7.29.0
@@ -4619,7 +4625,7 @@ snapshots:
     dependencies:
       async-scheduler: 1.4.4
 
-  '@emnapi/runtime@1.9.0':
+  '@emnapi/runtime@1.9.1':
     dependencies:
       tslib: 2.8.1
     optional: true
@@ -4872,7 +4878,7 @@ snapshots:
 
   '@img/sharp-wasm32@0.34.5':
     dependencies:
-      '@emnapi/runtime': 1.9.0
+      '@emnapi/runtime': 1.9.1
     optional: true
 
   '@img/sharp-win32-arm64@0.34.5':
@@ -4884,7 +4890,7 @@ snapshots:
   '@img/sharp-win32-x64@0.34.5':
     optional: true
 
-  '@inkjs/ui@2.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.4))':
+  '@inkjs/ui@2.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.3))':
     dependencies:
       chalk: 5.6.2
       cli-spinners: 3.4.0
@@ -5980,7 +5986,7 @@ snapshots:
 
   caniuse-lite@1.0.30001778: {}
 
-  caniuse-lite@1.0.30001779: {}
+  caniuse-lite@1.0.30001780: {}
 
   ccount@2.0.1: {}
 
@@ -6875,9 +6881,9 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  i18next@25.8.18(typescript@5.9.3):
+  i18next@25.8.20(typescript@5.9.3):
     dependencies:
-      '@babel/runtime': 7.28.6
+      '@babel/runtime': 7.29.2
     optionalDependencies:
       typescript: 5.9.3
 
@@ -6919,7 +6925,7 @@ snapshots:
       blacklist: 1.1.4
       prop-types: 15.8.1
 
-  ink-spinner@5.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.4))(react@19.2.3):
+  ink-spinner@5.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.3))(react@19.2.3):
     dependencies:
       cli-spinners: 2.9.2
       ink: 4.2.0(@types/react@19.2.14)(react@19.2.3)
@@ -7273,7 +7279,7 @@ snapshots:
       '@biomejs/wasm-nodejs': 2.4.6
       '@datocms/cma-client-node': 4.0.1
       '@gitbeaker/rest': 39.34.3
-      '@inkjs/ui': 2.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.4))
+      '@inkjs/ui': 2.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.3))
       '@inquirer/prompts': 7.8.0(@types/node@25.5.0)
       '@lingo.dev/_compiler': 0.12.0
       '@lingo.dev/_locales': 0.3.3
@@ -7314,7 +7320,7 @@ snapshots:
       ini: 5.0.0
       ink: 4.2.0(@types/react@19.2.14)(react@19.2.3)
       ink-progress-bar: 3.0.0
-      ink-spinner: 5.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.4))(react@19.2.3)
+      ink-spinner: 5.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.3))(react@19.2.3)
       inquirer: 12.6.0(@types/node@25.5.0)
       interactive-commander: 0.5.194(@types/node@25.5.0)
       is-url: 1.2.4
@@ -7924,7 +7930,7 @@ snapshots:
       '@swc/counter': 0.1.3
       '@swc/helpers': 0.5.15
       busboy: 1.6.0
-      caniuse-lite: 1.0.30001779
+      caniuse-lite: 1.0.30001780
       postcss: 8.4.31
       react: 19.2.4
       react-dom: 19.2.4(react@19.2.4)
@@ -8248,11 +8254,11 @@ snapshots:
       react: 19.2.4
       scheduler: 0.27.0
 
-  react-i18next@16.5.8(i18next@25.8.18(typescript@5.9.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3):
+  react-i18next@16.5.8(i18next@25.8.20(typescript@5.9.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3):
     dependencies:
       '@babel/runtime': 7.28.4
       html-parse-stringify: 3.0.1
-      i18next: 25.8.18(typescript@5.9.3)
+      i18next: 25.8.20(typescript@5.9.3)
       react: 19.2.4
       use-sync-external-store: 1.6.0(react@19.2.4)
     optionalDependencies:
