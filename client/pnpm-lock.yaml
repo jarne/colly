@@ -45,8 +45,8 @@ importers:
         specifier: ^19.0.0
         version: 19.2.4(react@19.2.4)
       react-i18next:
-        specifier: ^16.5.8
-        version: 16.6.6(i18next@25.10.10(typescript@5.9.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3)
+        specifier: ^17.0.0
+        version: 17.0.2(i18next@25.10.10(typescript@5.9.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3)
       react-responsive-masonry:
         specifier: ^2.2.0
         version: 2.7.1
@@ -3496,10 +3496,10 @@ packages:
     peerDependencies:
       react: ^19.2.4
 
-  react-i18next@16.6.6:
-    resolution: {integrity: sha512-ZgL2HUoW34UKUkOV7uSQFE1CDnRPD+tCR3ywSuWH7u2iapnz86U8Bi3Vrs620qNDzCf1F47NxglCEkchCTDOHw==}
+  react-i18next@17.0.2:
+    resolution: {integrity: sha512-shBftH2vaTWK2Bsp7FiL+cevx3xFJlvFxmsDFQSrJc+6twHkP0tv/bGa01VVWzpreUVVwU+3Hev5iFqRg65RwA==}
     peerDependencies:
-      i18next: '>= 25.10.9'
+      i18next: '>= 26.0.1'
       react: '>= 16.8.0'
       react-dom: '*'
       react-native: '*'
@@ -4767,7 +4767,7 @@ snapshots:
   '@img/sharp-win32-x64@0.34.5':
     optional: true
 
-  '@inkjs/ui@2.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.3))':
+  '@inkjs/ui@2.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.4))':
     dependencies:
       chalk: 5.6.2
       cli-spinners: 3.4.0
@@ -6743,7 +6743,7 @@ snapshots:
       blacklist: 1.1.4
       prop-types: 15.8.1
 
-  ink-spinner@5.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.3))(react@19.2.3):
+  ink-spinner@5.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.4))(react@19.2.3):
     dependencies:
       cli-spinners: 2.9.2
       ink: 4.2.0(@types/react@19.2.14)(react@19.2.3)
@@ -7146,7 +7146,7 @@ snapshots:
       '@biomejs/wasm-nodejs': 2.4.6
       '@datocms/cma-client-node': 4.0.1
       '@gitbeaker/rest': 39.34.3
-      '@inkjs/ui': 2.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.3))
+      '@inkjs/ui': 2.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.4))
       '@inquirer/prompts': 7.8.0(@types/node@25.5.2)
       '@lingo.dev/_compiler': 0.12.1
       '@lingo.dev/_locales': 0.3.3
@@ -7187,7 +7187,7 @@ snapshots:
       ini: 5.0.0
       ink: 4.2.0(@types/react@19.2.14)(react@19.2.3)
       ink-progress-bar: 3.0.0
-      ink-spinner: 5.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.3))(react@19.2.3)
+      ink-spinner: 5.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.4))(react@19.2.3)
       inquirer: 12.6.0(@types/node@25.5.2)
       interactive-commander: 0.5.194(@types/node@25.5.2)
       is-url: 1.2.4
@@ -8119,7 +8119,7 @@ snapshots:
       react: 19.2.4
       scheduler: 0.27.0
 
-  react-i18next@16.6.6(i18next@25.10.10(typescript@5.9.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3):
+  react-i18next@17.0.2(i18next@25.10.10(typescript@5.9.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3):
     dependencies:
       '@babel/runtime': 7.29.2
       html-parse-stringify: 3.0.1
