@@ -99,6 +99,26 @@ jobs:
             # Save lint results
             - store_test_results:
                   path: lint-results
+    build-client:
+        docker:
+            - image: cimg/node:24.14.1
+        working_directory: ~/project/client
+        steps:
+            # Checkout branch
+            - checkout:
+                  path: ~/project
+
+            # Install client dependencies
+            - restore_cache:
+                  key: pnpm-client-{{ checksum "pnpm-lock.yaml" }}
+            - run: CI=true pnpm install --frozen-lockfile
+            - save_cache:
+                  key: pnpm-client-{{ checksum "pnpm-lock.yaml" }}
+                  paths:
+                      - node_modules
+
+            # Build client
+            - run: pnpm run build
 
 workflows:
     tests:
@@ -107,6 +127,7 @@ workflows:
             - eslint
     tests-client:
         jobs:
+            - build-client
             - eslint-client
     docker-publish:
         jobs:
