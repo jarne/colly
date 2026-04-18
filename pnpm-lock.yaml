@@ -43,7 +43,7 @@ importers:
         version: 5.50.1(@noble/hashes@1.8.0)
       metascraper-logo-favicon:
         specifier: ^5.43.6
-        version: 5.50.0(@noble/hashes@1.8.0)
+        version: 5.50.1(@noble/hashes@1.8.0)
       metascraper-title:
         specifier: ^5.43.4
         version: 5.50.0(@noble/hashes@1.8.0)
@@ -2469,8 +2469,8 @@ packages:
     resolution: {integrity: sha512-jU50Nb6KQwB3fb8LFdEfT0wd414DYyvfpEvgvQfibROf48oAHHPVWzd3gTNrywmLTMNQeKaUIXp1u45gX5rlmA==}
     engines: {node: '>= 22'}
 
-  metascraper-logo-favicon@5.50.0:
-    resolution: {integrity: sha512-eNEzqUAvJlRWGGfpHhv1+zrwQxjGYaz0NZzOat/UWGY2YaIWLRJ5LKwUiugtMHMsPXLwRjNvctxd8wVX+uVABQ==}
+  metascraper-logo-favicon@5.50.1:
+    resolution: {integrity: sha512-xve0KB5sfII7j8W7+6KLIFe6+qLnzYJrmuoXu/lWe7j/MKxK26lNCOQHhA1/1g2gz0amyN5k7sUEWM+Tw+jIOw==}
     engines: {node: '>= 22'}
 
   metascraper-logo@5.50.1:
@@ -2701,10 +2701,6 @@ packages:
 
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
-
-  null-prototype-object@1.2.6:
-    resolution: {integrity: sha512-m+HuHAqaOiqlxVAzI3GtRgS4JIk3aAZ5RbkYxxPiACXyQZzS5uxjOXMASlWNdPYZ/5d4/+YclUlI+XXNlyN7Jg==}
-    engines: {node: '>= 20'}
 
   null-prototype-object@1.2.7:
     resolution: {integrity: sha512-pSZWCUew0zed2gxCerA4zdXRGg8ezLiWwvE8RvncezTcROXL0uz3PjSZXl5NsI04Egz0Uu46o1wyX6qr3u/ZWA==}
@@ -4239,7 +4235,7 @@ snapshots:
     dependencies:
       '@keyvhq/core': 2.1.15
       mimic-fn: 3.0.0
-      null-prototype-object: 1.2.6
+      null-prototype-object: 1.2.7
 
   '@kikobeats/time-span@1.0.13': {}
 
@@ -6151,10 +6147,10 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  metascraper-logo-favicon@5.50.0(@noble/hashes@1.8.0):
+  metascraper-logo-favicon@5.50.1(@noble/hashes@1.8.0):
     dependencies:
       '@keyvhq/memoize': 2.1.16
-      '@metascraper/helpers': 5.50.0(@noble/hashes@1.8.0)
+      '@metascraper/helpers': 5.50.1(@noble/hashes@1.8.0)
       lodash: 4.17.23
       reachable-url: 1.8.3
     transitivePeerDependencies:
@@ -6417,8 +6413,6 @@ snapshots:
   nth-check@2.1.1:
     dependencies:
       boolbase: 1.0.0
-
-  null-prototype-object@1.2.6: {}
 
   null-prototype-object@1.2.7: {}
 
