@@ -40,7 +40,7 @@ importers:
         version: 5.50.1(@noble/hashes@1.8.0)
       metascraper-logo:
         specifier: ^5.43.4
-        version: 5.50.0(@noble/hashes@1.8.0)
+        version: 5.50.1(@noble/hashes@1.8.0)
       metascraper-logo-favicon:
         specifier: ^5.43.6
         version: 5.50.0(@noble/hashes@1.8.0)
@@ -2473,8 +2473,8 @@ packages:
     resolution: {integrity: sha512-eNEzqUAvJlRWGGfpHhv1+zrwQxjGYaz0NZzOat/UWGY2YaIWLRJ5LKwUiugtMHMsPXLwRjNvctxd8wVX+uVABQ==}
     engines: {node: '>= 22'}
 
-  metascraper-logo@5.50.0:
-    resolution: {integrity: sha512-weA8eQ5N8AYYnT5i05waFQ3eVQ43LnbO+zGnKeBsthkNI7j1GP2z5WfnnWBf33iLCCjpIkIcKNKkAnPHfBiY3w==}
+  metascraper-logo@5.50.1:
+    resolution: {integrity: sha512-r1M5fYcDBC3GVEUf/cWEmMPELeTktfUDLJ0FoZkrdhTcJlySLgVssmiYBpCd5azIkh2fj9bmIewb5w9TH0wojw==}
     engines: {node: '>= 22'}
 
   metascraper-title@5.50.0:
@@ -6164,10 +6164,10 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  metascraper-logo@5.50.0(@noble/hashes@1.8.0):
+  metascraper-logo@5.50.1(@noble/hashes@1.8.0):
     dependencies:
-      '@metascraper/helpers': 5.50.0(@noble/hashes@1.8.0)
-      lodash: 4.17.23
+      '@metascraper/helpers': 5.50.1(@noble/hashes@1.8.0)
+      lodash: 4.18.1
     transitivePeerDependencies:
       - '@noble/hashes'
       - bufferutil
