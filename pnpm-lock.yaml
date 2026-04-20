@@ -46,7 +46,7 @@ importers:
         version: 5.50.1(@noble/hashes@1.8.0)
       metascraper-title:
         specifier: ^5.43.4
-        version: 5.50.0(@noble/hashes@1.8.0)
+        version: 5.50.1(@noble/hashes@1.8.0)
       mongoose:
         specifier: ^9.0.0
         version: 9.4.1(snappy@7.3.3)(socks@2.8.7)
@@ -823,10 +823,6 @@ packages:
   '@kikobeats/time-span@1.0.13':
     resolution: {integrity: sha512-CfBK4/EZ73uN/6b5/wOfvWju1Ev/6H+uXqS2Vqd7/dEQTyOsvv4BdOHDqESp4Efa9YyrPPvN3IHU+C4z9FAo3Q==}
     engines: {node: '>= 18'}
-
-  '@metascraper/helpers@5.50.0':
-    resolution: {integrity: sha512-w5eJO9sblf5btT0qSenQf8IlrHzifY7F7yTBB6q0RH+6gXgb9KgLno8WwWDjNeWkr+3n0D+8v0Ty5YGKGLAmyw==}
-    engines: {node: '>= 22'}
 
   '@metascraper/helpers@5.50.1':
     resolution: {integrity: sha512-F2C23cjHAL2fE5LAj+SsHGLC/8GCiI9U8m4iu92CwQScTYuDA2s9wrkDqsvSlVhnTxdAEM7JikLbyRIr+laXig==}
@@ -1718,10 +1714,6 @@ packages:
     resolution: {integrity: sha512-a9l6T1qqDogvvnw0nKlfZzqsyikEBZBClF39V3TFoKhDtGBqHu2HkuomJc02j5zft8zrUaXEuoicLeW54RkzPg==}
     engines: {node: '>= 14'}
 
-  data-uri-utils@1.0.12:
-    resolution: {integrity: sha512-TvKeyxno5JjVbUhjTY3C8dfBOPpn5nN7Hs2StbsrvBEqhA/n3sc3K2cwja2Le5JXtiwxxPiIn8GrW+qzUy60yg==}
-    engines: {node: '>= 14'}
-
   data-uri-utils@1.0.13:
     resolution: {integrity: sha512-AjIQGQHlTnjnw7w21Marztmku1lijIVA3QXvPPHTRVdMaASI1LeYB9X+HEkGCnKjn5OnHhUhucpdeC3rUpJR0g==}
     engines: {node: '>= 14'}
@@ -1848,6 +1840,10 @@ packages:
   entities@7.0.1:
     resolution: {integrity: sha512-TWrgLOFUQTH994YUyl1yT4uyavY5nNB5muff+RtWaqNVCAK408b5ZnnbNAUEWLTCpum9w6arT70i1XdQ4UeOPA==}
     engines: {node: '>=0.12'}
+
+  entities@8.0.0:
+    resolution: {integrity: sha512-zwfzJecQ/Uej6tusMqwAqU/6KL2XaB2VZ2Jg54Je6ahNBGNH6Ek6g3jjNCF0fG9EWQKGZNddNjU5F1ZQn/sBnA==}
+    engines: {node: '>=20.19.0'}
 
   env-paths@2.2.1:
     resolution: {integrity: sha512-+h1lkLKhZMTYjog1VEpJNG7NZJWcuc2DDk/qsqSTRRCOXiLjeQ1d1/udrUGhqMxUgAlwKNZ0cf2uqan5GLuS2A==}
@@ -2275,10 +2271,6 @@ packages:
     resolution: {integrity: sha512-knxG2q4UC3u8stRGyAVJCOdxFmv5DZiRcdlIaAQXAbSfJya+OhopNotLQrstBhququ4ZpuKbDc/8S6mgXgPFPw==}
     engines: {node: '>=10'}
 
-  is-uri@1.2.13:
-    resolution: {integrity: sha512-6KXiOBu0Y9bvxaWzVWhDfXBdiE5jQWS5MIuRITXHdLVJ11LaOGYRYJtJqUQkjNyUbtCfZZyREdnEFlJfhzIlog==}
-    engines: {node: '>= 4'}
-
   is-uri@1.2.14:
     resolution: {integrity: sha512-YhTAOlejk4o85c3bPk9ayhr6VLm3e01mp4pBhtYOEXXlkK+Eoj/Nr3x+bqTwZvUI0z0L6TVk0HZViXdxUtsWDQ==}
     engines: {node: '>= 4'}
@@ -2477,8 +2469,8 @@ packages:
     resolution: {integrity: sha512-r1M5fYcDBC3GVEUf/cWEmMPELeTktfUDLJ0FoZkrdhTcJlySLgVssmiYBpCd5azIkh2fj9bmIewb5w9TH0wojw==}
     engines: {node: '>= 22'}
 
-  metascraper-title@5.50.0:
-    resolution: {integrity: sha512-K4pTkskUGstWz/EtPrnIbTD88C2xMyfG8prd7uNU9BCUSLhleHpsu4xyJji8t8JAGwwSs3kvaxE6qAkwdqysug==}
+  metascraper-title@5.50.1:
+    resolution: {integrity: sha512-25mie58NY79BiMLvAe7PajA/CnDLI/emWXpbJHnPwJPizZRjNEqCBpVRXKMxnJjQOgwi2NCCrASgwPOC0SXONA==}
     engines: {node: '>= 22'}
 
   metascraper@5.50.1:
@@ -2488,10 +2480,6 @@ packages:
   methods@1.1.2:
     resolution: {integrity: sha512-iclAHeNqNm68zFtnZ0e+1L2yUIdvzNoauKU4WBA3VvH/vPFieF7qfRlwUZU+DA9P9bPXIS90ulxoUoCH23sV2w==}
     engines: {node: '>= 0.6'}
-
-  microsoft-capitalize@1.0.7:
-    resolution: {integrity: sha512-5CQkknFQ7Wq54JWtrv6OydAhNcGEYHlsuhYN81S1rREJskZBfAwbseA+nTvMqH7tZlEzGFz4vwrybyaxIteqqw==}
-    engines: {node: '>= 10'}
 
   microsoft-capitalize@1.0.8:
     resolution: {integrity: sha512-uSzg9VkW1+ZgNcJG0AcU/Ynje5xLnLuXoJCQBWKs7DeEzmgUTF5mLVbsmj0aYppN43MWI4RGUuRANLJAIaRfLw==}
@@ -2776,10 +2764,6 @@ packages:
   parse-statements@1.0.11:
     resolution: {integrity: sha512-HlsyYdMBnbPQ9Jr/VgJ1YF4scnldvJpJxCVx6KgqPL4dxppsWrJHCIIxQXMJrqGnsRkNPATbeMJ8Yxu7JMsYcA==}
 
-  parse-uri@2.0.5:
-    resolution: {integrity: sha512-E4J7siDZ1CL5EE/0YHX9y8IVNdSB/ZqjFPIKZWtWbSi5w8Q2h1OYjHSBezG15CsA6ieZmH5srrbpv0Rtf3I8rw==}
-    engines: {node: '>= 0.10'}
-
   parse-uri@2.0.6:
     resolution: {integrity: sha512-sB5ONhkIMyztTX2trw4OVqHhUnHS8wDFHPRN+eaHxWQ+8cFlF7nUFIDpzFksQMntTts6SEgX/VOyeAowwLqQuw==}
     engines: {node: '>= 0.10'}
@@ -2793,8 +2777,8 @@ packages:
   parse5@7.3.0:
     resolution: {integrity: sha512-IInvU7fabl34qmi9gY8XOVxhYyMyuH2xUNpb2q8/Y+7552KlejkRvqvD19nMoUW/uQGGbqNpA6Tufu5FL5BZgw==}
 
-  parse5@8.0.0:
-    resolution: {integrity: sha512-9m4m5GSgXjL4AjumKzq1Fgfp3Z8rsvjRNbnkVwfu2ImRqE5D0LnY2QfDen18FSY9C573YU5XxSapdHZTZ2WolA==}
+  parse5@8.0.1:
+    resolution: {integrity: sha512-z1e/HMG90obSGeidlli3hj7cbocou0/wa5HacvI3ASx34PecNjNQeaHNo5WIZpWofN9kgkqV1q5YvXe3F0FoPw==}
 
   parseurl@1.3.3:
     resolution: {integrity: sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ==}
@@ -3153,15 +3137,8 @@ packages:
     resolution: {integrity: sha512-QXqwfEl9ddlGBaRFXIvNKK6OhipSiLXuRuLJX5DErz0o0Q0rYxulWLdFryTkV5PkdZct5iMInwYEGe/eR++1AA==}
     hasBin: true
 
-  tldts-core@7.0.27:
-    resolution: {integrity: sha512-YQ7uPjgWUibIK6DW5lrKujGwUKhLevU4hcGbP5O6TcIUb+oTjJYJVWPS4nZsIHrEEEG6myk/oqAJUEQmpZrHsg==}
-
   tldts-core@7.0.28:
     resolution: {integrity: sha512-7W5Efjhsc3chVdFhqtaU0KtK32J37Zcr9RKtID54nG+tIpcY79CQK/veYPODxtD/LJ4Lue66jvrQzIX2Z2/pUQ==}
-
-  tldts@7.0.27:
-    resolution: {integrity: sha512-I4FZcVFcqCRuT0ph6dCDpPuO4Xgzvh+spkcTr1gK7peIvxWauoloVO0vuy1FQnijT63ss6AsHB6+OIM4aXHbPg==}
-    hasBin: true
 
   tldts@7.0.28:
     resolution: {integrity: sha512-+Zg3vWhRUv8B1maGSTFdev9mjoo8Etn2Ayfs4cnjlD3CsGkxXX4QyW3j2WJ0wdjYcYmy7Lx2RDsZMhgCWafKIw==}
@@ -4239,40 +4216,6 @@ snapshots:
 
   '@kikobeats/time-span@1.0.13': {}
 
-  '@metascraper/helpers@5.50.0(@noble/hashes@1.8.0)':
-    dependencies:
-      audio-extensions: 0.0.0
-      chrono-node: 2.9.0
-      condense-whitespace: 2.0.0
-      data-uri-utils: 1.0.12
-      debug-logfmt: 1.4.11
-      entities: 7.0.1
-      file-extension: 4.0.5
-      has-values: 2.0.1
-      image-extensions: 1.1.0
-      is-relative-url: 3.0.0
-      is-uri: 1.2.13
-      iso-639-3: 2.2.0
-      isostring: 0.0.1
-      jsdom: 27.4.0(@noble/hashes@1.8.0)
-      jsonrepair: 3.13.3
-      lodash: 4.17.23
-      memoize-one: 6.0.0
-      microsoft-capitalize: 1.0.7
-      mime: 3.0.0
-      normalize-url: 6.1.0
-      re2: 1.23.3
-      smartquotes: 2.3.2
-      tldts: 7.0.27
-      url-regex-safe: 4.0.0(re2@1.23.3)
-      video-extensions: 1.2.0
-    transitivePeerDependencies:
-      - '@noble/hashes'
-      - bufferutil
-      - canvas
-      - supports-color
-      - utf-8-validate
-
   '@metascraper/helpers@5.50.1(@noble/hashes@1.8.0)':
     dependencies:
       audio-extensions: 0.0.0
@@ -5312,10 +5255,6 @@ snapshots:
 
   data-uri-to-buffer@5.0.1: {}
 
-  data-uri-utils@1.0.12:
-    dependencies:
-      data-uri-to-buffer: 5.0.1
-
   data-uri-utils@1.0.13:
     dependencies:
       data-uri-to-buffer: 5.0.1
@@ -5432,6 +5371,8 @@ snapshots:
   entities@6.0.1: {}
 
   entities@7.0.1: {}
+
+  entities@8.0.0: {}
 
   env-paths@2.2.1: {}
 
@@ -5922,11 +5863,6 @@ snapshots:
 
   is-unicode-supported@0.1.0: {}
 
-  is-uri@1.2.13:
-    dependencies:
-      parse-uri: 2.0.5
-      punycode2: 1.0.1
-
   is-uri@1.2.14:
     dependencies:
       parse-uri: 2.0.6
@@ -5977,7 +5913,7 @@ snapshots:
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.6
       is-potential-custom-element-name: 1.0.1
-      parse5: 8.0.0
+      parse5: 8.0.1
       saxes: 6.0.0
       symbol-tree: 3.2.4
       tough-cookie: 6.0.1
@@ -6171,9 +6107,9 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  metascraper-title@5.50.0(@noble/hashes@1.8.0):
+  metascraper-title@5.50.1(@noble/hashes@1.8.0):
     dependencies:
-      '@metascraper/helpers': 5.50.0(@noble/hashes@1.8.0)
+      '@metascraper/helpers': 5.50.1(@noble/hashes@1.8.0)
     transitivePeerDependencies:
       - '@noble/hashes'
       - bufferutil
@@ -6195,8 +6131,6 @@ snapshots:
       - utf-8-validate
 
   methods@1.1.2: {}
-
-  microsoft-capitalize@1.0.7: {}
 
   microsoft-capitalize@1.0.8: {}
 
@@ -6477,8 +6411,6 @@ snapshots:
 
   parse-statements@1.0.11: {}
 
-  parse-uri@2.0.5: {}
-
   parse-uri@2.0.6: {}
 
   parse5-htmlparser2-tree-adapter@7.1.0:
@@ -6494,9 +6426,9 @@ snapshots:
     dependencies:
       entities: 6.0.1
 
-  parse5@8.0.0:
+  parse5@8.0.1:
     dependencies:
-      entities: 6.0.1
+      entities: 8.0.0
 
   parseurl@1.3.3: {}
 
@@ -6923,13 +6855,7 @@ snapshots:
 
   tlds@1.261.0: {}
 
-  tldts-core@7.0.27: {}
-
   tldts-core@7.0.28: {}
-
-  tldts@7.0.27:
-    dependencies:
-      tldts-core: 7.0.27
 
   tldts@7.0.28:
     dependencies:
