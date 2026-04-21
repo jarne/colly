@@ -49,7 +49,7 @@ importers:
         version: 17.0.4(i18next@26.0.6(typescript@6.0.2))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@6.0.2)
       react-responsive-masonry:
         specifier: ^2.2.0
-        version: 2.7.1
+        version: 2.7.2
       react-router:
         specifier: ^7.10.1
         version: 7.14.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
@@ -3527,8 +3527,8 @@ packages:
     peerDependencies:
       react: ^18.3.1
 
-  react-responsive-masonry@2.7.1:
-    resolution: {integrity: sha512-Q+u+nOH87PzjqGFd2PgTcmLpHPZnCmUPREHYoNBc8dwJv6fi51p9U6hqwG8g/T8MN86HrFjrU+uQU6yvETU7cA==}
+  react-responsive-masonry@2.7.2:
+    resolution: {integrity: sha512-33j38neZYAb3ymO1A/xuiq6Pi09/nOKAfphn2vG5Uz46d95UhMWOyM2n4LLNR/pf/8FAc9myPkHPE7k0Ijix5w==}
 
   react-router@7.14.0:
     resolution: {integrity: sha512-m/xR9N4LQLmAS0ZhkY2nkPA1N7gQ5TUVa5n8TgANuDTARbn1gt+zLPXEm7W0XDTbrQ2AJSJKhoa6yx1D8BcpxQ==}
@@ -8145,7 +8145,9 @@ snapshots:
       react: 19.2.3
       scheduler: 0.23.2
 
-  react-responsive-masonry@2.7.1: {}
+  react-responsive-masonry@2.7.2:
+    dependencies:
+      prop-types: 15.8.1
 
   react-router@7.14.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
     dependencies:
