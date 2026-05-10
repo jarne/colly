@@ -40,7 +40,7 @@ importers:
         version: 2.10.10(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       react-colorful:
         specifier: ^5.6
-        version: 5.6.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+        version: 5.6.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       react-dom:
         specifier: ^19.0.0
         version: 19.2.5(react@19.2.5)
@@ -3494,8 +3494,8 @@ packages:
       '@types/react':
         optional: true
 
-  react-colorful@5.6.1:
-    resolution: {integrity: sha512-1exovf0uGTGyq5mXQT0zgQ80uvj2PCwvF8zY1RN9/vbJVSjSo3fsB/4L3ObbF7u70NduSiK4xu4Y6q1MHoUGEw==}
+  react-colorful@5.6.2:
+    resolution: {integrity: sha512-7Vankf05ygS7v4T1gJPxqNIJZcsZ46K71J3fF995cfYOMFskAkFYUXna+90bwK/dr/1zVqrJQorNuc9OTV/qXA==}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
@@ -8125,7 +8125,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.14
 
-  react-colorful@5.6.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
+  react-colorful@5.6.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
     dependencies:
       react: 19.2.5
       react-dom: 19.2.5(react@19.2.5)
