@@ -49,7 +49,7 @@ importers:
         version: 5.50.1(@noble/hashes@1.8.0)
       mongoose:
         specifier: ^9.0.0
-        version: 9.6.1(snappy@7.3.3)(socks@2.8.7)
+        version: 9.6.2(snappy@7.3.3)(socks@2.8.7)
       passport:
         specifier: ^0.7
         version: 0.7.0
@@ -828,8 +828,8 @@ packages:
     resolution: {integrity: sha512-F2C23cjHAL2fE5LAj+SsHGLC/8GCiI9U8m4iu92CwQScTYuDA2s9wrkDqsvSlVhnTxdAEM7JikLbyRIr+laXig==}
     engines: {node: '>= 22'}
 
-  '@mongodb-js/saslprep@1.4.9':
-    resolution: {integrity: sha512-RXSxsokhAF/4nWys8An8npsqOI33Ex1Hlzqjw2pZOO+GKtMAR2noGnUdsFiGwsaO/xXI+56mtjTmDA3JXJsvmA==}
+  '@mongodb-js/saslprep@1.4.11':
+    resolution: {integrity: sha512-o9rAHc0IpIjuPSxRutWpE1F62x7n+4mVS4rCNHkzhIUMQcc18bb6xEq5wd2NdN0WjepIyXIppRshYI2kQDOZVA==}
 
   '@napi-rs/snappy-android-arm-eabi@7.3.3':
     resolution: {integrity: sha512-d4vUFFzNBvazGfB/KU8MnEax6itTIgRWXodPdZDnWKHy9HwVBndpCiedQDcSNHcZNYV36rx034rpn7SAuTL2NA==}
@@ -2628,8 +2628,8 @@ packages:
       socks:
         optional: true
 
-  mongoose@9.6.1:
-    resolution: {integrity: sha512-3T8/b0plM3ZJPW3WjlzVMIGJEYYTjgDPQ05Qzru3xu3/wOPSFKWYxdwUF2dl8h3NG5dVkzIuOkZdLacnlLf/sA==}
+  mongoose@9.6.2:
+    resolution: {integrity: sha512-7m8HntjkoRnwEmuPC0kdlwcZXJOQf4twumFj+PNzg/anqqZE2Er7hQslqyzy07mP3JcFjoTSgH5765PyqOXsxw==}
     engines: {node: '>=20.19.0'}
 
   morgan@1.10.1:
@@ -4257,7 +4257,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@mongodb-js/saslprep@1.4.9':
+  '@mongodb-js/saslprep@1.4.11':
     dependencies:
       sparse-bitfield: 3.0.3
 
@@ -6266,14 +6266,14 @@ snapshots:
 
   mongodb@7.2.0(snappy@7.3.3)(socks@2.8.7):
     dependencies:
-      '@mongodb-js/saslprep': 1.4.9
+      '@mongodb-js/saslprep': 1.4.11
       bson: 7.2.0
       mongodb-connection-string-url: 7.0.1
     optionalDependencies:
       snappy: 7.3.3
       socks: 2.8.7
 
-  mongoose@9.6.1(snappy@7.3.3)(socks@2.8.7):
+  mongoose@9.6.2(snappy@7.3.3)(socks@2.8.7):
     dependencies:
       kareem: 3.3.0
       mongodb: 7.2.0(snappy@7.3.3)(socks@2.8.7)
