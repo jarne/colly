@@ -43,7 +43,7 @@ importers:
         version: 5.50.1(@noble/hashes@1.8.0)
       metascraper-logo-favicon:
         specifier: ^5.43.6
-        version: 5.50.1(@noble/hashes@1.8.0)
+        version: 5.50.3(@noble/hashes@1.8.0)
       metascraper-title:
         specifier: ^5.43.4
         version: 5.50.1(@noble/hashes@1.8.0)
@@ -359,15 +359,15 @@ packages:
     resolution: {integrity: sha512-LMGQLS9EuADloEFkcTBR3BwV/CGHV7zyDxVRtVDTwdI2Ca4it0CCVTT9wCkxSgokjE5Ho41hEPgb8OEUwoXr6Q==}
     engines: {node: '>=20.19.0'}
 
-  '@csstools/css-calc@3.2.0':
-    resolution: {integrity: sha512-bR9e6o2BDB12jzN/gIbjHa5wLJ4UjD1CB9pM7ehlc0ddk6EBz+yYS1EV2MF55/HUxrHcB/hehAyt5vhsA3hx7w==}
+  '@csstools/css-calc@3.2.1':
+    resolution: {integrity: sha512-DtdHlgXh5ZkA43cwBcAm+huzgJiwx3ZTWVjBs94kwz2xKqSimDA3lBgCjphYgwgVUMWatSM0pDd8TILB1yrVVg==}
     engines: {node: '>=20.19.0'}
     peerDependencies:
       '@csstools/css-parser-algorithms': ^4.0.0
       '@csstools/css-tokenizer': ^4.0.0
 
-  '@csstools/css-color-parser@4.1.0':
-    resolution: {integrity: sha512-U0KhLYmy2GVj6q4T3WaAe6NPuFYCPQoE3b0dRGxejWDgcPp8TP7S5rVdM5ZrFaqu4N67X8YaPBw14dQSYx3IyQ==}
+  '@csstools/css-color-parser@4.1.1':
+    resolution: {integrity: sha512-eZ5XOtyhK+mggRafYUWzA0tvaYOFgdY8AkgQiCJF9qNAePnUo/zmsqqYubBBb3sQ8uNUaSKTY9s9klfRaAXL0g==}
     engines: {node: '>=20.19.0'}
     peerDependencies:
       '@csstools/css-parser-algorithms': ^4.0.0
@@ -379,8 +379,8 @@ packages:
     peerDependencies:
       '@csstools/css-tokenizer': ^4.0.0
 
-  '@csstools/css-syntax-patches-for-csstree@1.1.3':
-    resolution: {integrity: sha512-SH60bMfrRCJF3morcdk57WklujF4Jr/EsQUzqkarfHXEFcAR1gg7fS/chAE922Sehgzc1/+Tz5H3Ypa1HiEKrg==}
+  '@csstools/css-syntax-patches-for-csstree@1.1.4':
+    resolution: {integrity: sha512-wgsqt92b7C7tQhIdPNxj0n9zuUbQlvAuI1exyzeNrOKOi62SD7ren8zqszmpVREjAOqg8cD2FqYhQfAuKjk4sw==}
     peerDependencies:
       css-tree: ^3.2.1
     peerDependenciesMeta:
@@ -2366,9 +2366,6 @@ packages:
   lodash.once@4.1.1:
     resolution: {integrity: sha512-Sb487aTOCr9drQVL8pIxOzVhafOjZN9UU54hiN8PU3uAiSV7lx1yYNpbNmex2PK6dSJoNTSJUUswT651yww3Mg==}
 
-  lodash@4.17.23:
-    resolution: {integrity: sha512-LgVTMpQtIopCi79SJeDiP0TfWi5CNEc/L/aRdTh3yIvmZXTnheWpKjSZhnvMl8iXbC1tFg9gdHHDMLoV7CnG+w==}
-
   lodash@4.18.1:
     resolution: {integrity: sha512-dMInicTPVE8d1e5otfwmmjlxkZoUpiVLwyeTdUsi/Caj/gfzzblBcCE5sRHV/AsjuCmxWrte2TNGSYuCeCq+0Q==}
 
@@ -2434,8 +2431,8 @@ packages:
     resolution: {integrity: sha512-jU50Nb6KQwB3fb8LFdEfT0wd414DYyvfpEvgvQfibROf48oAHHPVWzd3gTNrywmLTMNQeKaUIXp1u45gX5rlmA==}
     engines: {node: '>= 22'}
 
-  metascraper-logo-favicon@5.50.1:
-    resolution: {integrity: sha512-xve0KB5sfII7j8W7+6KLIFe6+qLnzYJrmuoXu/lWe7j/MKxK26lNCOQHhA1/1g2gz0amyN5k7sUEWM+Tw+jIOw==}
+  metascraper-logo-favicon@5.50.3:
+    resolution: {integrity: sha512-i+ehu+nOcUhG2HQpAuyM0d8Zp8fXRXH1r6imAW2CQIJlkoB8tyh7RIWjT1swo3MrDk2Ff7lWbZ1bJUOPdAp5HQ==}
     engines: {node: '>= 22'}
 
   metascraper-logo@5.50.1:
@@ -3343,8 +3340,8 @@ snapshots:
 
   '@asamuzakjp/css-color@4.1.2':
     dependencies:
-      '@csstools/css-calc': 3.2.0(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)
-      '@csstools/css-color-parser': 4.1.0(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)
+      '@csstools/css-calc': 3.2.1(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)
+      '@csstools/css-color-parser': 4.1.1(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)
       '@csstools/css-parser-algorithms': 4.0.0(@csstools/css-tokenizer@4.0.0)
       '@csstools/css-tokenizer': 4.0.0
       lru-cache: 11.3.6
@@ -3830,15 +3827,15 @@ snapshots:
 
   '@csstools/color-helpers@6.0.2': {}
 
-  '@csstools/css-calc@3.2.0(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)':
+  '@csstools/css-calc@3.2.1(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)':
     dependencies:
       '@csstools/css-parser-algorithms': 4.0.0(@csstools/css-tokenizer@4.0.0)
       '@csstools/css-tokenizer': 4.0.0
 
-  '@csstools/css-color-parser@4.1.0(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)':
+  '@csstools/css-color-parser@4.1.1(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)':
     dependencies:
       '@csstools/color-helpers': 6.0.2
-      '@csstools/css-calc': 3.2.0(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)
+      '@csstools/css-calc': 3.2.1(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)
       '@csstools/css-parser-algorithms': 4.0.0(@csstools/css-tokenizer@4.0.0)
       '@csstools/css-tokenizer': 4.0.0
 
@@ -3846,7 +3843,7 @@ snapshots:
     dependencies:
       '@csstools/css-tokenizer': 4.0.0
 
-  '@csstools/css-syntax-patches-for-csstree@1.1.3(css-tree@3.2.1)':
+  '@csstools/css-syntax-patches-for-csstree@1.1.4(css-tree@3.2.1)':
     optionalDependencies:
       css-tree: 3.2.1
 
@@ -5166,7 +5163,7 @@ snapshots:
   cssstyle@5.3.7:
     dependencies:
       '@asamuzakjp/css-color': 4.1.2
-      '@csstools/css-syntax-patches-for-csstree': 1.1.3(css-tree@3.2.1)
+      '@csstools/css-syntax-patches-for-csstree': 1.1.4(css-tree@3.2.1)
       css-tree: 3.2.1
       lru-cache: 11.3.6
 
@@ -5906,8 +5903,6 @@ snapshots:
 
   lodash.once@4.1.1: {}
 
-  lodash@4.17.23: {}
-
   lodash@4.18.1: {}
 
   log-symbols@4.1.0:
@@ -5976,11 +5971,11 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  metascraper-logo-favicon@5.50.1(@noble/hashes@1.8.0):
+  metascraper-logo-favicon@5.50.3(@noble/hashes@1.8.0):
     dependencies:
       '@keyvhq/memoize': 2.1.16
       '@metascraper/helpers': 5.50.1(@noble/hashes@1.8.0)
-      lodash: 4.17.23
+      lodash: 4.18.1
       reachable-url: 1.8.3
     transitivePeerDependencies:
       - '@noble/hashes'
