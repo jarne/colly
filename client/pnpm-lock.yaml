@@ -13,7 +13,7 @@ importers:
         version: 2.4.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       '@vitejs/plugin-react':
         specifier: ^6.0.0
-        version: 6.0.1(vite@8.0.10(@types/node@25.6.2)(esbuild@0.27.2)(sass@1.99.0)(yaml@2.8.1))
+        version: 6.0.2(vite@8.0.10(@types/node@25.6.2)(esbuild@0.27.2)(sass@1.99.0)(yaml@2.8.1))
       bootstrap:
         specifier: ^5.3
         version: 5.3.8(@popperjs/core@2.11.8)
@@ -1296,8 +1296,8 @@ packages:
   '@rolldown/pluginutils@1.0.0-rc.17':
     resolution: {integrity: sha512-n8iosDOt6Ig1UhJ2AYqoIhHWh/isz0xpicHTzpKBeotdVsTEcxsSA/i3EVM7gQAj0rU27OLAxCjzlj15IWY7bg==}
 
-  '@rolldown/pluginutils@1.0.0-rc.7':
-    resolution: {integrity: sha512-qujRfC8sFVInYSPPMLQByRh7zhwkGFS4+tyMQ83srV1qrxL4g8E2tyxVVyxd0+8QeBM1mIk9KbWxkegRr76XzA==}
+  '@rolldown/pluginutils@1.0.1':
+    resolution: {integrity: sha512-2j9bGt5Jh8hj+vPtgzPtl72j0yRxHAyumoo6TNfAjsLB04UtpSvPbPcDcBMxz7n+9CYB0c1GxQFxYRg2jimqGw==}
 
   '@rollup/pluginutils@4.2.1':
     resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
@@ -1478,8 +1478,8 @@ packages:
     resolution: {integrity: sha512-Fw28YZpRnA3cAHHDlkt7xQHiJ0fcL+NRcIqsocZQUSmbzeIKRpwttJjik5ZGanXP+vlA4SbTg+AbA3bP363l+w==}
     engines: {node: '>= 20'}
 
-  '@vitejs/plugin-react@6.0.1':
-    resolution: {integrity: sha512-l9X/E3cDb+xY3SWzlG1MOGt2usfEHGMNIaegaUGFsLkb3RCn/k8/TOXBcab+OndDI4TBtktT8/9BwwW8Vi9KUQ==}
+  '@vitejs/plugin-react@6.0.2':
+    resolution: {integrity: sha512-DlSMqo4WhThw4vB8Mpn0Woe9J+Jfq1geJ61AKW0QEgLzGMNwtIMdxbDUzLxcun8W7NbJO0e2Jg/Nxm3cCSVzzg==}
     engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
       '@rolldown/plugin-babel': ^0.1.7 || ^0.2.0
@@ -4784,7 +4784,7 @@ snapshots:
   '@img/sharp-win32-x64@0.34.5':
     optional: true
 
-  '@inkjs/ui@2.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.5))':
+  '@inkjs/ui@2.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.3))':
     dependencies:
       chalk: 5.6.2
       cli-spinners: 3.4.0
@@ -5383,7 +5383,7 @@ snapshots:
 
   '@rolldown/pluginutils@1.0.0-rc.17': {}
 
-  '@rolldown/pluginutils@1.0.0-rc.7': {}
+  '@rolldown/pluginutils@1.0.1': {}
 
   '@rollup/pluginutils@4.2.1':
     dependencies:
@@ -5588,9 +5588,9 @@ snapshots:
 
   '@vercel/oidc@3.1.0': {}
 
-  '@vitejs/plugin-react@6.0.1(vite@8.0.10(@types/node@25.6.2)(esbuild@0.27.2)(sass@1.99.0)(yaml@2.8.1))':
+  '@vitejs/plugin-react@6.0.2(vite@8.0.10(@types/node@25.6.2)(esbuild@0.27.2)(sass@1.99.0)(yaml@2.8.1))':
     dependencies:
-      '@rolldown/pluginutils': 1.0.0-rc.7
+      '@rolldown/pluginutils': 1.0.1
       vite: 8.0.10(@types/node@25.6.2)(esbuild@0.27.2)(sass@1.99.0)(yaml@2.8.1)
 
   '@xmldom/xmldom@0.8.13': {}
@@ -6765,7 +6765,7 @@ snapshots:
       blacklist: 1.1.4
       prop-types: 15.8.1
 
-  ink-spinner@5.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.5))(react@19.2.3):
+  ink-spinner@5.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.3))(react@19.2.3):
     dependencies:
       cli-spinners: 2.9.2
       ink: 4.2.0(@types/react@19.2.14)(react@19.2.3)
@@ -7168,7 +7168,7 @@ snapshots:
       '@biomejs/wasm-nodejs': 2.4.6
       '@datocms/cma-client-node': 4.0.1
       '@gitbeaker/rest': 39.34.3
-      '@inkjs/ui': 2.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.5))
+      '@inkjs/ui': 2.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.3))
       '@inquirer/prompts': 7.8.0(@types/node@25.6.2)
       '@lingo.dev/_compiler': 0.12.3
       '@lingo.dev/_locales': 0.3.3
@@ -7209,7 +7209,7 @@ snapshots:
       ini: 5.0.0
       ink: 4.2.0(@types/react@19.2.14)(react@19.2.3)
       ink-progress-bar: 3.0.0
-      ink-spinner: 5.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.5))(react@19.2.3)
+      ink-spinner: 5.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.3))(react@19.2.3)
       inquirer: 12.6.0(@types/node@25.6.2)
       interactive-commander: 0.5.194(@types/node@25.6.2)
       is-url: 1.2.4
