@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@uidotdev/usehooks':
         specifier: ^2.4
-        version: 2.4.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+        version: 2.4.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@vitejs/plugin-react':
         specifier: ^6.0.0
         version: 6.0.2(vite@8.0.13(@types/node@25.6.2)(esbuild@0.27.2)(sass@1.99.0)(yaml@2.8.1))
@@ -34,34 +34,34 @@ importers:
         version: 6.15.2
       react:
         specifier: ^19.0.0
-        version: 19.2.5
+        version: 19.2.6
       react-bootstrap:
         specifier: ^2.10
-        version: 2.10.10(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+        version: 2.10.10(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       react-colorful:
         specifier: ^5.6
-        version: 5.6.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+        version: 5.6.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       react-dom:
         specifier: ^19.0.0
-        version: 19.2.5(react@19.2.5)
+        version: 19.2.6(react@19.2.6)
       react-i18next:
         specifier: ^17.0.0
-        version: 17.0.8(i18next@26.0.10(typescript@6.0.3))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@6.0.3)
+        version: 17.0.8(i18next@26.0.10(typescript@6.0.3))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(typescript@6.0.3)
       react-responsive-masonry:
         specifier: ^2.2.0
         version: 2.7.2
       react-router:
         specifier: ^7.10.1
-        version: 7.14.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+        version: 7.14.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       react-toastify:
         specifier: ^11.0.0
-        version: 11.1.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+        version: 11.1.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       sass:
         specifier: ^1.70
         version: 1.99.0
       use-prefers-color-scheme:
         specifier: ^1.1.3
-        version: 1.1.3(react@19.2.5)
+        version: 1.1.3(react@19.2.6)
       vite:
         specifier: ^8.0.0
         version: 8.0.13(@types/node@25.6.2)(esbuild@0.27.2)(sass@1.99.0)(yaml@2.8.1)
@@ -77,10 +77,10 @@ importers:
         version: 6.15.1
       '@types/react':
         specifier: ^19.2.13
-        version: 19.2.14
+        version: 19.2.15
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.3(@types/react@19.2.14)
+        version: 19.2.3(@types/react@19.2.15)
       '@types/react-responsive-masonry':
         specifier: ^2.7.0
         version: 2.7.0
@@ -101,7 +101,7 @@ importers:
         version: 17.5.0
       lingo.dev:
         specifier: ^0.133.2
-        version: 0.133.12(@types/node@25.6.2)(@types/react@19.2.14)(encoding@0.1.13)(next@15.3.8(@opentelemetry/api@1.9.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(sass@1.99.0))
+        version: 0.133.12(@types/node@25.6.2)(@types/react@19.2.15)(encoding@0.1.13)(next@15.3.8(@opentelemetry/api@1.9.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(sass@1.99.0))
       typescript:
         specifier: ^6.0.0
         version: 6.0.3
@@ -1383,8 +1383,8 @@ packages:
     peerDependencies:
       '@types/react': '*'
 
-  '@types/react@19.2.14':
-    resolution: {integrity: sha512-ilcTH/UniCkMdtexkoCN0bI7pMcJDvmQFPvuPvmEaYA/NSfFTAgdUSLAoVjaRJm7+6PvcM+q1zYOwS4wTYMF9w==}
+  '@types/react@19.2.15':
+    resolution: {integrity: sha512-eRwcGNHve+E8qtEQSSRl6urh+rFop4v8gm6O8rGv25CodbvFdLjA1vVQ1KkiFE0w0UPOnb8tDiFKL5lp0rtY5Q==}
 
   '@types/tinycolor2@1.4.6':
     resolution: {integrity: sha512-iEN8J0BoMnsWBqjVbWH/c0G0Hh7O21lpR2/+PrvAVgWdzL7eexIFm4JN/Wn10PTcmNdtS6U67r499mlWMXOxNw==}
@@ -3494,10 +3494,10 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
-  react-dom@19.2.5:
-    resolution: {integrity: sha512-J5bAZz+DXMMwW/wV3xzKke59Af6CHY7G4uYLN1OvBcKEsWOs4pQExj86BBKamxl/Ik5bx9whOrvBlSDfWzgSag==}
+  react-dom@19.2.6:
+    resolution: {integrity: sha512-0prMI+hvBbPjsWnxDLxlCGyM8PN6UuWjEUCYmZhO67xIV9Xasa/r/vDnq+Xyq4Lo27g8QSbO5YzARu0D1Sps3g==}
     peerDependencies:
-      react: ^19.2.5
+      react: ^19.2.6
 
   react-i18next@17.0.8:
     resolution: {integrity: sha512-0ooKbGLU8JXhe1zwpQUWIeXSgLPOfwJmgheWRIUpcoA0CpyabpGhayjdG+/eA5esC1AQ8h2jWpXjJfzQzeDOCw==}
@@ -3556,8 +3556,8 @@ packages:
     resolution: {integrity: sha512-Ku/hhYbVjOQnXDZFv2+RibmLFGwFdeeKHFcOTlrt7xplBnya5OGn/hIRDsqDiSUcfORsDC7MPxwork8jBwsIWA==}
     engines: {node: '>=0.10.0'}
 
-  react@19.2.5:
-    resolution: {integrity: sha512-llUJLzz1zTUBrskt2pwZgLq59AemifIftw4aB7JxOqf1HY2FDaGDxgwpAPVzHU1kdWabH7FauP4i1oEeer2WCA==}
+  react@19.2.6:
+    resolution: {integrity: sha512-sfWGGfavi0xr8Pg0sVsyHMAOziVYKgPLNrS7ig+ivMNb3wbCBw3KxtflsGBAwD3gYQlE/AEZsTLgToRrSCjb0Q==}
     engines: {node: '>=0.10.0'}
 
   readable-stream@4.7.0:
@@ -4776,13 +4776,13 @@ snapshots:
   '@img/sharp-win32-x64@0.34.5':
     optional: true
 
-  '@inkjs/ui@2.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.3))':
+  '@inkjs/ui@2.0.0(ink@4.2.0(@types/react@19.2.15)(react@19.2.3))':
     dependencies:
       chalk: 5.6.2
       cli-spinners: 3.4.0
       deepmerge: 4.3.1
       figures: 6.1.0
-      ink: 4.2.0(@types/react@19.2.14)(react@19.2.3)
+      ink: 4.2.0(@types/react@19.2.15)(react@19.2.3)
 
   '@inquirer/ansi@1.0.2': {}
 
@@ -4967,11 +4967,11 @@ snapshots:
     dependencies:
       iso-639-3: 3.0.1
 
-  '@lingo.dev/_react@0.7.6(next@15.3.8(@opentelemetry/api@1.9.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(sass@1.99.0))':
+  '@lingo.dev/_react@0.7.6(next@15.3.8(@opentelemetry/api@1.9.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(sass@1.99.0))':
     dependencies:
       js-cookie: 3.0.5
       lodash: 4.17.21
-      next: 15.3.8(@opentelemetry/api@1.9.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(sass@1.99.0)
+      next: 15.3.8(@opentelemetry/api@1.9.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(sass@1.99.0)
 
   '@lingo.dev/_sdk@0.16.3':
     dependencies:
@@ -4991,11 +4991,11 @@ snapshots:
       '@lingo.dev/_locales': 0.3.3
       zod: 4.1.12
 
-  '@markdoc/markdoc@0.5.4(@types/react@19.2.14)(react@19.2.3)':
+  '@markdoc/markdoc@0.5.4(@types/react@19.2.15)(react@19.2.3)':
     optionalDependencies:
       '@types/linkify-it': 3.0.5
       '@types/markdown-it': 12.2.3
-      '@types/react': 19.2.14
+      '@types/react': 19.2.15
       react: 19.2.3
 
   '@modelcontextprotocol/sdk@1.22.0':
@@ -5295,33 +5295,33 @@ snapshots:
     dependencies:
       cross-spawn: 7.0.6
 
-  '@react-aria/ssr@3.9.10(react@19.2.5)':
+  '@react-aria/ssr@3.9.10(react@19.2.6)':
     dependencies:
       '@swc/helpers': 0.5.17
-      react: 19.2.5
+      react: 19.2.6
 
-  '@restart/hooks@0.4.16(react@19.2.5)':
+  '@restart/hooks@0.4.16(react@19.2.6)':
     dependencies:
       dequal: 2.0.3
-      react: 19.2.5
+      react: 19.2.6
 
-  '@restart/hooks@0.5.1(react@19.2.5)':
+  '@restart/hooks@0.5.1(react@19.2.6)':
     dependencies:
       dequal: 2.0.3
-      react: 19.2.5
+      react: 19.2.6
 
-  '@restart/ui@1.9.4(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
+  '@restart/ui@1.9.4(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
     dependencies:
       '@babel/runtime': 7.28.4
       '@popperjs/core': 2.11.8
-      '@react-aria/ssr': 3.9.10(react@19.2.5)
-      '@restart/hooks': 0.5.1(react@19.2.5)
+      '@react-aria/ssr': 3.9.10(react@19.2.6)
+      '@restart/hooks': 0.5.1(react@19.2.6)
       '@types/warning': 3.0.3
       dequal: 2.0.3
       dom-helpers: 5.2.1
-      react: 19.2.5
-      react-dom: 19.2.5(react@19.2.5)
-      uncontrollable: 8.0.4(react@19.2.5)
+      react: 19.2.6
+      react-dom: 19.2.6(react@19.2.6)
+      uncontrollable: 8.0.4(react@19.2.6)
       warning: 4.0.3
 
   '@rolldown/binding-android-arm64@1.0.1':
@@ -5452,19 +5452,19 @@ snapshots:
 
   '@types/qs@6.15.1': {}
 
-  '@types/react-dom@19.2.3(@types/react@19.2.14)':
+  '@types/react-dom@19.2.3(@types/react@19.2.15)':
     dependencies:
-      '@types/react': 19.2.14
+      '@types/react': 19.2.15
 
   '@types/react-responsive-masonry@2.7.0':
     dependencies:
-      '@types/react': 19.2.14
+      '@types/react': 19.2.15
 
-  '@types/react-transition-group@4.4.12(@types/react@19.2.14)':
+  '@types/react-transition-group@4.4.12(@types/react@19.2.15)':
     dependencies:
-      '@types/react': 19.2.14
+      '@types/react': 19.2.15
 
-  '@types/react@19.2.14':
+  '@types/react@19.2.15':
     dependencies:
       csstype: 3.2.3
 
@@ -5569,10 +5569,10 @@ snapshots:
       '@typescript-eslint/types': 8.59.4
       eslint-visitor-keys: 5.0.1
 
-  '@uidotdev/usehooks@2.4.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
+  '@uidotdev/usehooks@2.4.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
     dependencies:
-      react: 19.2.5
-      react-dom: 19.2.5(react@19.2.5)
+      react: 19.2.6
+      react-dom: 19.2.6(react@19.2.6)
 
   '@ungap/structured-clone@1.3.1': {}
 
@@ -6755,13 +6755,13 @@ snapshots:
       blacklist: 1.1.4
       prop-types: 15.8.1
 
-  ink-spinner@5.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.3))(react@19.2.3):
+  ink-spinner@5.0.0(ink@4.2.0(@types/react@19.2.15)(react@19.2.3))(react@19.2.3):
     dependencies:
       cli-spinners: 2.9.2
-      ink: 4.2.0(@types/react@19.2.14)(react@19.2.3)
+      ink: 4.2.0(@types/react@19.2.15)(react@19.2.3)
       react: 19.2.3
 
-  ink@4.2.0(@types/react@19.2.14)(react@19.2.3):
+  ink@4.2.0(@types/react@19.2.15)(react@19.2.3):
     dependencies:
       ansi-escapes: 6.2.1
       auto-bind: 5.0.1
@@ -6789,7 +6789,7 @@ snapshots:
       ws: 8.20.0
       yoga-wasm-web: 0.3.3
     optionalDependencies:
-      '@types/react': 19.2.14
+      '@types/react': 19.2.15
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -7144,7 +7144,7 @@ snapshots:
       lightningcss-win32-arm64-msvc: 1.32.0
       lightningcss-win32-x64-msvc: 1.32.0
 
-  lingo.dev@0.133.12(@types/node@25.6.2)(@types/react@19.2.14)(encoding@0.1.13)(next@15.3.8(@opentelemetry/api@1.9.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(sass@1.99.0)):
+  lingo.dev@0.133.12(@types/node@25.6.2)(@types/react@19.2.15)(encoding@0.1.13)(next@15.3.8(@opentelemetry/api@1.9.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(sass@1.99.0)):
     dependencies:
       '@ai-sdk/anthropic': 3.0.9(zod@4.1.12)
       '@ai-sdk/google': 3.0.6(zod@4.1.12)
@@ -7158,14 +7158,14 @@ snapshots:
       '@biomejs/wasm-nodejs': 2.4.6
       '@datocms/cma-client-node': 4.0.1
       '@gitbeaker/rest': 39.34.3
-      '@inkjs/ui': 2.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.3))
+      '@inkjs/ui': 2.0.0(ink@4.2.0(@types/react@19.2.15)(react@19.2.3))
       '@inquirer/prompts': 7.8.0(@types/node@25.6.2)
       '@lingo.dev/_compiler': 0.12.3
       '@lingo.dev/_locales': 0.3.3
-      '@lingo.dev/_react': 0.7.6(next@15.3.8(@opentelemetry/api@1.9.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(sass@1.99.0))
+      '@lingo.dev/_react': 0.7.6(next@15.3.8(@opentelemetry/api@1.9.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(sass@1.99.0))
       '@lingo.dev/_sdk': 0.16.3
       '@lingo.dev/_spec': 0.49.1
-      '@markdoc/markdoc': 0.5.4(@types/react@19.2.14)(react@19.2.3)
+      '@markdoc/markdoc': 0.5.4(@types/react@19.2.15)(react@19.2.3)
       '@modelcontextprotocol/sdk': 1.22.0
       '@openrouter/ai-sdk-provider': 6.0.0-alpha.1(zod@4.1.12)
       '@paralleldrive/cuid2': 2.2.2
@@ -7197,9 +7197,9 @@ snapshots:
       gray-matter: 4.0.3
       htmlparser2: 10.0.0
       ini: 5.0.0
-      ink: 4.2.0(@types/react@19.2.14)(react@19.2.3)
+      ink: 4.2.0(@types/react@19.2.15)(react@19.2.3)
       ink-progress-bar: 3.0.0
-      ink-spinner: 5.0.0(ink@4.2.0(@types/react@19.2.14)(react@19.2.3))(react@19.2.3)
+      ink-spinner: 5.0.0(ink@4.2.0(@types/react@19.2.15)(react@19.2.3))(react@19.2.3)
       inquirer: 12.6.0(@types/node@25.6.2)
       interactive-commander: 0.5.194(@types/node@25.6.2)
       is-url: 1.2.4
@@ -7799,7 +7799,7 @@ snapshots:
 
   negotiator@1.0.0: {}
 
-  next@15.3.8(@opentelemetry/api@1.9.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(sass@1.99.0):
+  next@15.3.8(@opentelemetry/api@1.9.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(sass@1.99.0):
     dependencies:
       '@next/env': 15.3.8
       '@swc/counter': 0.1.3
@@ -7807,9 +7807,9 @@ snapshots:
       busboy: 1.6.0
       caniuse-lite: 1.0.30001793
       postcss: 8.4.31
-      react: 19.2.5
-      react-dom: 19.2.5(react@19.2.5)
-      styled-jsx: 5.1.6(react@19.2.5)
+      react: 19.2.6
+      react-dom: 19.2.6(react@19.2.6)
+      styled-jsx: 5.1.6(react@19.2.6)
     optionalDependencies:
       '@next/swc-darwin-arm64': 15.3.5
       '@next/swc-darwin-x64': 15.3.5
@@ -8061,9 +8061,9 @@ snapshots:
 
   process@0.11.10: {}
 
-  prop-types-extra@1.1.1(react@19.2.5):
+  prop-types-extra@1.1.1(react@19.2.6):
     dependencies:
-      react: 19.2.5
+      react: 19.2.6
       react-is: 16.13.1
       warning: 4.0.3
 
@@ -8097,45 +8097,45 @@ snapshots:
       iconv-lite: 0.7.2
       unpipe: 1.0.0
 
-  react-bootstrap@2.10.10(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
+  react-bootstrap@2.10.10(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
     dependencies:
       '@babel/runtime': 7.28.4
-      '@restart/hooks': 0.4.16(react@19.2.5)
-      '@restart/ui': 1.9.4(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+      '@restart/hooks': 0.4.16(react@19.2.6)
+      '@restart/ui': 1.9.4(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@types/prop-types': 15.7.15
-      '@types/react-transition-group': 4.4.12(@types/react@19.2.14)
+      '@types/react-transition-group': 4.4.12(@types/react@19.2.15)
       classnames: 2.5.1
       dom-helpers: 5.2.1
       invariant: 2.2.4
       prop-types: 15.8.1
-      prop-types-extra: 1.1.1(react@19.2.5)
-      react: 19.2.5
-      react-dom: 19.2.5(react@19.2.5)
-      react-transition-group: 4.4.5(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
-      uncontrollable: 7.2.1(react@19.2.5)
+      prop-types-extra: 1.1.1(react@19.2.6)
+      react: 19.2.6
+      react-dom: 19.2.6(react@19.2.6)
+      react-transition-group: 4.4.5(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      uncontrollable: 7.2.1(react@19.2.6)
       warning: 4.0.3
     optionalDependencies:
-      '@types/react': 19.2.14
+      '@types/react': 19.2.15
 
-  react-colorful@5.6.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
+  react-colorful@5.6.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
     dependencies:
-      react: 19.2.5
-      react-dom: 19.2.5(react@19.2.5)
+      react: 19.2.6
+      react-dom: 19.2.6(react@19.2.6)
 
-  react-dom@19.2.5(react@19.2.5):
+  react-dom@19.2.6(react@19.2.6):
     dependencies:
-      react: 19.2.5
+      react: 19.2.6
       scheduler: 0.27.0
 
-  react-i18next@17.0.8(i18next@26.0.10(typescript@6.0.3))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@6.0.3):
+  react-i18next@17.0.8(i18next@26.0.10(typescript@6.0.3))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(typescript@6.0.3):
     dependencies:
       '@babel/runtime': 7.29.2
       html-parse-stringify: 3.0.1
       i18next: 26.0.10(typescript@6.0.3)
-      react: 19.2.5
-      use-sync-external-store: 1.6.0(react@19.2.5)
+      react: 19.2.6
+      use-sync-external-store: 1.6.0(react@19.2.6)
     optionalDependencies:
-      react-dom: 19.2.5(react@19.2.5)
+      react-dom: 19.2.6(react@19.2.6)
       typescript: 6.0.3
 
   react-is@16.13.1: {}
@@ -8152,32 +8152,32 @@ snapshots:
     dependencies:
       prop-types: 15.8.1
 
-  react-router@7.14.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
+  react-router@7.14.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
     dependencies:
       cookie: 1.1.1
-      react: 19.2.5
+      react: 19.2.6
       set-cookie-parser: 2.7.2
     optionalDependencies:
-      react-dom: 19.2.5(react@19.2.5)
+      react-dom: 19.2.6(react@19.2.6)
 
-  react-toastify@11.1.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
+  react-toastify@11.1.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
     dependencies:
       clsx: 2.1.1
-      react: 19.2.5
-      react-dom: 19.2.5(react@19.2.5)
+      react: 19.2.6
+      react-dom: 19.2.6(react@19.2.6)
 
-  react-transition-group@4.4.5(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
+  react-transition-group@4.4.5(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
     dependencies:
       '@babel/runtime': 7.28.4
       dom-helpers: 5.2.1
       loose-envify: 1.4.0
       prop-types: 15.8.1
-      react: 19.2.5
-      react-dom: 19.2.5(react@19.2.5)
+      react: 19.2.6
+      react-dom: 19.2.6(react@19.2.6)
 
   react@19.2.3: {}
 
-  react@19.2.5: {}
+  react@19.2.6: {}
 
   readable-stream@4.7.0:
     dependencies:
@@ -8656,10 +8656,10 @@ snapshots:
 
   strnum@2.3.0: {}
 
-  styled-jsx@5.1.6(react@19.2.5):
+  styled-jsx@5.1.6(react@19.2.6):
     dependencies:
       client-only: 0.0.1
-      react: 19.2.5
+      react: 19.2.6
 
   supports-color@7.2.0:
     dependencies:
@@ -8795,17 +8795,17 @@ snapshots:
       has-symbols: 1.1.0
       which-boxed-primitive: 1.1.1
 
-  uncontrollable@7.2.1(react@19.2.5):
+  uncontrollable@7.2.1(react@19.2.6):
     dependencies:
       '@babel/runtime': 7.28.4
-      '@types/react': 19.2.14
+      '@types/react': 19.2.15
       invariant: 2.2.4
-      react: 19.2.5
+      react: 19.2.6
       react-lifecycles-compat: 3.0.4
 
-  uncontrollable@8.0.4(react@19.2.5):
+  uncontrollable@8.0.4(react@19.2.6):
     dependencies:
-      react: 19.2.5
+      react: 19.2.6
 
   undici-types@7.19.2: {}
 
@@ -8875,13 +8875,13 @@ snapshots:
 
   url-template@2.0.8: {}
 
-  use-prefers-color-scheme@1.1.3(react@19.2.5):
+  use-prefers-color-scheme@1.1.3(react@19.2.6):
     dependencies:
-      react: 19.2.5
+      react: 19.2.6
 
-  use-sync-external-store@1.6.0(react@19.2.5):
+  use-sync-external-store@1.6.0(react@19.2.6):
     dependencies:
-      react: 19.2.5
+      react: 19.2.6
 
   uuid@9.0.1: {}
 
