@@ -62,7 +62,7 @@
         "eslint-plugin-jsdoc": "^62.0.0",
         "eslint-plugin-react": "^7.37.4",
         "globals": "^17.0.0",
-        "lingo.dev": "^0.133.2",
+        "lingo.dev": "^0.136.0",
         "typescript": "^6.0.0",
         "typescript-eslint": "^8.54.0",
         "vite-plugin-eslint": "^1.8.1"
@@ -80,5 +80,5 @@
             "last 1 safari version"
         ]
     },
-    "packageManager": "pnpm@10.33.4+sha512.1c67b3b359b2d408119ba1ed289f34b8fc3c6873412bec6fd264fbdc82489e510fcbecb9ce9d22dae7f3b76269d8441046014bdca53b9979cd7a561ad631b800"
+    "packageManager": "pnpm@10.34.1+sha512.b58fbde6dca66a929538021581f648b4570b6ca19b18e7cbd7f2c07a7b24454155388dacdf08f2af3678e88a6d1fe04f9d609df24bf51735a060ea041b374ab7"
 }
