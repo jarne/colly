@@ -1,5 +1,4 @@
-onlyBuiltDependencies:
-  - '@openrouter/sdk'
-  - '@parcel/watcher'
-  - esbuild
-  - sharp
+allowBuilds:
+  '@openrouter/sdk': true
+  '@parcel/watcher': true
+  sharp: true
