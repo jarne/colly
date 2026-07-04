@@ -101,7 +101,7 @@ importers:
         version: 17.7.0
       lingo.dev:
         specifier: ^0.137.0
-        version: 0.137.7(@types/node@25.9.4)(@types/react@19.2.17)(encoding@0.1.13)(next@15.5.19(@opentelemetry/api@1.9.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(sass@1.101.0))(react@19.2.7)
+        version: 0.137.8(@types/node@25.9.4)(@types/react@19.2.17)(encoding@0.1.13)(next@15.5.19(@opentelemetry/api@1.9.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(sass@1.101.0))(react@19.2.7)
       typescript:
         specifier: ^6.0.0
         version: 6.0.3
@@ -286,6 +286,9 @@ packages:
 
   '@emnapi/runtime@1.11.1':
     resolution: {integrity: sha512-vgj7R3y3Wgx24IQaGPA/R6YFXLHVMOZ0uVEyIQPaWs+rd1AzfEMXlAC22FYwO1XkKR6NPsq7mUandH8oIRdZFw==}
+
+  '@emnapi/runtime@1.11.2':
+    resolution: {integrity: sha512-kyOl3X0DuTiT1h2ft8r2fYO8JYtU9a9Xis/zBSiGArNaagCOWx90N1k2wxp18czFDH+OgcWGb5ZP/XMt3dcyPA==}
 
   '@emnapi/wasi-threads@1.2.2':
     resolution: {integrity: sha512-c95qOXkHdydNKhscBTebqEC1CVAZpyqOfVfBzQ1qgzyl3gfeldUjIggDbIZgDKsHLgnsM+igH7TJ/eAasaVuMA==}
@@ -684,8 +687,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@lingo.dev/_compiler@0.12.9':
-    resolution: {integrity: sha512-11hNseQ1KMYVYhNTklPZZ6TQwUYVZsYWpIbNbU8UElrMhAZkLHRsnVqHyFF1AkENqgLXdEB7GZdeUWZSiUW1fg==}
+  '@lingo.dev/_compiler@0.12.10':
+    resolution: {integrity: sha512-upEprTLg4ABtrYTVqdippW7UNki0eBjweXAMgBKvq4cHg8GjDOdwkQ2kt7BBT656NtPIK9vGpZ4JCSWdpE77Kw==}
 
   '@lingo.dev/_locales@0.3.3':
     resolution: {integrity: sha512-50blm6NdDEM9P/GtWmyrfuxILe+9s3g+wMmETQafV97Geh/OQeW8Ej/8XcozZBHNRLIrCsUn53RS+x5kczAM0Q==}
@@ -695,11 +698,11 @@ packages:
     peerDependencies:
       next: '>=15.5.19 <16'
 
-  '@lingo.dev/_sdk@0.17.0':
-    resolution: {integrity: sha512-WtzTgpBlFFRpnCE0G+OcBvM0xz4g3Ltzpq9kJuL8ukZXasTCF99sHOSvUHmHspdNXW98jlNUeresTBPGiTuyhg==}
+  '@lingo.dev/_sdk@0.17.1':
+    resolution: {integrity: sha512-W2BM1a1T/xUlhLmyfKeM7Rw9irp5NCsa73vteQw5MlzodohskoYNamy9stBxfpClhoIWveHfAgI2w4mPkmqKyg==}
 
-  '@lingo.dev/_spec@0.49.1':
-    resolution: {integrity: sha512-kZ0Ys+aTyEwxRpfyUpVRCjQp4HFfK8FlmoPyKHPIoZqZoRCb8JnSvY13znKtr5OTa2nsafIdKbAZnXzuT9ORkQ==}
+  '@lingo.dev/_spec@0.49.2':
+    resolution: {integrity: sha512-sLOEOavkhDgFdWWZt6VIWKd48KDa0MJnP7PEZ7d4kcdEMb4aQW8f6kzt6WeP0IABrBG7WZn0lG0umW361RzPpQ==}
 
   '@markdoc/markdoc@0.5.4':
     resolution: {integrity: sha512-36YFNlqFk//gVNGm5xZaTWVwbAVF2AOmVjf1tiUrS6tCoD/YSkVy2E3CkAfhc5MlKcjparL/QFHCopxL4zRyaQ==}
@@ -1950,8 +1953,8 @@ packages:
   fast-levenshtein@2.0.6:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
 
-  fast-xml-builder@1.2.0:
-    resolution: {integrity: sha512-00aAWieqff+ZJhsXA4g1g7M8k+7AYoMUUHF+/zFb5U6Uv/P0Vl4QZo84/IcufzYalLuEj9928bXN9PbbFzMF0Q==}
+  fast-xml-builder@1.2.1:
+    resolution: {integrity: sha512-tPb5TTWfgfVx5BNSi2xV0eLr89POeXXn0dXIsCJ9m1narrWxeIyx6je9d7Rce/3NyXLbvuQmLkxq+RuxMWejvw==}
 
   fast-xml-parser@5.7.0:
     resolution: {integrity: sha512-MTcrUoRQ1GSQ9iG3QJzBGquYYYeA7piZaJoIWbPFGbRn6Jj6z7xgoAyi4DrZX4y2ZIQQBF59gc/zmvvejjgoFQ==}
@@ -2531,8 +2534,8 @@ packages:
     resolution: {integrity: sha512-NXYBzinNrblfraPGyrbPoD19C1h9lfI/1mzgWYvXUTe414Gz/X1FD2XBZSZM7rRTrMA8JL3OtAaGifrIKhQ5yQ==}
     engines: {node: '>= 12.0.0'}
 
-  lingo.dev@0.137.7:
-    resolution: {integrity: sha512-Oin+c6Wci3ntTC551uWzS6AAYiJkGecDBh1qQDIVV/h4EWR2TAXUR600fHIHBv/V0GwoALtEwStG4B0sbR1wmA==}
+  lingo.dev@0.137.8:
+    resolution: {integrity: sha512-H3rIrJ2LpmfLTzHmtx0r0tQRWWVtYRuQcDRlk7+J+MDm6+nB5mK2+zzaTZgB8Y/BmqL/ZQ1IIg7rMMkr6QPeIw==}
     engines: {node: '>=18'}
     hasBin: true
     peerDependencies:
@@ -2977,6 +2980,10 @@ packages:
 
   picomatch@4.0.4:
     resolution: {integrity: sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A==}
+    engines: {node: '>=12'}
+
+  picomatch@4.0.5:
+    resolution: {integrity: sha512-RvwwcruNjI1ncT5xRakeyS9Lf8lcItv34KD+aif+VH9kduAyfYBipGh12274xtenIPZ119/R9BdTBa8gAwSh0A==}
     engines: {node: '>=12'}
 
   plist@3.1.0:
@@ -3769,64 +3776,64 @@ packages:
     resolution: {integrity: sha512-U/PBtDf35ff0D8X8D0jfdzHYEPFxAI7jJlxZXwCSez5M3190m+QobIfh+sWDWSHMCWWJN2AWamkegn6vr6YBTw==}
     engines: {node: '>=18'}
 
-  zod@4.1.12:
-    resolution: {integrity: sha512-JInaHOamG8pt5+Ey8kGmdcAcg3OL9reK8ltczgHTAwNhMys/6ThXHityHxVV2p3fkw/c+MAvBHFVYHFZDmjMCQ==}
+  zod@4.4.3:
+    resolution: {integrity: sha512-ytENFjIJFl2UwYglde2jchW2Hwm4GJFLDiSXWdTrJQBIN9Fcyp7n4DhxJEiWNAJMV1/BqWfW/kkg71UDcHJyTQ==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
 snapshots:
 
-  '@ai-sdk/anthropic@3.0.9(zod@4.1.12)':
+  '@ai-sdk/anthropic@3.0.9(zod@4.4.3)':
     dependencies:
       '@ai-sdk/provider': 3.0.2
-      '@ai-sdk/provider-utils': 4.0.4(zod@4.1.12)
-      zod: 4.1.12
+      '@ai-sdk/provider-utils': 4.0.4(zod@4.4.3)
+      zod: 4.4.3
 
-  '@ai-sdk/gateway@3.0.10(zod@4.1.12)':
+  '@ai-sdk/gateway@3.0.10(zod@4.4.3)':
     dependencies:
       '@ai-sdk/provider': 3.0.2
-      '@ai-sdk/provider-utils': 4.0.4(zod@4.1.12)
+      '@ai-sdk/provider-utils': 4.0.4(zod@4.4.3)
       '@vercel/oidc': 3.1.0
-      zod: 4.1.12
+      zod: 4.4.3
 
-  '@ai-sdk/google@3.0.6(zod@4.1.12)':
+  '@ai-sdk/google@3.0.6(zod@4.4.3)':
     dependencies:
       '@ai-sdk/provider': 3.0.2
-      '@ai-sdk/provider-utils': 4.0.4(zod@4.1.12)
-      zod: 4.1.12
+      '@ai-sdk/provider-utils': 4.0.4(zod@4.4.3)
+      zod: 4.4.3
 
-  '@ai-sdk/groq@3.0.4(zod@4.1.12)':
+  '@ai-sdk/groq@3.0.4(zod@4.4.3)':
     dependencies:
       '@ai-sdk/provider': 3.0.2
-      '@ai-sdk/provider-utils': 4.0.4(zod@4.1.12)
-      zod: 4.1.12
+      '@ai-sdk/provider-utils': 4.0.4(zod@4.4.3)
+      zod: 4.4.3
 
-  '@ai-sdk/mistral@3.0.5(zod@4.1.12)':
+  '@ai-sdk/mistral@3.0.5(zod@4.4.3)':
     dependencies:
       '@ai-sdk/provider': 3.0.2
-      '@ai-sdk/provider-utils': 4.0.4(zod@4.1.12)
-      zod: 4.1.12
+      '@ai-sdk/provider-utils': 4.0.4(zod@4.4.3)
+      zod: 4.4.3
 
-  '@ai-sdk/openai@3.0.7(zod@4.1.12)':
+  '@ai-sdk/openai@3.0.7(zod@4.4.3)':
     dependencies:
       '@ai-sdk/provider': 3.0.2
-      '@ai-sdk/provider-utils': 4.0.4(zod@4.1.12)
-      zod: 4.1.12
+      '@ai-sdk/provider-utils': 4.0.4(zod@4.4.3)
+      zod: 4.4.3
 
-  '@ai-sdk/provider-utils@4.0.35(zod@4.1.12)':
+  '@ai-sdk/provider-utils@4.0.35(zod@4.4.3)':
     dependencies:
       '@ai-sdk/provider': 3.0.13
       '@standard-schema/spec': 1.1.0
       eventsource-parser: 3.1.0
-      zod: 4.1.12
+      zod: 4.4.3
 
-  '@ai-sdk/provider-utils@4.0.4(zod@4.1.12)':
+  '@ai-sdk/provider-utils@4.0.4(zod@4.4.3)':
     dependencies:
       '@ai-sdk/provider': 3.0.2
       '@standard-schema/spec': 1.1.0
       eventsource-parser: 3.1.0
-      zod: 4.1.12
+      zod: 4.4.3
 
   '@ai-sdk/provider@3.0.13':
     dependencies:
@@ -3955,6 +3962,11 @@ snapshots:
     optional: true
 
   '@emnapi/runtime@1.11.1':
+    dependencies:
+      tslib: 2.8.1
+    optional: true
+
+  '@emnapi/runtime@1.11.2':
     dependencies:
       tslib: 2.8.1
     optional: true
@@ -4139,7 +4151,7 @@ snapshots:
 
   '@img/sharp-wasm32@0.34.5':
     dependencies:
-      '@emnapi/runtime': 1.11.1
+      '@emnapi/runtime': 1.11.2
     optional: true
 
   '@img/sharp-win32-arm64@0.34.5':
@@ -4309,21 +4321,21 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@lingo.dev/_compiler@0.12.9':
+  '@lingo.dev/_compiler@0.12.10':
     dependencies:
-      '@ai-sdk/anthropic': 3.0.9(zod@4.1.12)
-      '@ai-sdk/google': 3.0.6(zod@4.1.12)
-      '@ai-sdk/groq': 3.0.4(zod@4.1.12)
-      '@ai-sdk/mistral': 3.0.5(zod@4.1.12)
-      '@ai-sdk/openai': 3.0.7(zod@4.1.12)
+      '@ai-sdk/anthropic': 3.0.9(zod@4.4.3)
+      '@ai-sdk/google': 3.0.6(zod@4.4.3)
+      '@ai-sdk/groq': 3.0.4(zod@4.4.3)
+      '@ai-sdk/mistral': 3.0.5(zod@4.4.3)
+      '@ai-sdk/openai': 3.0.7(zod@4.4.3)
       '@babel/generator': 7.28.5
       '@babel/parser': 7.28.5
       '@babel/traverse': 7.28.5
       '@babel/types': 7.28.5
-      '@lingo.dev/_sdk': 0.17.0
-      '@lingo.dev/_spec': 0.49.1
-      '@openrouter/ai-sdk-provider': 6.0.0-alpha.1(zod@4.1.12)
-      ai: 6.0.25(zod@4.1.12)
+      '@lingo.dev/_sdk': 0.17.1
+      '@lingo.dev/_spec': 0.49.2
+      '@openrouter/ai-sdk-provider': 6.0.0-alpha.1(zod@4.4.3)
+      ai: 6.0.25(zod@4.4.3)
       dedent: 1.7.0
       dotenv: 16.4.5
       fast-xml-parser: 5.7.0
@@ -4331,10 +4343,10 @@ snapshots:
       lodash: 4.18.1
       node-machine-id: 1.1.12
       object-hash: 3.0.0
-      ollama-ai-provider-v2: 2.0.0(ai@6.0.25(zod@4.1.12))(zod@4.1.12)
+      ollama-ai-provider-v2: 2.0.0(ai@6.0.25(zod@4.4.3))(zod@4.4.3)
       posthog-node: 5.14.0
       unplugin: 2.3.11
-      zod: 4.1.12
+      zod: 4.4.3
     transitivePeerDependencies:
       - babel-plugin-macros
       - bufferutil
@@ -4352,23 +4364,23 @@ snapshots:
       lodash: 4.18.1
       next: 15.5.19(@opentelemetry/api@1.9.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(sass@1.101.0)
 
-  '@lingo.dev/_sdk@0.17.0':
+  '@lingo.dev/_sdk@0.17.1':
     dependencies:
-      '@lingo.dev/_spec': 0.49.1
+      '@lingo.dev/_spec': 0.49.2
       '@paralleldrive/cuid2': 2.2.2
       jsdom: 25.0.1
       posthog-node: 5.14.0
-      zod: 4.1.12
+      zod: 4.4.3
     transitivePeerDependencies:
       - bufferutil
       - canvas
       - supports-color
       - utf-8-validate
 
-  '@lingo.dev/_spec@0.49.1':
+  '@lingo.dev/_spec@0.49.2':
     dependencies:
       '@lingo.dev/_locales': 0.3.3
-      zod: 4.1.12
+      zod: 4.4.3
 
   '@markdoc/markdoc@0.5.4(@types/react@19.2.17)(react@19.2.7)':
     optionalDependencies:
@@ -4572,16 +4584,16 @@ snapshots:
       '@octokit/request-error': 6.1.8
       '@octokit/webhooks-methods': 5.1.1
 
-  '@openrouter/ai-sdk-provider@6.0.0-alpha.1(zod@4.1.12)':
+  '@openrouter/ai-sdk-provider@6.0.0-alpha.1(zod@4.4.3)':
     dependencies:
       '@ai-sdk/provider': 3.0.13
-      '@ai-sdk/provider-utils': 4.0.35(zod@4.1.12)
+      '@ai-sdk/provider-utils': 4.0.35(zod@4.4.3)
       '@openrouter/sdk': 0.3.16
-      zod: 4.1.12
+      zod: 4.4.3
 
   '@openrouter/sdk@0.3.16':
     dependencies:
-      zod: 4.1.12
+      zod: 4.4.3
 
   '@opentelemetry/api@1.9.0': {}
 
@@ -4960,13 +4972,13 @@ snapshots:
 
   agent-base@7.1.4: {}
 
-  ai@6.0.25(zod@4.1.12):
+  ai@6.0.25(zod@4.4.3):
     dependencies:
-      '@ai-sdk/gateway': 3.0.10(zod@4.1.12)
+      '@ai-sdk/gateway': 3.0.10(zod@4.4.3)
       '@ai-sdk/provider': 3.0.2
-      '@ai-sdk/provider-utils': 4.0.4(zod@4.1.12)
+      '@ai-sdk/provider-utils': 4.0.4(zod@4.4.3)
       '@opentelemetry/api': 1.9.0
-      zod: 4.1.12
+      zod: 4.4.3
 
   ajv@6.15.0:
     dependencies:
@@ -5658,7 +5670,7 @@ snapshots:
 
   fast-levenshtein@2.0.6: {}
 
-  fast-xml-builder@1.2.0:
+  fast-xml-builder@1.2.1:
     dependencies:
       path-expression-matcher: 1.6.1
       xml-naming: 0.1.0
@@ -5666,7 +5678,7 @@ snapshots:
   fast-xml-parser@5.7.0:
     dependencies:
       '@nodable/entities': 2.2.0
-      fast-xml-builder: 1.2.0
+      fast-xml-builder: 1.2.1
       path-expression-matcher: 1.6.1
       strnum: 2.4.1
 
@@ -6241,12 +6253,12 @@ snapshots:
       lightningcss-win32-arm64-msvc: 1.32.0
       lightningcss-win32-x64-msvc: 1.32.0
 
-  lingo.dev@0.137.7(@types/node@25.9.4)(@types/react@19.2.17)(encoding@0.1.13)(next@15.5.19(@opentelemetry/api@1.9.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(sass@1.101.0))(react@19.2.7):
+  lingo.dev@0.137.8(@types/node@25.9.4)(@types/react@19.2.17)(encoding@0.1.13)(next@15.5.19(@opentelemetry/api@1.9.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(sass@1.101.0))(react@19.2.7):
     dependencies:
-      '@ai-sdk/anthropic': 3.0.9(zod@4.1.12)
-      '@ai-sdk/google': 3.0.6(zod@4.1.12)
-      '@ai-sdk/mistral': 3.0.5(zod@4.1.12)
-      '@ai-sdk/openai': 3.0.7(zod@4.1.12)
+      '@ai-sdk/anthropic': 3.0.9(zod@4.4.3)
+      '@ai-sdk/google': 3.0.6(zod@4.4.3)
+      '@ai-sdk/mistral': 3.0.5(zod@4.4.3)
+      '@ai-sdk/openai': 3.0.7(zod@4.4.3)
       '@babel/generator': 7.28.5
       '@babel/parser': 7.28.5
       '@babel/traverse': 7.28.5
@@ -6256,16 +6268,16 @@ snapshots:
       '@datocms/cma-client-node': 5.5.3
       '@gitbeaker/rest': 39.34.3
       '@inquirer/prompts': 7.8.0(@types/node@25.9.4)
-      '@lingo.dev/_compiler': 0.12.9
+      '@lingo.dev/_compiler': 0.12.10
       '@lingo.dev/_locales': 0.3.3
       '@lingo.dev/_react': 0.7.9(next@15.5.19(@opentelemetry/api@1.9.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(sass@1.101.0))
-      '@lingo.dev/_sdk': 0.17.0
-      '@lingo.dev/_spec': 0.49.1
+      '@lingo.dev/_sdk': 0.17.1
+      '@lingo.dev/_spec': 0.49.2
       '@markdoc/markdoc': 0.5.4(@types/react@19.2.17)(react@19.2.7)
-      '@openrouter/ai-sdk-provider': 6.0.0-alpha.1(zod@4.1.12)
+      '@openrouter/ai-sdk-provider': 6.0.0-alpha.1(zod@4.4.3)
       '@paralleldrive/cuid2': 2.2.2
       '@types/ejs': 3.1.5
-      ai: 6.0.25(zod@4.1.12)
+      ai: 6.0.25(zod@4.4.3)
       bitbucket: 2.12.0(encoding@0.1.13)
       chalk: 5.6.2
       chokidar: 4.0.3
@@ -6306,7 +6318,7 @@ snapshots:
       node-webvtt: 1.9.4
       object-hash: 3.0.0
       octokit: 4.0.2
-      ollama-ai-provider-v2: 2.0.0(ai@6.0.25(zod@4.1.12))(zod@4.1.12)
+      ollama-ai-provider-v2: 2.0.0(ai@6.0.25(zod@4.4.3))(zod@4.4.3)
       open: 10.2.0
       ora: 8.1.1
       p-limit: 6.2.0
@@ -6331,7 +6343,7 @@ snapshots:
       xml2js: 0.6.2
       xpath: 0.0.34
       yaml: 2.9.0
-      zod: 4.1.12
+      zod: 4.4.3
     optionalDependencies:
       react: 19.2.7
     transitivePeerDependencies:
@@ -6970,12 +6982,12 @@ snapshots:
       '@octokit/request-error': 6.1.8
       '@octokit/types': 13.10.0
 
-  ollama-ai-provider-v2@2.0.0(ai@6.0.25(zod@4.1.12))(zod@4.1.12):
+  ollama-ai-provider-v2@2.0.0(ai@6.0.25(zod@4.4.3))(zod@4.4.3):
     dependencies:
       '@ai-sdk/provider': 3.0.13
-      '@ai-sdk/provider-utils': 4.0.35(zod@4.1.12)
-      ai: 6.0.25(zod@4.1.12)
-      zod: 4.1.12
+      '@ai-sdk/provider-utils': 4.0.35(zod@4.4.3)
+      ai: 6.0.25(zod@4.4.3)
+      zod: 4.4.3
 
   onetime@7.0.0:
     dependencies:
@@ -7084,6 +7096,8 @@ snapshots:
   picomatch@2.3.2: {}
 
   picomatch@4.0.4: {}
+
+  picomatch@4.0.5: {}
 
   plist@3.1.0:
     dependencies:
@@ -7832,7 +7846,7 @@ snapshots:
     dependencies:
       '@jridgewell/remapping': 2.3.5
       acorn: 8.17.0
-      picomatch: 4.0.4
+      picomatch: 4.0.5
       webpack-virtual-modules: 0.6.2
 
   uri-js@4.4.1:
@@ -8014,6 +8028,6 @@ snapshots:
 
   yoctocolors-cjs@2.1.3: {}
 
-  zod@4.1.12: {}
+  zod@4.4.3: {}
 
   zwitch@2.0.4: {}
