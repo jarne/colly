@@ -18,6 +18,8 @@ jobs:
                   S3_BUCKET: colly-test
                   S3_FORCE_PATH_STYLE: "true"
             - image: mongo:8.3
+              environment:
+                  GLIBC_TUNABLES: glibc.pthread.rseq=1 # temporary workaround for https://jira.mongodb.org/browse/SERVER-121912
             - image: rustfs/rustfs:1.0.0-alpha.76
               entrypoint: sh
               command: -c "mkdir -p /data/colly && rustfs"
