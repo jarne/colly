@@ -13,8 +13,7 @@ import type { ZodType } from "zod"
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type ControllerParamType =
-    | CrudControllerType<any, any>
-    | CrudControllerWithPermissionsType<any, any>
+    CrudControllerType<any, any> | CrudControllerWithPermissionsType<any, any>
 
 type OptionsParamType = {
     // use workspace permission checks or user and owner relations for controller
