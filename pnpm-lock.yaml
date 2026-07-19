@@ -73,7 +73,7 @@ importers:
         version: 3.19.0
       winston-loki:
         specifier: ^6.0.8
-        version: 6.1.4(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.2)
+        version: 6.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.2)
       zod:
         specifier: ^4.0.15
         version: 4.4.3
@@ -908,8 +908,8 @@ packages:
   '@protobufjs/pool@1.1.0':
     resolution: {integrity: sha512-0kELaGSIDBKvcgS4zkjz1PeddatrjYcmMWOlAuAPwAeccUrPHdUqo/J6LiymHHEiJT5NrF1UVwxY14f+fy4WQw==}
 
-  '@protobufjs/utf8@1.1.1':
-    resolution: {integrity: sha512-oOAWABowe8EAbMyWKM0tYDKi8Yaox52D+HWZhAIJqQXbqe0xI/GV7FhLWqlEKreMkfDjshR5FKgi3mnle0h6Eg==}
+  '@protobufjs/utf8@1.1.2':
+    resolution: {integrity: sha512-b1UQwcEZ4yCnMCD8DAL1VlbvBJE9/IX4FTIp7BG1xYpf29SLazLSrqUkj4w7Y5y7cCVP6E5tcqqcI0xemPkHug==}
 
   '@sindresorhus/base62@1.0.0':
     resolution: {integrity: sha512-TeheYy0ILzBEI/CO55CP6zJCSdSWeRtGnHy8U8dWSUH4I68iqTsy7HkMktR4xakThc9jotkPQUXT4ITdbV7cHA==}
@@ -2476,8 +2476,8 @@ packages:
     resolution: {integrity: sha512-FYgfaA69XZ93zaXLoMNQ+ViDXGGBgR8aLh03txzcFhV+9xOXx7+8DLCULrKKpR9+GsH9ZfHm82aSUPpozX0Ztg==}
     engines: {node: ^22.22.2 || ^24.15.0 || >=26.0.0}
 
-  protobufjs@7.6.4:
-    resolution: {integrity: sha512-RJJPTTpvFfHcWLkIa2JFWK4XvtSzS0yEWDmunqHXli1h3JlkbcQZXDZdcWxv+JK3Xsl5/UFDPZ0iGm7DAengYw==}
+  protobufjs@7.6.5:
+    resolution: {integrity: sha512-/FPD0nUc9jH6rfFjji9IBqOz4pcSE3CsT1m7Ep6Mdb0LxSUMj8hgl6GomOvZzpNpAqqGaXA0P3VSrZLFzIhQrw==}
     engines: {node: '>=12.0.0'}
 
   proxy-addr@2.0.7:
@@ -2919,8 +2919,8 @@ packages:
     resolution: {integrity: sha512-l2qT80rI+7qi7yJbURi4KHTTqBdxJS3SiXgJvbUxpQed7e28Gkv2I3GkjNAHaRjCzXhHINWUUds3fX8VAGg72g==}
     engines: {node: '>= 8'}
 
-  winston-loki@6.1.4:
-    resolution: {integrity: sha512-/j/Zf7TGLjgSBck29BkPnpJlEnGQr5xqlx8A0N6LZnXYYYvyK7lFk6FPpWiD+VMO8xjaxOu1KNF9SzWaRDsigA==}
+  winston-loki@6.1.5:
+    resolution: {integrity: sha512-Q6FkERJmmMX7hnaGQOInLg89Y9niDGn4DY6h+ZSu9dO/GsK6DpsOWYiulRnk7qdk4Yafqi8ieVNxBB9/LCgkVg==}
 
   winston-transport@4.9.0:
     resolution: {integrity: sha512-8drMJ4rkgaPo1Me4zD/3WLfI/zPdA9o2IipKODunnGDcuqbHwjsbB79ylv04LCGGzU0xQ6vTznOMpQGaLhhm6A==}
@@ -3660,7 +3660,7 @@ snapshots:
 
   '@protobufjs/pool@1.1.0': {}
 
-  '@protobufjs/utf8@1.1.1': {}
+  '@protobufjs/utf8@1.1.2': {}
 
   '@sindresorhus/base62@1.0.0': {}
 
@@ -5337,7 +5337,7 @@ snapshots:
 
   proc-log@7.0.0: {}
 
-  protobufjs@7.6.4:
+  protobufjs@7.6.5:
     dependencies:
       '@protobufjs/aspromise': 1.1.2
       '@protobufjs/base64': 1.1.2
@@ -5347,7 +5347,7 @@ snapshots:
       '@protobufjs/float': 1.0.2
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
-      '@protobufjs/utf8': 1.1.1
+      '@protobufjs/utf8': 1.1.2
       '@types/node': 25.9.5
       long: 5.3.2
 
@@ -5833,11 +5833,11 @@ snapshots:
 
   whoops@5.1.2: {}
 
-  winston-loki@6.1.4(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.2):
+  winston-loki@6.1.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.2):
     dependencies:
       async-exit-hook: 2.0.1
       btoa: 1.2.1
-      protobufjs: 7.6.4
+      protobufjs: 7.6.5
       url-polyfill: 1.1.14
       winston-transport: 4.9.0
     optionalDependencies:
