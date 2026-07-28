@@ -101,7 +101,7 @@ importers:
         version: 17.7.0
       lingo.dev:
         specifier: ^0.138.0
-        version: 0.138.2(@types/node@25.9.5)(@types/react@19.2.17)(encoding@0.1.13)(react@19.2.7)(supports-color@7.2.0)
+        version: 0.138.3(@types/node@25.9.5)(@types/react@19.2.17)(encoding@0.1.13)(react@19.2.7)(supports-color@7.2.0)
       typescript:
         specifier: ^6.0.0
         version: 6.0.3
@@ -273,8 +273,8 @@ packages:
   '@datocms/cma-client-node@5.5.3':
     resolution: {integrity: sha512-p49GPElzNtS+odPm3olp3tZ2mROHO+8E6GlV5yIHyAoTlnNtffn9yoZseNtcBSxbZKSmlcNbGPFVoaPcv/5OJQ==}
 
-  '@datocms/cma-client@5.5.4':
-    resolution: {integrity: sha512-zj882n4j+PgPHILk4vkqr5yooOFhB/XjZsdA8WWvWQlW18TyceicaAvw1uY409CMy6ovtXNhXxcPbsZaCMwcuQ==}
+  '@datocms/cma-client@5.6.0':
+    resolution: {integrity: sha512-xPqCwsK/UGumzumQj+k8q8gDb6fM9EdyTEf3rvy6+imC8GSZOcPtBVv6VbuWxTRs0ycHCVjqtSqRHt8SZQ6i8g==}
 
   '@datocms/rest-client-utils@5.4.9':
     resolution: {integrity: sha512-Gfv7R7pgHKk4oTfjBeQINsRojTEyOWyj8gFYhmuoF49vjfPFUqj27RT9W5HRpSUowJ7vw3DqRXY3yjJrzhovAg==}
@@ -544,8 +544,8 @@ packages:
   '@lingo.dev/_locales@0.3.4':
     resolution: {integrity: sha512-nNUxwTKxJu49sdqtCNkPj798Wsm/eEWPxc4ZpGCf9Sk74czAwOyBUuueLkMMYm+yrY/DCasNvZIGn/mhPtN7Gg==}
 
-  '@lingo.dev/_sdk@0.17.2':
-    resolution: {integrity: sha512-1kALtb+EaTYMv8bBRoJ0MflEXVhV8I5wocUwzGYubUf3YdpkZ0wV/n3duy+8Ol6YtHgJZhDqPF4b36w9obv9OQ==}
+  '@lingo.dev/_sdk@0.17.3':
+    resolution: {integrity: sha512-IWYK0KOg2bGpB0nstJSSoIyrKUN93iXAQeHppEkIpqbUC6nO+mqDAv2pjeprzp4HaZxoLWUqAwdWPNb1XMFbkA==}
 
   '@lingo.dev/_spec@0.49.3':
     resolution: {integrity: sha512-f/VmFlaMkGvPrambh0kqT20+vZvc1uICF5gpWdotSsS/cgjMulIUpYMaDqzFJ5Uzg7B7Irt4lRwXljiCi5RvVA==}
@@ -1259,9 +1259,9 @@ packages:
   brace-expansion@2.1.2:
     resolution: {integrity: sha512-w5JZcKgdhDOgOwm8H+KgbosopHMuGcl6qbulwjtz3SM7I7P3yW1eAjzMPLrIE+NQ9vjgANKHWeMHnrT0OXW1oA==}
 
-  brace-expansion@5.0.7:
-    resolution: {integrity: sha512-7oFy703dxfY3/NLxC1fh2SUCQ0H9rmAY+5EpDVfXjUTTs+HEwR2nYaqLv+GWcTsumwxPfiz6CzCNkwXwBUwqCA==}
-    engines: {node: 18 || 20 || >=22}
+  brace-expansion@5.0.8:
+    resolution: {integrity: sha512-JZyDyq3D4AUifKTPOB7DELf6XsB3WdPuNxCtob1vFXPsSXhdAiHBWJ/tJ8HAc9aH84BK+5JFZLNkJKx3G9kzQg==}
+    engines: {node: 20 || >=22}
 
   buffer@6.0.3:
     resolution: {integrity: sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==}
@@ -2293,8 +2293,8 @@ packages:
     resolution: {integrity: sha512-WkUDrojuJs0xkgGf2udWxa3yGBRxPtxUkB79i6aCZLRgc7PM8fZe9TosfPDcvEpQZbuFASnHYmRLBLUbmLOIIA==}
     engines: {node: '>= 12.0.0'}
 
-  lingo.dev@0.138.2:
-    resolution: {integrity: sha512-65Y/0DU6CQ36Fvr9geDGyMZoZdZ4Wydzs9sQoqh6TZMtV52uu8BXng7btnu3kkS5Y+E9J4feoEGFwfED/lKNEw==}
+  lingo.dev@0.138.3:
+    resolution: {integrity: sha512-ECRJos7l6pGvb29zkw5L9e4RlXow5WfEWUmqvPgz7EavI0vcjUjJMU+yE6+3CyE+KqXR4g+7uIJBkQ+uiKnI3g==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -2968,8 +2968,8 @@ packages:
   sax@1.4.3:
     resolution: {integrity: sha512-yqYn1JhPczigF94DMS+shiDMjDowYO6y9+wB/4WgO0Y19jWYk0lQ4tuG5KI7kj4FTp1wxPj5IFfcrz/s1c3jjQ==}
 
-  sax@1.6.0:
-    resolution: {integrity: sha512-6R3J5M4AcbtLUdZmRv2SygeVaM7IhrLXu9BmnOGmmACak8fiUtOsYNWUS4uK7upbmHIBbLBeFeI//477BKLBzA==}
+  sax@1.6.1:
+    resolution: {integrity: sha512-42tBVwLWnaQvW5zc4HbZrTuWccECCZfBi92FDuwtqxasH+JbPB3/FOKb1m222K42R4WxuxzzMsTswfzgtSu64Q==}
     engines: {node: '>=11.0.0'}
 
   saxes@6.0.0:
@@ -3639,12 +3639,12 @@ snapshots:
 
   '@datocms/cma-client-node@5.5.3':
     dependencies:
-      '@datocms/cma-client': 5.5.4
+      '@datocms/cma-client': 5.6.0
       '@datocms/rest-client-utils': 5.4.9
       mime-types: 2.1.35
       tmp-promise: 3.0.3
 
-  '@datocms/cma-client@5.5.4':
+  '@datocms/cma-client@5.6.0':
     dependencies:
       '@datocms/rest-client-utils': 5.4.9
       datocms-structured-text-utils: 5.1.16
@@ -3937,7 +3937,7 @@ snapshots:
     dependencies:
       iso-639-3: 3.0.1
 
-  '@lingo.dev/_sdk@0.17.2(supports-color@7.2.0)':
+  '@lingo.dev/_sdk@0.17.3(supports-color@7.2.0)':
     dependencies:
       '@lingo.dev/_spec': 0.49.3
       '@paralleldrive/cuid2': 2.2.2
@@ -4663,7 +4663,7 @@ snapshots:
     dependencies:
       balanced-match: 1.0.2
 
-  brace-expansion@5.0.7:
+  brace-expansion@5.0.8:
     dependencies:
       balanced-match: 4.0.4
 
@@ -5773,7 +5773,7 @@ snapshots:
       lightningcss-win32-arm64-msvc: 1.33.0
       lightningcss-win32-x64-msvc: 1.33.0
 
-  lingo.dev@0.138.2(@types/node@25.9.5)(@types/react@19.2.17)(encoding@0.1.13)(react@19.2.7)(supports-color@7.2.0):
+  lingo.dev@0.138.3(@types/node@25.9.5)(@types/react@19.2.17)(encoding@0.1.13)(react@19.2.7)(supports-color@7.2.0):
     dependencies:
       '@ai-sdk/anthropic': 3.0.9(zod@4.4.3)
       '@ai-sdk/google': 3.0.6(zod@4.4.3)
@@ -5789,7 +5789,7 @@ snapshots:
       '@gitbeaker/rest': 39.34.3
       '@inquirer/prompts': 7.8.0(@types/node@25.9.5)
       '@lingo.dev/_locales': 0.3.4
-      '@lingo.dev/_sdk': 0.17.2(supports-color@7.2.0)
+      '@lingo.dev/_sdk': 0.17.3(supports-color@7.2.0)
       '@lingo.dev/_spec': 0.49.3
       '@markdoc/markdoc': 0.5.4(@types/react@19.2.17)(react@19.2.7)
       '@openrouter/ai-sdk-provider': 6.0.0-alpha.1(zod@4.4.3)
@@ -6393,7 +6393,7 @@ snapshots:
 
   minimatch@10.2.5:
     dependencies:
-      brace-expansion: 5.0.7
+      brace-expansion: 5.0.8
 
   minimatch@3.1.5:
     dependencies:
@@ -6938,7 +6938,7 @@ snapshots:
 
   sax@1.4.3: {}
 
-  sax@1.6.0: {}
+  sax@1.6.1: {}
 
   saxes@6.0.0:
     dependencies:
@@ -7451,13 +7451,13 @@ snapshots:
 
   xml-js@1.6.11:
     dependencies:
-      sax: 1.6.0
+      sax: 1.6.1
 
   xml-name-validator@5.0.0: {}
 
   xml2js@0.6.2:
     dependencies:
-      sax: 1.6.0
+      sax: 1.6.1
       xmlbuilder: 11.0.1
 
   xmlbuilder@11.0.1: {}
