@@ -49,7 +49,7 @@ importers:
         version: 5.51.1(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
       mongoose:
         specifier: ^9.0.0
-        version: 9.8.0(snappy@7.3.3(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.2))
+        version: 9.8.1(snappy@7.3.3(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.2))
       passport:
         specifier: ^0.7
         version: 0.7.0
@@ -756,8 +756,8 @@ packages:
     resolution: {integrity: sha512-69omtPC3Fap69balcMuJk2tN6nduKlP/VkZMXPw+UKCldDFJmKmTRi5AzvBE4/yxPAgFSpwP0Lt9YQmDoYCBLg==}
     engines: {node: '>= 22.13'}
 
-  '@mongodb-js/saslprep@1.4.12':
-    resolution: {integrity: sha512-QAfAMwNgnYxZ2C6D1HgeP7Gc4i/uvJRim415PCIL9ptRxWMNbWeLBYb2/9R4pGKny/s1FVu2JA2cxCUBUOggrA==}
+  '@mongodb-js/saslprep@1.4.13':
+    resolution: {integrity: sha512-E3Sv4eCYAlKYUTx8S3ioQcDUscOif+8zZ5OnW1IzJ+Tt+EO+ke8mn+Y3FX6N1H79picwbdOavVOb1jPi2EOyrg==}
 
   '@napi-rs/snappy-android-arm-eabi@7.3.3':
     resolution: {integrity: sha512-d4vUFFzNBvazGfB/KU8MnEax6itTIgRWXodPdZDnWKHy9HwVBndpCiedQDcSNHcZNYV36rx034rpn7SAuTL2NA==}
@@ -1230,8 +1230,8 @@ packages:
   browser-stdout@1.3.1:
     resolution: {integrity: sha512-qhAVI1+Av2X7qelOfAIYwXONood6XlZE/fXaBSmW/T5SzLAmCgzi+eiWE7fUvbHaeNBQH13UftjpXxsfLkMpgw==}
 
-  bson@7.3.1:
-    resolution: {integrity: sha512-h/C0qe6857pQhcSJHLfsR1uYGj98Ge3wKAD3Ed9KqH3wcVh+BM4Jq4xISD7vs9OPuT07n+q3QQVjslJ286j6ag==}
+  bson@7.3.2:
+    resolution: {integrity: sha512-1w0ra+ho1cuE+w8jzwgzTFIimFtCfZeCoOsvIPQg6uyFCsp8M29U7bNNf5GrFh88TXbYg1g3TyKUGpd6O7q6zA==}
     engines: {node: '>=20.19.0'}
 
   btoa@1.2.1:
@@ -2268,8 +2268,8 @@ packages:
       socks:
         optional: true
 
-  mongoose@9.8.0:
-    resolution: {integrity: sha512-PDGx3XACxrBQyWf4YT+5s1Xsx19x84UWGlRVIza4i9RG6qKjGcoG7odotT6uquR6YoaDMTZ6ZZc/jMXLrNPyyA==}
+  mongoose@9.8.1:
+    resolution: {integrity: sha512-1ncioLSBWeFSXIiKw6aR4YYFAhpvS7uSbPpkzq5ELSP9PEScGkbzFg6Q0mNuHighosmgZPYPsY4sSIXqkY3/hw==}
     engines: {node: '>=20.19.0'}
 
   morgan@1.11.0:
@@ -3597,7 +3597,7 @@ snapshots:
       - canvas
       - debug
 
-  '@mongodb-js/saslprep@1.4.12':
+  '@mongodb-js/saslprep@1.4.13':
     dependencies:
       sparse-bitfield: 3.0.3
 
@@ -4062,7 +4062,7 @@ snapshots:
 
   browser-stdout@1.3.1: {}
 
-  bson@7.3.1: {}
+  bson@7.3.2: {}
 
   btoa@1.2.1: {}
 
@@ -5156,13 +5156,13 @@ snapshots:
 
   mongodb@7.5.0(snappy@7.3.3(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.2)):
     dependencies:
-      '@mongodb-js/saslprep': 1.4.12
-      bson: 7.3.1
+      '@mongodb-js/saslprep': 1.4.13
+      bson: 7.3.2
       mongodb-connection-string-url: 7.0.2
     optionalDependencies:
       snappy: 7.3.3(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.2)
 
-  mongoose@9.8.0(snappy@7.3.3(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.2)):
+  mongoose@9.8.1(snappy@7.3.3(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.2)):
     dependencies:
       '@standard-schema/spec': 1.1.0
       kareem: 3.3.0
