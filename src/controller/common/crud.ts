@@ -20,6 +20,8 @@ export type CrudControllerType<S, D> = {
         lean?: boolean
     ) => Promise<D[]>
 }
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type AnyModel = Model<any, any, any, any, any, any>
 
 export interface CrudControllerWithPermissionsType<
     S,
@@ -39,8 +41,7 @@ const DEFAULT_RESULT_LIMIT = 100
  * @param {Model} model Mongoose database model
  * @returns {CrudControllerType} CRUD functions
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const crud = <S, D>(model: Model<any>): CrudControllerType<S, D> => {
+const crud = <S, D>(model: AnyModel): CrudControllerType<S, D> => {
     const modelName = model.modelName.toLowerCase()
 
     /**
