@@ -150,9 +150,9 @@ packages:
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
 
-  '@ai-sdk/provider-utils@4.0.45':
-    resolution: {integrity: sha512-7u5B/E2uZmU65SlJhhQGFHZwRCN0xOz4HHtFc4sEGV9PHbX3fGiEiZBpc/SABay1dGeJgK3VD60rvLGoWdWPXA==}
-    engines: {node: '>=18'}
+  '@ai-sdk/provider-utils@4.0.46':
+    resolution: {integrity: sha512-tEtld97plCFiYevsJuOkGkeuhQndeMWFBVrJS4AjnbD5AqrNSXRCe0p+BZ3Cju/sxDeeZ9ym3q9YUV8fASA7aQ==}
+    engines: {node: '>=18.17'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
 
@@ -269,11 +269,11 @@ packages:
   '@datocms/cma-client-node@5.5.3':
     resolution: {integrity: sha512-p49GPElzNtS+odPm3olp3tZ2mROHO+8E6GlV5yIHyAoTlnNtffn9yoZseNtcBSxbZKSmlcNbGPFVoaPcv/5OJQ==}
 
-  '@datocms/cma-client@5.6.2':
-    resolution: {integrity: sha512-AT2+2F10CXelBItBhVbfrVf3AhPebfcvOTNcmJE/eyW7U2CJy4YceRxjOWXOc5NDE7JifXU8uEG9seraBt3SkQ==}
+  '@datocms/cma-client@5.7.0':
+    resolution: {integrity: sha512-c1Z/L+sFgNkYVLnvoJupfsusvhmirbun3gDdbvvkhyyl5n7yOcCsYXE/MK0+Rlu0kAO7w9oNYyoIwujnPCe14g==}
 
-  '@datocms/rest-client-utils@5.4.9':
-    resolution: {integrity: sha512-Gfv7R7pgHKk4oTfjBeQINsRojTEyOWyj8gFYhmuoF49vjfPFUqj27RT9W5HRpSUowJ7vw3DqRXY3yjJrzhovAg==}
+  '@datocms/rest-client-utils@5.7.0':
+    resolution: {integrity: sha512-Yjcxrp38n0O4XuGAq6IuEE44DneBAhdv1QcQHSlMPlXK5s1fXv6Dy+I9DhMK5YPzcSHP48wo5BYWlI9zRcBQzw==}
 
   '@es-joy/jsdoccomment@0.91.0':
     resolution: {integrity: sha512-vgqlMGNNhZxwDYbUNIHj3Hskb4R28iqdXx90ufHyt/NeuTQkeqjTDslAs9I0/GCAfbxP5BpH5WsL1R1fht5Lxg==}
@@ -320,10 +320,6 @@ packages:
   '@eslint/plugin-kit@0.4.1':
     resolution: {integrity: sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@fastify/busboy@2.1.1':
-    resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
-    engines: {node: '>=14'}
 
   '@gitbeaker/core@39.34.3':
     resolution: {integrity: sha512-/3qBXme2MjO38QU2F/MYGon9a4wHKrgtwNzdHHdjpbYJ2/wOGNgbEWSZcibcFkiWVgAjbPXdYqC5sY8hcwGO1w==}
@@ -3190,9 +3186,9 @@ packages:
   undici-types@7.24.6:
     resolution: {integrity: sha512-WRNW+sJgj5OBN4/0JpHFqtqzhpbnV0GuB+OozA9gCL7a993SmU+1JBZCzLNxYsbMfIeDL+lTsphD5jN5N+n0zg==}
 
-  undici@5.29.0:
-    resolution: {integrity: sha512-raqeBD6NQK4SkWhQzeYKd1KmIG6dllBOTt55Rmkt4HtI9mwdWtJljnrXjAFUBLTSN67HWrOIZ3EPF4kjUw80Bg==}
-    engines: {node: '>=14.0'}
+  undici@6.28.0:
+    resolution: {integrity: sha512-LIY910g9TI13YS95lrMFrs8Rm/u/irgHeTWoKCoteeJ04CUJ92eEfj0rVn+7VKMPBpUPiUoBKfhNyLI23EE/KA==}
+    engines: {node: '>=18.17'}
 
   unified@11.0.5:
     resolution: {integrity: sha512-xKvGhPWw3k84Qjh8bI3ZeJjqnyadK+GEFtazSfZv/rKeTkTjOJho6mFqh2SM96iIcZokxiOpg78GazTSg8+KHA==}
@@ -3475,12 +3471,12 @@ snapshots:
       eventsource-parser: 3.1.1
       zod: 4.4.3
 
-  '@ai-sdk/provider-utils@4.0.45(zod@4.4.3)':
+  '@ai-sdk/provider-utils@4.0.46(zod@4.4.3)':
     dependencies:
       '@ai-sdk/provider': 3.0.15
       '@standard-schema/spec': 1.1.0
       eventsource-parser: 3.1.1
-      undici: 5.29.0
+      undici: 6.28.0
       zod: 4.4.3
 
   '@ai-sdk/provider@3.0.15':
@@ -3588,18 +3584,18 @@ snapshots:
 
   '@datocms/cma-client-node@5.5.3':
     dependencies:
-      '@datocms/cma-client': 5.6.2
-      '@datocms/rest-client-utils': 5.4.9
+      '@datocms/cma-client': 5.7.0
+      '@datocms/rest-client-utils': 5.7.0
       mime-types: 2.1.35
       tmp-promise: 3.0.3
 
-  '@datocms/cma-client@5.6.2':
+  '@datocms/cma-client@5.7.0':
     dependencies:
-      '@datocms/rest-client-utils': 5.4.9
+      '@datocms/rest-client-utils': 5.7.0
       datocms-structured-text-utils: 5.1.16
       uuid: 11.1.1
 
-  '@datocms/rest-client-utils@5.4.9':
+  '@datocms/rest-client-utils@5.7.0':
     dependencies:
       async-scheduler: 1.4.4
 
@@ -3658,8 +3654,6 @@ snapshots:
     dependencies:
       '@eslint/core': 0.17.0
       levn: 0.4.1
-
-  '@fastify/busboy@2.1.1': {}
 
   '@gitbeaker/core@39.34.3':
     dependencies:
@@ -4040,7 +4034,7 @@ snapshots:
   '@openrouter/ai-sdk-provider@6.0.0-alpha.1(zod@4.4.3)':
     dependencies:
       '@ai-sdk/provider': 3.0.15
-      '@ai-sdk/provider-utils': 4.0.45(zod@4.4.3)
+      '@ai-sdk/provider-utils': 4.0.46(zod@4.4.3)
       '@openrouter/sdk': 0.3.16
       zod: 4.4.3
 
@@ -6371,7 +6365,7 @@ snapshots:
   ollama-ai-provider-v2@2.0.0(ai@6.0.25(zod@4.4.3))(zod@4.4.3):
     dependencies:
       '@ai-sdk/provider': 3.0.15
-      '@ai-sdk/provider-utils': 4.0.45(zod@4.4.3)
+      '@ai-sdk/provider-utils': 4.0.46(zod@4.4.3)
       ai: 6.0.25(zod@4.4.3)
       zod: 4.4.3
 
@@ -7126,9 +7120,7 @@ snapshots:
 
   undici-types@7.24.6: {}
 
-  undici@5.29.0:
-    dependencies:
-      '@fastify/busboy': 2.1.1
+  undici@6.28.0: {}
 
   unified@11.0.5:
     dependencies:
