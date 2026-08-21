@@ -49,7 +49,7 @@ importers:
         version: 5.55.2(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
       mongoose:
         specifier: ^9.0.0
-        version: 9.9.2(snappy@7.4.0)
+        version: 9.9.3(snappy@7.4.0)
       passport:
         specifier: ^0.7
         version: 0.7.0
@@ -737,8 +737,8 @@ packages:
     resolution: {integrity: sha512-3hVAj5mtgDvH6QekXc52Pod1VxzAzDelzY1HCgxIe4J+lInhQKWmcFVRpXrpwWvJTnpN5OueFyekQnqeyhDL+Q==}
     engines: {node: '>= 22.13'}
 
-  '@mongodb-js/saslprep@1.4.13':
-    resolution: {integrity: sha512-E3Sv4eCYAlKYUTx8S3ioQcDUscOif+8zZ5OnW1IzJ+Tt+EO+ke8mn+Y3FX6N1H79picwbdOavVOb1jPi2EOyrg==}
+  '@mongodb-js/saslprep@1.5.0':
+    resolution: {integrity: sha512-Hk1SKJCMcCos38+vqDnZzlIo4XRj9yCGzYkjB4LcqpeXRIYfia1UWTz+VrueLxoU+uSRJzgkufxoRZg8gi52YA==}
 
   '@napi-rs/snappy-android-arm-eabi@7.4.0':
     resolution: {integrity: sha512-VsABmlmsrUSaQrMweoOlOXScSw5DNBjprx2DGRq46CBgmt4/RP/mYNlkiIkCEm8ZOpK2ERK78Zgu6BTuQMo1LQ==}
@@ -1597,6 +1597,7 @@ packages:
   eslint@9.39.5:
     resolution: {integrity: sha512-DgZS62aPLXKlnxILS/AYCoRvHaZeXceIzlXPkkGGzJWSow1aEk0lbTlxUSlyjC8jcaKxAdOnTDz+o1JFSBsyjw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
@@ -2239,8 +2240,8 @@ packages:
       socks:
         optional: true
 
-  mongoose@9.9.2:
-    resolution: {integrity: sha512-Nz8Rwu9jvADm0pyX0M3mEy8bx3wB5b/tRDI4XnjL7p6tZgmdyL9g0gE/EC9It6/XMIbcvniwYQDKYs91Qm+o+g==}
+  mongoose@9.9.3:
+    resolution: {integrity: sha512-9dQaKct05LNgVkunDzFPZsGGBhinobl3Qc5B5KYJkLNG5lBLgqESUEItl1EUIkVaCwZJGBgTuvJiFAjjIATCiw==}
     engines: {node: '>=20.19.0'}
 
   morgan@1.11.0:
@@ -3551,7 +3552,7 @@ snapshots:
       - canvas
       - debug
 
-  '@mongodb-js/saslprep@1.4.13':
+  '@mongodb-js/saslprep@1.5.0':
     dependencies:
       sparse-bitfield: 3.0.3
 
@@ -5094,13 +5095,13 @@ snapshots:
 
   mongodb@7.5.0(snappy@7.4.0):
     dependencies:
-      '@mongodb-js/saslprep': 1.4.13
+      '@mongodb-js/saslprep': 1.5.0
       bson: 7.3.2
       mongodb-connection-string-url: 7.0.2
     optionalDependencies:
       snappy: 7.4.0
 
-  mongoose@9.9.2(snappy@7.4.0):
+  mongoose@9.9.3(snappy@7.4.0):
     dependencies:
       '@standard-schema/spec': 1.1.0
       kareem: 3.3.0
