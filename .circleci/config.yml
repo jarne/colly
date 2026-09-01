@@ -6,7 +6,7 @@ orbs:
 jobs:
     mocha:
         docker:
-            - image: cimg/node:24.19.0
+            - image: cimg/node:24.20.0
               environment:
                   MONGO_HOST: 127.0.0.1
                   MONGO_DB: colly-test
@@ -57,7 +57,7 @@ jobs:
                   path: coverage
     eslint:
         docker:
-            - image: cimg/node:24.19.0
+            - image: cimg/node:24.20.0
         steps:
             # Checkout branch
             - checkout
@@ -79,7 +79,7 @@ jobs:
                   path: lint-results
     eslint-client:
         docker:
-            - image: cimg/node:24.19.0
+            - image: cimg/node:24.20.0
         working_directory: ~/project/client
         steps:
             # Checkout branch
@@ -103,7 +103,7 @@ jobs:
                   path: lint-results
     build-client:
         docker:
-            - image: cimg/node:24.19.0
+            - image: cimg/node:24.20.0
         working_directory: ~/project/client
         steps:
             # Checkout branch
