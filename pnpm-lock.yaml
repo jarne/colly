@@ -207,7 +207,7 @@ importers:
         version: 5.56.2(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
       mongoose:
         specifier: ^9.0.0
-        version: 9.10.1(snappy@7.4.3)
+        version: 9.10.2(snappy@7.4.3)
       passport:
         specifier: ^0.7
         version: 0.7.0
@@ -2403,8 +2403,8 @@ packages:
       socks:
         optional: true
 
-  mongoose@9.10.1:
-    resolution: {integrity: sha512-rRIEGbM3rUgXAY554CEsgp+IxImo6D3ILUr3SJDnC2PLPNTcNe2xxYvazSLtvvTjv3A4MgqvsxCj3ViF4mHUUQ==}
+  mongoose@9.10.2:
+    resolution: {integrity: sha512-oFcFL3dsX5tDzMwBD+GGoDqKIj6RNG3bu3oqlvcUIgPulHP14/6N7c07j3s0XgbrlT7U/lbiXOD89hmPtEXnfQ==}
     engines: {node: '>=20.19.0'}
 
   morgan@1.12.1:
@@ -5264,7 +5264,7 @@ snapshots:
     optionalDependencies:
       snappy: 7.4.3
 
-  mongoose@9.10.1(snappy@7.4.3):
+  mongoose@9.10.2(snappy@7.4.3):
     dependencies:
       '@standard-schema/spec': 1.1.0
       kareem: 3.4.0
