@@ -17,7 +17,7 @@ jobs:
                   S3_ACCESS_SECRET: super-secret-123
                   S3_BUCKET: colly-test
                   S3_FORCE_PATH_STYLE: "true"
-            - image: mongo:8.3
+            - image: mongo:9.0
               environment:
                   GLIBC_TUNABLES: glibc.pthread.rseq=1 # temporary workaround for https://jira.mongodb.org/browse/SERVER-121912
             - image: rustfs/rustfs:1.0.0-alpha.76
