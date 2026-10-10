@@ -259,7 +259,7 @@ importers:
         version: 17.13.0
       lingo.dev:
         specifier: ^0.138.0
-        version: 0.138.8(@types/node@25.9.9)(@types/react@19.3.0)(encoding@0.1.13)(react@19.3.0)(supports-color@7.2.0)
+        version: 0.138.9(@types/node@25.9.9)(@types/react@19.3.0)(encoding@0.1.13)(react@19.3.0)(supports-color@7.2.0)
       typescript:
         specifier: ^6.0.0
         version: 6.0.3
@@ -2407,8 +2407,8 @@ packages:
     resolution: {integrity: sha512-WkUDrojuJs0xkgGf2udWxa3yGBRxPtxUkB79i6aCZLRgc7PM8fZe9TosfPDcvEpQZbuFASnHYmRLBLUbmLOIIA==}
     engines: {node: '>= 12.0.0'}
 
-  lingo.dev@0.138.8:
-    resolution: {integrity: sha512-8PQw/RFQBQfdE6TSwycb7frudCcEQEhXiEXs7t49l2aYjvviZ5cbQyrr2VOPUINSvFRgE1MHbJFlFElB0F7+Vw==}
+  lingo.dev@0.138.9:
+    resolution: {integrity: sha512-repXbrzSrR/ZycdyIT5tw27hQqk8gCuBQHQlB33JlD05xe7BP0U+4u08EfW/RsBZyxJqX0X++dHmxGjkCguQ8w==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -5804,7 +5804,7 @@ snapshots:
       lightningcss-win32-arm64-msvc: 1.33.0
       lightningcss-win32-x64-msvc: 1.33.0
 
-  lingo.dev@0.138.8(@types/node@25.9.9)(@types/react@19.3.0)(encoding@0.1.13)(react@19.3.0)(supports-color@7.2.0):
+  lingo.dev@0.138.9(@types/node@25.9.9)(@types/react@19.3.0)(encoding@0.1.13)(react@19.3.0)(supports-color@7.2.0):
     dependencies:
       '@ai-sdk/anthropic': 3.0.117(zod@4.4.3)
       '@ai-sdk/google': 3.0.122(zod@4.4.3)
