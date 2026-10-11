@@ -259,7 +259,7 @@ importers:
         version: 17.13.0
       lingo.dev:
         specifier: ^0.138.0
-        version: 0.138.9(@types/node@25.9.9)(@types/react@19.3.0)(encoding@0.1.13)(react@19.3.0)(supports-color@7.2.0)
+        version: 0.138.10(@types/node@25.9.9)(@types/react@19.3.0)(encoding@0.1.13)(react@19.3.0)(supports-color@7.2.0)
       typescript:
         specifier: ^6.0.0
         version: 6.0.3
@@ -670,8 +670,8 @@ packages:
   '@lingo.dev/_spec@0.49.3':
     resolution: {integrity: sha512-f/VmFlaMkGvPrambh0kqT20+vZvc1uICF5gpWdotSsS/cgjMulIUpYMaDqzFJ5Uzg7B7Irt4lRwXljiCi5RvVA==}
 
-  '@markdoc/markdoc@0.5.4':
-    resolution: {integrity: sha512-36YFNlqFk//gVNGm5xZaTWVwbAVF2AOmVjf1tiUrS6tCoD/YSkVy2E3CkAfhc5MlKcjparL/QFHCopxL4zRyaQ==}
+  '@markdoc/markdoc@0.5.10':
+    resolution: {integrity: sha512-5HwkG2cLG/ivffeJlxGmraJ9erYfsaYz9rjG1KCf46PLy+yhrBQWw26h69GewNUHbyKNW6FrXuDYgbl2kvIYdA==}
     engines: {node: '>=14.7.0'}
     peerDependencies:
       '@types/react': '*'
@@ -1534,8 +1534,8 @@ packages:
   csv-parse@7.0.2:
     resolution: {integrity: sha512-uKZghv9UmPkMVLYy//KZ9HFAIJsl7wkhoEdIL0+rhuSY9pZQlhaeGEDPIe+/w7eh81MOql8Q/9+inAGWG6ZHYA==}
 
-  csv-stringify@6.6.0:
-    resolution: {integrity: sha512-YW32lKOmIBgbxtu3g5SaiqWNwa/9ISQt2EcgOq0+RAIFufFp9is6tqNnKahqE5kuKvrnYAzs28r+s6pXJR8Vcw==}
+  csv-stringify@6.9.0:
+    resolution: {integrity: sha512-6b3e29CILFfSQ2nDRuZMRROzQOpPuJ+s8zPB5H7eK5ncXBbFOyVuRLU5Sx/zAUmVri3Ly49GyC8NEme4SVSAbA==}
 
   data-urls@5.0.0:
     resolution: {integrity: sha512-ZYP5VBHshaDAiVZxjbRVcFJpc+4xGgT0bK3vzy1HLN8jTO975HEbuYzZJcHoQEY5K1a0z8YayJkyVETa08eNTg==}
@@ -1848,8 +1848,8 @@ packages:
       picomatch:
         optional: true
 
-  figlet@1.9.4:
-    resolution: {integrity: sha512-uN6QE+TrzTAHC1IWTyrc4FfGo2KH/82J8Jl1tyKB7+z5DBit/m3D++Iu5lg91qJMnQQ3vpJrj5gxcK/pk4R9tQ==}
+  figlet@1.11.4:
+    resolution: {integrity: sha512-ZU41480OncL+NVLQrT0GVnbO0COL24sLSrzksioDgunmdJNYEUxhJJZ4Y3x1csN8XXqN5OcCZTLG8lKdquNyfQ==}
     engines: {node: '>= 17.0.0'}
     hasBin: true
 
@@ -2407,8 +2407,8 @@ packages:
     resolution: {integrity: sha512-WkUDrojuJs0xkgGf2udWxa3yGBRxPtxUkB79i6aCZLRgc7PM8fZe9TosfPDcvEpQZbuFASnHYmRLBLUbmLOIIA==}
     engines: {node: '>= 12.0.0'}
 
-  lingo.dev@0.138.9:
-    resolution: {integrity: sha512-repXbrzSrR/ZycdyIT5tw27hQqk8gCuBQHQlB33JlD05xe7BP0U+4u08EfW/RsBZyxJqX0X++dHmxGjkCguQ8w==}
+  lingo.dev@0.138.10:
+    resolution: {integrity: sha512-t31NADeD9nkbA8pJpWx0ZUpUYIICRgTohqHEAW8nt5Jpgk8rbCk9xWxL/sLrN8NQw+V445BGHh0uECS0yJKtxQ==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -4008,7 +4008,7 @@ snapshots:
       '@lingo.dev/_locales': 0.3.4
       zod: 4.4.3
 
-  '@markdoc/markdoc@0.5.4(@types/react@19.3.0)(react@19.3.0)':
+  '@markdoc/markdoc@0.5.10(@types/react@19.3.0)(react@19.3.0)':
     optionalDependencies:
       '@types/linkify-it': 3.0.5
       '@types/markdown-it': 12.2.3
@@ -4836,7 +4836,7 @@ snapshots:
 
   csv-parse@7.0.2: {}
 
-  csv-stringify@6.6.0: {}
+  csv-stringify@6.9.0: {}
 
   data-urls@5.0.0:
     dependencies:
@@ -5242,7 +5242,7 @@ snapshots:
     optionalDependencies:
       picomatch: 4.0.7
 
-  figlet@1.9.4:
+  figlet@1.11.4:
     dependencies:
       commander: 14.0.3
 
@@ -5804,7 +5804,7 @@ snapshots:
       lightningcss-win32-arm64-msvc: 1.33.0
       lightningcss-win32-x64-msvc: 1.33.0
 
-  lingo.dev@0.138.9(@types/node@25.9.9)(@types/react@19.3.0)(encoding@0.1.13)(react@19.3.0)(supports-color@7.2.0):
+  lingo.dev@0.138.10(@types/node@25.9.9)(@types/react@19.3.0)(encoding@0.1.13)(react@19.3.0)(supports-color@7.2.0):
     dependencies:
       '@ai-sdk/anthropic': 3.0.117(zod@4.4.3)
       '@ai-sdk/google': 3.0.122(zod@4.4.3)
@@ -5822,7 +5822,7 @@ snapshots:
       '@lingo.dev/_locales': 0.3.4
       '@lingo.dev/_sdk': 0.17.3(supports-color@7.2.0)
       '@lingo.dev/_spec': 0.49.3
-      '@markdoc/markdoc': 0.5.4(@types/react@19.3.0)(react@19.3.0)
+      '@markdoc/markdoc': 0.5.10(@types/react@19.3.0)(react@19.3.0)
       '@openrouter/ai-sdk-provider': 6.0.0-alpha.1(zod@4.4.3)
       '@paralleldrive/cuid2': 2.2.2
       '@types/ejs': 3.1.5
@@ -5833,7 +5833,7 @@ snapshots:
       cli-progress: 3.12.0
       cli-table3: 0.6.5
       csv-parse: 7.0.2
-      csv-stringify: 6.6.0
+      csv-stringify: 6.9.0
       date-fns: 4.1.0
       dedent: 1.7.0
       diff: 9.0.0
@@ -5842,7 +5842,7 @@ snapshots:
       domutils: 3.2.2
       dotenv: 16.4.7
       ejs: 3.1.10
-      figlet: 1.9.4
+      figlet: 1.11.4
       flat: 6.0.1
       gettext-parser: 8.0.0
       glob: 11.1.0
