@@ -201,7 +201,7 @@ importers:
         version: 5.56.2(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
       metascraper-logo-favicon:
         specifier: ^5.43.6
-        version: 5.58.1(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
+        version: 5.58.4(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
       metascraper-title:
         specifier: ^5.43.4
         version: 5.56.2(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
@@ -2367,8 +2367,8 @@ packages:
     resolution: {integrity: sha512-N4DGdcylu6z1lcBxLD+S4ppEwfr1lHgQ5Xp3WVJ7opIBfUgJLkO0OUxM0xsvUbiXV/q/6aKCqE2Gp+11seccaQ==}
     engines: {node: '>= 22'}
 
-  metascraper-logo-favicon@5.58.1:
-    resolution: {integrity: sha512-SXmjCaS5mIlJpTXWbEzoCZspGjj3DT+ZePMA9RZugqfN2NOwVkE1tyP6P4Jk4QpACxVuJVcvwE6Dfc03qJWTXQ==}
+  metascraper-logo-favicon@5.58.4:
+    resolution: {integrity: sha512-VePE8rkd7S7wmLfHAbQ6M43jI19rWBQmJxortDKXYeE52I9CRzmh8cW4uloqy/ypidBNfUGMhmbqdrbvzkwufA==}
     engines: {node: '>= 22'}
 
   metascraper-logo@5.56.2:
@@ -5053,7 +5053,7 @@ snapshots:
 
   html-encoding-sniffer@7.0.0(@noble/hashes@1.8.0):
     dependencies:
-      '@exodus/bytes': 1.15.1(@noble/hashes@1.8.0)
+      '@exodus/bytes': 1.16.0(@noble/hashes@1.8.0)
     transitivePeerDependencies:
       - '@noble/hashes'
 
@@ -5375,10 +5375,10 @@ snapshots:
       - canvas
       - debug
 
-  metascraper-logo-favicon@5.58.1(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0)):
+  metascraper-logo-favicon@5.58.4(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0)):
     dependencies:
       '@keyvhq/memoize': 2.2.7
-      '@metascraper/helpers': 5.56.2(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
+      '@metascraper/helpers': 5.58.4(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
       lodash: 4.18.1
       reachable-url: 2.1.4
     transitivePeerDependencies:
