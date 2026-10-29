@@ -183,7 +183,7 @@ importers:
         version: 26.4.7(typescript@6.0.3)
       i18next-browser-languagedetector:
         specifier: ^8.2.1
-        version: 8.2.2
+        version: 8.2.3
       i18next-http-backend:
         specifier: ^4.0.0
         version: 4.0.5
@@ -2055,8 +2055,8 @@ packages:
     resolution: {integrity: sha512-vK9P5/iUfdl95AI+JVyUuIcVtd4ofvtrOr3HNtM2yxC9bnMbEdp3x01OhQNnjb8IJYi38VlTE3mBXwcfvywuSw==}
     engines: {node: '>= 14'}
 
-  i18next-browser-languagedetector@8.2.2:
-    resolution: {integrity: sha512-99PKPDVeLj7s4nDJAz+z664/6IWEb2EyssTsknyzc1MY+mmtAXpx3BP862MrKLGRtmSJnlUioPuOE22F+RR+ng==}
+  i18next-browser-languagedetector@8.2.3:
+    resolution: {integrity: sha512-0jSTK3ncpXj9MFdxRz+TVTKDkSvYH8ifB/OCmUdEMprvXC3vy7kEvdKpj0yYB72B0UKEHJLPMEeRVC/UXroWnw==}
 
   i18next-http-backend@4.0.5:
     resolution: {integrity: sha512-0uXq24ZAVFwbA0MGija0AZYBcs8iA+wbC//UiDyZwPC3/wZfyD20LgGxvjMOqf9o3/pDJ05ZLIlB4U3+AdA9AQ==}
@@ -5533,7 +5533,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  i18next-browser-languagedetector@8.2.2:
+  i18next-browser-languagedetector@8.2.3:
     dependencies:
       '@babel/runtime': 7.29.7
 
