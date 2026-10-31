@@ -189,7 +189,7 @@ importers:
         version: 4.0.6
       qs:
         specifier: ^6.11.2
-        version: 6.16.1
+        version: 6.16.2
       react:
         specifier: ^19.0.0
         version: 19.3.1
@@ -2910,8 +2910,8 @@ packages:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
 
-  qs@6.16.1:
-    resolution: {integrity: sha512-5Px6J7rfHBAGUhNQ3es4YzcOdBBw0SDcVtThJml4RdnKw4tKs2epA0kPZ+K8X+WiHktT93RHVcQ/3ym5aTCgtg==}
+  qs@6.16.2:
+    resolution: {integrity: sha512-VYdnB5S7/0IeXzBacUtwNAaM6d7Y/PgYnNC7bJCI6meqA/OgnsQbZMtVW8Dt2D1PHgbHGtYmhSoEIgvt7xZ2ZA==}
     engines: {node: '>=0.6'}
 
   rate-limiter-flexible@4.0.1:
@@ -3846,13 +3846,13 @@ snapshots:
   '@gitbeaker/core@39.34.3':
     dependencies:
       '@gitbeaker/requester-utils': 39.34.3
-      qs: 6.16.1
+      qs: 6.16.2
       xcase: 2.0.1
 
   '@gitbeaker/requester-utils@39.34.3':
     dependencies:
       picomatch-browser: 2.2.6
-      qs: 6.16.1
+      qs: 6.16.2
       rate-limiter-flexible: 4.0.1
       xcase: 2.0.1
 
@@ -6756,7 +6756,7 @@ snapshots:
 
   punycode@2.3.1: {}
 
-  qs@6.16.1:
+  qs@6.16.2:
     dependencies:
       es-define-property: 1.0.1
       side-channel: 1.1.1
