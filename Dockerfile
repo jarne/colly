@@ -3,7 +3,7 @@
 # created in: 2024 by: @jarne
 
 # Begin with Node.js LTS container image
-FROM node:24
+FROM node:26
 
 # Enable Pnpm
 RUN corepack enable pnpm
