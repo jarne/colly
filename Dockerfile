@@ -3,10 +3,10 @@
 # created in: 2024 by: @jarne
 
 # Begin with Node.js LTS container image
-FROM node:26
+FROM node:26-slim
 
-# Enable Pnpm
-RUN corepack enable pnpm
+# Install pnpm
+RUN npm install -g pnpm
 
 # Create and switch to app source folder
 WORKDIR /app
