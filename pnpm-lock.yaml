@@ -189,7 +189,7 @@ importers:
         version: 9.0.3
       metascraper:
         specifier: ^5.43.4
-        version: 5.58.5(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
+        version: 5.58.6(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
       metascraper-description:
         specifier: ^5.43.4
         version: 5.58.4(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
@@ -2324,8 +2324,8 @@ packages:
     resolution: {integrity: sha512-G0/Vhm3kxNhbF0E19TlyxXa3MeIe5AeRfrf50yCyKEbJspeWVX2E+nskSCt+pibQnYUnHxh942KudUoWrzKW5Q==}
     engines: {node: '>= 22'}
 
-  metascraper@5.58.5:
-    resolution: {integrity: sha512-LTHybDFCtlcWHtrWuvM7UUPrpA405/38UvZ7DgEFYYN/5j1HRNExlayV1DHkVtRenUUWLkBRjMesI8fDDoX83A==}
+  metascraper@5.58.6:
+    resolution: {integrity: sha512-pAyeLuxiY3MRst2UBD0jjGCm7VFBF8hX4ogNbWnRF9iK3qFTYEQWqUqBTzsnd9628wlJRFi6hZtdw8C0wKr34g==}
     engines: {node: '>= 22'}
 
   methods@1.1.2:
@@ -5237,7 +5237,7 @@ snapshots:
       - canvas
       - debug
 
-  metascraper@5.58.5(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0)):
+  metascraper@5.58.6(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0)):
     dependencies:
       '@metascraper/helpers': 5.58.4(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
       cheerio: 1.2.0
