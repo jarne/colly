@@ -198,7 +198,7 @@ importers:
         version: 9.0.3
       metascraper:
         specifier: ^5.43.4
-        version: 5.58.6(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
+        version: 5.58.7(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
       metascraper-description:
         specifier: ^5.43.4
         version: 5.58.4(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
@@ -927,6 +927,10 @@ packages:
 
   '@metascraper/helpers@5.58.4':
     resolution: {integrity: sha512-3pyzjvl+2IjDoZpBhwmFJVyiTKq0wPk6d8tiL+MjeI07++VNutSyGIQZdcQK3cYhs3u+HL2Z+BH4rBQlGJ2yfg==}
+    engines: {node: '>= 22.13'}
+
+  '@metascraper/helpers@5.58.7':
+    resolution: {integrity: sha512-4mLJsY7WV9EDY//ibLrDolH1yf3MFs/v6m1FET+pSkTw5w+dgXgW1M/Qxv9plzgj55JCd4JBbbL5ublzBwVBWw==}
     engines: {node: '>= 22.13'}
 
   '@mongodb-js/saslprep@1.6.3':
@@ -2313,8 +2317,8 @@ packages:
     resolution: {integrity: sha512-G0/Vhm3kxNhbF0E19TlyxXa3MeIe5AeRfrf50yCyKEbJspeWVX2E+nskSCt+pibQnYUnHxh942KudUoWrzKW5Q==}
     engines: {node: '>= 22'}
 
-  metascraper@5.58.6:
-    resolution: {integrity: sha512-pAyeLuxiY3MRst2UBD0jjGCm7VFBF8hX4ogNbWnRF9iK3qFTYEQWqUqBTzsnd9628wlJRFi6hZtdw8C0wKr34g==}
+  metascraper@5.58.7:
+    resolution: {integrity: sha512-BlLnBeqAkiL8gGi2wgnIyRsJpHewE4psWhMIMdORDBDoeDstg5tlupllFTM/BDLIh92wFJRLoJYZLty3cv+YaA==}
     engines: {node: '>= 22'}
 
   methods@1.1.2:
@@ -2917,8 +2921,15 @@ packages:
   tldts-core@7.5.3:
     resolution: {integrity: sha512-G9K/M0Ah+U22clAb1r0fYNheSysv7Y6OAIundzKcFQx5jBgPId3CnFl44sAGGqJA+lUXMOrREFXHX1lrtEApdA==}
 
+  tldts-core@7.5.4:
+    resolution: {integrity: sha512-9+4zWtKEDZ3V3FoZ1B97rv+5z5oqp7yeXGVze3CxgQ+CJro9do9DCPD00wxstYZDXDMXsurkBerFfiB6GYtPbA==}
+
   tldts@7.4.28:
     resolution: {integrity: sha512-zbyA+C3nBymq7u4gZnKShj7RcyxJuQy66VRF9V9Zx8g1Jl8ui+9DVbV6knlRKaqKX6nSvhhy7D7KM75A6uVf6g==}
+    hasBin: true
+
+  tldts@7.5.4:
+    resolution: {integrity: sha512-Rn2ABgjHZrA+jzqom5zhxA0hLohzYrIgfCPyhpTUxqsUrcsBYuab49LseR9waB9Jr8/MxdodvMHA91oRiGLO3Q==}
     hasBin: true
 
   to-regex-range@5.0.1:
@@ -3766,6 +3777,38 @@ snapshots:
       re2: 1.27.1
       smartquotes: 2.3.2
       tldts: 7.4.28
+      url-regex-safe: 4.0.0(re2@1.27.1)
+      video-extensions: 2.0.0
+    transitivePeerDependencies:
+      - '@noble/hashes'
+      - canvas
+      - debug
+
+  '@metascraper/helpers@5.58.7(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))':
+    dependencies:
+      audio-extensions: 0.0.0
+      chrono-node: 2.10.3
+      condense-whitespace: 3.0.0
+      data-uri-utils: 1.0.16
+      debug-logfmt: 1.4.20(debug@4.4.3(supports-color@5.5.0))
+      entities: 8.1.0
+      file-extension: 4.0.5
+      has-values: 2.0.1
+      image-extensions: 1.1.0
+      is-relative-url: 4.1.1
+      is-uri: 1.2.14
+      iso-639-3: 3.0.1
+      isostring: 0.0.1
+      jsdom: 30.1.3(@noble/hashes@1.8.0)
+      jsonrepair: 3.15.0
+      lodash: 4.18.1
+      memoize-one: 6.0.0
+      microsoft-capitalize: 1.0.8
+      mime: 4.1.2
+      normalize-url: 9.0.1
+      re2: 1.27.1
+      smartquotes: 2.3.2
+      tldts: 7.5.4
       url-regex-safe: 4.0.0(re2@1.27.1)
       video-extensions: 2.0.0
     transitivePeerDependencies:
@@ -5190,9 +5233,9 @@ snapshots:
       - canvas
       - debug
 
-  metascraper@5.58.6(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0)):
+  metascraper@5.58.7(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0)):
     dependencies:
-      '@metascraper/helpers': 5.58.4(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
+      '@metascraper/helpers': 5.58.7(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
       cheerio: 1.2.0
       debug-logfmt: 1.4.20(debug@4.4.3(supports-color@5.5.0))
       whoops: 5.1.5
@@ -5862,9 +5905,15 @@ snapshots:
 
   tldts-core@7.5.3: {}
 
+  tldts-core@7.5.4: {}
+
   tldts@7.4.28:
     dependencies:
       tldts-core: 7.5.3
+
+  tldts@7.5.4:
+    dependencies:
+      tldts-core: 7.5.4
 
   to-regex-range@5.0.1:
     dependencies:
