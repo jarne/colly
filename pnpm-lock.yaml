@@ -201,7 +201,7 @@ importers:
         version: 5.58.7(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
       metascraper-description:
         specifier: ^5.43.4
-        version: 5.58.4(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
+        version: 5.58.7(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
       metascraper-image:
         specifier: ^5.43.4
         version: 5.58.4(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
@@ -2304,8 +2304,8 @@ packages:
     resolution: {integrity: sha512-Snk314V5ayFLhp3fkUREub6WtjBfPdCPY1Ln8/8munuLuiYhsABgBVWsozAG+MWMbVEvcdcpbi9R7ww22l9Q3g==}
     engines: {node: '>=18'}
 
-  metascraper-description@5.58.4:
-    resolution: {integrity: sha512-uWfbJr7h2FTJKgryAPMGbt5Qr8UMGtl/BsDIehoAZq1sIs+cns4gtJzfclUj22wsEgd5TNJoTXMtMdzVeS2Xdg==}
+  metascraper-description@5.58.7:
+    resolution: {integrity: sha512-zGaS4xHlO4iI7r+nA2CFd4FUp7lksxGmMTKonGJ7LJ0RTwnSEWpJV+Mm1EgMkQq8DMqFZkR98fyNGlOVGbhhmw==}
     engines: {node: '>= 22'}
 
   metascraper-image@5.58.4:
@@ -5207,9 +5207,9 @@ snapshots:
 
   merge-descriptors@2.0.0: {}
 
-  metascraper-description@5.58.4(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0)):
+  metascraper-description@5.58.7(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0)):
     dependencies:
-      '@metascraper/helpers': 5.58.4(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
+      '@metascraper/helpers': 5.58.7(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
     transitivePeerDependencies:
       - '@noble/hashes'
       - canvas
@@ -5953,7 +5953,7 @@ snapshots:
 
   tough-cookie@6.1.0:
     dependencies:
-      tldts: 7.4.28
+      tldts: 7.5.4
 
   tr46@5.1.1:
     dependencies:
