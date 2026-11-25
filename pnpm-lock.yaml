@@ -213,7 +213,7 @@ importers:
         version: 5.58.7(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
       metascraper-title:
         specifier: ^5.43.4
-        version: 5.58.4(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
+        version: 5.58.7(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
       mongoose:
         specifier: ^9.0.0
         version: 9.12.1(snappy@7.4.4)
@@ -927,10 +927,6 @@ packages:
   '@kikobeats/time-span@1.0.13':
     resolution: {integrity: sha512-CfBK4/EZ73uN/6b5/wOfvWju1Ev/6H+uXqS2Vqd7/dEQTyOsvv4BdOHDqESp4Efa9YyrPPvN3IHU+C4z9FAo3Q==}
     engines: {node: '>= 18'}
-
-  '@metascraper/helpers@5.58.4':
-    resolution: {integrity: sha512-3pyzjvl+2IjDoZpBhwmFJVyiTKq0wPk6d8tiL+MjeI07++VNutSyGIQZdcQK3cYhs3u+HL2Z+BH4rBQlGJ2yfg==}
-    engines: {node: '>= 22.13'}
 
   '@metascraper/helpers@5.58.7':
     resolution: {integrity: sha512-4mLJsY7WV9EDY//ibLrDolH1yf3MFs/v6m1FET+pSkTw5w+dgXgW1M/Qxv9plzgj55JCd4JBbbL5ublzBwVBWw==}
@@ -2320,8 +2316,8 @@ packages:
     resolution: {integrity: sha512-uGx42mg5ssxVSR6gVcA0pVwwJGaR3/FrNo1D7z6dLZAyJA7KNAv92gN1vjlpQO7nsz168F+2VppkQ7bsrZnA1A==}
     engines: {node: '>= 22'}
 
-  metascraper-title@5.58.4:
-    resolution: {integrity: sha512-G0/Vhm3kxNhbF0E19TlyxXa3MeIe5AeRfrf50yCyKEbJspeWVX2E+nskSCt+pibQnYUnHxh942KudUoWrzKW5Q==}
+  metascraper-title@5.58.7:
+    resolution: {integrity: sha512-mAL7QGDkqnQ4vFmsKj1c+XjOvfcVEFm6GlmuYzgNGIawuL0JLfamxDI6fakyf7mkXhZHX/WNGVdKTiGLVgQsGg==}
     engines: {node: '>= 22'}
 
   metascraper@5.58.7:
@@ -2929,15 +2925,8 @@ packages:
     resolution: {integrity: sha512-QXqwfEl9ddlGBaRFXIvNKK6OhipSiLXuRuLJX5DErz0o0Q0rYxulWLdFryTkV5PkdZct5iMInwYEGe/eR++1AA==}
     hasBin: true
 
-  tldts-core@7.5.3:
-    resolution: {integrity: sha512-G9K/M0Ah+U22clAb1r0fYNheSysv7Y6OAIundzKcFQx5jBgPId3CnFl44sAGGqJA+lUXMOrREFXHX1lrtEApdA==}
-
   tldts-core@7.5.4:
     resolution: {integrity: sha512-9+4zWtKEDZ3V3FoZ1B97rv+5z5oqp7yeXGVze3CxgQ+CJro9do9DCPD00wxstYZDXDMXsurkBerFfiB6GYtPbA==}
-
-  tldts@7.4.28:
-    resolution: {integrity: sha512-zbyA+C3nBymq7u4gZnKShj7RcyxJuQy66VRF9V9Zx8g1Jl8ui+9DVbV6knlRKaqKX6nSvhhy7D7KM75A6uVf6g==}
-    hasBin: true
 
   tldts@7.5.4:
     resolution: {integrity: sha512-Rn2ABgjHZrA+jzqom5zhxA0hLohzYrIgfCPyhpTUxqsUrcsBYuab49LseR9waB9Jr8/MxdodvMHA91oRiGLO3Q==}
@@ -3764,38 +3753,6 @@ snapshots:
       responselike: 2.0.1
 
   '@kikobeats/time-span@1.0.13': {}
-
-  '@metascraper/helpers@5.58.4(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))':
-    dependencies:
-      audio-extensions: 0.0.0
-      chrono-node: 2.10.3
-      condense-whitespace: 3.0.0
-      data-uri-utils: 1.0.16
-      debug-logfmt: 1.4.20(debug@4.4.3(supports-color@5.5.0))
-      entities: 8.1.0
-      file-extension: 4.0.5
-      has-values: 2.0.1
-      image-extensions: 1.1.0
-      is-relative-url: 4.1.1
-      is-uri: 1.2.14
-      iso-639-3: 3.0.1
-      isostring: 0.0.1
-      jsdom: 30.1.3(@noble/hashes@1.8.0)
-      jsonrepair: 3.15.0
-      lodash: 4.18.1
-      memoize-one: 6.0.0
-      microsoft-capitalize: 1.0.8
-      mime: 4.1.2
-      normalize-url: 9.0.1
-      re2: 1.27.1
-      smartquotes: 2.3.2
-      tldts: 7.4.28
-      url-regex-safe: 4.0.0(re2@1.27.1)
-      video-extensions: 2.0.0
-    transitivePeerDependencies:
-      - '@noble/hashes'
-      - canvas
-      - debug
 
   '@metascraper/helpers@5.58.7(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))':
     dependencies:
@@ -5243,9 +5200,9 @@ snapshots:
       - canvas
       - debug
 
-  metascraper-title@5.58.4(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0)):
+  metascraper-title@5.58.7(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0)):
     dependencies:
-      '@metascraper/helpers': 5.58.4(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
+      '@metascraper/helpers': 5.58.7(@noble/hashes@1.8.0)(debug@4.4.3(supports-color@5.5.0))
     transitivePeerDependencies:
       - '@noble/hashes'
       - canvas
@@ -5926,13 +5883,7 @@ snapshots:
 
   tlds@1.261.0: {}
 
-  tldts-core@7.5.3: {}
-
   tldts-core@7.5.4: {}
-
-  tldts@7.4.28:
-    dependencies:
-      tldts-core: 7.5.3
 
   tldts@7.5.4:
     dependencies:
