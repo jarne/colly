@@ -274,7 +274,7 @@ importers:
         version: 1.0.17
       '@types/passport-jwt':
         specifier: ^4.0.1
-        version: 4.0.1
+        version: 4.0.2
       '@types/passport-local':
         specifier: ^1.0.38
         version: 1.0.38
@@ -1180,8 +1180,8 @@ packages:
   '@types/node@26.6.7':
     resolution: {integrity: sha512-tovuRfrUILu6v46bMG+BgXxMvsqPBx2WO2as8Rpln+JTff1dbexMtAM4KFTejmL0axsnSWViCW7MecUQpLuBRA==}
 
-  '@types/passport-jwt@4.0.1':
-    resolution: {integrity: sha512-Y0Ykz6nWP4jpxgEUYq8NoVZeCQPo1ZndJLfapI249g1jHChvRfZRO/LS3tqu26YgAS/laI1qx98sYGz0IalRXQ==}
+  '@types/passport-jwt@4.0.2':
+    resolution: {integrity: sha512-TD4HbUm1Z3+VN7Atlnd8kLMrXAk6qO1MKLfQ8YSV5bMWwrZ1Sk45TD02wyL3BMcpjTw2Kriuu3KmPZ2e6W/AGQ==}
 
   '@types/passport-local@1.0.38':
     resolution: {integrity: sha512-nsrW4A963lYE7lNTv9cr5WmiUD1ibYJvWrpE13oxApFsRt77b0RdtZvKbCdNIY4v/QZ6TRQWaDDEwV1kCTmcXg==}
@@ -3988,7 +3988,7 @@ snapshots:
     dependencies:
       undici-types: 8.9.0
 
-  '@types/passport-jwt@4.0.1':
+  '@types/passport-jwt@4.0.2':
     dependencies:
       '@types/jsonwebtoken': 9.0.10
       '@types/passport-strategy': 0.2.38
